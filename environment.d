@@ -1,1 +1,0 @@
-/home/kands/.config/environment.d/

@@ -1,0 +1,91 @@
+{
+    "coc.preferences.extensionUpdateCheck": "daily",
+    "suggest.noselect": true,
+    "suggest.enablePreselect": false,
+    "coc.preferences.formatOnSaveFiletypes": [
+        "c",
+        "cpp",
+        "json",
+        "xml",
+        "html",
+        "ruby",
+        "css",
+        "javascript",
+        "latex",
+        "yaml",
+        "ocaml",
+        "haskell",
+        "java",
+        "python"
+    ],
+    "go.checkForUpdates": "disabled",
+    "xml.java.home": "/usr/lib/jvm/default/",
+    "texlab.path": "/usr/bin/texlab",
+    "texlab.build.executable": "/usr/bin/xelatex",
+    "texlab.build.onSave": true,
+    "go.goplsPath": "/usr/bin/gopls",
+    "rust-analyzer.enable": true,
+    "rust-analyzer.lens.run": true,
+    "rust-analyzer.server.path": "/home/kands/.local/share/rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/rust-analyzer",
+    "python.linting.pylintEnabled": true,
+    "xml.server.workDir": "/home/kands/Templates/xml",
+    "yaml.format.enable": true,
+    "java.home": "/usr/lib/jvm/default",
+    "java.enabled": true,
+    "java.import.maven.enabled": true,
+    "java.configuration.maven.userSettings": "/home/kands/.local/bin/apache-maven-3.8.2/conf/settings.xml",
+    "java.format.enabled": true,
+    "java.autobuild.enabled": false,
+    "codeLens.enable": true,
+    "solargraph.checkGemVersion": false,
+    "solargraph.diagnostics": true,
+    "explorer.icon.source": "nvim-web-devicons",
+    "languageserver": {
+        "haskell": {
+            "command": "haskell-language-server-wrapper",
+            "args": [
+                "--lsp"
+            ],
+            "rootPatterns": [
+                "*.cabal",
+                "stack.yaml",
+                "cabal.project",
+                "package.yaml",
+                "hie.yaml"
+            ],
+            "filetypes": [
+                "haskell",
+                "lhaskell"
+            ]
+        },
+        "racket": {
+            "command": "racket",
+            "args": [
+                "--lib",
+                "racket-langserver"
+            ],
+            "filetypes": [
+                "scheme"
+            ]
+        },
+        "lua": {
+            "command": "lua-language-server",
+            "filetypes": [
+                "lua"
+            ]
+        },
+        "ocaml-lsp": {
+            "command": "opam",
+            "args": [
+                "config",
+                "exec",
+                "--",
+                "ocamllsp"
+            ],
+            "filetypes": [
+                "ocaml",
+                "reason"
+            ]
+        }
+    }
+}

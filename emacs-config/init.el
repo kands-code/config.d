@@ -1,0 +1,24 @@
+;; 主配置文件
+
+;; 关闭备份
+(setq make-backup-files nil)
+
+;; 加载配置文件
+;; 加入路径
+(add-to-list 'load-path
+	     (expand-file-name (concat user-emacs-directory ;; ~/.emacs.d/
+				       "selfconfig")))
+;; 定义一些常量
+(require 'init-const)
+
+;; 调用 init-startup 初始化 emacs
+(require 'init-startup)
+
+;; 调用 init-elpa 提供 'use-package'
+(require 'init-elpa)
+
+;; 调用 init-packages 初始化包
+(require 'init-packages)
+
+;; 调用 init-ui 配置主题 和 mode-line
+(require 'init-ui)
