@@ -20,5 +20,22 @@
 ;; 调用 init-packages 初始化包
 (require 'init-packages)
 
+;; 调用键盘配置
+(require 'init-kbd)
+
 ;; 调用 init-ui 配置主题 和 mode-line
 (require 'init-ui)
+
+;; set by 'use-package'
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages '(drag-stuff use-package)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
