@@ -8,6 +8,10 @@
 (add-to-list 'load-path
 	     (expand-file-name (concat user-emacs-directory ;; ~/.emacs.d/
 				       "selfconfig")))
+(add-to-list 'load-path
+	     (expand-file-name (concat user-emacs-directory
+				       "lspconfig"))) ;; lsp配置
+ 
 ;; 定义一些常量
 (require 'init-const)
 
