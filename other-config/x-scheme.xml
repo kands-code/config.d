@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mime-type xmlns="http://www.freedesktop.org/standards/shared-mime-info" type="text/x-scheme">
+  <!--Created automatically by update-mime-database. DO NOT EDIT!-->
+  <comment>Scheme 源代码</comment>
+  <glob-deleteall/>
+  <glob pattern="*.rkt"/>
+  <glob pattern="*.scm"/>
+  <glob pattern="*.ss"/>
+</mime-type>

@@ -20,9 +20,22 @@ ln -s emacs-config ~/.emacs.d
 ln -s python-config ~/.config/pip
 ```
 
-## fonts
+## other configs
+
+### fonts
 
 ```bash
-ln -s local.conf /etc/fonts/local.conf
+ln -s other-config/local.conf /etc/fonts/local.conf
 ```
 
+### bash
+
+```bash
+ln -s other-config/bashrc ~/.bashrc
+```
+
+### mime for racket
+
+```bash
+ln -s other-config/x-scheme.xml ~/.local/share/mime/text/x-scheme.xml
+```
