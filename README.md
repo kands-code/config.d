@@ -47,3 +47,11 @@ x11的dpi莫名其妙炸了，还是手动调整一下吧
 ```bash
 ln -s other-config/x11-dpi.conf /etc/sddm.conf.d/dpi.conf
 ```
+
+### jupyter config
+
+jupyter配置的备份
+
+```bash
+ln -s other-config/jupyter_notebook_config.py ~/.config/jupyter/jupyter_notebook_config.py
+```
