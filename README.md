@@ -39,3 +39,11 @@ ln -s other-config/bashrc ~/.bashrc
 ```bash
 ln -s other-config/x-scheme.xml ~/.local/share/mime/text/x-scheme.xml
 ```
+
+### sddm dpi for X11
+
+x11的dpi莫名其妙炸了，还是手动调整一下吧
+
+```bash
+ln -s other-config/x11-dpi.conf /etc/sddm.conf.d/dpi.conf
+```
