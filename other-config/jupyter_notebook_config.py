@@ -287,7 +287,7 @@
 
 # The IP address the notebook server will listen on.
 #  Default: 'localhost'
-c.NotebookApp.ip = '*'
+# c.NotebookApp.ip = 'localhost'
 
 # Supply extra arguments that will be passed to Jinja environment.
 #  Default: {}
@@ -389,7 +389,7 @@ c.NotebookApp.notebook_dir = '/home/kands/Documents/Jupyter'
 #  module, unless it is overridden using the --browser (NotebookApp.browser)
 #  configuration option.
 #  Default: True
-c.NotebookApp.open_browser = False
+# c.NotebookApp.open_browser = True
 
 # Hashed password to use for web authentication.
 #
@@ -412,7 +412,7 @@ c.NotebookApp.password = 'sha1:0667ad3d7b6e:57c8728805fc5c684de4af48334edce68a77
 
 # The port the notebook server will listen on (env: JUPYTER_PORT).
 #  Default: 8888
-c.NotebookApp.port = 10242
+c.NotebookApp.port = 6437
 
 # The number of additional ports to try if the specified port is not available
 #  (env: JUPYTER_PORT_RETRIES).
