@@ -13,7 +13,9 @@
         "javascript",
         "yaml",
         "java",
-        "python"
+        "python",
+        "haskell",
+        "ocaml"
     ],
     "codeLens.enable": true,
     "yaml.format.enable": true,
