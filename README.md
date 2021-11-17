@@ -55,3 +55,9 @@ jupyter配置的备份
 ```bash
 ln -s other-config/jupyter_notebook_config.py ~/.config/jupyter/jupyter_notebook_config.py
 ```
+
+### Docker 镜像配置
+
+```bash
+ln -s other-config/docker-daemon.json /etc/docker/daemon.json
+```
