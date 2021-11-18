@@ -34,12 +34,6 @@ ln -s other-config/local.conf /etc/fonts/local.conf
 ln -s other-config/bashrc ~/.bashrc
 ```
 
-### mime for racket
-
-```bash
-ln -s other-config/x-scheme.xml ~/.local/share/mime/text/x-scheme.xml
-```
-
 ### sddm dpi for X11
 
 x11的dpi莫名其妙炸了，还是手动调整一下吧
