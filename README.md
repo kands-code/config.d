@@ -69,4 +69,4 @@ mkdir ~/.local/share/R; ln -s "$PWD"/other-config/Rprofile ~/.local/share/R/.Rpr
 
 ---
 
-> 这个仓库仅私人使用
+> 这个仓库仅私人使用, 如果造成什么后果, 概不负责
