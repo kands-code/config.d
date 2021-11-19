@@ -1,0 +1,4 @@
+options(repos=structure(c(CRAN="https://mirrors.ustc.edu.cn/CRAN/")))
+options("browser"="firefox")
+options("editor"="nvim")
+options("encoding"="utf8")

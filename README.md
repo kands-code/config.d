@@ -53,3 +53,16 @@ sudo ln -s "$PWD"/other-config/docker-daemon.json /etc/docker/daemon.json
 ```bash
 mkdir ~/.config/npm; ln -s "$PWD"/other-config/npmrc ~/.config/npm/
 ```
+
+### some configs
+
+```
+# for wget
+echo hsts-file \= "$XDG_CACHE_HOME"/wget-hsts >> "$XDG_CONFIG_HOME/wgetrc"
+
+# for dircolors
+mkdir ~/.config/dircolors
+
+# for R
+mkdir ~/.local/share/R; ln -s "$PWD"/other-config/Rprofile ~/.local/share/R/.Rprofile
+```

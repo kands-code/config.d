@@ -30,10 +30,12 @@ eval $(dircolors "$XDG_CONFIG_HOME"/dircolors)
 export MYSQL_HISTFILE="$XDG_DATA_HOME"/mysql_history
 
 # path
-PATH=${PATH}:"${HOME}/.local/bin":"${XDG_DATA_HOME}/npm/bin":"${CABAL_DIR}/bin":"${XDG_DATA_HOME}/cargo/bin":"${GEM_HOME}/bin"
+PATH="$PATH":"$HOME/.local/bin":"$XDG_DATA_HOME/npm/bin":"$CABAL_DIR/bin":"$XDG_DATA_HOME/cargo/bin":"$GEM_HOME/ruby/3.0.0/bin"
 
 # hitokoto (bad netwroks)
 # ${HOME}/.local/bin/self-script/hitokoto
+
+[ -f "/home/kands/.local/share/ghcup/env" ] && source "/home/kands/.local/share/ghcup/env" # ghcup-env
 
 # opam configuration
 test -r /home/kands/.local/share/opam/opam-init/init.sh && . /home/kands/.local/share/opam/opam-init/init.sh > /dev/null 2> /dev/null || true
