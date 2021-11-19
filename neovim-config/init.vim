@@ -109,15 +109,15 @@ call plug#end()
 ""=====================================
 "" Color Scheme
 set termguicolors     " enable true colors support
-let ayucolor="light"  " for light version of theme
+" let ayucolor="light"  " for light version of theme
 " let ayucolor="mirage" " for mirage version of theme
 " let ayucolor="dark"   " for dark version of theme
-colorscheme ayu
+colorscheme nord
 
 "airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'ayu'
+let g:airline_theme = 'nord'
 set t_Co=256 " for windows
 
 " IndentLine

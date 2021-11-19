@@ -5,19 +5,19 @@
 ## neovim
 
 ```bash
-ln -s neovim-config ~/.config/nvim
+ln -s "$PWD"/neovim-config ~/.config/nvim
 ```
 
 ## emacs
 
 ```bash
-ln -s emacs-config ~/.emacs.d
+ln -s "$PWD"/emacs-config ~/.emacs.d
 ```
 
 ## python
 
 ```bash
-ln -s python-config ~/.config/pip
+ln -s "$PWD"/python-config ~/.config/pip
 ```
 
 ## other configs
@@ -25,13 +25,13 @@ ln -s python-config ~/.config/pip
 ### fonts
 
 ```bash
-ln -s other-config/local.conf /etc/fonts/local.conf
+sudo ln -s "$PWD"/other-config/local.conf /etc/fonts/
 ```
 
 ### bash
 
 ```bash
-ln -s other-config/bashrc ~/.bashrc
+ln -s "$PWD"/other-config/bashrc ~/.bashrc
 ```
 
 ### sddm dpi for X11
@@ -39,19 +39,17 @@ ln -s other-config/bashrc ~/.bashrc
 x11的dpi莫名其妙炸了，还是手动调整一下吧
 
 ```bash
-ln -s other-config/x11-dpi.conf /etc/sddm.conf.d/dpi.conf
-```
-
-### jupyter config
-
-jupyter配置的备份
-
-```bash
-ln -s other-config/jupyter_notebook_config.py ~/.config/jupyter/jupyter_notebook_config.py
+sudo ln -s "$PWD"/other-config/x11-dpi.conf /etc/sddm.conf.d/
 ```
 
 ### Docker 镜像配置
 
 ```bash
-ln -s other-config/docker-daemon.json /etc/docker/daemon.json
+sudo ln -s "$PWD"/other-config/docker-daemon.json /etc/docker/daemon.json
+```
+
+### npm 配置
+
+```bash
+mkdir ~/.config/npm; ln -s "$PWD"/other-config/npmrc ~/.config/npm/
 ```
