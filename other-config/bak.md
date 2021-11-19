@@ -1,3 +1,3 @@
 * self keys
 
-> keys: `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`
+> keys: `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`
