@@ -121,9 +121,10 @@ let g:airline_theme = 'nord'
 set t_Co=256 " for windows
 
 " IndentLine
-let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-let g:indentLine_setColors = 0
-let g:indentLine_setConceal = 0
+let g:indentLine_char = '|'
+" let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+" let g:indentLine_setColors = 0
+" let g:indentLine_setConceal = 0
 ""=====================================
 
 ""  ____           
