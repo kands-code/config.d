@@ -96,12 +96,12 @@ noremap <LEADER><CR> :nohlsearch<CR>
 
 call plug#begin('~/.local/share/nvim/site/plugged')
 
-Plug 'https://hub.fastgit.org/vim-airline/vim-airline'
-Plug 'https://hub.fastgit.org/neoclide/coc.nvim', {'branch': 'release'}
-Plug 'https://hub.fastgit.org/ayu-theme/ayu-vim'
-Plug 'https://hub.fastgit.org/arcticicestudio/nord-vim'
-Plug 'https://hub.fastgit.org/vim-airline/vim-airline-themes'
-Plug 'https://hub.fastgit.org/Yggdroot/indentLine'
+Plug 'vim-airline/vim-airline'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'ayu-theme/ayu-vim'
+Plug 'arcticicestudio/nord-vim'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'Yggdroot/indentLine'
 
 call plug#end()
 
@@ -221,6 +221,7 @@ autocmd BufNewFile,BufRead *.mma setfiletype mma
 
 "" Julia
 autocmd BufNewFile,BufRead *.jl setfiletype julia
-
+"" agda
+autocmd BufNewFile,BufRead *.agda setfiletype agda
 "" prolog
 autocmd BufNewFile,BufRead *.prolog setfiletype prolog

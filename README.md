@@ -65,6 +65,9 @@ mkdir ~/.config/dircolors
 
 # for R
 mkdir ~/.local/share/R; ln -s "$PWD"/other-config/Rprofile ~/.local/share/R/.Rprofile
+
+# close beep
+sudo ln -s "$PWD"/other-config/nobeep.conf /etc/modprobe.d/
 ```
 
 ---
