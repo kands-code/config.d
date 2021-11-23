@@ -32,6 +32,7 @@ sudo ln -s "$PWD"/other-config/local.conf /etc/fonts/
 
 ```bash
 ln -s "$PWD"/other-config/bashrc ~/.bashrc
+ln -s "$PWD"/other-config/profile ~/.profile
 ```
 
 ### sddm dpi for X11

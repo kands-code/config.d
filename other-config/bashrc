@@ -5,9 +5,6 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# git gpg
-export GPG_TTY=$(tty)
-
 alias ls='ls --color=auto'
 # PS1='[\u@\h \W]\$ '
 
@@ -28,12 +25,6 @@ export PS2=' ~> '
 alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config"
 
 eval $(dircolors "$XDG_CONFIG_HOME"/dircolors)
-
-# mysql
-export MYSQL_HISTFILE="$XDG_DATA_HOME"/mysql_history
-
-# path
-PATH="$PATH":"$HOME/.local/bin":"$XDG_DATA_HOME/npm/bin":"$CABAL_DIR/bin":"$XDG_DATA_HOME/cargo/bin":"$GEM_HOME/ruby/3.0.0/bin"
 
 # hitokoto (bad netwroks)
 # ${HOME}/.local/bin/self-script/hitokoto
