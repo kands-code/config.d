@@ -145,6 +145,7 @@ let g:coc_global_extensions = [
     \'coc-cmake',
     \'coc-toml',
     \'coc-yaml',
+    \'coc-markdownlint',
     \'coc-sql',
     \'coc-texlab',
     \'coc-sh',
@@ -221,7 +222,9 @@ autocmd BufNewFile,BufRead *.mma setfiletype mma
 
 "" Julia
 autocmd BufNewFile,BufRead *.jl setfiletype julia
+
 "" agda
 autocmd BufNewFile,BufRead *.agda setfiletype agda
+
 "" prolog
 autocmd BufNewFile,BufRead *.prolog setfiletype prolog
