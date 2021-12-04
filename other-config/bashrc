@@ -28,8 +28,3 @@ eval $(dircolors "$XDG_CONFIG_HOME"/dircolors)
 
 # hitokoto (bad netwroks)
 # ${HOME}/.local/bin/self-script/hitokoto
-
-[ -f "/home/kands/.local/share/ghcup/env" ] && source "/home/kands/.local/share/ghcup/env" # ghcup-env
-
-# opam configuration
-test -r /home/kands/.local/share/opam/opam-init/init.sh && . /home/kands/.local/share/opam/opam-init/init.sh > /dev/null 2> /dev/null || true
