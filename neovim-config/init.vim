@@ -146,6 +146,7 @@ let g:coc_global_extensions = [
     \'coc-toml',
     \'coc-yaml',
     \'coc-sql',
+    \'coc-docker',
     \'coc-texlab',
     \'coc-sh',
     \'coc-rust-analyzer',

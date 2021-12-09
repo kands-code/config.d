@@ -36,8 +36,6 @@
     "rust-analyzer.enable": true,
     "rust-analyzer.lens.run": true,
     "rust-analyzer.server.path": "/home/kands/.local/share/rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/rust-analyzer",
-    "solargraph.checkGemVersion": false,
-    "solargraph.diagnostics": true,
     "python.linting.pylintEnabled": true,
     "explorer.icon.source": "nvim-web-devicons",
     "languageserver": {
