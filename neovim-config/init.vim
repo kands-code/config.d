@@ -98,10 +98,12 @@ call plug#begin('~/.local/share/nvim/site/plugged')
 
 Plug 'vim-airline/vim-airline'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'ayu-theme/ayu-vim'
-Plug 'arcticicestudio/nord-vim'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'Yggdroot/indentLine'
+"" themes
+Plug 'ayu-theme/ayu-vim'
+Plug 'ryanoasis/vim-devicons'
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 call plug#end()
 
@@ -112,16 +114,17 @@ set termguicolors     " enable true colors support
 " let ayucolor="light"  " for light version of theme
 " let ayucolor="mirage" " for mirage version of theme
 " let ayucolor="dark"   " for dark version of theme
-colorscheme nord
+colorscheme dracula
 
 "airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'nord'
+let g:airline_theme = 'dracula'
 set t_Co=256 " for windows
 
 " IndentLine
 let g:indentLine_char = '|'
+let g:indentLine_fileTypeExclude = ['coc-explorer']
 " let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 " let g:indentLine_setColors = 0
 " let g:indentLine_setConceal = 0

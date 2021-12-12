@@ -19,6 +19,7 @@
         "ocaml"
     ],
     "codeLens.enable": true,
+    "explorer.icon.enableNerdfont": true,
     "yaml.format.enable": true,
     "go.checkForUpdates": "disabled",
     "go.goplsPath": "/usr/bin/gopls",
@@ -37,7 +38,6 @@
     "rust-analyzer.lens.run": true,
     "rust-analyzer.server.path": "/home/kands/.local/share/rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/rust-analyzer",
     "python.linting.pylintEnabled": true,
-    "explorer.icon.source": "nvim-web-devicons",
     "languageserver": {
         "haskell": {
             "command": "haskell-language-server-wrapper",
