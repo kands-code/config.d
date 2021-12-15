@@ -102,7 +102,6 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'Yggdroot/indentLine'
 "" themes
 Plug 'ayu-theme/ayu-vim'
-Plug 'ryanoasis/vim-devicons'
 Plug 'dracula/vim', { 'as': 'dracula' }
 
 call plug#end()

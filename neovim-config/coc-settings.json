@@ -19,7 +19,6 @@
         "ocaml"
     ],
     "codeLens.enable": true,
-    "explorer.icon.enableNerdfont": true,
     "yaml.format.enable": true,
     "go.checkForUpdates": "disabled",
     "go.goplsPath": "/usr/bin/gopls",
