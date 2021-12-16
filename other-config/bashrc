@@ -26,5 +26,7 @@ alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config"
 
 eval $(dircolors "$XDG_CONFIG_HOME"/dircolors)
 
+eval "$(pandoc --bash-completion)"
+
 # hitokoto (bad netwroks)
 # ${HOME}/.local/bin/self-script/hitokoto
