@@ -3,12 +3,9 @@
     "suggest.noselect": true,
     "suggest.enablePreselect": false,
     "coc.preferences.formatOnSaveFiletypes": [
-        "c",
-        "cpp",
         "json",
         "xml",
         "html",
-        "ruby",
         "rust",
         "css",
         "javascript",
@@ -20,8 +17,6 @@
     ],
     "codeLens.enable": true,
     "yaml.format.enable": true,
-    "go.checkForUpdates": "disabled",
-    "go.goplsPath": "/usr/bin/gopls",
     "xml.java.home": "/usr/lib/jvm/default/",
     "xml.server.workDir": "/home/kands/Templates/xml",
     "java.home": "/usr/lib/jvm/default",
@@ -55,33 +50,10 @@
                 "lhaskell"
             ]
         },
-        "racket": {
-            "command": "racket",
-            "args": [
-                "--lib",
-                "racket-langserver"
-            ],
-            "filetypes": [
-                "scheme"
-            ]
-        },
         "lua": {
             "command": "lua-language-server",
             "filetypes": [
                 "lua"
-            ]
-        },
-        "ocaml-lsp": {
-            "command": "opam",
-            "args": [
-                "config",
-                "exec",
-                "--",
-                "ocamllsp"
-            ],
-            "filetypes": [
-                "ocaml",
-                "reason"
             ]
         }
     }

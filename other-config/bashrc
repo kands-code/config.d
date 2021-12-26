@@ -24,9 +24,13 @@ export PS2=' ~> '
 # yarn
 alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config"
 
-eval $(dircolors "$XDG_CONFIG_HOME"/dircolors)
+eval "$(dircolors "$XDG_CONFIG_HOME"/dircolors)"
 
 eval "$(pandoc --bash-completion)"
+
+# stack
+eval "$(stack --bash-completion-script stack)"
+export https_proxy="http://127.0.0.1:20172"
 
 # hitokoto (bad netwroks)
 # ${HOME}/.local/bin/self-script/hitokoto

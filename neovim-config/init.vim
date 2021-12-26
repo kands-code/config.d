@@ -96,13 +96,15 @@ noremap <LEADER><CR> :nohlsearch<CR>
 
 call plug#begin('~/.local/share/nvim/site/plugged')
 
-Plug 'vim-airline/vim-airline'
+"" LSP
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'vim-airline/vim-airline-themes'
-Plug 'Yggdroot/indentLine'
+
 "" themes
+Plug 'vim-airline/vim-airline'
 Plug 'ayu-theme/ayu-vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'vim-airline/vim-airline-themes'
+Plug 'Yggdroot/indentLine'
 
 call plug#end()
 
@@ -153,7 +155,6 @@ let g:coc_global_extensions = [
     \'coc-sh',
     \'coc-rust-analyzer',
     \'coc-pyright',
-    \'coc-go',
     \'coc-java',
     \'coc-emmet',
     \'coc-svg',
