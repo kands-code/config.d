@@ -22,7 +22,7 @@ export PS1='[\u@\h \w \A] \[\033[1;36m\][\$]\[\033[0m\] [$(exitstatus)]\n\[\033[
 export PS2=' ~> '
 
 # yarn
-alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config"
+alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 
 eval "$(dircolors "$XDG_CONFIG_HOME"/dircolors)"
 

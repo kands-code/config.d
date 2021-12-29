@@ -104,6 +104,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'ayu-theme/ayu-vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'vim-airline/vim-airline-themes'
+Plug 'srcery-colors/srcery-vim'
 Plug 'Yggdroot/indentLine'
 
 call plug#end()
@@ -115,12 +116,12 @@ set termguicolors     " enable true colors support
 " let ayucolor="light"  " for light version of theme
 " let ayucolor="mirage" " for mirage version of theme
 " let ayucolor="dark"   " for dark version of theme
-colorscheme dracula
+colorscheme srcery
 
 "airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'dracula'
+let g:airline_theme = 'srcery'
 set t_Co=256 " for windows
 
 " IndentLine
