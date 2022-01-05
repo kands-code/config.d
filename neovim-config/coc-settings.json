@@ -23,7 +23,7 @@
     "java.home": "/usr/lib/jvm/default",
     "java.enabled": true,
     "java.import.maven.enabled": true,
-    "java.configuration.maven.userSettings": "/home/kands/.local/bin/apache-maven-3.8.2/conf/settings.xml",
+    "java.configuration.maven.userSettings": "/home/kands/.local/lib/conf/settings.xml",
     "java.format.enabled": true,
     "java.autobuild.enabled": false,
     "texlab.path": "/usr/bin/texlab",
@@ -55,6 +55,12 @@
             "command": "lua-language-server",
             "filetypes": [
                 "lua"
+            ]
+        },
+        "nix": {
+            "command": "rnix-lsp",
+            "filetypes": [
+                "nix"
             ]
         }
     }

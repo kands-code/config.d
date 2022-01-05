@@ -6,6 +6,7 @@
 [[ $- != *i* ]] && return
 
 alias ls='ls --color=auto'
+alias mvn="mvn --settings='${HOME}/.local/lib/conf/settings.xml'"
 # PS1='[\u@\h \W]\$ '
 
 ### SELF PS [prompt sign]
@@ -28,8 +29,6 @@ eval "$(dircolors "$XDG_CONFIG_HOME"/dircolors)"
 
 eval "$(pandoc --bash-completion)"
 
-# stack
-eval "$(stack --bash-completion-script stack)"
 export https_proxy="http://127.0.0.1:20172"
 
 # hitokoto (bad netwroks)

@@ -33,6 +33,9 @@ sudo ln -s "$PWD"/other-config/local.conf /etc/fonts/
 ```bash
 ln -s "$PWD"/other-config/bashrc ~/.bashrc
 ln -s "$PWD"/other-config/profile ~/.profile
+# for history
+mkdir ~/.local/share/bash/
+touch ~/.local/share/bash/history
 ```
 
 ### sddm dpi for X11
@@ -57,18 +60,36 @@ mkdir ~/.config/npm; ln -s "$PWD"/other-config/npmrc ~/.config/npm/
 
 ### some configs
 
-```
-# for wget
+#### for wget
+
+```bash
 echo hsts-file \= "$XDG_CACHE_HOME"/wget-hsts >> "$XDG_CONFIG_HOME/wgetrc"
+```
 
-# for dircolors
+
+#### for dircolors
+
+```bash
 mkdir ~/.config/dircolors
+```
 
-# for R
-mkdir ~/.local/share/R; ln -s "$PWD"/other-config/Rprofile ~/.local/share/R/.Rprofile
+#### for R
 
-# close beep
+```bash
+mkdir ~/.local/share/R
+ln -s "$PWD"/other-config/Rprofile ~/.local/share/R/.Rprofile
+```
+
+#### close beep
+
+```bash
 sudo ln -s "$PWD"/other-config/nobeep.conf /etc/modprobe.d/
+```
+
+#### for maven
+
+```bash
+
 ```
 
 ---

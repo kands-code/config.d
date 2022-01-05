@@ -99,6 +99,11 @@ call plug#begin('~/.local/share/nvim/site/plugged')
 "" LSP
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+
+"" Svelte
+Plug 'leafOfTree/vim-svelte-plugin'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
 "" themes
 Plug 'vim-airline/vim-airline'
 Plug 'ayu-theme/ayu-vim'
@@ -143,6 +148,7 @@ let g:coc_global_extensions = [
     \'coc-json',
     \'coc-html',
     \'coc-vimlsp',
+    \'coc-markdownlint',
     \'coc-xml',
     \'coc-syntax',
     \'coc-css',
@@ -216,7 +222,26 @@ function! s:show_documentation()
   endif
 endfunction
 
-nmap <leader>rn <Plug>(coc-rename)
+nmap <LEADER>rn <Plug>(coc-rename)
+nmap ff <Plug>(coc-fix-current)
+
+" Mappings for CoCList
+" Show all diagnostics.
+nnoremap <silent><nowait> <LEADER>cd  :<C-u>CocList diagnostics<cr>
+" Manage extensions.
+nnoremap <silent><nowait> <LEADER>ce  :<C-u>CocList extensions<cr>
+" Show commands.
+nnoremap <silent><nowait> <LEADER>cc  :<C-u>CocList commands<cr>
+" Find symbol of current document.
+nnoremap <silent><nowait> <LEADER>co  :<C-u>CocList outline<cr>
+" Search workspace symbols.
+nnoremap <silent><nowait> <LEADER>cs  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent><nowait> <LEADER>cn  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent><nowait> <LEADER>cp  :<C-u>CocPrev<CR>
+" Resume latest coc list.
+nnoremap <silent><nowait> <LEADER>cr  :<C-u>CocListResume<CR>
 
 "" mma
 autocmd BufNewFile,BufRead *.wl setfiletype mma
