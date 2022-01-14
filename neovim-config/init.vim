@@ -25,9 +25,6 @@ call plug#begin('~/.local/share/nvim/site/plugged')
     "" LSP
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-    "" Nix
-    Plug 'LnL7/vim-nix'
-
     "" agda
     Plug 'nvim-lua/plenary.nvim'
     Plug 'isti115/agda.nvim'

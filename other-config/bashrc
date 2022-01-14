@@ -8,6 +8,7 @@
 alias ls='ls --color=auto'
 alias mvn="mvn --settings='${HOME}/.local/lib/conf/settings.xml'"
 alias ghcup="https_proxy='127.0.0.1:20172' ghcup"
+alias stack="https_proxy='127.0.0.1:20172' stack"
 
 # PS1='[\u@\h \W]\$ '
 
