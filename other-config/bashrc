@@ -7,6 +7,8 @@
 
 alias ls='ls --color=auto'
 alias mvn="mvn --settings='${HOME}/.local/lib/conf/settings.xml'"
+alias ghcup="https_proxy='127.0.0.1:20172' ghcup"
+
 # PS1='[\u@\h \W]\$ '
 
 ### SELF PS [prompt sign]
@@ -28,8 +30,6 @@ alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 eval "$(dircolors "$XDG_CONFIG_HOME"/dircolors)"
 
 eval "$(pandoc --bash-completion)"
-
-export https_proxy="http://127.0.0.1:20172"
 
 # hitokoto (bad netwroks)
 # ${HOME}/.local/bin/self-script/hitokoto

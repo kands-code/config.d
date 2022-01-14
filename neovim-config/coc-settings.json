@@ -3,18 +3,20 @@
     "suggest.noselect": true,
     "suggest.enablePreselect": false,
     "coc.preferences.formatOnSaveFiletypes": [
+        "c",
+        "cpp",
         "json",
         "xml",
         "html",
         "rust",
+        "go",
         "css",
         "javascript",
         "typescript",
         "yaml",
         "java",
         "python",
-        "haskell",
-        "ocaml"
+        "haskell"
     ],
     "codeLens.enable": true,
     "yaml.format.enable": true,
@@ -29,6 +31,8 @@
     "texlab.path": "/usr/bin/texlab",
     "texlab.build.executable": "/usr/bin/xelatex",
     "texlab.build.onSave": true,
+    "go.checkForUpdates": "disabled",
+    "go.goplsPath": "/usr/bin/gopls",
     "rust-analyzer.enable": true,
     "rust-analyzer.lens.run": true,
     "rust-analyzer.server.path": "/home/kands/.local/share/rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/rust-analyzer",
@@ -55,12 +59,6 @@
             "command": "lua-language-server",
             "filetypes": [
                 "lua"
-            ]
-        },
-        "nix": {
-            "command": "rnix-lsp",
-            "filetypes": [
-                "nix"
             ]
         }
     }
