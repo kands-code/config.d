@@ -8,7 +8,13 @@
 alias ls='ls --color=auto'
 alias mvn="mvn --settings='${HOME}/.local/lib/conf/settings.xml'"
 alias ghcup="https_proxy='127.0.0.1:20172' ghcup"
+
+# stack
 alias stack="https_proxy='127.0.0.1:20172' stack"
+if [ -e "$HOME/.local/bin/stack" ]
+then
+  eval "$(stack --bash-completion-script stack)"
+fi
 
 # PS1='[\u@\h \W]\$ '
 
