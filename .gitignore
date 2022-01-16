@@ -1,0 +1,4 @@
+# emacs ignore
+elpa/
+auto-save-list/
+*~
