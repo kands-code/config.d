@@ -1,4 +1,9 @@
+;;; init-pack -- package configs
+
+;;; Commentary:
 (require 'package)
+
+;;; Code:
 ;; set ustc mirrors
 (setq package-archives '(("gnu" . "http://mirrors.ustc.edu.cn/elpa/gnu/")
 			 ("melpa" . "http://mirrors.ustc.edu.cn/elpa/melpa/")
@@ -30,4 +35,11 @@
   (setq use-package-expand-minimally t)
   (setq use-package-verbose t))
 
+;; which-key
+(require 'use-package)
+(use-package which-key
+  :defer 0.1
+  :config (which-key-mode))
+
 (provide 'init-pack)
+;;; inti-pack.el ends here
