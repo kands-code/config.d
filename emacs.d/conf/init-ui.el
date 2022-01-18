@@ -1,24 +1,26 @@
+;;; init-ui.el -- themes configs
+
 (require 'use-package)
 
-;; themes
-;; -- srcery
+;;; themes
+;;; -- srcery
 (use-package srcery-theme
   :init (load-theme 'srcery t))
 
-;; telephone-line
+;;; telephone-line
 (use-package telephone-line
   :init
-  ;; -- config cubed
+  ;;; -- config cubed
   (setq telephone-line-primary-left-separator 'telephone-line-cubed-left
 	telephone-line-secondary-left-separator 'telephone-line-cubed-hollow-left
 	telephone-line-primary-right-separator 'telephone-line-cubed-right
 	telephone-line-secondary-right-separator 'telephone-line-cubed-hollow-right)
   (setq telephone-line-height 24
 	telephone-line-evil-use-short-tag t)
-  ;; -- start telephone-line
+  ;;; -- start telephone-line
   (telephone-line-mode t))
 
-;; set font
+;;; set font
 (use-package emacs
   :if (display-graphic-p)
   :config

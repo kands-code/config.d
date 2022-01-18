@@ -4,7 +4,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(go-mode zephir-mode rust-mode lsp-ui yasnippet which-key use-package telephone-line srcery-theme restart-emacs lsp-mode flycheck drag-stuff crux counsel company benchmark-init)))
+   '(go-mode zephir-mode rust-mode lsp-ui yasnippet which-key use-package telephone-line srcery-theme restart-emacs lsp-mode drag-stuff crux counsel company benchmark-init)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

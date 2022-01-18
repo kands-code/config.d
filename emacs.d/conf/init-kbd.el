@@ -1,4 +1,4 @@
-;; keyboard map adjust
+;;; init-kbd.el -- key maps
 
 (define-key
   minibuffer-local-map

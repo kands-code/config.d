@@ -1,26 +1,28 @@
-;; add conf directory to path
+;;; init.el -- my emacs config
+
+;;; add conf directory to path
 (add-to-list 'load-path
 	     (expand-file-name
 	      (concat user-emacs-directory "conf")))
 
-;; config custom file
+;;; config custom file
 (setq custom-file (expand-file-name
 		   "custom.el" user-emacs-directory))
 
-;; load the basic config
+;;; load the basic config
 (require 'init-basic)
-;; load the package config
+;;; load the package config
 (require 'init-pack)
-;; load the plugins
+;;; load the plugins
 (require 'init-plugins)
-;; load ui config
+;;; load ui config
 (require 'init-ui)
-;; load keyboard config
+;;; load keyboard config
 (require 'init-kbd)
-;; lsp mode config
+;;; lsp mode config
 (require 'init-lsp)
 
-;; load custom file
+;;; load custom file
 (when (file-exists-p custom-file)
   (load-file custom-file))
 

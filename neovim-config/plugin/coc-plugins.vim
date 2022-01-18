@@ -15,6 +15,7 @@ let g:coc_global_extensions = [
     \'coc-go',
     \'coc-css',
     \'coc-clangd',
+    \'coc-highlight',
     \'coc-cmake',
     \'coc-toml',
     \'coc-yaml',
