@@ -11,6 +11,5 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme = 'srcery'
 set t_Co=256 " for windows
 
-" IndentLine
-let g:indentLine_char = '|'
-let g:indentLine_fileTypeExclude = ['coc-explorer']
+" rainbow
+let g:rainbow_active = 1

@@ -4,15 +4,16 @@ set fileencoding=utf-8
 
 "" basic config
 source "plugin/basic.vim"
-
 "" keybinding config
 source "plugin/keybinds.vim"
-
 "" themes
 source "plugin/themes.vim"
-
 "" coc-config
 source "plugin/coc-config.vim"
+"" coc-plugins
+source "plugin/coc-plugins.vim"
+"" other configs
+source "plugin/others.vim"
 
 """""""""
 """""
@@ -38,6 +39,8 @@ call plug#begin('~/.local/share/nvim/site/plugged')
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'srcery-colors/srcery-vim'
-    Plug 'Yggdroot/indentLine'
+
+    Plug 'lukas-reineke/indent-blankline.nvim'
+    Plug 'luochen1990/rainbow'
 
 call plug#end()

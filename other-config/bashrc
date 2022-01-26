@@ -5,16 +5,15 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# proxy
-export https_proxy='http://127.0.0.1:20172'
-export http_proxy='http://127.0.0.1:20172'
-
 alias ls='ls --color=auto'
 alias mvn="mvn --settings='${HOME}/.local/lib/conf/settings.xml'"
+
+alias ghcup='https_proxy=http://127.0.0.1:20172 ghcup'
 
 # stack
 if [ -e "$HOME/.local/bin/stack" ]
 then
+  alias stack='https_proxy=http://127.0.0.1:20172 stack'
   eval "$(stack --bash-completion-script stack)"
 fi
 
