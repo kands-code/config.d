@@ -19,6 +19,9 @@
     "haskell"
   ],
   "codeLens.enable": true,
+  "markdownlint.config": {
+    "line-length": false
+  },
   "yaml.format.enable": true,
   "xml.java.home": "/usr/lib/jvm/default/",
   "xml.server.workDir": "/home/kands/Templates/xml",

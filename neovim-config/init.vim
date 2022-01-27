@@ -23,24 +23,43 @@ source "plugin/others.vim"
 
 call plug#begin('~/.local/share/nvim/site/plugged')
 
-    "" LSP
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  "" LSP
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-    "" nix
-    Plug 'LnL7/vim-nix'
+  "" nix
+  Plug 'LnL7/vim-nix'
 
-    "" agda
-    Plug 'nvim-lua/plenary.nvim'
-    Plug 'isti115/agda.nvim'
-    "" for input
-    Plug 'derekelkins/agda-vim'
+  "" agda
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'isti115/agda.nvim'
+  "" for input
+  Plug 'derekelkins/agda-vim'
 
-    "" themes
-    Plug 'vim-airline/vim-airline'
-    Plug 'vim-airline/vim-airline-themes'
-    Plug 'srcery-colors/srcery-vim'
+  "" themes
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+  Plug 'srcery-colors/srcery-vim'
 
-    Plug 'lukas-reineke/indent-blankline.nvim'
-    Plug 'luochen1990/rainbow'
+  Plug 'lukas-reineke/indent-blankline.nvim'
+  Plug 'luochen1990/rainbow'
+
+  "" markdown
+  Plug 'godlygeek/tabular'
+  Plug 'preservim/vim-markdown'
 
 call plug#end()
+
+
+"""""""""""
+"" markdown
+"""""""""""
+"" disable conceal
+let g:vim_markdown_conceal = 0
+"" disable folding
+let g:vim_markdown_folding_disabled = 1
+"" enable math
+let g:vim_markdown_math = 1
+"" front
+let g:vim_markdown_frontmatter = 1
+"" indent
+let g:vim_markdown_new_list_item_indent = 2

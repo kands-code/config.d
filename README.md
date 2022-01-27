@@ -88,9 +88,7 @@ sudo ln -s "$PWD"/other-config/nobeep.conf /etc/modprobe.d/
 
 #### for maven
 
-```bash
-
-```
+> 摆烂, `.m2` 目录还是需要
 
 ---
 
