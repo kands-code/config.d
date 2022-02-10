@@ -28,6 +28,7 @@
   "java.home": "/usr/lib/jvm/default",
   "java.enabled": true,
   "java.import.maven.enabled": true,
+  "java.import.gradle.enabled": true,
   "java.configuration.maven.userSettings": "/home/kands/.local/lib/conf/settings.xml",
   "java.format.enabled": true,
   "java.autobuild.enabled": false,
