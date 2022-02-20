@@ -25,6 +25,7 @@ call plug#begin('~/.local/share/nvim/site/plugged')
 
   "" LSP
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
   "" nix
   Plug 'LnL7/vim-nix'

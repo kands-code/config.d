@@ -20,7 +20,8 @@
   ],
   "codeLens.enable": true,
   "markdownlint.config": {
-    "line-length": false
+    "line-length": false,
+    "list-indent": false
   },
   "yaml.format.enable": true,
   "xml.java.home": "/usr/lib/jvm/default/",

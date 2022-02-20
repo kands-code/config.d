@@ -32,6 +32,7 @@ set expandtab
 """"""""""""""
 "" editor
 """"""""""""""
+set clipboard=unnamedplus
 set showcmd
 set wildmenu
 "" wrap
