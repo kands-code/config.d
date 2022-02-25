@@ -28,6 +28,5 @@ let g:coc_global_extensions = [
   \'coc-emmet',
   \'coc-svg',
   \'coc-tsserver',
-  \'coc-explorer',
-  \'coc-r-lsp'
+  \'coc-explorer'
 \]
