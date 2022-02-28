@@ -66,7 +66,6 @@ mkdir ~/.config/npm; ln -s "$PWD"/other-config/npmrc ~/.config/npm/
 echo hsts-file \= "$XDG_CACHE_HOME"/wget-hsts >> "$XDG_CONFIG_HOME/wgetrc"
 ```
 
-
 #### for dircolors
 
 ```bash
