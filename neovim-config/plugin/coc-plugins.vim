@@ -27,6 +27,7 @@ let g:coc_global_extensions = [
   \'coc-java',
   \'coc-emmet',
   \'coc-svg',
+  \'coc-sumneko-lua',
   \'coc-tsserver',
   \'coc-explorer'
 \]

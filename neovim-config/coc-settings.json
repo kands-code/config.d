@@ -38,6 +38,10 @@
   "texlab.build.onSave": true,
   "go.checkForUpdates": "disabled",
   "go.goplsPath": "/usr/bin/gopls",
+  "Lua.telemetry.enable": false,
+  "sumneko-lua.locale": "zh-cn",
+  "sumneko-lua.enableNvimLuaDev": true,
+  "Lua.window.statusBar": false,
   "rust-analyzer.enable": true,
   "rust-analyzer.lens.run": true,
   "rust-analyzer.server.path": "/home/kands/.local/share/rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/rust-analyzer",
@@ -58,12 +62,6 @@
       "filetypes": [
         "haskell",
         "lhaskell"
-      ]
-    },
-    "lua": {
-      "command": "lua-language-server",
-      "filetypes": [
-        "lua"
       ]
     }
   }

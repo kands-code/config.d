@@ -39,7 +39,8 @@ call plug#begin('~/.local/share/nvim/site/plugged')
   "" themes
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
-  Plug 'srcery-colors/srcery-vim'
+  Plug 'arcticicestudio/nord-vim'
+  Plug 'ayu-theme/ayu-vim'
 
   Plug 'lukas-reineke/indent-blankline.nvim'
   Plug 'luochen1990/rainbow'

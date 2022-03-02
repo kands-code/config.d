@@ -3,12 +3,14 @@
 """""""""""""""
 
 set termguicolors
-colorscheme srcery
+
+let ayucolor = 'light'
+colorscheme ayu
 
 "airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'srcery'
+let g:airline_theme = 'ayu'
 set t_Co=256 " for windows
 
 " rainbow
