@@ -25,7 +25,6 @@ call plug#begin('~/.local/share/nvim/site/plugged')
 
   "" LSP
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
   "" nix
   Plug 'LnL7/vim-nix'
@@ -39,8 +38,8 @@ call plug#begin('~/.local/share/nvim/site/plugged')
   "" themes
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
-  Plug 'arcticicestudio/nord-vim'
   Plug 'ayu-theme/ayu-vim'
+  Plug 'sonph/onehalf', { 'rtp': 'vim' }
 
   Plug 'lukas-reineke/indent-blankline.nvim'
   Plug 'luochen1990/rainbow'

@@ -3,14 +3,13 @@
 """""""""""""""
 
 set termguicolors
-
-let ayucolor = 'light'
-colorscheme ayu
+" let ayucolor = 'dark'
+colorscheme onehalflight
 
 "airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'ayu'
+let g:airline_theme = 'onehalflight'
 set t_Co=256 " for windows
 
 " rainbow
