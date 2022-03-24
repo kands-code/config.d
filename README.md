@@ -85,9 +85,13 @@ ln -s "$PWD"/other-config/Rprofile ~/.local/share/R/.Rprofile
 sudo ln -s "$PWD"/other-config/nobeep.conf /etc/modprobe.d/
 ```
 
-#### for maven
+#### for maven and agda
 
-> 摆烂, `.m2` 目录还是需要
+> ~~摆烂, `.m2` 目录还是需要~~
+
+```bash
+ln -s "$PWD"/other-config/conf ~/.local/lib/
+```
 
 ---
 
