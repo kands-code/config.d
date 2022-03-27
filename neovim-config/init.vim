@@ -42,7 +42,6 @@ call plug#begin('~/.local/share/nvim/site/plugged')
   Plug 'sonph/onehalf', { 'rtp': 'vim' }
 
   Plug 'lukas-reineke/indent-blankline.nvim'
-  Plug 'luochen1990/rainbow'
 
   "" markdown
   Plug 'godlygeek/tabular'

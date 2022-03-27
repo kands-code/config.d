@@ -19,6 +19,7 @@
     "haskell"
   ],
   "codeLens.enable": true,
+  "clangd.path": "clangd",
   "markdownlint.config": {
     "line-length": false,
     "list-indent": false,
