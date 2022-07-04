@@ -4,12 +4,12 @@
 
 set termguicolors
 " let ayucolor = 'dark'
-colorscheme onehalfdark
+colorscheme onehalflight
 
 "airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'onehalfdark'
+let g:airline_theme = 'onehalflight'
 set t_Co=256 " for windows
 
 " indent

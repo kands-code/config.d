@@ -48,3 +48,5 @@ eval "$(pandoc --bash-completion)"
 
 # hitokoto (bad netwroks)
 # ${HOME}/.local/bin/self-script/hitokoto
+
+[ -f "/home/kands/.local/share/ghcup/env" ] && source "/home/kands/.local/share/ghcup/env" # ghcup-env

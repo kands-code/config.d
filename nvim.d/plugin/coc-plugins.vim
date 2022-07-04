@@ -12,7 +12,6 @@ let g:coc_global_extensions = [
   \'coc-xml',
   \'coc-syntax',
   \'coc-markdownlint',
-  \'coc-go',
   \'coc-css',
   \'coc-clangd',
   \'coc-cmake',

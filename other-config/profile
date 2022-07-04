@@ -5,10 +5,8 @@ export GPG_TTY=$(tty)
 #mysql history
 export MYSQL_HISTFILE="$XDG_DATA_HOME"/mysql_history
 # path
-export PATH="$PATH":"$HOME/.local/bin":"$HOME/.local/share/npm/bin":"$HOME/.local/share/cabal/bin":"$HOME/.local/share/cargo/bin":"$HOME/.local/bin/self-bin/scripts"
+export PATH="$PATH":"$HOME/.local/bin":"$HOME/.local/share/npm/bin":"$HOME/.local/share/cabal/bin":"$HOME/.local/share/cargo/bin"
 
 [ -f "/home/kands/.local/share/ghcup/env" ] && source "/home/kands/.local/share/ghcup/env" # ghcup-env
-
-if [ -e /home/kands/.nix-profile/etc/profile.d/nix.sh ]; then . /home/kands/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
 systemctl --user import-environment PATH
