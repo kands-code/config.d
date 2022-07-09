@@ -8,12 +8,9 @@
 alias ls='ls --color=auto'
 alias mvn="mvn --settings='${HOME}/.local/lib/conf/settings.xml'"
 
-alias ghcup='https_proxy=http://127.0.0.1:20172 ghcup'
-
 # stack
 if [ -e "$HOME/.local/bin/stack" ]
 then
-  alias stack='https_proxy=http://127.0.0.1:20172 stack'
   eval "$(stack --bash-completion-script stack)"
 fi
 
@@ -48,5 +45,3 @@ eval "$(pandoc --bash-completion)"
 
 # hitokoto (bad netwroks)
 # ${HOME}/.local/bin/self-script/hitokoto
-
-[ -f "/home/kands/.local/share/ghcup/env" ] && source "/home/kands/.local/share/ghcup/env" # ghcup-env
