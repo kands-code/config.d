@@ -45,3 +45,39 @@ eval "$(pandoc --bash-completion)"
 
 # hitokoto (bad netwroks)
 # ${HOME}/.local/bin/self-script/hitokoto
+
+# pyenv
+export PYENV_ROOT="$HOME/workspace/others/pyenv"
+export PATH="$PYENV_ROOT/bin":"$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+pyenv-i() {
+    if [[ -z "$1" ]]
+    then
+        echo "please set version"
+	return 1
+    fi
+    local ver="$(pyenv install --list | grep $1)"
+    if [[ "$?" != "0" ]]
+    then
+	echo "version $1 is not valid!"
+	return 1
+    fi
+    local f="$HOME/workspace/others/pyenv/cache/Python-$1.tar.xz"
+    if [[ -f "$f" ]]
+    then
+        echo "file $f already exist!"
+    else
+	local url="https://mirrors.huaweicloud.com/python/$1/Python-$1.tar.xz"
+	curl -IL $url | grep 404 > /dev/null
+	if [[ "$?" == "0" ]]
+	then
+	    echo "$status"
+	    echo -e "url $url is wrong!\nstop download"
+	    return 1
+	else
+    	    wget "$url" -O "$f"
+	fi
+    fi
+    pyenv install -s "$1"
+}
