@@ -46,6 +46,19 @@ eval "$(pandoc --bash-completion)"
 # hitokoto (bad netwroks)
 # ${HOME}/.local/bin/self-script/hitokoto
 
+# yt-dlp
+function yd() {
+    local url="$1"
+    if [ -z "$url" ]
+    then
+        echo "please give a url"
+	return 1
+    fi
+    yt-dlp -o "%(channel)s/%(playlist_title)s/%(title)s.%(ext)s" \
+        -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best' \
+        "$url"
+}
+
 # pyenv
 # export PYENV_ROOT="$HOME/workspace/others/pyenv"
 # export PATH="$PYENV_ROOT/bin":"$PATH"

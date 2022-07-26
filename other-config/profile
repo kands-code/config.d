@@ -6,8 +6,6 @@ export GPG_TTY=$(tty)
 export MYSQL_HISTFILE="$XDG_DATA_HOME"/mysql_history
 # path
 export PATH="$PATH":"$HOME/.local/bin":"$HOME/.local/share/npm/bin":"$HOME/.local/share/cabal/bin":"$HOME/.local/share/cargo/bin"
-# R Language
-export PATH="$PATH":"$HOME/workspace/applications/R/bin"
 # ghcup-env
 [ -f "/home/kands/.local/share/ghcup/env" ] && source "/home/kands/.local/share/ghcup/env"
 
