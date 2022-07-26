@@ -64,40 +64,42 @@ mkdir ~/.config/npm; ln -s "$PWD"/other-config/npmrc ~/.config/npm/
 mkdir ~/.config/yarn; touch ~/.config/yarn/config
 ```
 
-### some configs
+## some configs
 
-#### for wget
+### for wget
 
 ```bash
 echo hsts-file \= "$XDG_CACHE_HOME"/wget-hsts >> "$XDG_CONFIG_HOME/wgetrc"
 ```
 
-#### for dircolors
+### for dircolors
 
 ```bash
 mkdir ~/.config/dircolors
 ```
 
-#### for R
+### for R
 
 ```bash
 mkdir ~/.local/share/R
 ln -s "$PWD"/other-config/Rprofile ~/.local/share/R/.Rprofile
 ```
 
-#### close beep
+### close beep
 
 ```bash
 sudo ln -s "$PWD"/other-config/nobeep.conf /etc/modprobe.d/
 ```
 
-#### for maven and agda
+### for maven and agda
 
 > ~~摆烂, `.m2` 目录还是需要~~
 
 ```bash
 ln -s "$PWD"/other-config/conf ~/.local/lib/
 ```
+
+> `git config --global commit.gpgSign true` 来开启签名
 
 ---
 
