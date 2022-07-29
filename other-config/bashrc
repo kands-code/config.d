@@ -59,6 +59,8 @@ function yd() {
         "$url"
 }
 
+export GPG_TTY="$(tty)"
+
 # pyenv
 # export PYENV_ROOT="$HOME/workspace/others/pyenv"
 # export PATH="$PYENV_ROOT/bin":"$PATH"

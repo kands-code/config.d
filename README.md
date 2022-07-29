@@ -75,20 +75,31 @@ echo hsts-file \= "$XDG_CACHE_HOME"/wget-hsts >> "$XDG_CONFIG_HOME/wgetrc"
 ### for dircolors
 
 ```bash
-mkdir ~/.config/dircolors
+ln -s "$PWD/other-config/dircolors" ~/.config/dircolors
 ```
 
 ### for R
 
 ```bash
-mkdir ~/.local/share/R
-ln -s "$PWD"/other-config/Rprofile ~/.local/share/R/.Rprofile
+ln -s "$PWD"/other-config/Rprofile" ~/.local/state/Rprofile
 ```
 
 ### close beep
 
 ```bash
-sudo ln -s "$PWD"/other-config/nobeep.conf /etc/modprobe.d/
+sudo ln -s "$PWD/other-config/nobeep.conf" /etc/modprobe.d/
+```
+
+现在不够了，需要 service
+
+```bash
+systemctl --user enable nobeep.service --now
+```
+
+### Gnome Terminal Profile
+
+```bash
+dconf load '/org/gnome/terminal/legacy/profiles:/' < "$PWD/other-config/gnome-profile.dconf"
 ```
 
 ### for maven and agda
