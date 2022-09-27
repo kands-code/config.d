@@ -22,6 +22,12 @@ ln -s "$PWD"/python-config ~/.config/pip
 
 ## other configs
 
+### Locale
+
+```bash
+ln -s "$PWD/other-config/locale.conf" ~/.config/
+```
+
 ### fonts
 
 ```bash

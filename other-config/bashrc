@@ -9,7 +9,7 @@ alias ls='ls --color=auto'
 alias mvn="mvn --settings='${HOME}/.local/lib/conf/settings.xml'"
 
 # for texlive
-alias tlmgr='TEXMFDIST/scripts/texlive/tlmgr.pl --usermode'
+alias tlmgr='/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode'
 
 # stack
 if [ -e "$HOME/.local/bin/stack" ]
