@@ -8,6 +8,9 @@
 alias ls='ls --color=auto'
 alias mvn="mvn --settings='${HOME}/.local/lib/conf/settings.xml'"
 
+# for texlive
+alias tlmgr='TEXMFDIST/scripts/texlive/tlmgr.pl --usermode'
+
 # stack
 if [ -e "$HOME/.local/bin/stack" ]
 then
@@ -49,6 +52,7 @@ eval "$(pandoc --bash-completion)"
 # yt-dlp
 function yd() {
     local url="$1"
+    shift
     if [ -z "$url" ]
     then
         echo "please give a url"
@@ -56,7 +60,9 @@ function yd() {
     fi
     yt-dlp -o "%(channel)s/%(playlist_title)s/%(title)s.%(ext)s" \
         -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best' \
-        "$url"
+        "$url" \
+	"$@"
+    return 0
 }
 
 export GPG_TTY="$(tty)"

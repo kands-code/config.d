@@ -25,7 +25,7 @@
 \RequirePackage{amsthm}
 \RequirePackage{amsfonts}
 \RequirePackage{amssymb}
-\RequirePackage{bm}
+\RequirePackage{unicode-math}
 \RequirePackage{titletoc}
 %% graphicx
 \RequirePackage{graphicx}
@@ -130,6 +130,8 @@
 %% fancyhdr
 \RequirePackage{fancyhdr}
 \pagestyle{fancy}
+\setlength{\headheight}{13pt}
+\addtolength{\topmargin}{-1pt}
 
 % 中文设置
 \newcommand*{\kstex@cap@abstractname}{摘\hspace{2em}要}
