@@ -1,8 +1,20 @@
 # `config.d`
 
+最基本配置
+
+## bash
+
+```bash
+mkdir -p ~/.local/state
+ln -s "$PWD"/other-config/bashrc ~/.bashrc
+ln -s "$PWD"/other-config/profile ~/.profile
+```
+
 一些配置
 
 ## neovim
+
+~~never used~~
 
 ```bash
 ln -s "$PWD"/neovim-config ~/.config/nvim
@@ -11,7 +23,9 @@ ln -s "$PWD"/neovim-config ~/.config/nvim
 ## emacs
 
 ```bash
-ln -s "$PWD"/emacs-config ~/.emacs.d
+sudo pacman -S git emacs-nativecomp ripgrep fd
+git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
+doom install
 ```
 
 ## python
@@ -34,15 +48,7 @@ ln -s "$PWD/other-config/locale.conf" ~/.config/
 sudo ln -s "$PWD"/other-config/local.conf /etc/fonts/
 ```
 
-### bash
 
-```bash
-ln -s "$PWD"/other-config/bashrc ~/.bashrc
-ln -s "$PWD"/other-config/profile ~/.profile
-# for history
-mkdir ~/.local/share/bash/
-touch ~/.local/share/bash/history
-```
 
 ### sddm dpi for X11
 
