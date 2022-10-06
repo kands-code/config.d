@@ -22,10 +22,15 @@ ln -s "$PWD"/neovim-config ~/.config/nvim
 
 ## emacs
 
+Just Doom Emacs
+
+~~never used~~
+
 ```bash
 sudo pacman -S git emacs-nativecomp ripgrep fd
 git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
-doom install
+~/.emacs.d/bin/doom install
+~/.emacs.d/bin/doom sync
 ```
 
 ## python
@@ -47,8 +52,6 @@ ln -s "$PWD/other-config/locale.conf" ~/.config/
 ```bash
 sudo ln -s "$PWD"/other-config/local.conf /etc/fonts/
 ```
-
-
 
 ### sddm dpi for X11
 

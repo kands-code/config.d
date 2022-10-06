@@ -74,5 +74,5 @@ export GPG_TTY="$(tty)"
 # eval "$(pyenv virtualenv-init -)"
 
 # doom emacs
-export PATH="$PATH":"~/.emacs.d/bin"
-export DOOMDIR="~/.emacs.d/doom.d"
+# export PATH="$PATH":"~/.emacs.d/bin"
+# export DOOMDIR="~/.emacs.d/doom.d"
