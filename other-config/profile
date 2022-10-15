@@ -1,7 +1,5 @@
 #! /usr/bin/env bash
 
-# git gpg
-export GPG_TTY=$(tty)
 #mysql history
 export MYSQL_HISTFILE="$XDG_DATA_HOME"/mysql_history
 # path
