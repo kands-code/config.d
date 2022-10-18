@@ -113,6 +113,14 @@ systemctl --user enable nobeep.service --now
 
 ### Gnome Terminal Profile
 
+备份方法
+
+```bash
+dconf dump '/org/gnome/terminal/legacy/profiles:/' > "$PWD/other-config/gnome-profile.dconf"
+```
+
+恢复
+
 ```bash
 dconf load '/org/gnome/terminal/legacy/profiles:/' < "$PWD/other-config/gnome-profile.dconf"
 ```
