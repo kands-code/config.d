@@ -101,33 +101,13 @@ ln -s "$PWD"/other-config/Rprofile" ~/.local/state/Rprofile
 
 ### close beep
 
-```bash
-sudo ln -s "$PWD/other-config/nobeep.conf" /etc/modprobe.d/
-```
-
-现在不够了，需要 service
+使用systemd service
 
 ```bash
 systemctl --user enable nobeep.service --now
 ```
 
-### Gnome Terminal Profile
-
-备份方法
-
-```bash
-dconf dump '/org/gnome/terminal/legacy/profiles:/' > "$PWD/other-config/gnome-profile.dconf"
-```
-
-恢复
-
-```bash
-dconf load '/org/gnome/terminal/legacy/profiles:/' < "$PWD/other-config/gnome-profile.dconf"
-```
-
 ### for maven and agda
-
-> ~~摆烂, `.m2` 目录还是需要~~
 
 ```bash
 ln -s "$PWD"/other-config/conf ~/.local/lib/

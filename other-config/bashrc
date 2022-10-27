@@ -7,6 +7,7 @@
 
 alias ls='ls --color=auto'
 alias mvn="mvn --settings='${HOME}/.local/lib/conf/settings.xml'"
+alias ww="neofetch"
 
 # for texlive
 alias tlmgr='/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode'
@@ -66,6 +67,16 @@ function yd() {
         "$url" \
 	"$@"
     return 0
+}
+
+# webm to mp4
+function webm2mp4() {
+    local filename="$1"
+    local basename="${filename%.*}"
+    ffmpeg -i "$filename" \
+        -vf "pad=ceil(iw/2)*2:ceil(ih/2)*2" \
+        -y -an -crf 0 \
+        "$basename".mp4
 }
 
 # pyenv
