@@ -81,6 +81,16 @@ mkdir ~/.config/yarn; touch ~/.config/yarn/config
 
 ## some configs
 
+### for gsconnect
+
+> ufw user, maybe kdeconnect
+
+```bash
+sudo ufw allow 1714:1764/udp
+sudo ufw allow 1714:1764/tcp
+sudo ufw reload
+```
+
 ### for wget
 
 ```bash

@@ -15,14 +15,14 @@ alias tlmgr='/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode'
 # stack
 if [ -e "$HOME/.local/bin/stack" ]
 then
-  eval "$(stack --bash-completion-script stack)"
+    eval "$(stack --bash-completion-script stack)"
 fi
 
 # scala
 if [ -e "/usr/bin/scala" ]
 then
-  alias scala='scala -Xjline:off'
-  alias sbt='sbt -ivy "$XDG_DATA_HOME"/sbt/ivy2 -sbt-dir "$XDG_DATA_HOME"/sbt'
+    alias scala='scala -Xjline:off'
+    alias sbt='sbt -ivy "$XDG_DATA_HOME"/sbt/ivy2 -sbt-dir "$XDG_DATA_HOME"/sbt'
 fi
 
 # PS1='[\u@\h \W]\$ '
