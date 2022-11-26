@@ -1,6 +1,4 @@
-#
-# ~/.bashrc
-#
+#! /bin/env bash
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
@@ -13,28 +11,25 @@ alias ww="neofetch"
 alias tlmgr='/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode'
 
 # stack
-if [ -e "$HOME/.local/bin/stack" ]
-then
-    eval "$(stack --bash-completion-script stack)"
+if [ -e "$HOME/.local/bin/stack" ]; then
+  eval "$(stack --bash-completion-script stack)"
 fi
 
 # scala
-if [ -e "/usr/bin/scala" ]
-then
-    alias scala='scala -Xjline:off'
-    alias sbt='sbt -ivy "$XDG_DATA_HOME"/sbt/ivy2 -sbt-dir "$XDG_DATA_HOME"/sbt'
+if [ -e "/usr/bin/scala" ]; then
+  alias scala='scala -Xjline:off'
+  alias sbt='sbt -ivy "$XDG_DATA_HOME"/sbt/ivy2 -sbt-dir "$XDG_DATA_HOME"/sbt'
 fi
 
 # PS1='[\u@\h \W]\$ '
 
 ### SELF PS [prompt sign]
 exitstatus() {
-    if [[ $? == 0 ]]
-    then
-        printf '\033[1;32m yes \033[0m'
-    else
-        printf '\033[1;31m no \033[0m'
-    fi
+  if [[ $? == 0 ]]; then
+    printf '\033[1;32m yes \033[0m'
+  else
+    printf '\033[1;31m no \033[0m'
+  fi
 }
 export PS0='\[\033[0;36m\]Out[\#]:= \[\033[0m\]\n'
 export PS1='[\u@\h \w \A] \[\033[1;36m\][\$]\[\033[0m\] [$(exitstatus)]\n\[\033[0;33m\]In[\#]:= \[\033[0m\]'
@@ -55,28 +50,27 @@ export GPG_TTY=$(tty)
 
 # yt-dlp
 function yd() {
-    local url="$1"
-    shift
-    if [ -z "$url" ]
-    then
-        echo "please give a url"
-	return 1
-    fi
-    yt-dlp -o "%(channel)s/%(playlist_title)s/%(title)s.%(ext)s" \
-        -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best' \
-        "$url" \
-	"$@"
-    return 0
+  local url="$1"
+  shift
+  if [ -z "$url" ]; then
+    echo "please give a url"
+    return 1
+  fi
+  yt-dlp -o "%(playlist_title)s/%(title)s.%(ext)s" \
+    -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best' \
+    "$url" \
+    "$@"
+  return 0
 }
 
 # webm to mp4
 function webm2mp4() {
-    local filename="$1"
-    local basename="${filename%.*}"
-    ffmpeg -i "$filename" \
-        -vf "pad=ceil(iw/2)*2:ceil(ih/2)*2" \
-        -y -an -crf 0 \
-        "$basename".mp4
+  local filename="$1"
+  local basename="${filename%.*}"
+  ffmpeg -i "$filename" \
+    -vf "pad=ceil(iw/2)*2:ceil(ih/2)*2" \
+    -y -an -crf 0 \
+    "$basename".mp4
 }
 
 # pyenv
