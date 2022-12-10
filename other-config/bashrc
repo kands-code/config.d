@@ -8,7 +8,7 @@ alias mvn="mvn --settings='${HOME}/.local/lib/conf/settings.xml'"
 alias ww="neofetch"
 
 # for texlive
-alias tlmgr='/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode'
+alias tlmgr='/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --user-mode'
 
 # stack
 if [ -e "$HOME/.local/bin/stack" ]; then
