@@ -73,12 +73,6 @@ sudo ln -s "$PWD"/other-config/docker-daemon.json /etc/docker/daemon.json
 mkdir ~/.config/npm; ln -s "$PWD"/other-config/npmrc ~/.config/npm/
 ```
 
-### yarn 配置
-
-```bash
-mkdir ~/.config/yarn; touch ~/.config/yarn/config
-```
-
 ## some configs
 
 ### for gsconnect
