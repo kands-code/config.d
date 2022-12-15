@@ -7,9 +7,6 @@ alias ls='ls --color=auto'
 alias mvn="mvn --settings='${HOME}/.local/lib/conf/settings.xml'"
 alias ww="neofetch"
 
-# for texlive
-alias tlmgr='/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --user-mode'
-
 # stack
 if [ -e "$HOME/.local/bin/stack" ]; then
   eval "$(stack --bash-completion-script stack)"

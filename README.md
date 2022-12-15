@@ -10,6 +10,9 @@ ln -s "$PWD"/other-config/bashrc ~/.bashrc
 ln -s "$PWD"/other-config/profile ~/.profile
 ```
 
+> USTC texlive repository:
+>   http://mirrors.ustc.edu.cn/CTAN/systems/texlive/tlnet/
+
 一些配置
 
 ## neovim

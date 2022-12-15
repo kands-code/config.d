@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 
 #mysql history
-export MYSQL_HISTFILE="$XDG_DATA_HOME"/mysql_history
+export MYSQL_HISTFILE="$XDG_STATE_HOME"/mysql_history
 # path
 export PATH="$PATH":"$HOME/.local/bin":"$HOME/.local/share/npm/bin":"$HOME/.local/share/cabal/bin":"$HOME/.local/share/cargo/bin"
 # ghcup-env
