@@ -1,8 +1,0 @@
-[Unit]
-Description=stop pcspkr module
-
-[Service]
-ExecStart=bash -c "echo 'peach' | sudo -S modprobe -r pcspkr"
-
-[Install]
-WantedBy=default.target

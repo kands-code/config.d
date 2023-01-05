@@ -114,6 +114,20 @@ ln -s "$PWD"/other-config/Rprofile" ~/.local/state/Rprofile
 systemctl --user enable nobeep.service --now
 ```
 
+### Gnome Terminal
+
+备份方式
+
+```bash
+dconf dump '/org/gnome/terminal/legacy/profiles:/' > "$PWD/other-config/gnome-profile.dconf"
+```
+
+恢复
+
+```bash
+dconf load '/org/gnome/terminal/legacy/profiles:/' < "$PWD/other-config/gnome-profile.dconf"
+```
+
 ### for maven and agda
 
 ```bash
