@@ -1,0 +1,17 @@
+[Unit]
+Description=Onedrive-rclone
+AssertPathIsDirectory=%h/workspace/onedrive
+After=network.target
+
+[Service]
+Type=simple
+
+ExecStart=/usr/bin/rclone mount --vfs-cache-mode=full onedrive: %h/workspace/onedrive
+
+ExecStop=/usr/bin/fusermount -zu %h/workspace/onedrive
+
+Restart=on-failure
+RestartSec=15
+
+[Install]
+WantedBy=default.target
