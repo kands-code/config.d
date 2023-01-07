@@ -2,7 +2,7 @@
 Description=stop pcspkr module
 
 [Service]
-ExecStart=bash -c "echo 'peach' | sudo -S modprobe -r pcspkr"
+ExecStart=bash -c "echo 'cGVhY2gK' | base64 -d | sudo -S modprobe -r pcspkr"
 
 [Install]
 WantedBy=default.target
