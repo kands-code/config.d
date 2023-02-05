@@ -2,8 +2,15 @@
 
 #mysql history
 export MYSQL_HISTFILE="$XDG_STATE_HOME"/mysql_history
+
 # path
-export PATH="$PATH":"$HOME/.local/bin":"$HOME/.local/share/npm/bin":"$HOME/.local/share/cabal/bin":"$HOME/.local/share/cargo/bin"
+allPath="$HOME/.local/bin"
+allPath+=":$HOME/.local/share/npm/bin"
+allPath+=":$HOME/.local/share/cabal/bin"
+allPath+=":$HOME/.local/share/cargo/bin"
+allPath+=":$PATH"
+export PATH="$allPath"
+
 # ghcup-env
 [ -f "/home/kands/.local/share/ghcup/env" ] && source "/home/kands/.local/share/ghcup/env"
 

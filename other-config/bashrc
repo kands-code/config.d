@@ -4,17 +4,23 @@
 [[ $- != *i* ]] && return
 
 alias ls='ls --color=auto'
-alias mvn="mvn --settings='${HOME}/.local/lib/conf/settings.xml'"
+alias mvn="mvn --settings='${HOME}/.local/conf/settings.xml'"
 alias ww="neofetch"
 
 # stack
-if [ -e "$HOME/.local/bin/stack" ]; then
+if
+  type stack >/dev/null 2>&1
+  [[ "$?" == '0' ]]
+then
   eval "$(stack --bash-completion-script stack)"
 fi
 
 # scala
-if [ -e "/usr/bin/scala" ]; then
-  alias scala='scala -Xjline:off'
+if
+  type scala >/dev/null 2>&1
+  [[ "$?" == '0' ]]
+then
+  alias scala='scala'
   alias sbt='sbt -ivy "$XDG_DATA_HOME"/sbt/ivy2 -sbt-dir "$XDG_DATA_HOME"/sbt'
 fi
 
@@ -80,4 +86,24 @@ function webm2mp4() {
     -vf "pad=ceil(iw/2)*2:ceil(ih/2)*2" \
     -y -an -crf 0 \
     "$basename".mp4
+}
+
+# convert to a format by pandoc
+function conv2f() {
+  local ff="$1"
+  local tt="$2"
+  local filename="$3"
+  local outputname="${filename%.*}.$tt"
+  pandoc -f "$ff" -t "$tt" \
+    "$filename" \
+    -o "$outputname" \
+    --pdf-engine=xelatex \
+    -Vlinestretch=1.5 \
+    -Vfontsize="12pt" \
+    -Vmainfont="Source Han Serif CN" \
+    -Vmonofont="Sarasa Mono Slab SC" \
+    -Vsansfont="Sarasa Gothic SC" \
+    -VCJKmainfont="Source Han Serif CN" \
+    -Vmathfont="Latin Modern Math" \
+    -V"geometry:margin"="20mm"
 }
