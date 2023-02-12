@@ -56,12 +56,10 @@ ln -s "$PWD/other-config/locale.conf" ~/.config/
 sudo ln -s "$PWD"/other-config/local.conf /etc/fonts/
 ```
 
-### sddm dpi for X11
-
-x11的dpi莫名其妙炸了，还是手动调整一下吧
+### Paru
 
 ```bash
-sudo ln -s "$PWD"/other-config/x11-dpi.conf /etc/sddm.conf.d/
+ln -s "$PWD/other-config/paru.conf" ~/.config/
 ```
 
 ### Docker 镜像配置
