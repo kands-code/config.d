@@ -2,3 +2,7 @@
 elpa/
 auto-save-list/
 *~
+
+serviceworkers/
+indexeddb/
+
