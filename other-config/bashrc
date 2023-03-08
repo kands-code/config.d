@@ -77,7 +77,7 @@ function yd() {
     echo "please give a url"
     return 1
   fi
-  yt-dlp -o "%(playlist_title)s/%(title)s.%(ext)s" \
+  yt-dlp -o "%(uploader_id)s/%(playlist_title)s/p%(playlist_index)03d-%(title)s.%(ext)s" \
     -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best' \
     "$url" \
     "$@"
