@@ -1,0 +1,20 @@
+fontsize: 12pt
+linestretch: 1.5
+geometry:
+- margin=20mm
+header-includes:
+- |
+  ```{=latex}
+  \usepackage{ctex}
+  \directlua{luaotfload.add_fallback(
+               "emojifallback",
+               {"NotoColorEmoji:mode=harf;"}
+             )}
+  \setmainfont[RawFeature={fallback=emojifallback}]{Source Han Serif CN}
+  \setsansfont[RawFeature={fallback=emojifallback}]{Sarasa Gothic SC}
+  \setmonofont[RawFeature={fallback=emojifallback}]{Sarasa Mono Slab SC}
+  \setmathfont[RawFeature={fallback=emojifallback}]{Latin Modern Math}
+  \setCJKmainfont[RawFeature={fallback=emojifallback}]{Source Han Serif CN}
+  \setCJKsansfont[RawFeature={fallback=emojifallback}]{Sarasa Gothic SC}
+  \setCJKmonofont[RawFeature={fallback=emojifallback}]{Sarasa Mono Slab SC}
+  ```

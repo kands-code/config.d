@@ -97,19 +97,25 @@ function webm2mp4() {
 # convert to a format by pandoc
 function conv2f() {
   local ff="$1"
-  local tt="$2"
-  local filename="$3"
+  shift
+  local tt="$1"
+  shift
+  local filename="$1"
+  shift
   local outputname="${filename%.*}.$tt"
   pandoc -f "$ff" -t "$tt" \
     "$filename" \
     -o "$outputname" \
-    --pdf-engine=xelatex \
-    -Vlinestretch=1.5 \
-    -Vfontsize="12pt" \
-    -Vmainfont="Source Han Serif CN" \
-    -Vmonofont="Sarasa Mono Slab SC" \
-    -Vsansfont="Sarasa Gothic SC" \
-    -VCJKmainfont="Source Han Serif CN" \
-    -Vmathfont="Latin Modern Math" \
-    -V"geometry:margin"="20mm"
+    --pdf-engine=lualatex \
+    --metadata-file="$HOME/workspace/github/config.d/other-config/pandoc-meta"
+    "$@"
+    # -Vlinestretch=1.5 \
+    # -Vfontsize="12pt" \
+    # -Vmainfont="Source Han Serif CN" \
+    # -Vmonofont="Sarasa Mono Slab SC, Noto Color Emoji" \
+    # -Vsansfont="Sarasa Gothic SC" \
+    # -VCJKmainfont="Source Han Serif CN" \
+    # -Vmathfont="Latin Modern Math" \
+    # -V"geometry:margin"="20mm" \
+    # "$@"
 }
