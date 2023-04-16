@@ -15,12 +15,6 @@ then
   eval "$(stack --bash-completion-script stack)"
 fi
 
-# pyenv
-export PYENV_ROOT="$HOME/.local/share/pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
 # scala
 if
   type scala >/dev/null 2>&1
@@ -109,13 +103,4 @@ function conv2f() {
     --pdf-engine=lualatex \
     --metadata-file="$HOME/workspace/github/config.d/other-config/pandoc-meta"
     "$@"
-    # -Vlinestretch=1.5 \
-    # -Vfontsize="12pt" \
-    # -Vmainfont="Source Han Serif CN" \
-    # -Vmonofont="Sarasa Mono Slab SC, Noto Color Emoji" \
-    # -Vsansfont="Sarasa Gothic SC" \
-    # -VCJKmainfont="Source Han Serif CN" \
-    # -Vmathfont="Latin Modern Math" \
-    # -V"geometry:margin"="20mm" \
-    # "$@"
 }

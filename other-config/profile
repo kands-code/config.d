@@ -5,7 +5,6 @@ export MYSQL_HISTFILE="$XDG_STATE_HOME"/mysql_history
 
 # path
 allPath="$HOME/.local/bin" # user bin
-allPath+=":$HOME/.dotnet/tools" # dotnet so bad! :(
 allPath+=":$HOME/.local/share/npm/bin" # node
 allPath+=":$HOME/.local/share/cabal/bin" # haskell
 allPath+=":$HOME/.local/share/cargo/bin" # rust
