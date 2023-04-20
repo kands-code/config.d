@@ -7,6 +7,14 @@ alias ls='ls --color=auto'
 alias mvn="mvn --settings='${HOME}/.local/conf/settings.xml'"
 alias ww="neofetch"
 
+# exa
+if
+  type exa >/dev/null 2>&1
+  [[ "$?" == '0' ]]
+then
+  alias ls='exa -al --color=always --group-directories-first'
+fi
+
 # stack
 if
   type stack >/dev/null 2>&1
@@ -102,5 +110,5 @@ function conv2f() {
     -o "$outputname" \
     --pdf-engine=lualatex \
     --metadata-file="$HOME/workspace/github/config.d/other-config/pandoc-meta"
-    "$@"
+  "$@"
 }
