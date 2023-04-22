@@ -55,10 +55,6 @@ export PS0='\[\033[0;36m\]Out[\#]:= \[\033[0m\]\n'
 export PS1='[\u@\h \w \A]-\[$(exitstatus)\]-\[$(usersymbol)\]\n\[\033[0;33m\]In[\#]:= \[\033[0m\]'
 export PS2=' ~> '
 
-if [[ -d "$XDG_CONFIG_HOME"/dircolors ]]; then
-  eval "$(dircolors "$XDG_CONFIG_HOME"/dircolors)"
-fi
-
 ## for pandoc auto complete
 
 if
