@@ -9,15 +9,15 @@ alias ww="neofetch"
 
 # exa
 if
-  type exa >/dev/null 2>&1
+  type exa &>/dev/null
   [[ "$?" == '0' ]]
 then
-  alias ls='exa -al --color=always --group-directories-first'
+  alias ls='exa -alh --color=always --group-directories-first'
 fi
 
 # stack
 if
-  type stack >/dev/null 2>&1
+  type stack &>/dev/null
   [[ "$?" == '0' ]]
 then
   eval "$(stack --bash-completion-script stack)"
@@ -25,7 +25,7 @@ fi
 
 # scala
 if
-  type scala >/dev/null 2>&1
+  type scala &>/dev/null
   [[ "$?" == '0' ]]
 then
   alias scala='scala'
@@ -58,7 +58,7 @@ export PS2=' ~> '
 ## for pandoc auto complete
 
 if
-  type pandoc >/dev/null 2>&1
+  type pandoc &>/dev/null
   [[ "$?" == '0' ]]
 then
   eval "$(pandoc --bash-completion)"
@@ -105,6 +105,6 @@ function conv2f() {
     "$filename" \
     -o "$outputname" \
     --pdf-engine=lualatex \
-    --metadata-file="$HOME/workspace/github/config.d/other-config/pandoc-meta"
+    --metadata-file="$CONFIGHOME/other-config/pandoc-meta"
   "$@"
 }
