@@ -42,6 +42,16 @@ git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
 ln -s "$PWD"/python-config ~/.config/pip
 ```
 
+### nautilus
+
+对于 Blackbox Terminal，使用 `OpenInBlackbox` 这个插件
+
+```shell
+git clone https://github.com/phucnoob/OpenInBlackBox.git oib
+```
+
+需要 `python-nautilus` 库，使用 `./install.sh` 安装
+
 ## other configs
 
 ### Locale
