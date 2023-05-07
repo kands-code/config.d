@@ -15,26 +15,9 @@ ln -s "$PWD"/other-config/profile ~/.profile
 
 一些配置
 
-## neovim
+## code
 
-~~never used~~
-
-```bash
-ln -s "$PWD"/neovim-config ~/.config/nvim
-```
-
-## emacs
-
-Just Doom Emacs
-
-~~never used~~
-
-```bash
-sudo pacman -S git emacs-nativecomp ripgrep fd
-git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
-~/.emacs.d/bin/doom install
-~/.emacs.d/bin/doom sync
-```
+保存了一部分当前的插件和配置，以防万一
 
 ## python
 
