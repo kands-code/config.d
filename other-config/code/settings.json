@@ -1,0 +1,223 @@
+{
+  // editor basic
+  "editor.detectIndentation": true,
+  "editor.fontFamily": "monospace",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 18,
+  "editor.formatOnSave": true,
+  "editor.inlayHints.enabled": "offUnlessPressed",
+  "editor.linkedEditing": true,
+  "editor.stickyScroll.enabled": true,
+  "editor.suggest.snippetsPreventQuickSuggestions": false,
+  "editor.inlineSuggest.enabled": true,
+  "editor.inlineSuggest.showToolbar": "always",
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.highlightActiveBracketPair": true,
+  "editor.guides.bracketPairs": "active",
+  "editor.guides.bracketPairsHorizontal": "active",
+  "window.menuBarVisibility": "toggle",
+  "editor.tabSize": 2,
+  "editor.unicodeHighlight.allowedLocales": {
+    "ja": true,
+    "zh-hans": true,
+    "zh-hant": true
+  },
+  "editor.wordBreak": "keepAll",
+  "terminal.external.linuxExec": "kgx",
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "diffEditor.codeLens": true,
+  "debug.console.acceptSuggestionOnEnter": "on",
+  "workbench.colorTheme": "Quiet Light",
+  "workbench.iconTheme": "material-icon-theme",
+  "explorer.confirmDelete": false,
+  "terminal.integrated.smoothScrolling": true,
+  "terminal.integrated.fontFamily": "monospace",
+  "extensions.ignoreRecommendations": true,
+  "security.workspace.trust.banner": "never",
+  "security.workspace.trust.untrustedFiles": "open",
+  "shellformat.flag": "-i=2",
+  // SQL
+  "files.associations": {
+    "*.psql": "sql"
+  },
+  "sqltools.format": {
+    "language": "sql",
+    "reservedWordCase": "lower",
+    "linesBetweenQueries": "preserve"
+  },
+  // C
+  "clangd.checkUpdates": false,
+  "mesonbuild.configureOnOpen": false,
+  // Python
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.formatOnType": true
+  },
+  "python.formatting.provider": "none",
+  "python.analysis.typeCheckingMode": "off",
+  "notebook.lineNumbers": "on",
+  "notebook.formatOnSave.enabled": true,
+  "jupyter.disableJupyterAutoStart": true,
+  "jupyter.widgetScriptSources": ["jsdelivr.com", "unpkg.com"],
+  // Java
+  "go.toolsManagement.autoUpdate": true,
+  "redhat.telemetry.enabled": false,
+  "boot-java.rewrite.reconcile": true,
+  "java.recommendations.dependency.analytics.show": false,
+  "java.autobuild.enabled": false,
+  "java.compile.nullAnalysis.mode": "automatic",
+  "java.configuration.updateBuildConfiguration": "automatic",
+  "java.server.launchMode": "Hybrid",
+  "java.format.enabled": true,
+  "java.eclipse.downloadSources": true,
+  "java.maven.downloadSources": true,
+  "java.import.gradle.enabled": true,
+  //! gradle
+  "gradle.autoDetect": "on",
+  "gradle.allowParallelRun": true,
+  "gradle.nestedProjects": true,
+  "gradle.reuseTerminals": "all",
+  //! spring
+  "spring-boot.ls.java.home": "/usr/lib/jvm/default",
+  "spring-boot.ls.java.vmargs": [
+    "-Dlanguageserver.boot.symbolCacheDir=/home/kands/.cache/sts4/symbolCache"
+  ],
+  "spring.dashboard.openWith": "external",
+  // Haskell
+  "haskell.manageHLS": "PATH",
+  "haskell.trace.client": "debug",
+  "haskell.trace.server": "verbose",
+  "haskell.formattingProvider": "ormolu",
+  // LaTeX
+  "latex-workshop.intellisense.package.enabled": true,
+  "latex-workshop.showContextMenu": true,
+  "latex-workshop.latex.autoBuild.run": "onSave",
+  "latex-workshop.latex.autoClean.run": "onFailed",
+  "latex-workshop.view.pdf.viewer": "tab",
+  "latex-workshop.latex.clean.fileTypes": [
+    "*.aux",
+    "*.bbl",
+    "*.blg",
+    "*.idx",
+    "*.ind",
+    "*.lof",
+    "*.lot",
+    "*.out",
+    "*.toc",
+    "*.acn",
+    "*.acr",
+    "*.alg",
+    "*.glg",
+    "*.glo",
+    "*.gls",
+    "*.ist",
+    "*.fls",
+    "*.log",
+    "*.fdb_latexmk"
+  ],
+  "latex-workshop.latex.recipe.default": "lastUsed",
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "xe > biber > xe > xe",
+      "tools": ["xelatex", "biber", "xelatex", "xelatex"]
+    },
+    {
+      "name": "biber",
+      "tools": ["biber"]
+    },
+    {
+      "name": "XeLaTeX",
+      "tools": ["xelatex", "xelatex"]
+    },
+    {
+      "name": "PDFLaTeX",
+      "tools": ["pdflatex", "pdflatex"]
+    },
+    {
+      "name": "BibTeX",
+      "tools": ["bibtex"]
+    },
+    {
+      "name": "LaTeXMK",
+      "tools": ["latexmk"]
+    },
+    {
+      "name": "xe > bib > xe > xe",
+      "tools": ["xelatex", "bibtex", "xelatex", "xelatex"]
+    },
+    {
+      "name": "pdf > bib > pdf > pdf",
+      "tools": ["pdflatex", "bibtex", "pdflatex", "pdflatex"]
+    }
+  ],
+  "latex-workshop.latex.tools": [
+    {
+      "args": [
+        "--shell-escape",
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOCFILE%"
+      ],
+      "command": "xelatex",
+      "name": "xelatex"
+    },
+    {
+      "args": [
+        "--shell-escape",
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOCFILE%"
+      ],
+      "command": "pdflatex",
+      "name": "pdflatex"
+    },
+    {
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "--shell-escape",
+        "-file-line-error",
+        "-pdf",
+        "-outdir=%OUTDIR%",
+        "%DOCFILE%"
+      ],
+      "command": "latexmk",
+      "name": "latexmk"
+    },
+    {
+      "args": ["%DOCFILE%"],
+      "command": "bibtex",
+      "name": "bibtex"
+    },
+    {
+      "args": ["%DOCFILE%"],
+      "command": "biber",
+      "name": "biber"
+    }
+  ]
+}
