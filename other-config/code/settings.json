@@ -72,11 +72,7 @@
   "clangd.checkUpdates": false,
   "mesonbuild.configureOnOpen": false,
   // Python
-  "[python]": {
-    "editor.defaultFormatter": "ms-python.black-formatter",
-    "editor.formatOnType": true
-  },
-  "python.formatting.provider": "none",
+  "python.formatting.provider": "yapf",
   "python.analysis.typeCheckingMode": "off",
   "notebook.lineNumbers": "on",
   "notebook.formatOnSave.enabled": true,
