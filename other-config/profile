@@ -8,6 +8,7 @@ allPath="$HOME/.local/bin" # user bin
 allPath+=":$HOME/.local/share/npm/bin" # node
 allPath+=":$HOME/.local/share/cabal/bin" # haskell
 allPath+=":$HOME/.local/share/cargo/bin" # rust
+allPath+=":$HOME/.local/share/go/bin" # golang
 allPath+=":$PATH"
 export PATH="$allPath"
 
