@@ -1,10 +1,8 @@
-[commit]
-gpgSign = true
-
 [user]
-email = kands-code@qq.com
-name = kands-code
-signingkey = 310213BDCE051A25
-
+	name = kands-code
+	email = kizunaaisesu@gmail.com
+	signingKey = 6ACCE6616BA476209419FFF711E619D4BBE14E35
+[commit]
+	gpgSign = true
 [credential]
-helper = store
+	helper = store
