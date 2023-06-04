@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Android Studio
+Exec=/home/kands/workspace/tools/android-studio/bin/studio.sh %f
+Icon=/home/kands/workspace/tools/android-studio/bin/studio.png
+Comment=The official Android IDE
+Categories=Development;IDE;
+Terminal=false
+StartupNotify=true
+StartupWMClass=jetbrains-studio
+MimeType=application/x-extension-iml;
+

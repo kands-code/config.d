@@ -1,5 +1,13 @@
 {
-    "registry-mirrors": [
-        "https://spyhr4o3.mirror.aliyuncs.com"
-    ]
+  "builder": {
+    "gc": {
+      "enabled": true,
+      "defaultKeepStorage": "16GB"
+    }
+  },
+  "features": {
+    "buildkit": true
+  },
+  "experimental": false,
+  "registry-mirrors": ["https://spyhr4o3.mirror.aliyuncs.com"]
 }

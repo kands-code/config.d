@@ -6,3 +6,5 @@ auto-save-list/
 serviceworkers/
 indexeddb/
 
+# systemd
+*.wants/

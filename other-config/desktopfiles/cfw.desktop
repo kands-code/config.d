@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=pkgver
+Name=Clash For Windows
+Comment=Clash GUI
+Exec=/home/kands/workspace/tools/cfw/cfw-bin/cfw
+Icon=/home/kands/workspace/tools/cfw/cfw.png
+Terminal=false
+Keywords=clash
+Categories=Network;Utility;
