@@ -1,0 +1,57 @@
+# most use variables
+sdk_home="$HOME"/sdk
+data_home="$HOME"/.local/share
+config_home="$HOME"/.config
+cache_home="$HOME"/.cache
+
+# for zsh self
+ZDOTDIR="$HOME"/.config/zsh
+HISTFILE="$cache_home"/zsh_history
+CLICOLOR=1
+LSCOLORS="exfxcxdxbxegedabagacad"
+
+# for less
+LESSKEY="$config_home"/less/lesskey
+LESSHISTFILE="$cache_home"/less/history
+
+# for perl
+PERL_MB_OPT="--install_base '$sdk_home/perl5'"
+PERL_MM_OPT="INSTALL_BASE=$sdk_home/perl5"
+PERL_LOCAL_LIB_ROOT="$sdk_home/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"
+PERL5LIB="$sdk_home/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"
+
+# for gpg
+GPG_TTY=$(tty)
+GNUPGHOME="$data_home"/gnupg
+
+# for python
+JUPYTER_DATA_DIR="$config_home"/jupyter
+IPYTHONDIR="$JUPYTER_DATA_DIR"
+JUPYTER_CONFIG_DIR="$JUPYTER_DATA_DIR"
+WORKON_HOME="$sdk_home/virtualenvs"
+PYTHONSTARTUP="$config_home"/pip/pyrc
+PYLINTHOME="$cache_home"/pylint
+CONDARC="$HOME/.conda/condarc"
+
+# for rust
+RUSTUP_HOME="$sdk_home"/rustup
+CARGO_HOME="$sdk_home"/cargo
+
+# for haskell
+GHCUP_USE_XDG_DIRS=1
+CABAL_CONFIG="$config_home"/cabal/config
+CABAL_DIR="$sdk_home"/cabal
+STACK_ROOT="$sdk_home"/stack
+
+# compose path
+all_path="$RUSTUP_HOME/bin"      # for rustup
+all_path+=":$CARGO_HOME/bin"     # for rust cargo
+all_path+=":$HOME/.local/bin"    # user binary
+all_path+=":$CABAL_DIR/bin"      # haskell cabal
+all_path+=":$sdk_home/perl5/bin" # perl
+PATH="$PATH":"$all_path":
+
+# for proxy
+https_proxy=http://127.0.0.1:49580
+http_proxy=http://127.0.0.1:49580
+all_proxy=socks5://127.0.0.1:49580
