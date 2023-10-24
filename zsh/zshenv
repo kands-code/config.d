@@ -9,6 +9,7 @@ export ZDOTDIR="$HOME"/.config/zsh
 export HISTFILE="$cache_home"/zsh_history
 export CLICOLOR=1
 export LSCOLORS="exfxcxdxbxegedabagacad"
+export PSQL_HISTORY="$cache_home/psql_history"
 
 # for less
 export LESSKEY="$config_home"/less/lesskey
@@ -19,10 +20,6 @@ export PERL_MB_OPT="--install_base '$sdk_home/perl5'"
 export PERL_MM_OPT="INSTALL_BASE=$sdk_home/perl5"
 export PERL_LOCAL_LIB_ROOT="$sdk_home/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"
 export PERL5LIB="$sdk_home/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"
-
-# for gpg
-export GPG_TTY=$(tty)
-export GNUPGHOME="$data_home"/gnupg
 
 # for python
 export JUPYTER_DATA_DIR="$config_home"/jupyter
@@ -49,6 +46,7 @@ all_path+=":$CARGO_HOME/bin"     # for rust cargo
 all_path+=":$HOME/.local/bin"    # user binary
 all_path+=":$CABAL_DIR/bin"      # haskell cabal
 all_path+=":$sdk_home/perl5/bin" # perl
+all_path+=":/opt/homebrew/opt/postgresql@16/bin"
 export PATH="$PATH":"$all_path":
 
 # for proxy

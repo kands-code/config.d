@@ -1,20 +1,25 @@
 fontsize: 12pt
-linestretch: 1.5
+linestretch: 1.28
 geometry:
-- margin=20mm
+  - margin=20mm
 header-includes:
-- |
-  ```{=latex}
-  \usepackage{ctex}
-  \directlua{luaotfload.add_fallback(
-               "emojifallback",
-               {"NotoColorEmoji:mode=harf;"}
-             )}
-  \setmainfont[RawFeature={fallback=emojifallback}]{Source Han Serif CN}
-  \setsansfont[RawFeature={fallback=emojifallback}]{Sarasa Gothic SC}
-  \setmonofont[RawFeature={fallback=emojifallback}]{Sarasa Mono Slab SC}
-  \setmathfont[RawFeature={fallback=emojifallback}]{Latin Modern Math}
-  \setCJKmainfont[RawFeature={fallback=emojifallback}]{Source Han Serif CN}
-  \setCJKsansfont[RawFeature={fallback=emojifallback}]{Sarasa Gothic SC}
-  \setCJKmonofont[RawFeature={fallback=emojifallback}]{Sarasa Mono Slab SC}
-  ```
+  - |
+    ```{=latex}
+    \usepackage{ctex}
+    \directlua{luaotfload.add_fallback(
+      "emojifallback",
+      {"Apple Color Emoji:mode=harf;"}
+    )}
+    \setmainfont[RawFeature={fallback=emojifallback}]{Times New Roman}
+    \setsansfont[RawFeature={fallback=emojifallback}, AutoFakeSlant]{Hiragino Sans GB}
+    \setmonofont[RawFeature={fallback=emojifallback}, AutoFakeBold, AutoFakeSlant]{Cascadia Code PL}
+    \setmathfont[RawFeature={fallback=emojifallback}]{Latin Modern Math}
+    \setCJKmainfont[RawFeature={fallback=emojifallback},
+      BoldFont={\kstex@zhft@heiti},
+      ItalicFont={\kstex@zhft@kaishu}]{LXGW Neo ZhiSong Fusion}
+    \setCJKsansfont[RawFeature={fallback=emojifallback},
+      AutoFakeSlant]{Hiragino Sans GB}
+    \setCJKmonofont[RawFeature={fallback=emojifallback},
+      AutoFakeBold,
+      AutoFakeSlant]{LXGW WenKai Mono GB Fusion}
+    ```

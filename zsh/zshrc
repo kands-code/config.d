@@ -2,28 +2,62 @@
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/opt/homebrew/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2>/dev/null)"
 if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
+  eval "$__conda_setup"
 else
-    if [ -f "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
-        . "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"
-    else
-        export PATH="/opt/homebrew/Caskroom/miniconda/base/bin:$PATH"
-    fi
+  if [ -f "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
+    . "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"
+  else
+    export PATH="/opt/homebrew/Caskroom/miniconda/base/bin:$PATH"
+  fi
 fi
 unset __conda_setup
 # <<< conda initialize <<<
 
 # for brew
+export GPG_TTY=$(tty)
+export GNUPGHOME="$HOME"/.local/share/gnupg
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # for zsh
-if type brew &>/dev/null 2>&1; then
-    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
-
-    autoload -Uz compinit
-    compinit -d "$HOME/cache/zsh-comp"
-    zstyle ':completion:*' menu select cache-path "$HOME/.cache/zsh-comp"
-fi
+autoload -Uz compinit
+compinit -d "$HOME/cache/zsh-comp"
+zstyle ':completion:*' menu select cache-path "$HOME/.cache/zsh-comp"
 autoload -Uz promptinit
 promptinit
 prompt walters
+
+# yt-dlp wrapper
+if command -v yt-dlp >/dev/null 2>&1; then
+  yd() {
+    local url="$1"
+    shift
+    if [ -z "$url" ]; then
+      echo "please give a url"
+      return 1
+    fi
+    yt-dlp -o "%(uploader_id)s/%(playlist_title)s/p%(playlist_index)03d-%(title)s.%(ext)s" \
+      -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best' \
+      "$url" \
+      "$@"
+    return 0
+  }
+fi
+
+# pandoc wrapper
+if command -v pandoc >/dev/null 2>&1; then
+  pd() {
+    local ff="$1"
+    shift
+    local tt="$1"
+    shift
+    local filename="$1"
+    shift
+    local outputname="${filename%.*}.$tt"
+    pandoc -f "$ff" -t "$tt" \
+      "$filename" \
+      -o "$outputname" \
+      --pdf-engine=lualatex \
+      --metadata-file="$HOME/project/config.d/other-config/pandoc-meta"
+    "$@"
+  }
+fi
