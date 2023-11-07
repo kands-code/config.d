@@ -1,3 +1,16 @@
+# for zsh
+autoload -Uz compinit
+compinit
+zstyle ':completion:*' menu select cache-path "$HOME/.cache/zsh"
+autoload -Uz promptinit
+promptinit
+prompt walters
+
+# for brew
+export GPG_TTY=$(tty)
+export GNUPGHOME="$HOME"/.local/share/gnupg
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/opt/homebrew/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2>/dev/null)"
@@ -12,19 +25,6 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
-# for brew
-export GPG_TTY=$(tty)
-export GNUPGHOME="$HOME"/.local/share/gnupg
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
-# for zsh
-autoload -Uz compinit
-compinit -d "$HOME/cache/zsh-comp"
-zstyle ':completion:*' menu select cache-path "$HOME/.cache/zsh-comp"
-autoload -Uz promptinit
-promptinit
-prompt walters
 
 # yt-dlp wrapper
 if command -v yt-dlp >/dev/null 2>&1; then

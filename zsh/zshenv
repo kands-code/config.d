@@ -20,6 +20,8 @@ export PERL_MB_OPT="--install_base '$sdk_home/perl5'"
 export PERL_MM_OPT="INSTALL_BASE=$sdk_home/perl5"
 export PERL_LOCAL_LIB_ROOT="$sdk_home/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"
 export PERL5LIB="$sdk_home/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"
+export MANPATH="$MANPATH":"$sdk_home/texlive/texmf-dist/doc/man"
+export INFOPATH="INFOPATH":"$sdk_home/texlive/texmf-dist/doc/info"
 
 # for python
 export JUPYTER_DATA_DIR="$config_home"/jupyter
@@ -29,6 +31,7 @@ export WORKON_HOME="$sdk_home/virtualenvs"
 export PYTHONSTARTUP="$config_home"/pip/pyrc
 export PYLINTHOME="$cache_home"/pylint
 export CONDARC="$HOME/.conda/condarc"
+export MPLCONFIGDIR="$config_home"/matplotlib
 
 # for rust
 export RUSTUP_HOME="$sdk_home"/rustup
@@ -46,6 +49,7 @@ all_path+=":$CARGO_HOME/bin"     # for rust cargo
 all_path+=":$HOME/.local/bin"    # user binary
 all_path+=":$CABAL_DIR/bin"      # haskell cabal
 all_path+=":$sdk_home/perl5/bin" # perl
+all_path+=":$sdk_home/texlive/bin/universal-darwin"
 all_path+=":/opt/homebrew/opt/postgresql@16/bin"
 export PATH="$PATH":"$all_path":
 
