@@ -7,8 +7,9 @@ cache_home="$HOME"/.cache
 # for zsh self
 export ZDOTDIR="$HOME"/.config/zsh
 export HISTFILE="$cache_home"/zsh_history
-export CLICOLOR=1
+export CLICOLOR=true
 export LSCOLORS="exfxcxdxbxegedabagacad"
+export PSQLRC="$config_home/psqlrc"
 export PSQL_HISTORY="$cache_home/psql_history"
 
 # for less
@@ -38,22 +39,22 @@ export RUSTUP_HOME="$sdk_home"/rustup
 export CARGO_HOME="$sdk_home"/cargo
 
 # for haskell
-export GHCUP_USE_XDG_DIRS=1
+export GHCUP_USE_XDG_DIRS=true
 export CABAL_CONFIG="$config_home"/cabal/config
 export CABAL_DIR="$sdk_home"/cabal
-export STACK_ROOT="$sdk_home"/stack
+export AGDA_DIR="$config_home"/cabal/agda
 
 # compose path
-all_path="$RUSTUP_HOME/bin"      # for rustup
-all_path+=":$CARGO_HOME/bin"     # for rust cargo
-all_path+=":$HOME/.local/bin"    # user binary
-all_path+=":$CABAL_DIR/bin"      # haskell cabal
-all_path+=":$sdk_home/perl5/bin" # perl
-all_path+=":$sdk_home/texlive/bin/universal-darwin"
-all_path+=":/opt/homebrew/opt/postgresql@16/bin"
+all_path="$RUSTUP_HOME/bin"                         # for rustup
+all_path+=":$CARGO_HOME/bin"                        # for rust cargo
+all_path+=":$HOME/.local/bin"                       # user binary
+all_path+=":$CABAL_DIR/bin"                         # haskell cabal
+all_path+=":$sdk_home/perl5/bin"                    # perl
+all_path+=":$sdk_home/texlive/bin/universal-darwin" # texlive
+all_path+=":/opt/homebrew/opt/postgresql@16/bin"    # postgres
 export PATH="$PATH":"$all_path":
 
 # for proxy
 export https_proxy=http://127.0.0.1:49580
-export http_proxy=http://127.0.0.1:49580
-export all_proxy=socks5://127.0.0.1:49580
+export http_proxy=$https_proxy
+export all_proxy=$https_proxy

@@ -1,14 +1,14 @@
-#! /usr/bin/env bash
+#!/usr/bin/env bash
 
-#mysql history
+# mysql history
 export MYSQL_HISTFILE="$XDG_STATE_HOME"/mysql_history
 
 # path
-allPath="$HOME/.local/bin" # user bin
-allPath+=":$HOME/.local/share/npm/bin" # node
+allPath="$HOME/.local/bin"               # user bin
+allPath+=":$HOME/.local/share/npm/bin"   # node
 allPath+=":$HOME/.local/share/cabal/bin" # haskell
 allPath+=":$HOME/.local/share/cargo/bin" # rust
-allPath+=":$HOME/.local/share/go/bin" # golang
+allPath+=":$HOME/.local/share/go/bin"    # golang
 allPath+=":$PATH"
 export PATH="$allPath"
 
@@ -16,4 +16,3 @@ export PATH="$allPath"
 [ -f "/home/kands/.local/share/ghcup/env" ] && source "/home/kands/.local/share/ghcup/env"
 
 systemctl --user import-environment PATH
-

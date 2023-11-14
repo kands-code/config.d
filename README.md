@@ -1,132 +1,171 @@
-# `config.d`
+# CONFIG-D
 
-最基本配置
+this repository stores all configs that may be helpful
 
-## bash
+## environment.d
 
-```bash
-mkdir -p ~/.local/state
-ln -s "$PWD"/other-config/bashrc ~/.bashrc
-ln -s "$PWD"/other-config/profile ~/.profile
-```
+xdg environment config, just some useful environment
 
-> USTC texlive repository:
->   http://mirrors.ustc.edu.cn/CTAN/systems/texlive/tlnet/
+## other-config
 
-一些配置
+configs for some utils
 
-## code
+### nano
 
-保存了一部分当前的插件和配置，以防万一
+for nano editor highlightings
 
-## python
+### neofetch
 
-```bash
-ln -s "$PWD"/python-config ~/.config/pip
-```
+some self config
 
-### nautilus
+### systemd
 
-对于 Blackbox Terminal，使用 `OpenInBlackbox` 这个插件
+some user daemons, maybe useful
+
+### bashrc
+
+config for bash
 
 ```shell
-git clone https://github.com/phucnoob/OpenInBlackBox.git oib
+ln -s "<path to project>"/other-config/bashrc ~/.bashrc
 ```
 
-需要 `python-nautilus` 库，使用 `./install.sh` 安装
+### dns-config.md
 
-## other configs
+some config steps for using systemd-resolve
 
-### Locale
+### docker-daemon.json
 
-```bash
-ln -s "$PWD/other-config/locale.conf" ~/.config/
+docker config
+
+```shell
+ln -s "<path to project>"/other-config/docker-daemon.json /etc/docker/daemon.json
 ```
 
-### fonts
+### gitconfig
 
-```bash
-sudo ln -s "$PWD"/other-config/local.conf /etc/fonts/
+git config
+
+```shell
+ln -s "<path to project>"/other-config/gitconfig ~/.gitconfig
 ```
 
-### Paru
+should replace this information with your own
 
-```bash
-ln -s "$PWD/other-config/paru.conf" ~/.config/
+```shell
+git config --global user.name "your github user name"
+git config --global user.email "your email for gpg key"
+git config --global user.signingkey "secret key with ! sign"
 ```
 
-### Docker 镜像配置
+### local.conf
 
-```bash
-sudo ln -s "$PWD"/other-config/docker-daemon.json /etc/docker/daemon.json
+font config
+
+```shell
+sudo ln -s "<path to project>"/other-config/local.conf /etc/fonts/local.conf
 ```
 
-### npm 配置
+should replace the font to with your own
 
-```bash
-mkdir ~/.config/npm; ln -s "$PWD"/other-config/npmrc ~/.config/npm/
+### locale.conf
+
+locale config
+
+```shell
+ln -s "<path to project>"/other-config/locale.conf ~/.config/locale.conf
 ```
 
-## some configs
+### pandoc-meta
 
-### for gsconnect
+pandoc config for generating pdfs
 
-> ufw user, maybe kdeconnect
+a use case:
 
-```bash
-sudo ufw allow 1716:1764/udp
-sudo ufw allow 1716:1764/tcp
-sudo ufw reload
+```shell
+# pandoc wrapper
+if command -v pandoc >/dev/null 2>&1; then
+  pd() {
+    local ff="$1"
+    shift
+    local tt="$1"
+    shift
+    local filename="$1"
+    shift
+    local outputname="${filename%.*}.$tt"
+    pandoc -f "$ff" -t "$tt" \
+      "$filename" \
+      -o "$outputname" \
+      --pdf-engine=lualatex \
+      --metadata-file="<path to project>/other-config/pandoc-meta"
+    "$@"
+  }
+fi
 ```
 
-### for wget
+### paru.conf
 
-```bash
-echo hsts-file \= "$XDG_CACHE_HOME"/wget-hsts >> "$XDG_CONFIG_HOME/wgetrc"
+paru config
+
+```shell
+ln -s "<path to project>"/other-config/paru.conf ~/.config/paru.conf
 ```
 
-### for dircolors
+### profile
 
-```bash
-ln -s "$PWD/other-config/dircolors" ~/.config/dircolors
+profile
+
+```shell
+ln -s "<path to project>"/other-config/profile ~/.profile
 ```
 
-### for R
+#### npmrc
 
-```bash
-ln -s "$PWD"/other-config/Rprofile" ~/.local/state/Rprofile
+config for npm
+
+```shell
+mkdir -p ~/.config/npm
+ln -s "<path to project>"/other-config/npmrc ~/.config/npm/
 ```
 
-### close beep
+#### Agda
 
-使用systemd service
+should replace the path in `agda/libraries` with your own
 
-```bash
-systemctl --user enable nobeep.service --now
+```shell
+# if use 20-haskell.conf
+mkdir -p ~/.config/cabal
+ln -s "<path to project>"/other-config/agda ~/.config/cabal/agda
 ```
 
-### Gnome Terminal
+#### RProfile
 
-备份方式
+there is a backup for R profile
 
-```bash
-dconf dump '/org/gnome/terminal/legacy/profiles:/' > "$PWD/other-config/gnome-profile.dconf"
+```r
+options(repos=structure(c(CRAN="https://mirrors.ustc.edu.cn/CRAN/")))
+# options("browser"="firefox")
+options("browser"="microsoft-edge")
+options("editor"="nano")
+options("encoding"="utf8")
 ```
 
-恢复
+## pip
 
-```bash
-dconf load '/org/gnome/terminal/legacy/profiles:/' < "$PWD/other-config/gnome-profile.dconf"
+python config
+
+```shell
+ln -s "<path to project>"/pip ~/.config/pip
 ```
 
-### for maven and agda
+## zsh
 
-```bash
-ln -s "$PWD"/other-config/conf ~/.local/lib/
+zsh config
+
+```shell
+ln -s "<path to project>"/zsh/zshenv ~/.zshenv
+mkdir -p ~/.config/zsh
+ln -s "<path to project>"/zsh/zshrc ~/.config/zsh/.zshrc
+# for ssh config
+ln -s "<path to project>"/zsh/ssh.conf ~/.ssh/config
 ```
-
-> `git config --global commit.gpgSign true` 来开启签名
-
----
-
-> 这个仓库仅私人使用, 如果造成什么后果, 概不负责

@@ -57,7 +57,7 @@ if command -v pandoc >/dev/null 2>&1; then
       "$filename" \
       -o "$outputname" \
       --pdf-engine=lualatex \
-      --metadata-file="$HOME/project/config.d/other-config/pandoc-meta"
+      --metadata-file="$HOME/projects/config.d/other-config/pandoc-meta"
     "$@"
   }
 fi

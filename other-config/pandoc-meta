@@ -5,21 +5,24 @@ geometry:
 header-includes:
   - |
     ```{=latex}
-    \usepackage{ctex}
+    \RequirePackage[fontset=none]{ctex}
     \directlua{luaotfload.add_fallback(
       "emojifallback",
-      {"Apple Color Emoji:mode=harf;"}
-    )}
+      {
+        "Fira Code:mode=harf;"
+        ,"Apple Color Emoji:mode=harf;"
+      })}
     \setmainfont[RawFeature={fallback=emojifallback}]{Times New Roman}
-    \setsansfont[RawFeature={fallback=emojifallback}, AutoFakeSlant]{Hiragino Sans GB}
-    \setmonofont[RawFeature={fallback=emojifallback}, AutoFakeBold, AutoFakeSlant]{Cascadia Code PL}
+    \setsansfont[RawFeature={fallback=emojifallback}, AutoFakeSlant]{Source Han Sans SC}
+    \setmonofont[RawFeature={fallback=emojifallback}, AutoFakeBold, AutoFakeSlant]{Sarasa Mono Slab SC}
     \setmathfont[RawFeature={fallback=emojifallback}]{Latin Modern Math}
     \setCJKmainfont[RawFeature={fallback=emojifallback},
-      BoldFont={\kstex@zhft@heiti},
-      ItalicFont={\kstex@zhft@kaishu}]{LXGW Neo ZhiSong Fusion}
+      BoldFont={Source Han Sans SC},
+      ItalicFont={LXGW WenKai}]{Source Han Serif SC}
     \setCJKsansfont[RawFeature={fallback=emojifallback},
-      AutoFakeSlant]{Hiragino Sans GB}
+      AutoFakeBold,
+      AutoFakeSlant]{Source Han Sans SC}
     \setCJKmonofont[RawFeature={fallback=emojifallback},
       AutoFakeBold,
-      AutoFakeSlant]{LXGW WenKai Mono GB Fusion}
+      AutoFakeSlant]{Sarasa Mono Slab SC}
     ```

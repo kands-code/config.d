@@ -1,8 +1,10 @@
 [user]
-	name = kands-code
-	email = kizunaaisesu@gmail.com
-	signingKey = 6ACCE6616BA476209419FFF711E619D4BBE14E35
+name = "your github user name"
+email = "your email for gpg key"
+signingkey = "secret key with ! sign"
 [commit]
-	gpgSign = true
+gpgsign = true
+[color]
+ui = auto
 [credential]
-	helper = store
+helper = store
