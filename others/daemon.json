@@ -2,7 +2,7 @@
   "builder": {
     "gc": {
       "enabled": true,
-      "defaultKeepStorage": "16GB"
+      "defaultKeepStorage": "8GB"
     }
   },
   "features": {

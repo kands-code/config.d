@@ -52,6 +52,7 @@ all_path+=":$CABAL_DIR/bin"                         # haskell cabal
 all_path+=":$sdk_home/perl5/bin"                    # perl
 all_path+=":$sdk_home/texlive/bin/universal-darwin" # texlive
 all_path+=":/opt/homebrew/opt/postgresql@16/bin"    # postgres
+all_path+=":$sdk_home/conda/bin"                    # conda
 export PATH="$PATH":"$all_path":
 
 # for proxy

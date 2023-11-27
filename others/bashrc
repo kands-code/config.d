@@ -105,6 +105,6 @@ function conv2f() {
     "$filename" \
     -o "$outputname" \
     --pdf-engine=lualatex \
-    --metadata-file="$CONFIGHOME/other-config/pandoc-meta"
+    --metadata-file="$CONFIGHOME/others/pandoc-meta"
   "$@"
 }

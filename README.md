@@ -6,7 +6,7 @@ this repository stores all configs that may be helpful
 
 xdg environment config, just some useful environment
 
-## other-config
+## others
 
 configs for some utils
 
@@ -27,19 +27,19 @@ some user daemons, maybe useful
 config for bash
 
 ```shell
-ln -s "<path to project>"/other-config/bashrc ~/.bashrc
+ln -s "<path to project>"/others/bashrc ~/.bashrc
 ```
 
-### dns-config.md
+### DNSConfig.md
 
 some config steps for using systemd-resolve
 
-### docker-daemon.json
+### daemon.json
 
-docker config
+docker daemon config
 
 ```shell
-ln -s "<path to project>"/other-config/docker-daemon.json /etc/docker/daemon.json
+ln -s "<path to project>"/others/daemon.json /etc/docker/daemon.json
 ```
 
 ### gitconfig
@@ -47,7 +47,7 @@ ln -s "<path to project>"/other-config/docker-daemon.json /etc/docker/daemon.jso
 git config
 
 ```shell
-ln -s "<path to project>"/other-config/gitconfig ~/.gitconfig
+ln -s "<path to project>"/others/gitconfig ~/.gitconfig
 ```
 
 should replace this information with your own
@@ -63,7 +63,7 @@ git config --global user.signingkey "secret key with ! sign"
 font config
 
 ```shell
-sudo ln -s "<path to project>"/other-config/local.conf /etc/fonts/local.conf
+sudo ln -s "<path to project>"/others/local.conf /etc/fonts/local.conf
 ```
 
 should replace the font to with your own
@@ -73,7 +73,7 @@ should replace the font to with your own
 locale config
 
 ```shell
-ln -s "<path to project>"/other-config/locale.conf ~/.config/locale.conf
+ln -s "<path to project>"/others/locale.conf ~/.config/locale.conf
 ```
 
 ### pandoc-meta
@@ -97,7 +97,7 @@ if command -v pandoc >/dev/null 2>&1; then
       "$filename" \
       -o "$outputname" \
       --pdf-engine=lualatex \
-      --metadata-file="<path to project>/other-config/pandoc-meta"
+      --metadata-file="<path to project>/others/pandoc-meta"
     "$@"
   }
 fi
@@ -108,7 +108,7 @@ fi
 paru config
 
 ```shell
-ln -s "<path to project>"/other-config/paru.conf ~/.config/paru.conf
+ln -s "<path to project>"/others/paru.conf ~/.config/paru.conf
 ```
 
 ### profile
@@ -116,7 +116,7 @@ ln -s "<path to project>"/other-config/paru.conf ~/.config/paru.conf
 profile
 
 ```shell
-ln -s "<path to project>"/other-config/profile ~/.profile
+ln -s "<path to project>"/others/profile ~/.profile
 ```
 
 #### npmrc
@@ -125,7 +125,7 @@ config for npm
 
 ```shell
 mkdir -p ~/.config/npm
-ln -s "<path to project>"/other-config/npmrc ~/.config/npm/
+ln -s "<path to project>"/others/npmrc ~/.config/npm/
 ```
 
 #### Agda
@@ -135,7 +135,7 @@ should replace the path in `agda/libraries` with your own
 ```shell
 # if use 20-haskell.conf
 mkdir -p ~/.config/cabal
-ln -s "<path to project>"/other-config/agda ~/.config/cabal/agda
+ln -s "<path to project>"/others/agda ~/.config/cabal/agda
 ```
 
 #### RProfile
