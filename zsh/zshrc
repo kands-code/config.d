@@ -30,7 +30,7 @@ fi
 
 # pandoc wrapper
 if command -v pandoc >/dev/null 2>&1; then
-  md2pdf() {
+  cv2pdf() {
     local fromType="$1"
     shift
     local fileName="$1"
@@ -43,3 +43,28 @@ if command -v pandoc >/dev/null 2>&1; then
       --metadata-file="$HOME/projects/config.d/others/pandoc-meta"
   }
 fi
+
+# daily update
+dailyup() {
+  brew update
+  brew upgrade
+  tlmgr update --all --self --reinstall-forcibly-removed
+  conda update --all --yes
+  rustup update
+  echo "should update cargo & ghcup by hand"
+}
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/kevinstephen/sdk/conda/bin/conda' 'shell.zsh' 'hook' 2>/dev/null)"
+if [ $? -eq 0 ]; then
+  eval "$__conda_setup"
+else
+  if [ -f "/Users/kevinstephen/sdk/conda/etc/profile.d/conda.sh" ]; then
+    . "/Users/kevinstephen/sdk/conda/etc/profile.d/conda.sh"
+  else
+    export PATH="/Users/kevinstephen/sdk/conda/bin:$PATH"
+  fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<

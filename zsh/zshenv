@@ -9,6 +9,7 @@ export ZDOTDIR="$HOME"/.config/zsh
 export HISTFILE="$cache_home"/zsh_history
 export CLICOLOR=true
 export LSCOLORS="exfxcxdxbxegedabagacad"
+export XMAKE_GLOBALDIR="$sdk_home/xmake"
 export PSQLRC="$config_home/psqlrc"
 export PSQL_HISTORY="$cache_home/psql_history"
 
@@ -52,7 +53,6 @@ all_path+=":$CABAL_DIR/bin"                         # haskell cabal
 all_path+=":$sdk_home/perl5/bin"                    # perl
 all_path+=":$sdk_home/texlive/bin/universal-darwin" # texlive
 all_path+=":/opt/homebrew/opt/postgresql@16/bin"    # postgres
-all_path+=":$sdk_home/conda/bin"                    # conda
 export PATH="$PATH":"$all_path":
 
 # for proxy
