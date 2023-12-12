@@ -31,16 +31,15 @@ fi
 # pandoc wrapper
 if command -v pandoc >/dev/null 2>&1; then
   cv2pdf() {
-    local fromType="$1"
+    local ftype="$1"
     shift
-    local fileName="$1"
+    local fname="$1"
     shift
-    local outputName="${fileName%.*}.pdf"
-    pandoc -f "$fromType" -t "pdf" \
-      "$fileName" \
-      -o "$outputName" \
+    local oname="${fname%.*}.pdf"
+    pandoc -f "$ftype" -t "pdf" "$fname" \
+      -o "$oname" \
       --pdf-engine=lualatex \
-      --metadata-file="$HOME/projects/config.d/others/pandoc-meta"
+      --metadata-file="$HOME/projects/config.d/others/pmeta.yaml"
   }
 fi
 

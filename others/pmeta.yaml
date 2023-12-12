@@ -14,7 +14,7 @@ header-includes:
       })}
     \setmainfont[RawFeature={fallback=emojifallback}]{Times New Roman}
     \setsansfont[RawFeature={fallback=emojifallback}, AutoFakeSlant]{Source Han Sans SC}
-    \setmonofont[RawFeature={fallback=emojifallback}, AutoFakeBold, AutoFakeSlant]{Sarasa Mono Slab SC}
+    \setmonofont[RawFeature={fallback=emojifallback}, AutoFakeBold, AutoFakeSlant]{Fira Code Retina}
     \setmathfont[RawFeature={fallback=emojifallback}]{Latin Modern Math}
     \setCJKmainfont[RawFeature={fallback=emojifallback},
       BoldFont={Source Han Sans SC},
