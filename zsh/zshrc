@@ -12,36 +12,32 @@ export GNUPGHOME="$HOME"/.local/share/gnupg
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # yt-dlp wrapper
-if command -v yt-dlp >/dev/null 2>&1; then
-  yd() {
-    local url="$1"
-    shift
-    if [ -z "$url" ]; then
-      echo "please give a url"
-      return 1
-    fi
-    yt-dlp -o "%(uploader_id)s/%(playlist_title)s/p%(playlist_index)03d-%(title)s.%(ext)s" \
-      -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best' \
-      "$url" \
-      "$@"
-    return 0
-  }
-fi
+yd() {
+  local url="$1"
+  shift
+  if [ -z "$url" ]; then
+    echo "please give a url"
+    return 1
+  fi
+  yt-dlp -o "%(uploader_id)s/%(playlist_title)s/p%(playlist_index)03d-%(title)s.%(ext)s" \
+    -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best' \
+    "$url" \
+    "$@"
+  return 0
+}
 
 # pandoc wrapper
-if command -v pandoc >/dev/null 2>&1; then
-  cv2pdf() {
-    local ftype="$1"
-    shift
-    local fname="$1"
-    shift
-    local oname="${fname%.*}.pdf"
-    pandoc -f "$ftype" -t "pdf" "$fname" \
-      -o "$oname" \
-      --pdf-engine=lualatex \
-      --metadata-file="$HOME/projects/config.d/others/pmeta.yaml"
-  }
-fi
+cv2pdf() {
+  local ftype="$1"
+  shift
+  local fname="$1"
+  shift
+  local oname="${fname%.*}.pdf"
+  pandoc -f "$ftype" -t "pdf" "$fname" \
+    -o "$oname" \
+    --pdf-engine=lualatex \
+    --metadata-file="$HOME/projects/config.d/others/pmeta.yaml"
+}
 
 # daily update
 dailyup() {
