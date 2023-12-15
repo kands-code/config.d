@@ -12,6 +12,9 @@ export LSCOLORS="exfxcxdxbxegedabagacad"
 export XMAKE_GLOBALDIR="$sdk_home/xmake"
 export PSQLRC="$config_home/psqlrc"
 export PSQL_HISTORY="$cache_home/psql_history"
+export NPM_CONFIG_USERCONFIG="$config_home/npm/npmrc"
+export NODE_REPL_HISTORY="$cache_home/npm/history"
+export NODE_PATH="/opt/homebrew/lib/node_modules:$data_home/npm/lib/node_modules/"
 
 # for less
 export LESSKEY="$config_home"/less/lesskey
@@ -49,6 +52,7 @@ export AGDA_DIR="$config_home"/cabal/agda
 all_path="$RUSTUP_HOME/bin"                         # for rustup
 all_path+=":$CARGO_HOME/bin"                        # for rust cargo
 all_path+=":$HOME/.local/bin"                       # user binary
+all_path+=":$data_home/npm/bin"                     # node/npm
 all_path+=":$CABAL_DIR/bin"                         # haskell cabal
 all_path+=":$sdk_home/perl5/bin"                    # perl
 all_path+=":$sdk_home/texlive/bin/universal-darwin" # texlive
