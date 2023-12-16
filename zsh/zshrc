@@ -11,55 +11,59 @@ export GPG_TTY=$(tty)
 export GNUPGHOME="$HOME"/.local/share/gnupg
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# yt-dlp wrapper
-yd() {
-  local url="$1"
-  shift
-  if [ -z "$url" ]; then
-    echo "please give a url"
-    return 1
-  fi
-  yt-dlp -o "%(uploader_id)s/%(playlist_title)s/p%(playlist_index)03d-%(title)s.%(ext)s" \
-    -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best' \
-    "$url" \
-    "$@"
-  return 0
-}
-
 # pandoc wrapper
-cv2pdf() {
-  local ftype="$1"
-  shift
-  local fname="$1"
-  shift
-  local oname="${fname%.*}.pdf"
-  pandoc -f "$ftype" -t "pdf" "$fname" \
-    -o "$oname" \
-    --pdf-engine=lualatex \
-    --metadata-file="$HOME/projects/config.d/others/pmeta.yaml"
-}
+if command -v pandoc >/dev/null 2>&1; then
+  cv2pdf() {
+    local ftype="$1"
+    shift
+    local fname="$1"
+    shift
+    local oname="${fname%.*}.pdf"
+    pandoc -f "$ftype" -t "pdf" "$fname" \
+      -o "$oname" \
+      --pdf-engine=lualatex \
+      --metadata-file="$HOME/projects/config.d/others/pmeta.yaml"
+  }
+fi
 
 # daily update
 dailyup() {
   brew update
   brew upgrade
-  tlmgr update --all --self --reinstall-forcibly-removed
-  conda update --all --yes
-  rustup update
+  ## texlive
+  if command -v tlmgr >/dev/null 2>&1; then
+    tlmgr update --all --self --reinstall-forcibly-removed
+  fi
+  ## conda
+  if command -v conda >/dev/null 2>&1; then
+    conda update --all --yes
+  fi
+  ## rust
+  if command -v rustup >/dev/null 2>&1; then
+    rustup update
+  fi
   echo "should update cargo & ghcup by hand"
 }
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/kevinstephen/sdk/conda/bin/conda' 'shell.zsh' 'hook' 2>/dev/null)"
-if [ $? -eq 0 ]; then
-  eval "$__conda_setup"
-else
-  if [ -f "/Users/kevinstephen/sdk/conda/etc/profile.d/conda.sh" ]; then
-    . "/Users/kevinstephen/sdk/conda/etc/profile.d/conda.sh"
-  else
-    export PATH="/Users/kevinstephen/sdk/conda/bin:$PATH"
-  fi
+# activate conda
+eval "$(conda "shell.$(basename "${SHELL}")" hook)"
+if conda env list | grep dev >/dev/null 2>&1; then
+  conda activate dev
 fi
-unset __conda_setup
-# <<< conda initialize <<<
+
+# yt-dlp wrapper
+if command -v "yt-dlp" >/dev/null 2>&1; then
+  yd() {
+    local url="$1"
+    shift
+    if [ -z "$url" ]; then
+      echo "please give a url"
+      return 1
+    fi
+    yt-dlp -o "%(uploader_id)s/%(playlist_title)s/p%(playlist_index)03d-%(title)s.%(ext)s" \
+      -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best' \
+      "$url" \
+      "$@"
+    return 0
+  }
+fi
