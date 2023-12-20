@@ -41,12 +41,15 @@ dailyup() {
   ## rust
   if command -v rustup >/dev/null 2>&1; then
     rustup update
+    if [ "$?" = '0' ]; then
+      cargo install --force --all-features bat du-dust mdbook
+    fi
   fi
   echo "should update cargo & ghcup by hand"
 }
 
 # activate conda
-eval "$(conda "shell.$(basename "${SHELL}")" hook)"
+eval "$(~/sdk/conda/bin/conda "shell.$(basename "${SHELL}")" hook)"
 if conda env list | grep dev >/dev/null 2>&1; then
   conda activate dev
 fi

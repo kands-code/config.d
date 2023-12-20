@@ -36,7 +36,7 @@ export JUPYTER_CONFIG_DIR="$JUPYTER_DATA_DIR"
 export WORKON_HOME="$sdk_home/virtualenvs"
 export PYTHONSTARTUP="$config_home/pip/pyrc"
 export PYLINTHOME="$XDG_STATE_HOME/pylint"
-export CONDARC="$config_home/pip/condarc"
+export CONDARC="~/.conda/condarc"
 export MPLCONFIGDIR="$config_home/matplotlib"
 
 # for rust
