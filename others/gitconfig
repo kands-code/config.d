@@ -8,3 +8,5 @@ gpgsign = true
 ui = auto
 [credential]
 helper = store
+[core]
+editor = nano # your editor
