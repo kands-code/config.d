@@ -42,7 +42,16 @@ dailyup() {
   if command -v rustup >/dev/null 2>&1; then
     rustup update
     if [ "$?" = '0' ]; then
-      cargo install --force --all-features bat du-dust mdbook
+      cargo install --force --all-features \
+        bat \
+        du-dust \
+        mdbook \
+        bottom \
+        sd \
+        fd-find \
+        ripgrep \
+        tlrc \
+        grex
     fi
   fi
   echo "should update cargo & ghcup by hand"
