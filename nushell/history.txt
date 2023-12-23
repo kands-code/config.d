@@ -134,3 +134,6 @@ git add --all
 git commit
 cd projects/config.d/
 ls
+git add --all
+git commit
+git push
