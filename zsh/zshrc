@@ -11,7 +11,6 @@ export GPG_TTY=$(tty)
 export GNUPGHOME="$HOME"/.local/share/gnupg
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# pandoc wrapper
 if command -v pandoc >/dev/null 2>&1; then
   cv2pdf() {
     local ftype="$1"
@@ -43,15 +42,8 @@ dailyup() {
     rustup update
     if [ "$?" = '0' ]; then
       cargo install --force --all-features \
-        bat \
-        du-dust \
         mdbook \
-        bottom \
-        sd \
-        fd-find \
-        ripgrep \
-        tlrc \
-        grex
+        nu
     fi
   fi
   echo "should update cargo & ghcup by hand"

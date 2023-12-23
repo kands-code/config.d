@@ -1,0 +1,136 @@
+nu --help
+$env.HOME + "/sdk"
+man CLICOLOR
+man -k CLICOLOR
+path join ~ hello
+exit
+$config_home
+let -h
+$env.NODE_PATH
+exit
+$env.NODE_PATH
+exit
+$env.LESSHISTFILE
+$env.PERL_LOCAL_LIB_ROOT
+$env.PERL5LIB
+$env.HOME + "/.conda/condarc"
+path join "hello" ~
+$env.HOME | path join "hello"
+$env.HOME | path join "hello" | path join "sdk"
+$nu.home-path
+$env.X
+$env.HOMEBREW_PREFIX
+type $sdk_home
+[ $sdk_home, "perl5" ] | path join
+tty
+exit
+nuopen .gitignore
+open .gitignore
+tty 
+$env.GPG_TTY
+brew shellenv
+brew shellenv --help
+exit
+ls
+conda env list
+conda env list | grep  dev
+conda env list | find dev
+20 ** 2
+clear
+ls
+conda env list | find dev | is-empty
+not (conda env list | find dev | is-empty)
+$nu.home-path | path join "debug.log" 
+$nu.home-path | path join "debug.log" | path basename 
+$nu.home-path | path join "debug.log" |  path split 
+$nu.home-path | path join "debug.log" |  path basename 
+not (conda env list | find dev | is-empty)
+which panda
+which pandoc
+not (which pandoc | is-empty)
+clear
+^clear
+ls
+^clear
+ls
+^^clear 
+^clear 
+$nu.home-path | path join "debug.log" |  path basename  | split row "." | get 0
+help path join
+$nu.current-exe
+$env.PWD
+$nu.config-path
+nu $nu.config-path
+exit
+cv2pdf --help 
+hide cv2pdf
+cv2pdf --help
+which pandoc | is-empty
+exit
+cv2pdf --help
+if (which pandoc | is-empty) { hide cv2pdf } 
+cv2pdf --help
+brew shellenv
+conda init --help
+exit
+$starship_init_file
+open $starship_init_file
+clear
+ls
+clear
+ls
+clear
+exit
+clear
+ls
+clear
+cd ..
+cd config.d/
+ls
+clear
+fc-list | find Nerd
+fc-list | find Nerd | find Prop
+clear
+cv2pdf --help
+exit
+cv2pdf --help
+ls
+cv2pdf --help 
+cv2pdf markdown README.md
+exit
+cv2pdf markdown README.md
+ls
+conda shell.zsh hook
+conda shell.nushell hook
+python --help
+ipython 
+whereis python
+exit
+yd
+yd ""
+"" | str length | $in == 0
+which nu
+sudo nano /etc/shells
+chpass nu
+chpass -s nu
+chpass -s /Users/kevinstephen/sdk/cargo/bin/nu
+sudo nano /etc/shells
+cargo install --list
+ls
+clear
+ipython 
+ls ~/sdk/conda/envs/dev/
+ls ~/sdk/conda/envs/dev/bin/
+clear
+ls ~/sdk/conda/envs/dev/
+ls ~/sdk/conda/envs/dev/bin/
+$nu.default-config-dir
+ls
+ipython 
+ls
+open .gitconfig
+nuopen .gitconfig
+git add --all
+git commit
+cd projects/config.d/
+ls

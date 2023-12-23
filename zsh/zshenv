@@ -27,7 +27,7 @@ export PERL_MM_OPT="INSTALL_BASE=$sdk_home/perl5"
 export PERL_LOCAL_LIB_ROOT="$sdk_home/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"
 export PERL5LIB="$sdk_home/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"
 export MANPATH="$MANPATH":"$sdk_home/texlive/texmf-dist/doc/man"
-export INFOPATH="INFOPATH":"$sdk_home/texlive/texmf-dist/doc/info"
+export INFOPATH="$INFOPATH":"$sdk_home/texlive/texmf-dist/doc/info"
 
 # for python
 export JUPYTER_DATA_DIR="$config_home/jupyter"
