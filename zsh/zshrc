@@ -43,7 +43,8 @@ dailyup() {
     if [ "$?" = '0' ]; then
       cargo install --force --all-features \
         mdbook \
-        nu
+        nu \
+        starship
     fi
   fi
   echo "should update cargo & ghcup by hand"

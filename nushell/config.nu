@@ -828,8 +828,7 @@ def yd [
             msg: "please give a url"
             label: {
                 text: "url right here",
-                start: $url_span.start,
-                end: $url_span.end
+                span: $url_span
             }
         }
     } else {
@@ -855,6 +854,7 @@ def dailyup [] {
             --force --all-features
             mdbook
             nu
+            starship
         )
     }
     echo "should update ghcup manually"
