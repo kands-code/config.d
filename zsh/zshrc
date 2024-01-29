@@ -1,14 +1,23 @@
 # for zsh
-autoload -Uz compinit
-compinit
-zstyle ':completion:*' menu select cache-path "$HOME/.cache/zsh"
+fpath=(
+  /opt/homebrew/share/zsh/site-functions
+  ~/.config/zsh/zfunc
+  "${fpath[@]}")
+autoload -U +X compinit && compinit
+autoload -U +X bashcompinit && bashcompinit
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' menu select
+zstyle ':completion:*' completer _complete _match _approximate
+zstyle ':completion:*:approximate:*' max-errors 1 numeric
+zstyle ':completion:*' cache-path "$HOME/.cache/zsh/.compcache"
 autoload -Uz promptinit
 promptinit
 prompt walters
+# eval "$(starship init zsh)"
 
 # for brew
 export GPG_TTY=$(tty)
-export GNUPGHOME="$HOME"/.local/share/gnupg
+export GNUPGHOME="$HOME/.local/share/gnupg"
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 if command -v pandoc >/dev/null 2>&1; then
@@ -27,33 +36,38 @@ fi
 
 # daily update
 dailyup() {
+  # brew
   brew update
   brew upgrade
+  brew autoremove
+  brew cleanup --prune=all
   ## texlive
   if command -v tlmgr >/dev/null 2>&1; then
     tlmgr update --all --self --reinstall-forcibly-removed
   fi
   ## conda
-  if command -v conda >/dev/null 2>&1; then
-    conda update --all --yes
-  fi
+  # if command -v conda >/dev/null 2>&1; then
+  #   conda update --all --yes
+  # fi
   ## rust
   if command -v rustup >/dev/null 2>&1; then
     rustup update
     if [ "$?" = '0' ]; then
       cargo install --force --all-features \
         mdbook \
-        nu \
-        starship
+        mdbook-linkcheck
     fi
   fi
   echo "should update cargo & ghcup by hand"
 }
 
 # activate conda
-eval "$(~/sdk/conda/bin/conda "shell.$(basename "${SHELL}")" hook)"
-if conda env list | grep dev >/dev/null 2>&1; then
-  conda activate dev
+# eval "$(~/sdk/conda/bin/conda "shell.$(basename "${SHELL}")" hook)"
+# if conda env list | grep dev >/dev/null 2>&1; then
+#   conda activate dev
+# fi
+if command -v pipx >/dev/null 2>&1; then
+  eval "$(register-python-argcomplete pipx)"
 fi
 
 # yt-dlp wrapper

@@ -237,6 +237,7 @@ $env.all_proxy = "socks5://127.0.0.1:49580"
 
 # all path
 $env.PATH = ($env.PATH | split row (char esep)
+    | append (["/", "sbin"] | path join) # sbin
     | append ($env.HOMEBREW_PREFIX | path join "bin") # brew
     | append ($env.RUSTUP_HOME | path join "bin") # rust
     | append ($env.CARGO_HOME | path join "bin") # cargo

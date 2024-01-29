@@ -841,8 +841,10 @@ def yd [
 }
 
 def dailyup [] {
-    brew update
-    brew upgrade
+    if (not (which brew | is-empty)) {
+        brew update
+        brew upgrade
+    }
     if (not (which tlmgr | is-empty)) {
         tlmgr update --all --self --reinstall-forcibly-removed
     }
