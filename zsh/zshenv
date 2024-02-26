@@ -10,16 +10,18 @@ export HISTFILE="$cache_home"/zsh_history
 export CLICOLOR=true
 export LSCOLORS="exfxcxdxbxegedabagacad"
 export XDG_STATE_HOME="$HOME"/.local/state
-export XMAKE_GLOBALDIR="$sdk_home/xmake"
+export XMAKE_GLOBALDIR="$sdk_home"
 export PSQLRC="$config_home/psqlrc"
 export PSQL_HISTORY="$XDG_STATE_HOME/psql/history"
-export NPM_CONFIG_USERCONFIG="$config_home/npm/npmrc"
-export NODE_REPL_HISTORY="$XDG_STATE_HOME/npm/history"
-export NODE_PATH="/opt/homebrew/lib/node_modules:$data_home/npm/lib/node_modules/"
+# export NPM_CONFIG_USERCONFIG="$config_home/npm/npmrc"
+# export NODE_REPL_HISTORY="$XDG_STATE_HOME/npm/history"
+# export NODE_PATH="/opt/homebrew/lib/node_modules:$data_home/npm/lib/node_modules/"
 
 # for less
 export LESSKEY="$config_home/less/lesskey"
 export LESSHISTFILE="$XDG_STATE_HOME/less/history"
+export JAVA_HOME="$(/usr/libexec/java_home)"
+export GRADLE_USER_HOME="$data_home/gradle-repo"
 
 # for perl
 export PERL_MB_OPT="--install_base '$sdk_home/perl5'"
@@ -36,7 +38,7 @@ export JUPYTER_CONFIG_DIR="$JUPYTER_DATA_DIR"
 export WORKON_HOME="$sdk_home/virtualenvs"
 export PYTHONSTARTUP="$config_home/pip/pyrc"
 export PYLINTHOME="$XDG_STATE_HOME/pylint"
-# export CONDARC="~/.conda/condarc"
+export CONDARC="~/.conda/condarc"
 export MPLCONFIGDIR="$config_home/matplotlib"
 
 # for rust
@@ -47,13 +49,13 @@ export CARGO_HOME="$sdk_home"/cargo
 export GHCUP_USE_XDG_DIRS=true
 export CABAL_CONFIG="$config_home"/cabal/config
 export CABAL_DIR="$sdk_home"/cabal
-export AGDA_DIR="$config_home"/cabal/agda
+# export AGDA_DIR="$config_home"/cabal/agda
 
 # compose path
+# all_path+=":$data_home/npm/bin"                     # node/npm
 all_path="$RUSTUP_HOME/bin"                         # for rustup
 all_path+=":$CARGO_HOME/bin"                        # for rust cargo
 all_path+=":$HOME/.local/bin"                       # user binary
-all_path+=":$data_home/npm/bin"                     # node/npm
 all_path+=":$CABAL_DIR/bin"                         # haskell cabal
 all_path+=":$sdk_home/perl5/bin"                    # perl
 all_path+=":$sdk_home/texlive/bin/universal-darwin" # texlive
