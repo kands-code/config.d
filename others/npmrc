@@ -1,4 +1,3 @@
 prefix=~/.local/share/npm
 cache=~/.cache/npm
 registry=https://registry.npmmirror.com
-init-module=~/.config/npm/config/npm-init.js
