@@ -1,5 +1,5 @@
 # nushell open
-def nuopen [arg, --raw (-r)] {
+def nu_open [arg, --raw (-r)] {
     if $raw {
         open -r $arg
     } else {
@@ -7,4 +7,3 @@ def nuopen [arg, --raw (-r)] {
     }
 }
 alias open = ^open
-alias clear = ^clear
