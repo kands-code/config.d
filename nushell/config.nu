@@ -1,3 +1,7 @@
+source-env ($nu.default-config-dir
+    | path join "theme.nu"
+);
+
 $env.config = {
     # true or false to enable or disable the welcome banner at startup
     show_banner: false
@@ -8,26 +12,6 @@ $env.config = {
         file_format: "sqlite"
         isolation: false
     }
-
-    completions: {
-        # set to true to enable case-sensitive completions
-        case_sensitive: false
-        # set this to false to prevent auto-selecting completions when only one remains
-        quick: true
-        # set this to false to prevent partial filling of the prompt
-        partial: true
-        # prefix or fuzzy
-        algorithm: "fuzzy"    
-        external: {
-            # set to false to prevent nushell looking into $env.PATH to find more suggestions,
-            # `false` recommended for WSL users as this look up may be very slow
-            enable: true 
-            # setting it lower can improve completion performance at the cost of omitting some options
-            max_results: 100
-            # check 'carapace_completer' above as an example
-            completer: null
-        }
-    }
     filesize: {
         # true => KB, MB, GB (ISO standard)
         # false => KiB, MiB, GiB (Windows standard)
@@ -35,6 +19,7 @@ $env.config = {
         # b, kb, kib, mb, mib, gb, gib, tb, tib, pb, pib, eb, eib, auto
         format: "auto"
     }
+    color_config: $env.theme.ks_theme
 }
 
 ### self config
@@ -67,12 +52,12 @@ def dailyup [] {
 }
 
 # pandoc wrapper
-if (not (which pandoc | is-empty)
-    and not (which lualatex | is-empty)) {
-    def cv2pdf [
-        file_name: string # file name to convert
-        file_type: string = "markdown", # file type from
-    ] {
+def cv2pdf [
+    file_name: string # file name to convert
+    file_type: string = "markdown", # file type from
+] {
+    if (not (which pandoc | is-empty)
+        and not (which lualatex | is-empty)) {
         let output_name = ($file_name
             | path basename
             | split row "."
@@ -92,16 +77,17 @@ if (not (which pandoc | is-empty)
                 | path join "pmeta.yaml"
             )"
         )
+    } else {
+        print "nothing here"
     }
 }
 
 # yt-dlp wrapper
-if (not (which pandoc | is-empty)
-    and not (which lualatex | is-empty)) {
-    def yd [
-        url: string, # url for downloading
-        ...args: string # args for yt-dlp
-    ] {
+def yd [
+    url: string, # url for downloading
+] {
+    if (not (which yt-dlp | is-empty)
+        and not (which ffmpeg | is-empty)) {
         if ($url | str length | $in == 0) {
             let url_span = (metadata $url).span;
             error make {
@@ -115,9 +101,11 @@ if (not (which pandoc | is-empty)
             (yt-dlp
                 -o "%(uploader_id)s/%(playlist_title)s/p%(playlist_index)03d-%(title)s.%(ext)s"
                 -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best'
-                $url $args
+                $url
             )
         }
+    } else {
+        print "nothing here"
     }
 }
 

@@ -9,6 +9,9 @@ let data_home = ($nu.home-path
 )
 let config_home = ($nu.home-path | path join ".config")
 let cache_home = ($nu.home-path | path join ".cache")
+use ($nu.default-config-dir
+    | path join "theme.nu"
+);
 $env.XDG_STATE_HOME = ($nu.home-path
     | path join ".local" 
     | path join "state"
@@ -52,13 +55,32 @@ $env.OCAML_TOPLEVEL_PATH = ($env.OPAM_SWITCH_PREFIX
 )
 
 # for utils
-$env.MANPATH = ($env.HOMEBREW_PREFIX
-    | path join "share"
-    | path join "man"
+$env.MANPATH = (
+    append (
+        ["/", "usr", "share", "man"] | path join
+    )
+    | append (
+        ["/", "usr", "local", "share", "man"] | path join
+    )
+    |append ($env.HOMEBREW_PREFIX
+        | path join "share"
+        | path join "man"
+    )
+    | append ($env.OPAM_SWITCH_PREFIX
+        | path join "man"
+    )
 )
-$env.INFOPATH = ($env.HOMEBREW_PREFIX
-    | path join "share"
-    | path join "info"
+$env.INFOPATH = (
+    append (
+        ["/", "usr", "share", "info"] | path join
+    )
+    | append (
+        ["/", "usr", "local", "share", "info"] | path join
+    )
+    | append ($env.HOMEBREW_PREFIX
+        | path join "share"
+        | path join "info"
+    )
 )
 $env.XMAKE_GLOBALDIR = $sdk_home
 $env.PSQLRC = ($config_home | path join "psqlrc")
@@ -95,7 +117,7 @@ $env.LESSHISTFILE = ($env.XDG_STATE_HOME
 
 # for java
 $env.JAVA_HOME = (/usr/libexec/java_home)
-$env.GRADLE_USER_HOME = "$data_home/gradle-repo"
+$env.GRADLE_USER_HOME = $"($data_home)/gradle-repo"
 
 # for python
 $env.JUPYTER_DATA_DIR = ($config_home | path join "jupyter")
