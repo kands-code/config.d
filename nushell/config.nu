@@ -19,7 +19,7 @@ $env.config = {
         # b, kb, kib, mb, mib, gb, gib, tb, tib, pb, pib, eb, eib, auto
         format: "auto"
     }
-    color_config: $env.theme.ks_theme
+    color_config: $env.theme.dark_theme
 }
 
 ### self config
@@ -46,7 +46,7 @@ def dailyup [] {
         rustup update;
         (cargo install --all-features
             "mdbook" "mdbook-katex" "mdbook-toc"
-            "bat" "du-dust" "nu"
+            "bat" "wasm-pack"
         )
     }
 }

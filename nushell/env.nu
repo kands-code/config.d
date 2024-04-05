@@ -129,10 +129,6 @@ $env.PYTHONSTARTUP = ($config_home
     | path join "pyrc"
 )
 $env.PYLINTHOME = ($env.XDG_STATE_HOME | path join "pylint")
-$env.CONDARC = ($env.HOME
-    | path join ".conda"
-    | path join "condarc"
-)
 $env.MPLCONFIGDIR = ($config_home | path join "matplotlib")
 
 # for rust
@@ -142,17 +138,15 @@ $env.RUST_BACKTRACE = "full"
 
 # all path
 $env.PATH = ($env.PATH | split row (char esep)
-    | append ($env.RYE_HOME| path join "shims") # for rye
-    | append ($env.OPAM_SWITCH_PREFIX | path join "bin") # for ocaml
-    | append ($env.HOMEBREW_PREFIX | path join "bin") # for brew
-    | append ($env.HOMEBREW_PREFIX | path join "sbin") # for brew
-    | append (["/", "local", "bin"]) # for user global
-    | append (["/", "usr", "bin"] | path join) # for user bin
-    | append (["/", "bin"] | path join) # for bin
+    | prepend ($env.HOMEBREW_PREFIX | path join "sbin") # for brew
+    | prepend ($env.HOMEBREW_PREFIX | path join "bin") # for brew
+    | prepend ($env.CARGO_HOME | path join "bin") # for cargo
+    | prepend ($env.RUSTUP_HOME | path join "bin") # for rust
+    | prepend ($env.OPAM_SWITCH_PREFIX | path join "bin") # for ocaml
+    | prepend ($env.RYE_HOME| path join "shims") # for rye
+    | append (["/", "local", "bin"] | path join) # for user global
     | append (["/", "usr", "sbin"] | path join) # for adim bin
     | append (["/", "sbin"] | path join) # for sbin
-    | append ($env.RUSTUP_HOME | path join "bin") # for rust
-    | append ($env.CARGO_HOME | path join "bin") # for cargo
     | append ($env.HOME | path join ".local" | path join "bin") # for user local
     | append ($data_home | path join "npm" | path join "bin") # for node/npm
     | append ($env.HOMEBREW_PREFIX

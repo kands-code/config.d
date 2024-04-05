@@ -17,6 +17,13 @@ export LSCOLORS="exfxcxdxbxegedabagacad"
 export XMAKE_GLOBALDIR="$sdk_home"
 export PSQLRC="$config_home/psqlrc"
 export PSQL_HISTORY="$XDG_STATE_HOME/psql_history"
+export HOMEBREW_PREFIX="/opt/homebrew"
+export HOMEBREW_CELLAR="$HOMEBREW_PREFIX/Cellar"
+export HOMEBREW_REPOSITORY="$HOMEBREW_PREFIX"
+export MANPATH="/usr/share/man:/usr/local/share/man"
+export MANPATH="$MANPATH:$HOMEBREW_PREFIX/share/man"
+export INFOPATH="/usr/share/info:/usr/local/share/info"
+export INFOPATH="$INFOPATH:$HOMEBREW_PREFIX/share/info"
 
 # for nodejs
 export NPM_CONFIG_USERCONFIG="$config_home/npm/npmrc"
@@ -49,12 +56,13 @@ export RUST_BACKTRACE=full
 export OPAMROOT="$sdk_home/opam"
 
 # compose path
-all_path="$RUSTUP_HOME/bin"                      # for rustup
-all_path+=":$CARGO_HOME/bin"                     # for rust cargo
-all_path+=":$data_home/npm/bin"                  # node/npm
-all_path+=":$HOME/.local/bin"                    # for user local
-all_path+=":/opt/homebrew/opt/postgresql@16/bin" # for postgres
-export PATH="$all_path":"$PATH"                  # user path before system path
+all_path="$RUSTUP_HOME/bin"                       # for rustup
+all_path+=":$CARGO_HOME/bin"                      # for rust cargo
+all_path+=":$data_home/npm/bin"                   # node/npm
+all_path+=":$HOME/.local/bin"                     # for user local
+all_path+=":/opt/homebrew/bin:/opt/homebrew/sbin" # for homebrew
+all_path+=":/opt/homebrew/opt/postgresql@16/bin"  # for postgres
+export PATH="$all_path":"$PATH"                   # user path before system path
 
 # for proxy
 export https_proxy=http://127.0.0.1:49580
