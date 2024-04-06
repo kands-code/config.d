@@ -34,21 +34,14 @@ $env.HOMEBREW_REPOSITORY = $env.HOMEBREW_PREFIX
 $env.RYE_HOME = ($sdk_home | path join "rye")
 $env.OPAMROOT = ($sdk_home | path join "opam")
 $env.OPAM_SWITCH_PREFIX = ($env.OPAMROOT | path join "default")
-$env.CAML_LD_LIBRARY_PATH = (
-    append ($env.OPAM_SWITCH_PREFIX
-        | path join "lib"
-        | path join "stublibs"
-    )
-    | append ($env.OPAM_SWITCH_PREFIX
-        | path join "lib"
-        | path join "ocaml"
-        | path join "stublibs"
-    )
-    | append ($env.OPAM_SWITCH_PREFIX
-        | path join "lib"
-        | path join "ocaml"
-    )
-)
+$env.CAML_LD_LIBRARY_PATH = $"($env.OPAM_SWITCH_PREFIX
+    | path join "lib"
+    | path join "stublibs"):($env.OPAM_SWITCH_PREFIX
+    | path join "lib"
+    | path join "ocaml"
+    | path join "stublibs"):($env.OPAM_SWITCH_PREFIX
+    | path join "lib"
+    | path join "ocaml")"
 $env.OCAML_TOPLEVEL_PATH = ($env.OPAM_SWITCH_PREFIX
     | path join "lib"
     | path join "toplevel"
@@ -56,64 +49,31 @@ $env.OCAML_TOPLEVEL_PATH = ($env.OPAM_SWITCH_PREFIX
 
 # for utils
 $env.MANPATH = (
-    append (
-        ["/", "usr", "share", "man"] | path join
-    )
-    | append (
-        ["/", "usr", "local", "share", "man"] | path join
-    )
-    |append ($env.HOMEBREW_PREFIX
-        | path join "share"
-        | path join "man"
-    )
-    | append ($env.OPAM_SWITCH_PREFIX
-        | path join "man"
-    )
+    append (["/", "usr", "share", "man"] | path join)
+    | append (["/", "usr", "local", "share", "man"] | path join)
+    | append ($env.HOMEBREW_PREFIX | path join "share" | path join "man")
+    | append ($env.OPAM_SWITCH_PREFIX | path join "man")
 )
 $env.INFOPATH = (
-    append (
-        ["/", "usr", "share", "info"] | path join
-    )
-    | append (
-        ["/", "usr", "local", "share", "info"] | path join
-    )
-    | append ($env.HOMEBREW_PREFIX
-        | path join "share"
-        | path join "info"
-    )
+    append (["/", "usr", "share", "info"] | path join)
+    | append (["/", "usr", "local", "share", "info"] | path join)
+    | append ($env.HOMEBREW_PREFIX | path join "share" | path join "info")
 )
 $env.XMAKE_GLOBALDIR = $sdk_home
 $env.PSQLRC = ($config_home | path join "psqlrc")
 $env.PSQL_HISTORY = ($env.XDG_STATE_HOME | path join "psql_history")
 
 # for nodejs
-$env.NPM_CONFIG_USERCONFIG = ($config_home
-    | path join "npm"
-    | path join "npmrc"
-)
-$env.NODE_REPL_HISTORY = ($env.XDG_STATE_HOME
-    | "npm"
-    | "history"
-)
+$env.NPM_CONFIG_USERCONFIG = ($config_home | path join "npm" | path join "npmrc")
+$env.NODE_REPL_HISTORY = ($env.XDG_STATE_HOME | "npm" | "history")
 $env.NODE_PATH = (
-    append ($env.HOMEBREW_PREFIX
-        | path join "lib"
-        | path join "node_modules"
-    )
-    | append ($data_home | path join "npm"
-        | path join "lib"
-        | path join "node_modules"
-    )
+    append ($env.HOMEBREW_PREFIX | path join "lib" | path join "node_modules")
+    | append ($data_home | path join "npm" | path join "lib" | path join "node_modules")
 )
 
 # for less
-$env.LESSKEY = ($config_home
-    | path join "less"
-    | path join "lesskey"
-)
-$env.LESSHISTFILE = ($env.XDG_STATE_HOME
-    | path join "less_history"
-)
+$env.LESSKEY = ($config_home | path join "less" | path join "lesskey")
+$env.LESSHISTFILE = ($env.XDG_STATE_HOME | path join "less_history")
 
 # for java
 $env.JAVA_HOME = (/usr/libexec/java_home)
@@ -124,10 +84,7 @@ $env.JUPYTER_DATA_DIR = ($config_home | path join "jupyter")
 $env.IPYTHONDIR = $env.JUPYTER_DATA_DIR
 $env.JUPYTER_CONFIG_DIR = $env.JUPYTER_DATA_DIR
 $env.WORKON_HOME = ($sdk_home | path join "venvs")
-$env.PYTHONSTARTUP = ($config_home
-    | path join "pip"
-    | path join "pyrc"
-)
+$env.PYTHONSTARTUP = ($config_home | path join "pip" | path join "pyrc")
 $env.PYLINTHOME = ($env.XDG_STATE_HOME | path join "pylint")
 $env.MPLCONFIGDIR = ($config_home | path join "matplotlib")
 
