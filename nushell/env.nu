@@ -66,7 +66,7 @@ $env.PSQL_HISTORY = ($env.XDG_STATE_HOME | path join "psql_history")
 
 # for nodejs
 $env.NPM_CONFIG_USERCONFIG = ($config_home | path join "npm" | path join "npmrc")
-$env.NODE_REPL_HISTORY = ($env.XDG_STATE_HOME | "npm" | "history")
+$env.NODE_REPL_HISTORY = ($env.XDG_STATE_HOME | path join "npm" | path join "history")
 $env.NODE_PATH = $"($env.HOMEBREW_PREFIX
     | path join "lib"
     | path join "node_modules"):($data_home
