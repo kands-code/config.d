@@ -48,17 +48,18 @@ $env.OCAML_TOPLEVEL_PATH = ($env.OPAM_SWITCH_PREFIX
 )
 
 # for utils
-$env.MANPATH = (
-    append (["/", "usr", "share", "man"] | path join)
-    | append (["/", "usr", "local", "share", "man"] | path join)
-    | append ($env.HOMEBREW_PREFIX | path join "share" | path join "man")
-    | append ($env.OPAM_SWITCH_PREFIX | path join "man")
-)
-$env.INFOPATH = (
-    append (["/", "usr", "share", "info"] | path join)
-    | append (["/", "usr", "local", "share", "info"] | path join)
-    | append ($env.HOMEBREW_PREFIX | path join "share" | path join "info")
-)
+$env.MANPATH = $"/usr/share/man:/usr/local/share/man:($env.HOMEBREW_PREFIX
+    | path join "share"
+    | path join "man"):($env.OPAM_SWITCH_PREFIX
+    | path join "man"):($env.HOMEBREW_PREFIX
+    | path join "opt"
+    | path join "erlang"
+    | path join "lib"
+    | path join "erlang"
+    | path join "man")"
+$env.INFOPATH = $"/usr/share/info:/usr/local/share/info:($env.HOMEBREW_PREFIX
+    | path join "share"
+    | path join "info")"
 $env.XMAKE_GLOBALDIR = $sdk_home
 $env.PSQLRC = ($config_home | path join "psqlrc")
 $env.PSQL_HISTORY = ($env.XDG_STATE_HOME | path join "psql_history")
@@ -66,10 +67,12 @@ $env.PSQL_HISTORY = ($env.XDG_STATE_HOME | path join "psql_history")
 # for nodejs
 $env.NPM_CONFIG_USERCONFIG = ($config_home | path join "npm" | path join "npmrc")
 $env.NODE_REPL_HISTORY = ($env.XDG_STATE_HOME | "npm" | "history")
-$env.NODE_PATH = (
-    append ($env.HOMEBREW_PREFIX | path join "lib" | path join "node_modules")
-    | append ($data_home | path join "npm" | path join "lib" | path join "node_modules")
-)
+$env.NODE_PATH = $"($env.HOMEBREW_PREFIX
+    | path join "lib"
+    | path join "node_modules"):($data_home
+    | path join "npm"
+    | path join "lib"
+    | path join "node_modules")"
 
 # for less
 $env.LESSKEY = ($config_home | path join "less" | path join "lesskey")
@@ -77,6 +80,8 @@ $env.LESSHISTFILE = ($env.XDG_STATE_HOME | path join "less_history")
 
 # for java
 $env.JAVA_HOME = (/usr/libexec/java_home)
+let maven_version = "3.9.6"
+$env.M2_HOME = ($sdk_home | path join "maven" | path join $maven_version)
 $env.GRADLE_USER_HOME = $"($data_home)/gradle-repo"
 
 # for python
@@ -105,6 +110,7 @@ $env.PATH = ($env.PATH | split row (char esep)
     | append (["/", "usr", "sbin"] | path join) # for adim bin
     | append (["/", "sbin"] | path join) # for sbin
     | append ($env.HOME | path join ".local" | path join "bin") # for user local
+    | append ($env.M2_HOME | path join "bin") # for maven
     | append ($data_home | path join "npm" | path join "bin") # for node/npm
     | append ($env.HOMEBREW_PREFIX
         | path join "opt"

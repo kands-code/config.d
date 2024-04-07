@@ -3,6 +3,7 @@ sdk_home="$HOME/.local/sdk"
 data_home="$HOME/.local/share"
 config_home="$HOME/.config"
 cache_home="$HOME/.cache"
+maven_version="3.9.6"
 export XDG_STATE_HOME="$HOME/.local/state"
 export EDITOR=pico
 export VISUAL=code
@@ -22,6 +23,7 @@ export HOMEBREW_CELLAR="$HOMEBREW_PREFIX/Cellar"
 export HOMEBREW_REPOSITORY="$HOMEBREW_PREFIX"
 export MANPATH="/usr/share/man:/usr/local/share/man"
 export MANPATH="$MANPATH:$HOMEBREW_PREFIX/share/man"
+export MANPATH="$HOMEBREW_PREFIX/opt/erlang/lib/erlang/man:$MANPATH"
 export INFOPATH="/usr/share/info:/usr/local/share/info"
 export INFOPATH="$INFOPATH:$HOMEBREW_PREFIX/share/info"
 
@@ -36,6 +38,7 @@ export LESSHISTFILE="$XDG_STATE_HOME/less_history"
 
 # for java
 export JAVA_HOME="$(/usr/libexec/java_home)"
+export M2_HOME="$sdk_home/maven/$maven_version"
 export GRADLE_USER_HOME="$data_home/gradle-repo"
 
 # for python
@@ -58,6 +61,7 @@ export OPAMROOT="$sdk_home/opam"
 # compose path
 all_path="$RUSTUP_HOME/bin"                       # for rustup
 all_path+=":$CARGO_HOME/bin"                      # for rust cargo
+all_path+=":$M2_HOME/bin"                         # for maven
 all_path+=":$data_home/npm/bin"                   # node/npm
 all_path+=":$HOME/.local/bin"                     # for user local
 all_path+=":/opt/homebrew/bin:/opt/homebrew/sbin" # for homebrew
