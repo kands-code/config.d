@@ -50,13 +50,7 @@ $env.OCAML_TOPLEVEL_PATH = ($env.OPAM_SWITCH_PREFIX
 # for utils
 $env.MANPATH = $"/usr/share/man:/usr/local/share/man:($env.HOMEBREW_PREFIX
     | path join "share"
-    | path join "man"):($env.OPAM_SWITCH_PREFIX
-    | path join "man"):($env.HOMEBREW_PREFIX
-    | path join "opt"
-    | path join "erlang"
-    | path join "lib"
-    | path join "erlang"
-    | path join "man")"
+    | path join "man"):($env.OPAM_SWITCH_PREFIX | path join "man")"
 $env.INFOPATH = $"/usr/share/info:/usr/local/share/info:($env.HOMEBREW_PREFIX
     | path join "share"
     | path join "info")"
@@ -66,7 +60,7 @@ $env.PSQL_HISTORY = ($env.XDG_STATE_HOME | path join "psql_history")
 
 # for nodejs
 $env.NPM_CONFIG_USERCONFIG = ($config_home | path join "npm" | path join "npmrc")
-$env.NODE_REPL_HISTORY = ($env.XDG_STATE_HOME | path join "npm" | path join "history")
+$env.NODE_REPL_HISTORY = ($env.XDG_STATE_HOME | path join "npm_history")
 $env.NODE_PATH = $"($env.HOMEBREW_PREFIX
     | path join "lib"
     | path join "node_modules"):($data_home
