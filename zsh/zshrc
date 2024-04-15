@@ -33,7 +33,7 @@ dailyup() {
         mdbook \
         mdbook-katex \
         mdbook-toc \
-        bat du-dust nu startship
+        wasm-pack
     fi
   fi
 }
