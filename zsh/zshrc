@@ -78,10 +78,21 @@ if command -v yt-dlp >/dev/null 2>&1; then
         return 1
       fi
       yt-dlp -o "%(uploader_id)s/%(playlist_title)s/p%(playlist_index)03d-%(title)s.%(ext)s" \
-        -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best' \
-        "$url" \
+        -f "bestvideo+bestaudio" \
+        --recode-video="mp4" \
+        --write-auto-subs \
+        --sub-format="vtt" \
+        --sub-langs="en.*,zh-Hans" \
+        --embed-subs \
+        $url \
         "$@"
       return 0
     }
   fi
+fi
+
+if command -v defaults >/dev/null 2>&1; then
+  reload-dock() {
+    defaults write com.apple.dock ResetLaunchPad -bool true && killall Dock
+  }
 fi

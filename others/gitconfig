@@ -10,3 +10,5 @@ ui = auto
 helper = store
 [core]
 editor = nano # your editor
+[init]
+defaultBranch = repo-src # your branch name

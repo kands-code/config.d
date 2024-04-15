@@ -16,6 +16,7 @@ export LSCOLORS="exfxcxdxbxegedabagacad"
 
 # for utils
 export XMAKE_GLOBALDIR="$sdk_home"
+export MIX_XDG="true"
 export PSQLRC="$config_home/psqlrc"
 export PSQL_HISTORY="$XDG_STATE_HOME/psql_history"
 export HOMEBREW_PREFIX="/opt/homebrew"
@@ -23,6 +24,7 @@ export HOMEBREW_CELLAR="$HOMEBREW_PREFIX/Cellar"
 export HOMEBREW_REPOSITORY="$HOMEBREW_PREFIX"
 export MANPATH="/usr/share/man:/usr/local/share/man"
 export MANPATH="$MANPATH:$HOMEBREW_PREFIX/share/man"
+export MANPATH="$HOMEBREW_PREFIX/opt/erlang/lib/erlang/man:$MANPATH"
 export INFOPATH="/usr/share/info:/usr/local/share/info"
 export INFOPATH="$INFOPATH:$HOMEBREW_PREFIX/share/info"
 

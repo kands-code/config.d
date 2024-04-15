@@ -1,20 +1,20 @@
 # most use variables
-let sdk_home = ($nu.home-path
-    | path join ".local" 
-    | path join "sdk"
+const sdk_home = ($nu.home-path
+  | path join ".local" 
+  | path join "sdk"
 )
-let data_home = ($nu.home-path
-    | path join ".local" 
-    | path join "share"
+const data_home = ($nu.home-path
+  | path join ".local" 
+  | path join "share"
 )
-let config_home = ($nu.home-path | path join ".config")
-let cache_home = ($nu.home-path | path join ".cache")
+const config_home = ($nu.home-path | path join ".config")
+const cache_home = ($nu.home-path | path join ".cache")
 use ($nu.default-config-dir
-    | path join "theme.nu"
+  | path join "theme.nu"
 );
 $env.XDG_STATE_HOME = ($nu.home-path
-    | path join ".local" 
-    | path join "state"
+  | path join ".local" 
+  | path join "state"
 )
 $env.EDITOR = "pico"
 $env.VISUAL = "code"
@@ -33,28 +33,21 @@ $env.HOMEBREW_REPOSITORY = $env.HOMEBREW_PREFIX
 # opam & rye envs
 $env.RYE_HOME = ($sdk_home | path join "rye")
 $env.OPAMROOT = ($sdk_home | path join "opam")
-$env.OPAM_SWITCH_PREFIX = ($env.OPAMROOT | path join "default")
-$env.CAML_LD_LIBRARY_PATH = $"($env.OPAM_SWITCH_PREFIX
-    | path join "lib"
-    | path join "stublibs"):($env.OPAM_SWITCH_PREFIX
-    | path join "lib"
-    | path join "ocaml"
-    | path join "stublibs"):($env.OPAM_SWITCH_PREFIX
-    | path join "lib"
-    | path join "ocaml")"
-$env.OCAML_TOPLEVEL_PATH = ($env.OPAM_SWITCH_PREFIX
-    | path join "lib"
-    | path join "toplevel"
-)
 
 # for utils
 $env.MANPATH = $"/usr/share/man:/usr/local/share/man:($env.HOMEBREW_PREFIX
-    | path join "share"
-    | path join "man"):($env.OPAM_SWITCH_PREFIX | path join "man")"
+  | path join "share"
+  | path join "man"):($env.HOMEBREW_PREFIX
+  | path join "opt"
+  | path join "erlang"
+  | path join "lib"
+  | path join "erlang"
+  | path join "man")"
 $env.INFOPATH = $"/usr/share/info:/usr/local/share/info:($env.HOMEBREW_PREFIX
-    | path join "share"
-    | path join "info")"
+  | path join "share"
+  | path join "info")"
 $env.XMAKE_GLOBALDIR = $sdk_home
+$env.MIX_XDG = "true"
 $env.PSQLRC = ($config_home | path join "psqlrc")
 $env.PSQL_HISTORY = ($env.XDG_STATE_HOME | path join "psql_history")
 
@@ -94,24 +87,35 @@ $env.RUST_BACKTRACE = "full"
 
 # all path
 $env.PATH = ($env.PATH | split row (char esep)
-    | prepend ($env.HOMEBREW_PREFIX | path join "sbin") # for brew
-    | prepend ($env.HOMEBREW_PREFIX | path join "bin") # for brew
-    | prepend ($env.CARGO_HOME | path join "bin") # for cargo
-    | prepend ($env.RUSTUP_HOME | path join "bin") # for rust
-    | prepend ($env.OPAM_SWITCH_PREFIX | path join "bin") # for ocaml
-    | prepend ($env.RYE_HOME| path join "shims") # for rye
-    | append (["/", "local", "bin"] | path join) # for user global
-    | append (["/", "usr", "sbin"] | path join) # for adim bin
-    | append (["/", "sbin"] | path join) # for sbin
-    | append ($env.HOME | path join ".local" | path join "bin") # for user local
-    | append ($env.M2_HOME | path join "bin") # for maven
-    | append ($data_home | path join "npm" | path join "bin") # for node/npm
-    | append ($env.HOMEBREW_PREFIX
-        | path join "opt"
-        | path join "postgresql@16"
-        | path join "bin"
-    ) # for postgresql
+  | prepend ($env.HOMEBREW_PREFIX | path join "sbin") # for brew
+  | prepend ($env.HOMEBREW_PREFIX | path join "bin") # for brew
+  | prepend ($env.CARGO_HOME | path join "bin") # for cargo
+  | prepend ($env.RUSTUP_HOME | path join "bin") # for rust
+  | prepend ($env.RYE_HOME| path join "shims") # for rye
+  | append (["/", "local", "bin"] | path join) # for user global
+  | append (["/", "usr", "sbin"] | path join) # for adim bin
+  | append (["/", "sbin"] | path join) # for sbin
+  | append ($env.HOME | path join ".local" | path join "bin") # for user local
+  | append ($env.M2_HOME | path join "bin") # for maven
+  | append ($data_home | path join "npm" | path join "bin") # for node/npm
+  | append ($env.HOMEBREW_PREFIX
+    | path join "opt"
+    | path join "postgresql@16"
+    | path join "bin"
+  ) # for postgresql
 )
+
+def --env opam-active [] {
+  (opam env)
+    | each { |x| $x | split column ';' var export }
+    | each { |x| $x.var | split column '=' name path }
+    | flatten
+    | str trim path -c "'"
+    | transpose -ird
+    | load-env
+}
+
+opam-active
 
 # proxy envs
 $env.http_proxy = "http://127.0.0.1:49580"
