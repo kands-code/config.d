@@ -46,7 +46,7 @@ def dailyup [] {
     rustup update;
     (cargo install --all-features
         "mdbook" "mdbook-katex" "mdbook-toc"
-        "bat" "wasm-pack"
+        "wasm-pack"
     )
   }
 }
