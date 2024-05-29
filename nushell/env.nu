@@ -113,9 +113,7 @@ def --env opam-active [] {
     | str trim path -c "'"
     | transpose -ird
     | load-env
-}
-
-opam-active
+}; opam-active
 
 # proxy envs
 $env.http_proxy = "http://127.0.0.1:49580"

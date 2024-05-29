@@ -19,7 +19,19 @@ $env.config = {
     # b, kb, kib, mb, mib, gb, gib, tb, tib, pb, pib, eb, eib, auto
     format: "auto"
   }
-  color_config: $env.theme.dark_theme
+  color_config: $env.theme.light_theme
+  hooks: {
+    env_change: {
+      PWD: [
+        { ||
+          if (which direnv | is-empty) {
+            return
+          }
+          direnv export json | from json | default {} | load-env
+        }
+      ]
+    }
+  }
 }
 
 ### self config
@@ -120,3 +132,30 @@ def reload-dock [] {
   } | ^killall Dock
 }
 
+def a2c [
+  url: string # url for downloading
+] {
+  if (not (which aria2c | is-empty)
+    and not (which ffmpeg | is-empty)) {
+    if ($url | str length | $in == 0) {
+      let url_span = (metadata $url).span;
+      error make {
+        msg: "please give a url"
+        label: {
+          text: "url right here",
+          span: $url_span
+        }
+      }
+    } else {
+      (^aria2c
+        --max-connection-per-server=4
+        --min-split-size=5M
+        --on-download-complete=exit
+        --continue
+        $url
+      )
+    }
+  } else {
+    print "nothing here"
+  }
+}

@@ -3,7 +3,6 @@ sdk_home="$HOME/.local/sdk"
 data_home="$HOME/.local/share"
 config_home="$HOME/.config"
 cache_home="$HOME/.cache"
-maven_version="3.9.6"
 export XDG_STATE_HOME="$HOME/.local/state"
 export EDITOR=pico
 export VISUAL=code
@@ -39,6 +38,7 @@ export LESSHISTFILE="$XDG_STATE_HOME/less_history"
 
 # for java
 export JAVA_HOME="$(/usr/libexec/java_home)"
+maven_version="3.9.6"
 export M2_HOME="$sdk_home/maven/$maven_version"
 export GRADLE_USER_HOME="$data_home/gradle-repo"
 

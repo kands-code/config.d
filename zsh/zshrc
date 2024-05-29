@@ -96,3 +96,15 @@ if command -v defaults >/dev/null 2>&1; then
     defaults write com.apple.dock ResetLaunchPad -bool true && killall Dock
   }
 fi
+
+if command -v aria2c >/dev/null 2>&1; then
+  if command -v ffmpeg >/dev/null 2>&1; then
+    a2c() {
+      aria2c --max-connection-per-server=4 \
+        --min-split-size=5M \
+        --on-download-complete=exit \
+        --continue \
+        "$@"
+    }
+  fi
+fi
