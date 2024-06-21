@@ -25,7 +25,7 @@ dailyup() {
   brew upgrade
   brew autoremove
   brew cleanup --prune=all
-  ## rust
+  # rust
   if command -v rustup >/dev/null 2>&1; then
     rustup update
     if [ "$?" = '0' ]; then
@@ -33,15 +33,11 @@ dailyup() {
         mdbook \
         mdbook-katex \
         mdbook-toc \
-        wasm-pack
+        wasm-pack \
+        pest-language-server
     fi
   fi
 }
-
-# opam init
-if command -v opam >/dev/null 2>&1; then
-  eval "$(opam env)"
-fi
 
 # rye init
 if command -v rye >/dev/null 2>&1; then
@@ -52,7 +48,7 @@ fi
 
 # pandoc wrapper
 if command -v pandoc >/dev/null 2>&1; then
-  if command -v lualatex >/dev/null 2>&1; then
+  if command -v typst >/dev/null 2>&1; then
     cv2pdf() {
       local ftype="$1"
       shift
@@ -61,7 +57,7 @@ if command -v pandoc >/dev/null 2>&1; then
       local oname="${fname%.*}.pdf"
       pandoc -f "$ftype" -t "pdf" "$fname" \
         -o "$oname" \
-        --pdf-engine=lualatex \
+        --pdf-engine=typst \
         --metadata-file="$HOME/projects/config.d/others/pmeta.yaml"
     }
   fi

@@ -76,7 +76,7 @@ locale config
 ln -s "<path to project>"/others/locale.conf ~/.config/locale.conf
 ```
 
-### pandoc-meta
+### pmeta.yaml
 
 pandoc config for generating pdfs
 
@@ -126,16 +126,6 @@ config for npm
 ```shell
 mkdir -p ~/.config/npm
 ln -s "<path to project>"/others/npmrc ~/.config/npm/
-```
-
-#### Agda
-
-should replace the path in `agda/libraries` with your own
-
-```shell
-# if use 20-haskell.conf
-mkdir -p ~/.config/cabal
-ln -s "<path to project>"/others/agda ~/.config/cabal/agda
 ```
 
 #### RProfile

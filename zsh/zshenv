@@ -1,73 +1,69 @@
 # most use variables
-sdk_home="$HOME/.local/sdk"
-data_home="$HOME/.local/share"
-config_home="$HOME/.config"
-cache_home="$HOME/.cache"
+declare -lA lens
+lens[sdk]="$HOME/.local/sdk"
+lens[data]="$HOME/.local/share"
+lens[config]="$HOME/.config"
+lens[cache]="$HOME/.cache"
 export XDG_STATE_HOME="$HOME/.local/state"
 export EDITOR=pico
 export VISUAL=code
 
 # for zsh self
-export ZDOTDIR="$HOME/.config/zsh"
+export ZDOTDIR="$lens[config]/zsh"
 export HISTFILE="$XDG_STATE_HOME/zsh_history"
 export CLICOLOR=true
 export LSCOLORS="exfxcxdxbxegedabagacad"
 
 # for utils
-export XMAKE_GLOBALDIR="$sdk_home"
+export XMAKE_GLOBALDIR="$lens[sdk]"
 export MIX_XDG="true"
-export PSQLRC="$config_home/psqlrc"
+export PSQLRC="$lens[config]/psqlrc"
 export PSQL_HISTORY="$XDG_STATE_HOME/psql_history"
 export HOMEBREW_PREFIX="/opt/homebrew"
 export HOMEBREW_CELLAR="$HOMEBREW_PREFIX/Cellar"
 export HOMEBREW_REPOSITORY="$HOMEBREW_PREFIX"
 export MANPATH="/usr/share/man:/usr/local/share/man"
 export MANPATH="$MANPATH:$HOMEBREW_PREFIX/share/man"
-export MANPATH="$HOMEBREW_PREFIX/opt/erlang/lib/erlang/man:$MANPATH"
 export INFOPATH="/usr/share/info:/usr/local/share/info"
 export INFOPATH="$INFOPATH:$HOMEBREW_PREFIX/share/info"
 
 # for nodejs
-export NPM_CONFIG_USERCONFIG="$config_home/npm/npmrc"
+export NPM_CONFIG_USERCONFIG="$lens[config]/npm/npmrc"
 export NODE_REPL_HISTORY="$XDG_STATE_HOME/npm_history"
-export NODE_PATH="/opt/homebrew/lib/node_modules:$data_home/npm/lib/node_modules/"
+export NODE_PATH="/opt/homebrew/lib/node_modules:$lens[data]/npm/lib/node_modules/"
 
 # for less
-export LESSKEY="$config_home/less/lesskey"
+export LESSKEY="$lens[config]/less/lesskey"
 export LESSHISTFILE="$XDG_STATE_HOME/less_history"
 
 # for java
 export JAVA_HOME="$(/usr/libexec/java_home)"
-maven_version="3.9.6"
-export M2_HOME="$sdk_home/maven/$maven_version"
-export GRADLE_USER_HOME="$data_home/gradle-repo"
+export M2_HOME="$lens[sdk]/maven/3.9.7"
+export GRADLE_USER_HOME="$lens[data]/gradle-repo"
 
 # for python
-export RYE_HOME="$sdk_home/rye"
-export JUPYTER_DATA_DIR="$config_home/jupyter"
+export RYE_HOME="$lens[sdk]/rye"
+export JUPYTER_DATA_DIR="$lens[config]/jupyter"
 export IPYTHONDIR="$JUPYTER_DATA_DIR"
 export JUPYTER_CONFIG_DIR="$JUPYTER_DATA_DIR"
-export PYTHONSTARTUP="$config_home/pip/pyrc"
+export PYTHONSTARTUP="$lens[config]/pip/pyrc"
 export PYLINTHOME="$XDG_STATE_HOME/pylint"
-export MPLCONFIGDIR="$config_home/matplotlib"
+export MPLCONFIGDIR="$lens[config]/matplotlib"
 
 # for rust
-export RUSTUP_HOME="$sdk_home/rustup"
-export CARGO_HOME="$sdk_home/cargo"
+export RUSTUP_HOME="$lens[sdk]/rustup"
+export CARGO_HOME="$lens[sdk]/cargo"
 export RUST_BACKTRACE=full
 
-# for ocaml
-export OPAMROOT="$sdk_home/opam"
-
 # compose path
-all_path="$RUSTUP_HOME/bin"                       # for rustup
-all_path+=":$CARGO_HOME/bin"                      # for rust cargo
-all_path+=":$M2_HOME/bin"                         # for maven
-all_path+=":$data_home/npm/bin"                   # node/npm
-all_path+=":$HOME/.local/bin"                     # for user local
-all_path+=":/opt/homebrew/bin:/opt/homebrew/sbin" # for homebrew
-all_path+=":/opt/homebrew/opt/postgresql@16/bin"  # for postgres
-export PATH="$all_path":"$PATH"                   # user path before system path
+lens[path]="$RUSTUP_HOME/bin"                       # for rustup
+lens[path]+=":$CARGO_HOME/bin"                      # for rust cargo
+lens[path]+=":$M2_HOME/bin"                         # for maven
+lens[path]+=":$lens[data]/npm/bin"                  # node/npm
+lens[path]+=":$HOME/.local/bin"                     # for user local
+lens[path]+=":/opt/homebrew/bin:/opt/homebrew/sbin" # for homebrew
+lens[path]+=":/opt/homebrew/opt/postgresql@16/bin"  # for postgres
+export PATH="$lens[path]":"$PATH"                   # user path before system path
 
 # for proxy
 export https_proxy=http://127.0.0.1:49580
