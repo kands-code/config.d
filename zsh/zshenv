@@ -60,7 +60,7 @@ export CABAL_DIR="$paths[data]/cabal"
 export CABAL_CONFIG="$paths[config]/cabal/config"
 export AGDA_DIR="$paths[sdk]/agda"
 #? java
-export JAVA_HOME="$paths[sdk]/jdk/"
+export JAVA_HOME="$paths[sdk]/jdk/jdk-21.0.5+11/Contents/Home"
 export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=$XDG_STATE_HOME/java -Djavafx.cachedir=$XDG_STATE_HOME/openjfx"
 
 # compose path
