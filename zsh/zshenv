@@ -59,6 +59,8 @@ export integer GHCUP_USE_XDG_DIRS=1
 export CABAL_DIR="$paths[data]/cabal"
 export CABAL_CONFIG="$paths[config]/cabal/config"
 export AGDA_DIR="$paths[sdk]/agda"
+#? java
+export JAVA_HOME="$paths[sdk]/jdk/"
 
 # compose path
 paths[homebrew]="/opt/homebrew/bin:/opt/homebrew/sbin" # for homebrew
@@ -68,5 +70,6 @@ paths[path]+=":$RUSTUP_BIN"                            # for rustup itself
 paths[path]+=":$CARGO_HOME/bin"                        # for rust cargo
 paths[path]+=":$DENO_INSTALL/bin"                      # for deno
 paths[path]+=":$CABAL_DIR/bin"                         # for haskell
+paths[path]+=":$JAVA_HOME/bin"                         # for java
 paths[path]+=":$HOMEBREW_PREFIX/opt/postgresql@17/bin" # for postgresql
 export PATH="$paths[path]":"$PATH"                     # user path before system path
