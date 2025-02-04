@@ -25,7 +25,10 @@ function dailyup() {
       cargo install --all-features \
         mdbook \
         mdbook-katex \
-        mdbook-toc
+        mdbook-toc \
+        trunk \
+        create-tauri-app \
+        tauri-cli
     fi
   fi
 }

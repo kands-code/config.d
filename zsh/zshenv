@@ -60,8 +60,14 @@ export CABAL_DIR="$paths[data]/cabal"
 export CABAL_CONFIG="$paths[config]/cabal/config"
 export AGDA_DIR="$paths[sdk]/agda"
 #? java
-export JAVA_HOME="$paths[sdk]/jdk/"
+export JAVA_VERSION="21.0.6+7"
+export JAVA_HOME="$paths[sdk]/jdk/jdk-$JAVA_VERSION"
 export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=$XDG_STATE_HOME/java -Djavafx.cachedir=$XDG_STATE_HOME/openjfx"
+#? android
+export ANDROID_CMDLINE_TOOLS="$paths[sdk]/android-cmdline-tools"
+export ANDROID_HOME="$paths[sdk]/android-cmdline-tools/sdk"
+export NDK_VERSION="28.0.12916984"
+export NDK_HOME="$ANDROID_HOME/ndk/$NDK_VERSION"
 
 # compose path
 paths[homebrew]="/opt/homebrew/bin:/opt/homebrew/sbin" # for homebrew
