@@ -113,8 +113,7 @@ sudo ln -sf "<path-to-project>/others/local.conf" "/etc/fonts/local.conf"
 Configuration files for **npm**.
 
 ```bash
-mkdir -p "$HOME/.config/npm"
-ln -sf "<path-to-project>/others/npmrc" "$HOME/.config/npm/npmrc"
+ln -sf "<path-to-project>/others/npmrc" "$HOME/.config/npmrc"
 ```
 
 ### paru.conf

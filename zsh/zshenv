@@ -42,6 +42,11 @@ export RUSTUP_HOME="$paths[sdk]/rustup"
 export CARGO_HOME="$paths[sdk]/cargo"
 export RUST_BACKTRACE=full
 
+# for nodejs
+export NPM_CONFIG_USERCONFIG="$paths[config]/npmrc"
+export NODE_REPL_HISTORY="$XDG_STATE_HOME/node_repl_history"
+export NODE_PATH="/usr/lib/node_modules:${XDG_DATA_HOME}/npm/lib/node_modules"
+
 # for python
 export JUPYTER_DATA_DIR="$paths[config]/jupyter"
 export IPYTHONDIR="$JUPYTER_DATA_DIR"
@@ -51,8 +56,6 @@ export MPLCONFIGDIR="$XDG_STATE_HOME/matplotlib"
 
 #? rye
 export RYE_HOME="$paths[sdk]/rye"
-#? deno
-export DENO_INSTALL="$paths[sdk]/deno"
 #? haskell
 export integer STACK_XDG=1
 export integer GHCUP_USE_XDG_DIRS=1
@@ -75,7 +78,6 @@ paths[path]=":$XDG_USER_BIN"                           # for user local
 paths[path]+=":$HOMEBREW_PREFIX/opt/llvm/bin"          # for llvm
 paths[path]+=":$RUSTUP_BIN"                            # for rustup itself
 paths[path]+=":$CARGO_HOME/bin"                        # for rust cargo
-paths[path]+=":$DENO_INSTALL/bin"                      # for deno
 paths[path]+=":$CABAL_DIR/bin"                         # for haskell
 paths[path]+=":$JAVA_HOME/bin"                         # for java
 paths[path]+=":$ANDROID_CMDLINE_TOOLS/bin"             # for android cmdline

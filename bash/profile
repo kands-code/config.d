@@ -3,7 +3,6 @@
 # compose path
 allPath="$XDG_USER_BIN"                # for user local
 allPath+=":$CARGO_HOME/bin"            # for rust cargo
-allPath+=":$DENO_INSTALL/bin"          # for deno
 allPath+=":$CABAL_DIR/bin"             # for haskell
 allPath+=":$JAVA_HOME/bin"             # for java
 allPath+=":$ANDROID_CMDLINE_TOOLS/bin" # for android cmdline
