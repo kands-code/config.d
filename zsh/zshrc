@@ -34,7 +34,6 @@ dailyup() {
         mdbook \
         mdbook-katex \
         mdbook-toc \
-        trunk \
         create-tauri-app \
         tauri-cli
     fi
