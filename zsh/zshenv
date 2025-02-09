@@ -70,7 +70,9 @@ export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=$XDG_STATE_HOME/java -Djavafx.c
 export DOTNET_ROOT="$HOME/.dotnet/sdk"
 export DOTNET_CLI_HOME="$HOME/.dotnet/caches"
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
+export DOTNET_GENERATE_ASPNET_CERTIFICATE=0
 export NUGET_PACKAGES="$paths[data]/NuGet/packages"
+export NUGET_HTTP_CACHE_PATH="$paths[data]/NuGet/v3-cache"
 
 # compose path
 paths[homebrew]="/opt/homebrew/bin:/opt/homebrew/sbin" # for homebrew
