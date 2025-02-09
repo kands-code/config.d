@@ -1,14 +1,12 @@
 #!/usr/bin/env bash
 
 # compose path
-allPath="$XDG_USER_BIN"                    # for user local
-allPath+=":$CARGO_HOME/bin"                # for rust cargo
-allPath+=":$XDG_DATA_HOME/npm/bin"         # for nodejs
-allPath+=":$CABAL_DIR/bin"                 # for haskell
-allPath+=":$JAVA_HOME/bin"                 # for java
-allPath+=":$DOTNET_ROOT"                   # for dotnet sdk
-allPath+=":$DOTNET_CLI_HOME/.dotnet/tools" # for dotnet tools
-export PATH="$allPath":"$PATH"             # user path before system path
+allPath="$XDG_USER_BIN"            # for user local
+allPath+=":$CARGO_HOME/bin"        # for rust cargo
+allPath+=":$XDG_DATA_HOME/npm/bin" # for nodejs
+allPath+=":$CABAL_DIR/bin"         # for haskell
+allPath+=":$JAVA_HOME/bin"         # for java
+export PATH="$allPath":"$PATH"     # user path before system path
 
 # ghcup-env
 [ -f "/home/kands/.local/share/ghcup/env" ] && source "/home/kands/.local/share/ghcup/env"
