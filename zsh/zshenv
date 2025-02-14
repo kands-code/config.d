@@ -28,6 +28,7 @@ export INFOPATH="$INFOPATH:$HOMEBREW_PREFIX/share/info"
 export LESSKEY="$paths[config]/less/lesskey"
 export LESSHISTFILE="$XDG_STATE_HOME/less_history"
 export RLWRAP_HOME="$XDG_STATE_HOME/rlwrap_history"
+export GNUPGHOME="$HOME/.local/share/gnupg"
 
 # for sql
 export SQLITE_HISTORY="$XDG_STATE_HOME/sqlite_history"

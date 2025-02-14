@@ -1,0 +1,14 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=2.0
+Type=Application
+Name=IntelliJ IDEA Community Edition
+Comment=Develop with pleasure!
+Exec=/home/kands/.local/sdk/IDEA-Community/bin/idea
+Icon=/home/kands/.local/sdk/IDEA-Community/bin/idea.png
+StartupWMClass=jetbrains-idea-ce
+MimeType=application/x-extension-iml;
+Categories=Development;IDE;
+Terminal=false
+StartupNotify=true
+
