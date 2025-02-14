@@ -76,6 +76,7 @@ paths[path]+=":$CARGO_HOME/bin"                        # for rust cargo
 paths[path]+=":$paths[data]/npm/bin"                   # for nodejs
 paths[path]+=":$CABAL_DIR/bin"                         # for haskell
 paths[path]+=":$JAVA_HOME/bin"                         # for java
+paths[path]+=":$paths[sdk]/erlang/bin"                 # for erlang
 paths[path]+=":$paths[cache]/rebar3/bin"               # for rebar3
 paths[path]+=":$HOMEBREW_PREFIX/opt/postgresql@17/bin" # for postgresql
 export PATH="$paths[path]":"$PATH"                     # user path before system path
