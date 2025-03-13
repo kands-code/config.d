@@ -47,6 +47,9 @@ export RUST_BACKTRACE=full
 export NPM_CONFIG_USERCONFIG="$paths[config]/npmrc"
 export NODE_REPL_HISTORY="$XDG_STATE_HOME/node_repl_history"
 export NODE_PATH="$HOMEBREW_PREFIX/lib/node_modules:$XDG_DATA_HOME/npm/lib/node_modules"
+## deno
+export DENO_DIR="$XDG_STATE_HOME/deno"
+export DENO_INSTALL="$paths[sdk]/deno"
 
 # for python
 export JUPYTER_DATA_DIR="$paths[config]/jupyter"
@@ -74,7 +77,7 @@ paths[path]=":$XDG_USER_BIN"                           # for user local
 paths[path]+=":$HOMEBREW_PREFIX/opt/llvm/bin"          # for llvm
 paths[path]+=":$RUSTUP_BIN"                            # for rustup itself
 paths[path]+=":$CARGO_HOME/bin"                        # for rust cargo
-paths[path]+=":$paths[data]/npm/bin"                   # for nodejs
+paths[path]+=":$DENO_INSTALL/bin"                      # for deno
 paths[path]+=":$CABAL_DIR/bin"                         # for haskell
 paths[path]+=":$JAVA_HOME/bin"                         # for java
 paths[path]+=":$paths[sdk]/erlang/bin"                 # for erlang
