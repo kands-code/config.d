@@ -145,9 +145,13 @@ mkdir -p "$HOME/.ssh"
 ln -sf "<path-to-project>/others/ssh.conf" "$HOME/.ssh/conf"
 ```
 
-### user.dict.txt
+### tlp-bat.conf
 
-**ibus-libpinyin** input method user dictionary, as a backup.
+```bash
+sudo systemctl enable --now tlp
+sudo ln -sf $PWD/others/tlp-bat.conf /etc/tlp.d/10-tlp-bat.conf
+sudo systemctl try-reload-or-restart tlp
+```
 
 ## pip
 
