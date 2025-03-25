@@ -69,7 +69,7 @@ export AGDA_DIR="$paths[sdk]/agda"
 #? java
 export JAVA_VERSION="21.0.6+7"
 export JAVA_HOME="$paths[sdk]/jdk/jdk-$JAVA_VERSION/Contents/Home"
-export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=$XDG_STATE_HOME/java -Djavafx.cachedir=$XDG_STATE_HOME/openjfx"
+export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=$XDG_STATE_HOME/java -Djavafx.cachedir=$XDG_STATE_HOME/java/openjfx"
 
 # compose path
 paths[homebrew]="/opt/homebrew/bin:/opt/homebrew/sbin" # for homebrew
