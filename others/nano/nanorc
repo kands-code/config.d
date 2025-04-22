@@ -7,3 +7,6 @@ include "/usr/share/nano/extra/*.nanorc"
 
 # include user defined highlight
 include "~/.config/nano/extra/*.nanorc"
+
+# enable linen umber
+set linenumbers
