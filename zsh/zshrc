@@ -33,7 +33,8 @@ dailyup() {
       cargo install --all-features \
         mdbook \
         mdbook-katex \
-        mdbook-toc
+        mdbook-toc \
+        hyperfine
     fi
   fi
 }
