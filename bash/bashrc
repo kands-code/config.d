@@ -104,9 +104,9 @@ if command -v ffmpeg >/dev/null 2>&1; then
   yd() {
     if command -v yt-dlp >/dev/null 2>&1; then
       local url="$1"
-      shift
+      shift 1
       local browser="$1"
-      shift
+      shift 1
       if [ -z "$url" ]; then
         echo "usage: yd [url] (...[yt-dlp arguments])"
         return 1

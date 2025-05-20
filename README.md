@@ -116,6 +116,16 @@ Configuration files for **npm**.
 ln -sf "<path-to-project>/others/npmrc" "$HOME/.config/npmrc"
 ```
 
+#### nm.conf
+
+Configuration files for **NetworkManager**.
+
+```bash
+# backup
+sudo cp "/etc/NetworkManager/NetworkManager.conf" "/etc/NetworkManager/NetworkManager.conf.bak"
+sudo ln -sf "<path-to-project>/others/npmrc" "/etc/NetworkManager/NetworkManager.conf"
+```
+
 ### paru.conf
 
 Configuration files for **paru**.
