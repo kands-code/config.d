@@ -108,14 +108,6 @@ The font name can be checked using `fc-list | grep <font-name>`.
 sudo ln -sf "<path-to-project>/others/local.conf" "/etc/fonts/local.conf"
 ```
 
-#### mvn.xml
-
-Configuration files for **maven**.
-
-```bash
-ln -sf "<path-to-project>/others/mvn.xml" "$HOME/.local/state/java/mvn.xml"
-```
-
 #### npmrc
 
 Configuration files for **npm**.
