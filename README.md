@@ -49,7 +49,6 @@ Highlighting configuration for **nano** or **pico** editor.
 
 ```bash
 mkdir "$HOME/.config/nano"
-ln -sf "<path-to-project>/others/nano/extra" "$HOME/.config/nano/extra"
 cp "<path-to-project>/others/nano/nanorc" "$HOME/.config/nano/nanorc"
 # for macOS user
 # need modify config to macOS configure

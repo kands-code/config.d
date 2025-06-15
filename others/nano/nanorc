@@ -2,11 +2,8 @@
 include "/usr/share/nano/*.nanorc"
 include "/usr/share/nano/extra/*.nanorc"
 ## for macOS user
-#include "/opt/homebrew/Cellar/nano/8.2/share/nano/*.nanorc"
-#include "/opt/homebrew/Cellar/nano/8.2/share/nano/extra/*.nanorc"
-
-# include user defined highlight
-include "~/.config/nano/extra/*.nanorc"
+#include "/opt/homebrew/share/nano/*.nanorc"
+#include "/opt/homebrew/share/nano/extra/*.nanorc"
 
 # enable linen umber
 set linenumbers
