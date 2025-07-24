@@ -20,7 +20,7 @@ export GNUPGHOME="$HOME/.local/share/gnupg"
 export PATH="$paths[homebrew]":"$PATH" # homebrew first
 
 # daily update
-dailyup() {
+function dailyup() {
   # brew
   brew update
   brew upgrade
@@ -41,7 +41,7 @@ dailyup() {
 
 # reload dock
 if command -v defaults >/dev/null 2>&1; then
-  reload-dock() {
+  function reload-dock() {
     defaults write com.apple.dock ResetLaunchPad -bool true && killall Dock
   }
 fi
@@ -53,14 +53,14 @@ fi
 
 # python venv
 if command -v python3 >/dev/null 2>&1; then
-  create-venv() {
+  function create-venv() {
     local vname="$(basename $PWD)"
     if [[ -n "$1" ]]; then
       vname="$1"
     fi
     python3 -m venv .venv --prompt "$vname"
   }
-  activate-venv() {
+  function activate-venv() {
     local dname=".venv"
     if [[ -n "$1" ]]; then
       dname="$1"
@@ -74,7 +74,7 @@ fi
 # video convert
 if command -v ffmpeg >/dev/null 2>&1; then
   # convert to mp4
-  conv2mp4() {
+  function conv2mp4() {
     local filename="$1"
     local basename="${filename%.*}"
     ffmpeg -i "$filename" \
@@ -83,7 +83,7 @@ if command -v ffmpeg >/dev/null 2>&1; then
       "$basename".mp4
   }
   # aria2c wrapper
-  a2c() {
+  function a2c() {
     if command -v aria2c >/dev/null 2>&1; then
       aria2c --max-connection-per-server=4 \
         --min-split-size=5M \
@@ -92,7 +92,7 @@ if command -v ffmpeg >/dev/null 2>&1; then
     fi
   }
   # yt-dlp wrapper
-  yd() {
+  function yd() {
     if command -v yt-dlp >/dev/null 2>&1; then
       local url="$1"
       shift 1
@@ -107,6 +107,7 @@ if command -v ffmpeg >/dev/null 2>&1; then
         --recode-video="mp4" \
         --write-auto-subs \
         --sub-format="vtt" \
+        --sleep-subtitles 2 \
         --sub-langs="en.*,zh-Hans" \
         --embed-subs \
         --cookies-from-browser="$browser" \
