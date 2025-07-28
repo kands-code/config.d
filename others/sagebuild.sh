@@ -4,8 +4,8 @@ set -euo pipefail
 
 # 设置环境变量
 export DOT_SAGE="$XDG_STATE_HOME/sagemath"
-export SAGE_LOCAL="$HOME/.local/sdk/sagemath"
-export SAGE_ROOT="$HOME/.local/sdk/sagemath/sage"
+export SAGE_LOCAL="$XDG_SDK_HOME/sagemath"
+export SAGE_ROOT="$XDG_SDK_HOME/sagemath/sage"
 # 对于苹果用户，需要设置 brew
 command -v brew >/dev/null 2>&1 && source "$SAGE_ROOT/.homebrew-build-env"
 

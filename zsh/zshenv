@@ -57,10 +57,6 @@ export MPLCONFIGDIR="$XDG_STATE_HOME/matplotlib"
 
 #? rye
 export RYE_HOME="$paths[sdk]/rye"
-#? sage config
-DOT_SAGE="$XDG_STATE_HOME/sagemath"
-SAGE_LOCAL="$XDG_SDK_HOME/sagemath"
-SAGE_ROOT="$XDG_SDK_HOME/sagemath/sage"
 #? haskell
 export integer STACK_XDG=1
 export integer GHCUP_USE_XDG_DIRS=1
