@@ -78,9 +78,9 @@ Some user configuration for **systemd**.
 ln -sf "<path-to-project>/others/systemd" "$HOME/.config/systemd"
 ```
 
-### dns-config.md & dns.conf
+### dns-config.md
 
-Instructions and configuration for configuring **systemd-resolved**.
+Instructions for configuring **systemd-resolved**.
 
 ### git.conf
 
@@ -121,8 +121,8 @@ Configuration files for **NetworkManager**.
 
 ```bash
 # backup
-sudo cp "/etc/NetworkManager/NetworkManager.conf" "/etc/NetworkManager/NetworkManager.conf.bak"
-sudo ln -sf "<path-to-project>/others/npmrc" "/etc/NetworkManager/NetworkManager.conf"
+# sudo cp "/etc/NetworkManager/NetworkManager.conf" "/etc/NetworkManager/NetworkManager.conf.bak"
+sudo ln -sf "<path-to-project>/others/nm.conf" "/etc/NetworkManager/NetworkManager.conf"
 ```
 
 ### paru.conf
