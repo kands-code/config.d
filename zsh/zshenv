@@ -71,6 +71,9 @@ export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=$XDG_STATE_HOME/java -Djavafx.c
 export GOPATH="$XDG_STATE_HOME/go"
 export GOMODCACHE="$GOPATH/pkg/mod"
 export GOPROXY="https://proxy.golang.org,direct"
+#? julia
+export JULIA_DEPOT_PATH="$paths[sdk]/julia/depot:$JULIA_DEPOT_PATH"
+export JULIAUP_DEPOT_PATH="$paths[sdk]/julia/depot"
 
 # compose path
 paths[homebrew]="/opt/homebrew/bin:/opt/homebrew/sbin" # for homebrew
@@ -82,6 +85,7 @@ paths[path]+=":$HOME/.local/share/npm/bin"             # for nodejs
 paths[path]+=":$CABAL_DIR/bin"                         # for haskell
 paths[path]+=":$JAVA_HOME/bin"                         # for java
 paths[path]+=":$paths[sdk]/erlang/bin"                 # for erlang
+paths[path]+=":$paths[sdk]/julia/bin"                  # for julia
 paths[path]+=":$paths[cache]/rebar3/bin"               # for rebar3
 paths[path]+=":$HOMEBREW_PREFIX/opt/postgresql@17/bin" # for postgresql
 export PATH="$paths[path]":"$PATH"                     # user path before system path

@@ -1,0 +1,1006 @@
+#compdef juliaup
+
+autoload -U is-at-least
+
+_juliaup() {
+    typeset -A opt_args
+    typeset -a _arguments_options
+    local ret=1
+
+    if is-at-least 5.2; then
+        _arguments_options=(-s -S -C)
+    else
+        _arguments_options=(-s -C)
+    fi
+
+    local context curcontext="$curcontext" state line
+    _arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+'-V[Print version]' \
+'--version[Print version]' \
+":: :_juliaup_commands" \
+"*::: :->Juliaup" \
+&& ret=0
+    case $state in
+    (Juliaup)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:juliaup-command-$line[1]:"
+        case $line[1] in
+            (default)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+':channel:_default' \
+&& ret=0
+;;
+(add)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+':channel:_default' \
+&& ret=0
+;;
+(link)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+':channel:_default' \
+':file:_default' \
+'*::args:_default' \
+&& ret=0
+;;
+(list)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(override)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+":: :_juliaup__override_commands" \
+"*::: :->override" \
+&& ret=0
+
+    case $state in
+    (override)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:juliaup-override-command-$line[1]:"
+        case $line[1] in
+            (status)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(set)
+_arguments "${_arguments_options[@]}" : \
+'-p+[]:PATH:_default' \
+'--path=[]:PATH:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+':channel:_default' \
+&& ret=0
+;;
+(unset)
+_arguments "${_arguments_options[@]}" : \
+'-p+[]:PATH:_default' \
+'--path=[]:PATH:_default' \
+'-n[]' \
+'--nonexistent[]' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_juliaup__override__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:juliaup-override-help-command-$line[1]:"
+        case $line[1] in
+            (status)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(set)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(unset)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+;;
+(update)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+'::channel:_default' \
+&& ret=0
+;;
+(remove)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+':channel:_default' \
+&& ret=0
+;;
+(status)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(gc)
+_arguments "${_arguments_options[@]}" : \
+'--prune-linked[]' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(config)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+":: :_juliaup__config_commands" \
+"*::: :->config" \
+&& ret=0
+
+    case $state in
+    (config)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:juliaup-config-command-$line[1]:"
+        case $line[1] in
+            (channelsymlinks)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+'::value -- New Value:(true false)' \
+&& ret=0
+;;
+(backgroundselfupdateinterval)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+'::value -- New value:_default' \
+&& ret=0
+;;
+(startupselfupdateinterval)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+'::value -- New value:_default' \
+&& ret=0
+;;
+(modifypath)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+'::value -- New value:(true false)' \
+&& ret=0
+;;
+(versionsdbupdateinterval)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+'::value -- New value:_default' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_juliaup__config__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:juliaup-config-help-command-$line[1]:"
+        case $line[1] in
+            (channelsymlinks)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(backgroundselfupdateinterval)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(startupselfupdateinterval)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(modifypath)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(versionsdbupdateinterval)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+;;
+(api)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+':command:_default' \
+&& ret=0
+;;
+(46029ef5-0b73-4a71-bff3-d0d05de42aac)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(0cf1528f-0b15-46b1-9ac9-e5bf5ccccbcf)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(info)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(self)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+":: :_juliaup__self_commands" \
+"*::: :->self" \
+&& ret=0
+
+    case $state in
+    (self)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:juliaup-self-command-$line[1]:"
+        case $line[1] in
+            (update)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(channel)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+'::channel:(release releasepreview dev)' \
+&& ret=0
+;;
+(uninstall)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_juliaup__self__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:juliaup-self-help-command-$line[1]:"
+        case $line[1] in
+            (update)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(channel)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(uninstall)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+;;
+(completions)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+':shell:(bash elvish fish powershell zsh)' \
+&& ret=0
+;;
+(4c79c12db1d34bbbab1f6c6f838f423f)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_juliaup__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:juliaup-help-command-$line[1]:"
+        case $line[1] in
+            (default)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(add)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(link)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(list)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(override)
+_arguments "${_arguments_options[@]}" : \
+":: :_juliaup__help__override_commands" \
+"*::: :->override" \
+&& ret=0
+
+    case $state in
+    (override)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:juliaup-help-override-command-$line[1]:"
+        case $line[1] in
+            (status)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(set)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(unset)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(update)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(remove)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(status)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(gc)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(config)
+_arguments "${_arguments_options[@]}" : \
+":: :_juliaup__help__config_commands" \
+"*::: :->config" \
+&& ret=0
+
+    case $state in
+    (config)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:juliaup-help-config-command-$line[1]:"
+        case $line[1] in
+            (channelsymlinks)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(backgroundselfupdateinterval)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(startupselfupdateinterval)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(modifypath)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(versionsdbupdateinterval)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(api)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(46029ef5-0b73-4a71-bff3-d0d05de42aac)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(0cf1528f-0b15-46b1-9ac9-e5bf5ccccbcf)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(info)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(self)
+_arguments "${_arguments_options[@]}" : \
+":: :_juliaup__help__self_commands" \
+"*::: :->self" \
+&& ret=0
+
+    case $state in
+    (self)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:juliaup-help-self-command-$line[1]:"
+        case $line[1] in
+            (update)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(channel)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(uninstall)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(completions)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(4c79c12db1d34bbbab1f6c6f838f423f)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+}
+
+(( $+functions[_juliaup_commands] )) ||
+_juliaup_commands() {
+    local commands; commands=(
+'default:Set the default Julia version' \
+'add:Add a specific Julia version or channel to your system. Access via \`julia +{channel}\` e.g. \`julia +1.6\`' \
+'link:Link an existing Julia binary to a custom channel name' \
+'list:List all available channels' \
+'override:Manage directory overrides' \
+'update:Update all or a specific channel to the latest Julia version' \
+'remove:Remove a Julia version from your system' \
+'status:Show all installed Julia versions' \
+'gc:Garbage collect uninstalled Julia versions' \
+'config:Juliaup configuration' \
+'api:' \
+'46029ef5-0b73-4a71-bff3-d0d05de42aac:' \
+'0cf1528f-0b15-46b1-9ac9-e5bf5ccccbcf:' \
+'info:' \
+'self:Manage this juliaup installation' \
+'completions:Generate tab-completion scripts for your shell' \
+'4c79c12db1d34bbbab1f6c6f838f423f:' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'juliaup commands' commands "$@"
+}
+(( $+functions[_juliaup__0cf1528f-0b15-46b1-9ac9-e5bf5ccccbcf_commands] )) ||
+_juliaup__0cf1528f-0b15-46b1-9ac9-e5bf5ccccbcf_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup 0cf1528f-0b15-46b1-9ac9-e5bf5ccccbcf commands' commands "$@"
+}
+(( $+functions[_juliaup__46029ef5-0b73-4a71-bff3-d0d05de42aac_commands] )) ||
+_juliaup__46029ef5-0b73-4a71-bff3-d0d05de42aac_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup 46029ef5-0b73-4a71-bff3-d0d05de42aac commands' commands "$@"
+}
+(( $+functions[_juliaup__4c79c12db1d34bbbab1f6c6f838f423f_commands] )) ||
+_juliaup__4c79c12db1d34bbbab1f6c6f838f423f_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup 4c79c12db1d34bbbab1f6c6f838f423f commands' commands "$@"
+}
+(( $+functions[_juliaup__add_commands] )) ||
+_juliaup__add_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup add commands' commands "$@"
+}
+(( $+functions[_juliaup__api_commands] )) ||
+_juliaup__api_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup api commands' commands "$@"
+}
+(( $+functions[_juliaup__completions_commands] )) ||
+_juliaup__completions_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup completions commands' commands "$@"
+}
+(( $+functions[_juliaup__config_commands] )) ||
+_juliaup__config_commands() {
+    local commands; commands=(
+'channelsymlinks:Create a separate symlink per channel' \
+'backgroundselfupdateinterval:The time between automatic background updates of Juliaup in minutes, use 0 to disable' \
+'startupselfupdateinterval:The time between automatic updates at Julia startup of Juliaup in minutes, use 0 to disable' \
+'modifypath:Add the Julia binaries to your PATH by manipulating various shell startup scripts' \
+'versionsdbupdateinterval:The time between automatic updates of the versions database in minutes, use 0 to disable' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'juliaup config commands' commands "$@"
+}
+(( $+functions[_juliaup__config__backgroundselfupdateinterval_commands] )) ||
+_juliaup__config__backgroundselfupdateinterval_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup config backgroundselfupdateinterval commands' commands "$@"
+}
+(( $+functions[_juliaup__config__channelsymlinks_commands] )) ||
+_juliaup__config__channelsymlinks_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup config channelsymlinks commands' commands "$@"
+}
+(( $+functions[_juliaup__config__help_commands] )) ||
+_juliaup__config__help_commands() {
+    local commands; commands=(
+'channelsymlinks:Create a separate symlink per channel' \
+'backgroundselfupdateinterval:The time between automatic background updates of Juliaup in minutes, use 0 to disable' \
+'startupselfupdateinterval:The time between automatic updates at Julia startup of Juliaup in minutes, use 0 to disable' \
+'modifypath:Add the Julia binaries to your PATH by manipulating various shell startup scripts' \
+'versionsdbupdateinterval:The time between automatic updates of the versions database in minutes, use 0 to disable' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'juliaup config help commands' commands "$@"
+}
+(( $+functions[_juliaup__config__help__backgroundselfupdateinterval_commands] )) ||
+_juliaup__config__help__backgroundselfupdateinterval_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup config help backgroundselfupdateinterval commands' commands "$@"
+}
+(( $+functions[_juliaup__config__help__channelsymlinks_commands] )) ||
+_juliaup__config__help__channelsymlinks_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup config help channelsymlinks commands' commands "$@"
+}
+(( $+functions[_juliaup__config__help__help_commands] )) ||
+_juliaup__config__help__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup config help help commands' commands "$@"
+}
+(( $+functions[_juliaup__config__help__modifypath_commands] )) ||
+_juliaup__config__help__modifypath_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup config help modifypath commands' commands "$@"
+}
+(( $+functions[_juliaup__config__help__startupselfupdateinterval_commands] )) ||
+_juliaup__config__help__startupselfupdateinterval_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup config help startupselfupdateinterval commands' commands "$@"
+}
+(( $+functions[_juliaup__config__help__versionsdbupdateinterval_commands] )) ||
+_juliaup__config__help__versionsdbupdateinterval_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup config help versionsdbupdateinterval commands' commands "$@"
+}
+(( $+functions[_juliaup__config__modifypath_commands] )) ||
+_juliaup__config__modifypath_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup config modifypath commands' commands "$@"
+}
+(( $+functions[_juliaup__config__startupselfupdateinterval_commands] )) ||
+_juliaup__config__startupselfupdateinterval_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup config startupselfupdateinterval commands' commands "$@"
+}
+(( $+functions[_juliaup__config__versionsdbupdateinterval_commands] )) ||
+_juliaup__config__versionsdbupdateinterval_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup config versionsdbupdateinterval commands' commands "$@"
+}
+(( $+functions[_juliaup__default_commands] )) ||
+_juliaup__default_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup default commands' commands "$@"
+}
+(( $+functions[_juliaup__gc_commands] )) ||
+_juliaup__gc_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup gc commands' commands "$@"
+}
+(( $+functions[_juliaup__help_commands] )) ||
+_juliaup__help_commands() {
+    local commands; commands=(
+'default:Set the default Julia version' \
+'add:Add a specific Julia version or channel to your system. Access via \`julia +{channel}\` e.g. \`julia +1.6\`' \
+'link:Link an existing Julia binary to a custom channel name' \
+'list:List all available channels' \
+'override:Manage directory overrides' \
+'update:Update all or a specific channel to the latest Julia version' \
+'remove:Remove a Julia version from your system' \
+'status:Show all installed Julia versions' \
+'gc:Garbage collect uninstalled Julia versions' \
+'config:Juliaup configuration' \
+'api:' \
+'46029ef5-0b73-4a71-bff3-d0d05de42aac:' \
+'0cf1528f-0b15-46b1-9ac9-e5bf5ccccbcf:' \
+'info:' \
+'self:Manage this juliaup installation' \
+'completions:Generate tab-completion scripts for your shell' \
+'4c79c12db1d34bbbab1f6c6f838f423f:' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'juliaup help commands' commands "$@"
+}
+(( $+functions[_juliaup__help__0cf1528f-0b15-46b1-9ac9-e5bf5ccccbcf_commands] )) ||
+_juliaup__help__0cf1528f-0b15-46b1-9ac9-e5bf5ccccbcf_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup help 0cf1528f-0b15-46b1-9ac9-e5bf5ccccbcf commands' commands "$@"
+}
+(( $+functions[_juliaup__help__46029ef5-0b73-4a71-bff3-d0d05de42aac_commands] )) ||
+_juliaup__help__46029ef5-0b73-4a71-bff3-d0d05de42aac_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup help 46029ef5-0b73-4a71-bff3-d0d05de42aac commands' commands "$@"
+}
+(( $+functions[_juliaup__help__4c79c12db1d34bbbab1f6c6f838f423f_commands] )) ||
+_juliaup__help__4c79c12db1d34bbbab1f6c6f838f423f_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup help 4c79c12db1d34bbbab1f6c6f838f423f commands' commands "$@"
+}
+(( $+functions[_juliaup__help__add_commands] )) ||
+_juliaup__help__add_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup help add commands' commands "$@"
+}
+(( $+functions[_juliaup__help__api_commands] )) ||
+_juliaup__help__api_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup help api commands' commands "$@"
+}
+(( $+functions[_juliaup__help__completions_commands] )) ||
+_juliaup__help__completions_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup help completions commands' commands "$@"
+}
+(( $+functions[_juliaup__help__config_commands] )) ||
+_juliaup__help__config_commands() {
+    local commands; commands=(
+'channelsymlinks:Create a separate symlink per channel' \
+'backgroundselfupdateinterval:The time between automatic background updates of Juliaup in minutes, use 0 to disable' \
+'startupselfupdateinterval:The time between automatic updates at Julia startup of Juliaup in minutes, use 0 to disable' \
+'modifypath:Add the Julia binaries to your PATH by manipulating various shell startup scripts' \
+'versionsdbupdateinterval:The time between automatic updates of the versions database in minutes, use 0 to disable' \
+    )
+    _describe -t commands 'juliaup help config commands' commands "$@"
+}
+(( $+functions[_juliaup__help__config__backgroundselfupdateinterval_commands] )) ||
+_juliaup__help__config__backgroundselfupdateinterval_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup help config backgroundselfupdateinterval commands' commands "$@"
+}
+(( $+functions[_juliaup__help__config__channelsymlinks_commands] )) ||
+_juliaup__help__config__channelsymlinks_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup help config channelsymlinks commands' commands "$@"
+}
+(( $+functions[_juliaup__help__config__modifypath_commands] )) ||
+_juliaup__help__config__modifypath_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup help config modifypath commands' commands "$@"
+}
+(( $+functions[_juliaup__help__config__startupselfupdateinterval_commands] )) ||
+_juliaup__help__config__startupselfupdateinterval_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup help config startupselfupdateinterval commands' commands "$@"
+}
+(( $+functions[_juliaup__help__config__versionsdbupdateinterval_commands] )) ||
+_juliaup__help__config__versionsdbupdateinterval_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup help config versionsdbupdateinterval commands' commands "$@"
+}
+(( $+functions[_juliaup__help__default_commands] )) ||
+_juliaup__help__default_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup help default commands' commands "$@"
+}
+(( $+functions[_juliaup__help__gc_commands] )) ||
+_juliaup__help__gc_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup help gc commands' commands "$@"
+}
+(( $+functions[_juliaup__help__help_commands] )) ||
+_juliaup__help__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup help help commands' commands "$@"
+}
+(( $+functions[_juliaup__help__info_commands] )) ||
+_juliaup__help__info_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup help info commands' commands "$@"
+}
+(( $+functions[_juliaup__help__link_commands] )) ||
+_juliaup__help__link_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup help link commands' commands "$@"
+}
+(( $+functions[_juliaup__help__list_commands] )) ||
+_juliaup__help__list_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup help list commands' commands "$@"
+}
+(( $+functions[_juliaup__help__override_commands] )) ||
+_juliaup__help__override_commands() {
+    local commands; commands=(
+'status:' \
+'set:' \
+'unset:' \
+    )
+    _describe -t commands 'juliaup help override commands' commands "$@"
+}
+(( $+functions[_juliaup__help__override__set_commands] )) ||
+_juliaup__help__override__set_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup help override set commands' commands "$@"
+}
+(( $+functions[_juliaup__help__override__status_commands] )) ||
+_juliaup__help__override__status_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup help override status commands' commands "$@"
+}
+(( $+functions[_juliaup__help__override__unset_commands] )) ||
+_juliaup__help__override__unset_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup help override unset commands' commands "$@"
+}
+(( $+functions[_juliaup__help__remove_commands] )) ||
+_juliaup__help__remove_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup help remove commands' commands "$@"
+}
+(( $+functions[_juliaup__help__self_commands] )) ||
+_juliaup__help__self_commands() {
+    local commands; commands=(
+'update:Update the Julia versions database and juliaup itself' \
+'channel:Configure the channel to use for juliaup updates. Leave CHANNEL blank to see current channel' \
+'uninstall:Uninstall this version of juliaup from the system' \
+    )
+    _describe -t commands 'juliaup help self commands' commands "$@"
+}
+(( $+functions[_juliaup__help__self__channel_commands] )) ||
+_juliaup__help__self__channel_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup help self channel commands' commands "$@"
+}
+(( $+functions[_juliaup__help__self__uninstall_commands] )) ||
+_juliaup__help__self__uninstall_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup help self uninstall commands' commands "$@"
+}
+(( $+functions[_juliaup__help__self__update_commands] )) ||
+_juliaup__help__self__update_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup help self update commands' commands "$@"
+}
+(( $+functions[_juliaup__help__status_commands] )) ||
+_juliaup__help__status_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup help status commands' commands "$@"
+}
+(( $+functions[_juliaup__help__update_commands] )) ||
+_juliaup__help__update_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup help update commands' commands "$@"
+}
+(( $+functions[_juliaup__info_commands] )) ||
+_juliaup__info_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup info commands' commands "$@"
+}
+(( $+functions[_juliaup__link_commands] )) ||
+_juliaup__link_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup link commands' commands "$@"
+}
+(( $+functions[_juliaup__list_commands] )) ||
+_juliaup__list_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup list commands' commands "$@"
+}
+(( $+functions[_juliaup__override_commands] )) ||
+_juliaup__override_commands() {
+    local commands; commands=(
+'status:' \
+'set:' \
+'unset:' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'juliaup override commands' commands "$@"
+}
+(( $+functions[_juliaup__override__help_commands] )) ||
+_juliaup__override__help_commands() {
+    local commands; commands=(
+'status:' \
+'set:' \
+'unset:' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'juliaup override help commands' commands "$@"
+}
+(( $+functions[_juliaup__override__help__help_commands] )) ||
+_juliaup__override__help__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup override help help commands' commands "$@"
+}
+(( $+functions[_juliaup__override__help__set_commands] )) ||
+_juliaup__override__help__set_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup override help set commands' commands "$@"
+}
+(( $+functions[_juliaup__override__help__status_commands] )) ||
+_juliaup__override__help__status_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup override help status commands' commands "$@"
+}
+(( $+functions[_juliaup__override__help__unset_commands] )) ||
+_juliaup__override__help__unset_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup override help unset commands' commands "$@"
+}
+(( $+functions[_juliaup__override__set_commands] )) ||
+_juliaup__override__set_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup override set commands' commands "$@"
+}
+(( $+functions[_juliaup__override__status_commands] )) ||
+_juliaup__override__status_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup override status commands' commands "$@"
+}
+(( $+functions[_juliaup__override__unset_commands] )) ||
+_juliaup__override__unset_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup override unset commands' commands "$@"
+}
+(( $+functions[_juliaup__remove_commands] )) ||
+_juliaup__remove_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup remove commands' commands "$@"
+}
+(( $+functions[_juliaup__self_commands] )) ||
+_juliaup__self_commands() {
+    local commands; commands=(
+'update:Update the Julia versions database and juliaup itself' \
+'channel:Configure the channel to use for juliaup updates. Leave CHANNEL blank to see current channel' \
+'uninstall:Uninstall this version of juliaup from the system' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'juliaup self commands' commands "$@"
+}
+(( $+functions[_juliaup__self__channel_commands] )) ||
+_juliaup__self__channel_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup self channel commands' commands "$@"
+}
+(( $+functions[_juliaup__self__help_commands] )) ||
+_juliaup__self__help_commands() {
+    local commands; commands=(
+'update:Update the Julia versions database and juliaup itself' \
+'channel:Configure the channel to use for juliaup updates. Leave CHANNEL blank to see current channel' \
+'uninstall:Uninstall this version of juliaup from the system' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'juliaup self help commands' commands "$@"
+}
+(( $+functions[_juliaup__self__help__channel_commands] )) ||
+_juliaup__self__help__channel_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup self help channel commands' commands "$@"
+}
+(( $+functions[_juliaup__self__help__help_commands] )) ||
+_juliaup__self__help__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup self help help commands' commands "$@"
+}
+(( $+functions[_juliaup__self__help__uninstall_commands] )) ||
+_juliaup__self__help__uninstall_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup self help uninstall commands' commands "$@"
+}
+(( $+functions[_juliaup__self__help__update_commands] )) ||
+_juliaup__self__help__update_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup self help update commands' commands "$@"
+}
+(( $+functions[_juliaup__self__uninstall_commands] )) ||
+_juliaup__self__uninstall_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup self uninstall commands' commands "$@"
+}
+(( $+functions[_juliaup__self__update_commands] )) ||
+_juliaup__self__update_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup self update commands' commands "$@"
+}
+(( $+functions[_juliaup__status_commands] )) ||
+_juliaup__status_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup status commands' commands "$@"
+}
+(( $+functions[_juliaup__update_commands] )) ||
+_juliaup__update_commands() {
+    local commands; commands=()
+    _describe -t commands 'juliaup update commands' commands "$@"
+}
+
+if [ "$funcstack[1]" = "_juliaup" ]; then
+    _juliaup "$@"
+else
+    compdef _juliaup juliaup
+fi
