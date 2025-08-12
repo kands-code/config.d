@@ -64,7 +64,7 @@ export CABAL_DIR="$paths[data]/cabal"
 export CABAL_CONFIG="$paths[config]/cabal/config"
 export AGDA_DIR="$paths[sdk]/agda"
 #? java
-export JAVA_VERSION="21.0.6+7"
+export JAVA_VERSION="21.0.8+9"
 export JAVA_HOME="$paths[sdk]/jdk/jdk-$JAVA_VERSION/Contents/Home"
 export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=$XDG_STATE_HOME/java -Djavafx.cachedir=$XDG_STATE_HOME/java/openjfx"
 #? go
