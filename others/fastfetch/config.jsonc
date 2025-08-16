@@ -64,11 +64,13 @@
     {
       "type": "cpu",
       "key": "cpu",
+      "temp": true,
       "format": "{1} ({5}) @ {7} GHz [{8}]"
     },
     {
       "type": "gpu",
       "key": "gpu",
+      "temp": true,
       "format": "{6} ({3}) @ [{4}]"
     },
     {
