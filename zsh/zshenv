@@ -82,6 +82,7 @@ paths[path]+=":$HOME/.local/share/npm/bin"             # for nodejs
 paths[path]+=":$CABAL_DIR/bin"                         # for haskell
 paths[path]+=":$JAVA_HOME/bin"                         # for java
 paths[path]+=":$paths[sdk]/erlang/bin"                 # for erlang
+paths[path]+=":$GOPATH/bin"                            # for golang
 paths[path]+=":$paths[cache]/rebar3/bin"               # for rebar3
 paths[path]+=":$HOMEBREW_PREFIX/opt/postgresql@17/bin" # for postgresql
 export PATH="$paths[path]":"$PATH"                     # user path before system path
