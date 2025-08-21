@@ -27,7 +27,8 @@ function dailyup() {
         mdbook \
         mdbook-katex \
         mdbook-toc \
-        hyperfine
+        hyperfine \
+        sqlx-cli
     fi
   fi
 }
