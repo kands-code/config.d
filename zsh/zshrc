@@ -23,7 +23,7 @@ export PATH="$paths[homebrew]":"$PATH" # homebrew first
 function dailyup() {
   # brew
   brew update
-  brew upgrade
+  brew upgrade --greedy
   brew autoremove
   brew cleanup --prune=all
   # rust
