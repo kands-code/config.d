@@ -113,13 +113,8 @@ if command -v ffmpeg >/dev/null 2>&1; then
         return 1
       fi
       yt-dlp -o "%(uploader_id)s/%(playlist_title)s/p%(playlist_index)03d-%(title)s.%(ext)s" \
-        -f "bestvideo+bestaudio" \
+        -f "bv*+ba/b" \
         --recode-video="mp4" \
-        --write-auto-subs \
-        --sub-format="vtt" \
-        --sleep-subtitles 2 \
-        --sub-langs="en.*,zh-Hans" \
-        --embed-subs \
         --cookies-from-browser="$browser" \
         "$url" \
         "$@"
