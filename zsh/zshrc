@@ -32,8 +32,6 @@ function dailyup() {
     if [ "$?" = '0' ]; then
       cargo install --all-features \
         mdbook \
-        mdbook-katex \
-        mdbook-toc \
         hyperfine \
         sqlx-cli
     fi
