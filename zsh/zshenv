@@ -55,8 +55,8 @@ export JUPYTER_CONFIG_DIR="$JUPYTER_DATA_DIR"
 export PYTHONSTARTUP="$paths[config]/pip/startup.py"
 export MPLCONFIGDIR="$XDG_STATE_HOME/matplotlib"
 
-#? rye
-export RYE_HOME="$paths[sdk]/rye"
+#? uv
+export UV_PYTHON_PREFERENCE="only-managed"
 #? haskell
 export integer STACK_XDG=1
 export integer GHCUP_USE_XDG_DIRS=1
@@ -81,8 +81,6 @@ paths[path]+=":$CARGO_HOME/bin"                        # for rust cargo
 paths[path]+=":$HOME/.local/share/npm/bin"             # for nodejs
 paths[path]+=":$CABAL_DIR/bin"                         # for haskell
 paths[path]+=":$JAVA_HOME/bin"                         # for java
-paths[path]+=":$paths[sdk]/erlang/bin"                 # for erlang
 paths[path]+=":$GOPATH/bin"                            # for golang
-paths[path]+=":$paths[cache]/rebar3/bin"               # for rebar3
 paths[path]+=":$HOMEBREW_PREFIX/opt/postgresql@17/bin" # for postgresql
 export PATH="$paths[path]":"$PATH"                     # user path before system path

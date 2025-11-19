@@ -164,16 +164,10 @@ sudo systemctl try-reload-or-restart tlp
 
 ## pip
 
-Configuration files for **python**, **pip**, and **rye**.
+Configuration files for **python** and **pip**
 
 ```bash
 ln -sf "<path-to-project>/pip" "$HOME/.config/pip"
-```
-
-If using Rye:
-
-```bash
-ln -sf "<path-to-project>/pip/rye-config.toml" "<path-to-rye>/config.toml"
 ```
 
 ## zsh

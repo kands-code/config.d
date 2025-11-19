@@ -54,11 +54,6 @@ export PS0='\[\033[0;36m\]Out[\#]:= \[\033[0m\]\n'
 export PS1='[\u@\h \w \A]-\[$(exitstatus)\]-\[$(usersymbol)\]\n\[\033[0;33m\]In[\#]:= \[\033[0m\]'
 export PS2=' ~> '
 
-#? rye
-if [[ -n "$RYE_HOME" ]] && [[ -f "$RYE_HOME/env" ]]; then
-  source "$RYE_HOME/env"
-fi
-
 # python venv
 if command -v python3 >/dev/null 2>&1; then
   function create-venv() {
