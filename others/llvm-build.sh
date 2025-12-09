@@ -57,13 +57,13 @@ cmake -G "Unix Makefiles" -B "$BUILD_DIR" -S "$LLVM_DIR/llvm" \
     -DLLVM_ENABLE_RUNTIMES="libc;libunwind;libcxxabi;pstl;libcxx;compiler-rt;openmp;offload"
 
 # build and install
-cd "$BUILD_DIR"
+cd "$BUILD_DIR" || exit
 make install -j6
 if [[ "$?" != "0" ]]; then
     echo "== build failed!  =="
     exit 1
 fi
-cd "$ROOT_DIR"
+cd "$ROOT_DIR" || exit
 if [[ -d "$TOOLS_DIR" ]]; then
     rm -rf "$TOOLS_DIR"
 fi

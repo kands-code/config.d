@@ -21,8 +21,7 @@ function dailyup() {
   paru -Sc
   # rust
   if command -v rustup >/dev/null 2>&1; then
-    rustup update
-    if [ "$?" = '0' ]; then
+    if rustup update; then
       cargo install --all-features \
         mdbook \
         hyperfine \
@@ -57,7 +56,7 @@ export PS2=' ~> '
 # python venv
 if command -v python3 >/dev/null 2>&1; then
   function create-venv() {
-    local vname="$(basename $PWD)"
+    local vname="$(basename "$PWD")"
     if [[ -n "$1" ]]; then
       vname="$1"
     fi

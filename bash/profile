@@ -15,7 +15,7 @@ export PATH="$allPath":"$PATH"         # user path before system path
 if [[ "$XDG_SESSION_TYPE" == "tty" ]]; then
   # systemd environment variables
   if [[ -f "/usr/lib/systemd/user-environment-generators/30-systemd-environment-d-generator" ]]; then
-    export $(/usr/lib/systemd/user-environment-generators/30-systemd-environment-d-generator)
+    export "$(/usr/lib/systemd/user-environment-generators/30-systemd-environment-d-generator)"
   fi
   export LANG='en_US.UTF-8'
   export LC_NUMERIC='en_US.UTF-8'

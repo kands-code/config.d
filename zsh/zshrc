@@ -17,7 +17,7 @@ prompt walters
 # utils config
 export GPG_TTY=$(tty)
 export GNUPGHOME="$HOME/.local/share/gnupg"
-export PATH="$paths[homebrew]":"$PATH" # homebrew first
+export PATH="${paths[homebrew]}":"$PATH" # homebrew first
 
 # daily update
 function dailyup() {
@@ -28,8 +28,7 @@ function dailyup() {
   brew cleanup --prune=all
   # rust
   if command -v rustup >/dev/null 2>&1; then
-    rustup update
-    if [ "$?" = '0' ]; then
+    if rustup update; then
       cargo install --all-features \
         mdbook \
         hyperfine \
@@ -48,7 +47,7 @@ fi
 # python venv
 if command -v python3 >/dev/null 2>&1; then
   function create-venv() {
-    local vname="$(basename $PWD)"
+    local vname="$(basename "$PWD")"
     if [[ -n "$1" ]]; then
       vname="$1"
     fi

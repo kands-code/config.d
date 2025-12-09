@@ -10,7 +10,7 @@ export EDITOR=nano
 export VISUAL=nano
 
 # for zsh self
-export ZDOTDIR="$paths[config]/zsh"
+export ZDOTDIR="${paths[config]}/zsh"
 export HISTFILE="$XDG_STATE_HOME/zsh_history"
 export CLICOLOR=true
 export LSCOLORS="exfxcxdxbxegedabagacad"
@@ -25,34 +25,34 @@ export INFOPATH="/usr/share/info:/usr/local/share/info"
 export INFOPATH="$INFOPATH:$HOMEBREW_PREFIX/share/info"
 
 # for less
-export LESSKEY="$paths[config]/less/lesskey"
+export LESSKEY="${paths[config]}/less/lesskey"
 export LESSHISTFILE="$XDG_STATE_HOME/less_history"
 export RLWRAP_HOME="$XDG_STATE_HOME/rlwrap_history"
 export GNUPGHOME="$HOME/.local/share/gnupg"
 
 # for sql
 export SQLITE_HISTORY="$XDG_STATE_HOME/sqlite_history"
-export PSQLRC="$paths[config]/psqlrc"
+export PSQLRC="${paths[config]}/psqlrc"
 export PSQL_HISTORY="$XDG_STATE_HOME/psql_history"
 export PGPASSFILE="$XDG_CONFIG_HOME/postgres/pgpass"
 export PGSERVICEFILE="$XDG_CONFIG_HOME/postgres/pg_service.conf"
 
 # for rust
 export RUSTUP_BIN="$HOMEBREW_PREFIX/opt/rustup/bin" # homebrew only
-export RUSTUP_HOME="$paths[sdk]/rustup"
-export CARGO_HOME="$paths[sdk]/cargo"
+export RUSTUP_HOME="${paths[sdk]}/rustup"
+export CARGO_HOME="${paths[sdk]}/cargo"
 export RUST_BACKTRACE=full
 
 # for nodejs
-export NPM_CONFIG_USERCONFIG="$paths[config]/npmrc"
+export NPM_CONFIG_USERCONFIG="${paths[config]}/npmrc"
 export NODE_REPL_HISTORY="$XDG_STATE_HOME/node_repl_history"
 export NODE_PATH="$HOMEBREW_PREFIX/lib/node_modules:$XDG_DATA_HOME/npm/lib/node_modules"
 
 # for python
-export JUPYTER_DATA_DIR="$paths[config]/jupyter"
+export JUPYTER_DATA_DIR="${paths[config]}/jupyter"
 export IPYTHONDIR="$JUPYTER_DATA_DIR"
 export JUPYTER_CONFIG_DIR="$JUPYTER_DATA_DIR"
-export PYTHONSTARTUP="$paths[config]/pip/startup.py"
+export PYTHONSTARTUP="${paths[config]}/pip/startup.py"
 export MPLCONFIGDIR="$XDG_STATE_HOME/matplotlib"
 
 #? uv
@@ -60,12 +60,12 @@ export UV_PYTHON_PREFERENCE="only-managed"
 #? haskell
 export integer STACK_XDG=1
 export integer GHCUP_USE_XDG_DIRS=1
-export CABAL_DIR="$paths[data]/cabal"
-export CABAL_CONFIG="$paths[config]/cabal/config"
-export AGDA_DIR="$paths[sdk]/agda"
+export CABAL_DIR="${paths[data]}/cabal"
+export CABAL_CONFIG="${paths[config]}/cabal/config"
+export AGDA_DIR="${paths[sdk]}/agda"
 #? java
 export JAVA_VERSION="21.0.8+9"
-export JAVA_HOME="$paths[sdk]/jdk/jdk-$JAVA_VERSION/Contents/Home"
+export JAVA_HOME="${paths[sdk]}/jdk/jdk-$JAVA_VERSION/Contents/Home"
 export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=$XDG_STATE_HOME/java -Djavafx.cachedir=$XDG_STATE_HOME/java/openjfx"
 
 # compose path
@@ -78,4 +78,4 @@ paths[path]+=":$HOME/.local/share/npm/bin"             # for nodejs
 paths[path]+=":$CABAL_DIR/bin"                         # for haskell
 paths[path]+=":$JAVA_HOME/bin"                         # for java
 paths[path]+=":$HOMEBREW_PREFIX/opt/postgresql@17/bin" # for postgresql
-export PATH="$paths[path]":"$PATH"                     # user path before system path
+export PATH="${paths[path]}":"$PATH"                   # user path before system path
