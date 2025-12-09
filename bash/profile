@@ -6,7 +6,6 @@ allPath+=":$CARGO_HOME/bin"            # for rust cargo
 allPath+=":$HOME/.local/share/npm/bin" # for nodejs
 allPath+=":$CABAL_DIR/bin"             # for haskell
 allPath+=":$JAVA_HOME/bin"             # for java
-allPath+=":$GOPATH/bin"                # for golang
 export PATH="$allPath":"$PATH"         # user path before system path
 
 # ghcup-env
