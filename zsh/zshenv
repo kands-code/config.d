@@ -73,5 +73,4 @@ paths[path]+=":$CARGO_HOME/bin"                        # for rust cargo
 paths[path]+=":$HOME/.local/share/npm/bin"             # for nodejs
 paths[path]+=":$ELAN_HOME/bin"                         # for lean
 paths[path]+=":$JAVA_HOME/bin"                         # for java
-paths[path]+=":$HOMEBREW_PREFIX/opt/postgresql@17/bin" # for postgresql
 export PATH="${paths[path]}":"$PATH"                   # user path before system path
