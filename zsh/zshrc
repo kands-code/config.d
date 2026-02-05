@@ -37,13 +37,6 @@ function dailyup() {
   fi
 }
 
-# reload dock
-if command -v defaults >/dev/null 2>&1; then
-  function reload-dock() {
-    defaults write com.apple.dock ResetLaunchPad -bool true && killall Dock
-  }
-fi
-
 # python venv
 if command -v python3 >/dev/null 2>&1; then
   function create-venv() {
