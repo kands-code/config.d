@@ -57,9 +57,6 @@ if command -v python3 >/dev/null 2>&1; then
   }
 fi
 
-# active opam env
-[[ ! -r "$OPAMROOT/opam-init/init.zsh" ]] || source "$OPAMROOT/opam-init/init.zsh" >/dev/null 2>/dev/null
-
 # video convert
 if command -v ffmpeg >/dev/null 2>&1; then
   # convert to mp4
