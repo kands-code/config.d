@@ -7,9 +7,6 @@ allPath+=":$HOME/.local/share/npm/bin" # for nodejs
 allPath+=":$JAVA_HOME/bin"             # for java
 export PATH="$allPath":"$PATH"         # user path before system path
 
-# ghcup-env
-[ -f "/home/kands/.local/share/ghcup/env" ] && source "/home/kands/.local/share/ghcup/env"
-
 # try use en_US.UTF-8 as tty LANG
 if [[ "$XDG_SESSION_TYPE" == "tty" ]]; then
   # systemd environment variables
