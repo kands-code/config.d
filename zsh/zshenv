@@ -61,6 +61,8 @@ export UV_PYTHON_PREFERENCE="only-managed"
 export JAVA_VERSION="21.0.9+10"
 export JAVA_HOME="${paths[sdk]}/jdk/jdk-$JAVA_VERSION/Contents/Home"
 export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=$XDG_STATE_HOME/java -Djavafx.cachedir=$XDG_STATE_HOME/java/openjfx"
+#? lean
+export ELAN_HOME="${paths[sdk]}/elan"
 
 # compose path
 paths[homebrew]="/opt/homebrew/bin:/opt/homebrew/sbin" # for homebrew
@@ -70,4 +72,5 @@ paths[path]+=":$RUSTUP_BIN"                            # for rustup itself
 paths[path]+=":$CARGO_HOME/bin"                        # for rust cargo
 paths[path]+=":$HOME/.local/share/npm/bin"             # for nodejs
 paths[path]+=":$JAVA_HOME/bin"                         # for java
+paths[path]+=":$ELAN_HOME/bin"                         # for lean
 export PATH="${paths[path]}":"$PATH"                   # user path before system path
