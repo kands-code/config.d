@@ -58,7 +58,7 @@ export MPLCONFIGDIR="$XDG_STATE_HOME/matplotlib"
 #? uv
 export UV_PYTHON_PREFERENCE="only-managed"
 #? java
-export JAVA_VERSION="21.0.9+10"
+export JAVA_VERSION="25.0.2+10"
 export JAVA_HOME="${paths[sdk]}/jdk/jdk-$JAVA_VERSION/Contents/Home"
 export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=$XDG_STATE_HOME/java -Djavafx.cachedir=$XDG_STATE_HOME/java/openjfx"
 #? lean

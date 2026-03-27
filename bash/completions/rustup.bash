@@ -1,12 +1,16 @@
 _rustup() {
     local i cur prev opts cmd
     COMPREPLY=()
-    cur="${COMP_WORDS[COMP_CWORD]}"
-    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    if [[ "${BASH_VERSINFO[0]}" -ge 4 ]]; then
+        cur="$2"
+    else
+        cur="${COMP_WORDS[COMP_CWORD]}"
+    fi
+    prev="$3"
     cmd=""
     opts=""
 
-    for i in ${COMP_WORDS[@]}
+    for i in "${COMP_WORDS[@]:0:COMP_CWORD}"
     do
         case "${cmd},${i}" in
             ",$1")
@@ -396,7 +400,7 @@ _rustup() {
             return 0
             ;;
         rustup__check)
-            opts="-h --help"
+            opts="-h --no-self-update --help"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
@@ -584,7 +588,7 @@ _rustup() {
             return 0
             ;;
         rustup__doc)
-            opts="-h --path --toolchain --alloc --book --cargo --clippy --core --edition-guide --embedded-book --error-codes --nomicon --proc_macro --reference --rust-by-example --rustc --rustdoc --std --style-guide --test --unstable-book --help [TOPIC]"
+            opts="-h --path --toolchain --alloc --book --cargo --clippy --core --edition-guide --embedded-book --error-codes --nomicon --proc_macro --reference --releases --rust-by-example --rustc --rustc-docs --rustdoc --std --style-guide --test --unstable-book --help [TOPIC]"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
@@ -1218,7 +1222,7 @@ _rustup() {
             return 0
             ;;
         rustup__install)
-            opts="-c -t -h --profile --component --target --no-self-update --force --allow-downgrade --force-non-host --help [TOOLCHAIN]..."
+            opts="-c -t -h --profile --component --target --no-self-update --no-update --force --allow-downgrade --force-non-host --override --help [TOOLCHAIN]..."
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
@@ -1502,7 +1506,7 @@ _rustup() {
             return 0
             ;;
         rustup__self__uninstall)
-            opts="-y -h --help"
+            opts="-y -h --no-modify-path --help"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
@@ -2060,7 +2064,7 @@ _rustup() {
             return 0
             ;;
         rustup__toolchain__install)
-            opts="-c -t -h --profile --component --target --no-self-update --force --allow-downgrade --force-non-host --help [TOOLCHAIN]..."
+            opts="-c -t -h --profile --component --target --no-self-update --no-update --force --allow-downgrade --force-non-host --override --help [TOOLCHAIN]..."
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
