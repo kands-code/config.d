@@ -23,54 +23,143 @@ _uvx() {
 
     case "${cmd}" in
         uvx)
-            opts="-w -c -b -i -f -U -P -C -p -V -n -q -v -h --from --with --with-editable --with-requirements --constraints --build-constraints --overrides --isolated --env-file --no-env-file --index --default-index --index-url --extra-index-url --find-links --no-index --upgrade --no-upgrade --upgrade-package --reinstall --no-reinstall --reinstall-package --index-strategy --keyring-provider --resolution --prerelease --pre --fork-strategy --config-setting --config-settings-package --no-build-isolation --no-build-isolation-package --build-isolation --exclude-newer --exclude-newer-package --link-mode --compile-bytecode --no-compile-bytecode --no-sources --no-build --build --no-build-package --no-binary --binary --no-binary-package --refresh --no-refresh --refresh-package --python --show-resolution --python-platform --generate-shell-completion --version --no-cache --cache-dir --python-preference --managed-python --no-managed-python --allow-python-downloads --no-python-downloads --python-fetch --quiet --verbose --no-color --color --native-tls --no-native-tls --offline --no-offline --allow-insecure-host --preview --no-preview --preview-features --show-settings --no-progress --no-installer-metadata --directory --project --config-file --no-config --help"
+            opts="-w -c -b -i -f -U -P -C -p -V -n -q -v -h --from --with --with-editable --with-requirements --constraints --build-constraints --overrides --isolated --env-file --no-env-file --index --default-index --index-url --extra-index-url --find-links --no-index --upgrade --no-upgrade --upgrade-package --reinstall --no-reinstall --reinstall-package --index-strategy --keyring-provider --resolution --prerelease --pre --fork-strategy --config-setting --config-settings-package --no-build-isolation --no-build-isolation-package --build-isolation --exclude-newer --exclude-newer-package --link-mode --compile-bytecode --no-compile-bytecode --no-sources --no-sources-package --no-build --build --no-build-package --no-binary --binary --no-binary-package --refresh --no-refresh --refresh-package --lfs --python --show-resolution --python-platform --torch-backend --generate-shell-completion --version --no-cache --cache-dir --python-preference --managed-python --no-managed-python --allow-python-downloads --no-python-downloads --python-fetch --quiet --verbose --no-color --color --native-tls --no-native-tls --system-certs --no-system-certs --offline --no-offline --allow-insecure-host --preview --no-preview --preview-features --show-settings --no-progress --no-installer-metadata --directory --project --config-file --no-config --help"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 1 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
             fi
             case "${prev}" in
                 --from)
-                    COMPREPLY=($(compgen -f "${cur}"))
+                    COMPREPLY=("${cur}")
+                    if [[ "${BASH_VERSINFO[0]}" -ge 4 ]]; then
+                        compopt -o nospace
+                    fi
                     return 0
                     ;;
                 --with)
-                    COMPREPLY=($(compgen -f "${cur}"))
+                    COMPREPLY=("${cur}")
+                    if [[ "${BASH_VERSINFO[0]}" -ge 4 ]]; then
+                        compopt -o nospace
+                    fi
                     return 0
                     ;;
                 -w)
-                    COMPREPLY=($(compgen -f "${cur}"))
+                    COMPREPLY=("${cur}")
+                    if [[ "${BASH_VERSINFO[0]}" -ge 4 ]]; then
+                        compopt -o nospace
+                    fi
                     return 0
                     ;;
                 --with-editable)
-                    COMPREPLY=($(compgen -f "${cur}"))
+                    COMPREPLY=()
+                    if [[ "${BASH_VERSINFO[0]}" -ge 4 ]]; then
+                        compopt -o plusdirs
+                    fi
                     return 0
                     ;;
                 --with-requirements)
+                    local oldifs
+                    if [ -n "${IFS+x}" ]; then
+                        oldifs="$IFS"
+                    fi
+                    IFS=$'\n'
                     COMPREPLY=($(compgen -f "${cur}"))
+                    if [ -n "${oldifs+x}" ]; then
+                        IFS="$oldifs"
+                    fi
+                    if [[ "${BASH_VERSINFO[0]}" -ge 4 ]]; then
+                        compopt -o filenames
+                    fi
                     return 0
                     ;;
                 --constraints)
+                    local oldifs
+                    if [ -n "${IFS+x}" ]; then
+                        oldifs="$IFS"
+                    fi
+                    IFS=$'\n'
                     COMPREPLY=($(compgen -f "${cur}"))
+                    if [ -n "${oldifs+x}" ]; then
+                        IFS="$oldifs"
+                    fi
+                    if [[ "${BASH_VERSINFO[0]}" -ge 4 ]]; then
+                        compopt -o filenames
+                    fi
                     return 0
                     ;;
                 -c)
+                    local oldifs
+                    if [ -n "${IFS+x}" ]; then
+                        oldifs="$IFS"
+                    fi
+                    IFS=$'\n'
                     COMPREPLY=($(compgen -f "${cur}"))
+                    if [ -n "${oldifs+x}" ]; then
+                        IFS="$oldifs"
+                    fi
+                    if [[ "${BASH_VERSINFO[0]}" -ge 4 ]]; then
+                        compopt -o filenames
+                    fi
                     return 0
                     ;;
                 --build-constraints)
+                    local oldifs
+                    if [ -n "${IFS+x}" ]; then
+                        oldifs="$IFS"
+                    fi
+                    IFS=$'\n'
                     COMPREPLY=($(compgen -f "${cur}"))
+                    if [ -n "${oldifs+x}" ]; then
+                        IFS="$oldifs"
+                    fi
+                    if [[ "${BASH_VERSINFO[0]}" -ge 4 ]]; then
+                        compopt -o filenames
+                    fi
                     return 0
                     ;;
                 -b)
+                    local oldifs
+                    if [ -n "${IFS+x}" ]; then
+                        oldifs="$IFS"
+                    fi
+                    IFS=$'\n'
                     COMPREPLY=($(compgen -f "${cur}"))
+                    if [ -n "${oldifs+x}" ]; then
+                        IFS="$oldifs"
+                    fi
+                    if [[ "${BASH_VERSINFO[0]}" -ge 4 ]]; then
+                        compopt -o filenames
+                    fi
                     return 0
                     ;;
                 --overrides)
+                    local oldifs
+                    if [ -n "${IFS+x}" ]; then
+                        oldifs="$IFS"
+                    fi
+                    IFS=$'\n'
                     COMPREPLY=($(compgen -f "${cur}"))
+                    if [ -n "${oldifs+x}" ]; then
+                        IFS="$oldifs"
+                    fi
+                    if [[ "${BASH_VERSINFO[0]}" -ge 4 ]]; then
+                        compopt -o filenames
+                    fi
                     return 0
                     ;;
                 --env-file)
+                    local oldifs
+                    if [ -n "${IFS+x}" ]; then
+                        oldifs="$IFS"
+                    fi
+                    IFS=$'\n'
                     COMPREPLY=($(compgen -f "${cur}"))
+                    if [ -n "${oldifs+x}" ]; then
+                        IFS="$oldifs"
+                    fi
+                    if [[ "${BASH_VERSINFO[0]}" -ge 4 ]]; then
+                        compopt -o filenames
+                    fi
                     return 0
                     ;;
                 --index)
@@ -102,15 +191,24 @@ _uvx() {
                     return 0
                     ;;
                 --upgrade-package)
-                    COMPREPLY=($(compgen -f "${cur}"))
+                    COMPREPLY=("${cur}")
+                    if [[ "${BASH_VERSINFO[0]}" -ge 4 ]]; then
+                        compopt -o nospace
+                    fi
                     return 0
                     ;;
                 -P)
-                    COMPREPLY=($(compgen -f "${cur}"))
+                    COMPREPLY=("${cur}")
+                    if [[ "${BASH_VERSINFO[0]}" -ge 4 ]]; then
+                        compopt -o nospace
+                    fi
                     return 0
                     ;;
                 --reinstall-package)
-                    COMPREPLY=($(compgen -f "${cur}"))
+                    COMPREPLY=("${cur}")
+                    if [[ "${BASH_VERSINFO[0]}" -ge 4 ]]; then
+                        compopt -o nospace
+                    fi
                     return 0
                     ;;
                 --index-strategy)
@@ -134,55 +232,96 @@ _uvx() {
                     return 0
                     ;;
                 --config-setting)
-                    COMPREPLY=($(compgen -f "${cur}"))
+                    COMPREPLY=("${cur}")
+                    if [[ "${BASH_VERSINFO[0]}" -ge 4 ]]; then
+                        compopt -o nospace
+                    fi
                     return 0
                     ;;
                 -C)
-                    COMPREPLY=($(compgen -f "${cur}"))
+                    COMPREPLY=("${cur}")
+                    if [[ "${BASH_VERSINFO[0]}" -ge 4 ]]; then
+                        compopt -o nospace
+                    fi
                     return 0
                     ;;
                 --config-settings-package)
-                    COMPREPLY=($(compgen -f "${cur}"))
+                    COMPREPLY=("${cur}")
+                    if [[ "${BASH_VERSINFO[0]}" -ge 4 ]]; then
+                        compopt -o nospace
+                    fi
                     return 0
                     ;;
                 --no-build-isolation-package)
-                    COMPREPLY=($(compgen -f "${cur}"))
+                    COMPREPLY=("${cur}")
+                    if [[ "${BASH_VERSINFO[0]}" -ge 4 ]]; then
+                        compopt -o nospace
+                    fi
                     return 0
                     ;;
                 --exclude-newer)
-                    COMPREPLY=($(compgen -f "${cur}"))
+                    COMPREPLY=("${cur}")
+                    if [[ "${BASH_VERSINFO[0]}" -ge 4 ]]; then
+                        compopt -o nospace
+                    fi
                     return 0
                     ;;
                 --exclude-newer-package)
-                    COMPREPLY=($(compgen -f "${cur}"))
+                    COMPREPLY=("${cur}")
+                    if [[ "${BASH_VERSINFO[0]}" -ge 4 ]]; then
+                        compopt -o nospace
+                    fi
                     return 0
                     ;;
                 --link-mode)
                     COMPREPLY=($(compgen -W "clone copy hardlink symlink" -- "${cur}"))
                     return 0
                     ;;
-                --no-build-package)
+                --no-sources-package)
                     COMPREPLY=($(compgen -f "${cur}"))
+                    return 0
+                    ;;
+                --no-build-package)
+                    COMPREPLY=("${cur}")
+                    if [[ "${BASH_VERSINFO[0]}" -ge 4 ]]; then
+                        compopt -o nospace
+                    fi
                     return 0
                     ;;
                 --no-binary-package)
-                    COMPREPLY=($(compgen -f "${cur}"))
+                    COMPREPLY=("${cur}")
+                    if [[ "${BASH_VERSINFO[0]}" -ge 4 ]]; then
+                        compopt -o nospace
+                    fi
                     return 0
                     ;;
                 --refresh-package)
-                    COMPREPLY=($(compgen -f "${cur}"))
+                    COMPREPLY=("${cur}")
+                    if [[ "${BASH_VERSINFO[0]}" -ge 4 ]]; then
+                        compopt -o nospace
+                    fi
                     return 0
                     ;;
                 --python)
-                    COMPREPLY=($(compgen -f "${cur}"))
+                    COMPREPLY=("${cur}")
+                    if [[ "${BASH_VERSINFO[0]}" -ge 4 ]]; then
+                        compopt -o nospace
+                    fi
                     return 0
                     ;;
                 -p)
-                    COMPREPLY=($(compgen -f "${cur}"))
+                    COMPREPLY=("${cur}")
+                    if [[ "${BASH_VERSINFO[0]}" -ge 4 ]]; then
+                        compopt -o nospace
+                    fi
                     return 0
                     ;;
                 --python-platform)
                     COMPREPLY=($(compgen -W "windows linux macos x86_64-pc-windows-msvc aarch64-pc-windows-msvc i686-pc-windows-msvc x86_64-unknown-linux-gnu aarch64-apple-darwin x86_64-apple-darwin aarch64-unknown-linux-gnu aarch64-unknown-linux-musl x86_64-unknown-linux-musl riscv64-unknown-linux x86_64-manylinux2014 x86_64-manylinux_2_17 x86_64-manylinux_2_28 x86_64-manylinux_2_31 x86_64-manylinux_2_32 x86_64-manylinux_2_33 x86_64-manylinux_2_34 x86_64-manylinux_2_35 x86_64-manylinux_2_36 x86_64-manylinux_2_37 x86_64-manylinux_2_38 x86_64-manylinux_2_39 x86_64-manylinux_2_40 aarch64-manylinux2014 aarch64-manylinux_2_17 aarch64-manylinux_2_28 aarch64-manylinux_2_31 aarch64-manylinux_2_32 aarch64-manylinux_2_33 aarch64-manylinux_2_34 aarch64-manylinux_2_35 aarch64-manylinux_2_36 aarch64-manylinux_2_37 aarch64-manylinux_2_38 aarch64-manylinux_2_39 aarch64-manylinux_2_40 aarch64-linux-android x86_64-linux-android wasm32-pyodide2024 arm64-apple-ios arm64-apple-ios-simulator x86_64-apple-ios-simulator" -- "${cur}"))
+                    return 0
+                    ;;
+                --torch-backend)
+                    COMPREPLY=($(compgen -W "auto cpu cu130 cu129 cu128 cu126 cu125 cu124 cu123 cu122 cu121 cu120 cu118 cu117 cu116 cu115 cu114 cu113 cu112 cu111 cu110 cu102 cu101 cu100 cu92 cu91 cu90 cu80 rocm7.1 rocm7.0 rocm6.4 rocm6.3 rocm6.2.4 rocm6.2 rocm6.1 rocm6.0 rocm5.7 rocm5.6 rocm5.5 rocm5.4.2 rocm5.4 rocm5.3 rocm5.2 rocm5.1.1 rocm4.2 rocm4.1 rocm4.0.1 xpu" -- "${cur}"))
                     return 0
                     ;;
                 --generate-shell-completion)
@@ -190,7 +329,10 @@ _uvx() {
                     return 0
                     ;;
                 --cache-dir)
-                    COMPREPLY=($(compgen -f "${cur}"))
+                    COMPREPLY=()
+                    if [[ "${BASH_VERSINFO[0]}" -ge 4 ]]; then
+                        compopt -o plusdirs
+                    fi
                     return 0
                     ;;
                 --python-preference)
@@ -214,15 +356,32 @@ _uvx() {
                     return 0
                     ;;
                 --directory)
-                    COMPREPLY=($(compgen -f "${cur}"))
+                    COMPREPLY=()
+                    if [[ "${BASH_VERSINFO[0]}" -ge 4 ]]; then
+                        compopt -o plusdirs
+                    fi
                     return 0
                     ;;
                 --project)
-                    COMPREPLY=($(compgen -f "${cur}"))
+                    COMPREPLY=()
+                    if [[ "${BASH_VERSINFO[0]}" -ge 4 ]]; then
+                        compopt -o plusdirs
+                    fi
                     return 0
                     ;;
                 --config-file)
+                    local oldifs
+                    if [ -n "${IFS+x}" ]; then
+                        oldifs="$IFS"
+                    fi
+                    IFS=$'\n'
                     COMPREPLY=($(compgen -f "${cur}"))
+                    if [ -n "${oldifs+x}" ]; then
+                        IFS="$oldifs"
+                    fi
+                    if [[ "${BASH_VERSINFO[0]}" -ge 4 ]]; then
+                        compopt -o filenames
+                    fi
                     return 0
                     ;;
                 *)
