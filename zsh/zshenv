@@ -43,10 +43,9 @@ export RUSTUP_HOME="${paths[sdk]}/rustup"
 export CARGO_HOME="${paths[sdk]}/cargo"
 export RUST_BACKTRACE=full
 
-# for nodejs
-export NPM_CONFIG_USERCONFIG="${paths[config]}/npmrc"
-export NODE_REPL_HISTORY="$XDG_STATE_HOME/node_repl_history"
-export NODE_PATH="$HOMEBREW_PREFIX/lib/node_modules:$XDG_DATA_HOME/npm/lib/node_modules"
+# for bun
+export BUN_INSTALL="${paths[sdk]}/bun"
+export npm_config_cache="$BUN_INSTALL/install/npm"
 
 # for python
 export JUPYTER_DATA_DIR="${paths[config]}/jupyter"
@@ -70,7 +69,7 @@ paths[path]=":$XDG_USER_BIN"                           # for user local
 paths[path]+=":$HOMEBREW_PREFIX/opt/llvm/bin"          # for llvm
 paths[path]+=":$RUSTUP_BIN"                            # for rustup itself
 paths[path]+=":$CARGO_HOME/bin"                        # for rust cargo
-paths[path]+=":$HOME/.local/share/npm/bin"             # for nodejs
+paths[path]+=":$BUN_INSTALL/bin"                       # for bun
 paths[path]+=":$JAVA_HOME/bin"                         # for java
 paths[path]+=":$ELAN_HOME/bin"                         # for lean
 export PATH="${paths[path]}":"$PATH"                   # user path before system path
