@@ -17,7 +17,7 @@ prompt walters
 # utils config
 export GPG_TTY=$(tty)
 export GNUPGHOME="$HOME/.local/share/gnupg"
-export PATH="${paths[homebrew]}":"$PATH" # homebrew first
+export PATH="${paths[homebrew]}":"${paths[path]}":"$PATH"
 
 # daily update
 function dailyup() {

@@ -65,11 +65,10 @@ export ELAN_HOME="${paths[sdk]}/elan"
 
 # compose path
 paths[homebrew]="/opt/homebrew/bin:/opt/homebrew/sbin" # for homebrew
-paths[path]=":$XDG_USER_BIN"                           # for user local
+paths[path]="$XDG_USER_BIN"                            # for user local
 paths[path]+=":$HOMEBREW_PREFIX/opt/llvm/bin"          # for llvm
 paths[path]+=":$RUSTUP_BIN"                            # for rustup itself
 paths[path]+=":$CARGO_HOME/bin"                        # for rust cargo
 paths[path]+=":$BUN_INSTALL/bin"                       # for bun
 paths[path]+=":$JAVA_HOME/bin"                         # for java
 paths[path]+=":$ELAN_HOME/bin"                         # for lean
-export PATH="${paths[path]}":"$PATH"                   # user path before system path
