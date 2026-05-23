@@ -32,6 +32,7 @@ function dailyup() {
       cargo install --all-features \
         mdbook \
         hyperfine \
+        ripgrep \
         sqlx-cli
     fi
   fi
