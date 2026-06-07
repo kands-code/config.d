@@ -4,8 +4,10 @@ paths[sdk]="$HOME/.local/sdk"
 paths[data]="$HOME/.local/share"
 paths[config]="$HOME/.config"
 paths[cache]="$HOME/.cache"
-export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_USER_BIN="$HOME/.local/bin"
+export XDG_CACHE_HOME="${paths[cache]}"
+export XDG_CONFIG_HOME="${paths[config]}"
+export XDG_STATE_HOME="$HOME/.local/state"
 export EDITOR=nano
 export VISUAL=nano
 
@@ -65,6 +67,10 @@ export JAVA_HOME="${paths[sdk]}/jdk/jdk-$JAVA_VERSION/Contents/Home"
 export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=$XDG_STATE_HOME/java -Djavafx.cachedir=$XDG_STATE_HOME/java/openjfx"
 #? lean
 export ELAN_HOME="${paths[sdk]}/elan"
+#? go
+export GOPATH="$XDG_STATE_HOME/go"
+export GOMODCACHE="$GOPATH/pkg/mod"
+export GOPROXY="https://proxy.golang.org,direct"
 
 # compose path
 paths[homebrew]="/opt/homebrew/bin:/opt/homebrew/sbin" # for homebrew
@@ -75,3 +81,4 @@ paths[path]+=":$CARGO_HOME/bin"                        # for rust cargo
 paths[path]+=":$HOME/.local/share/npm/bin"             # for nodejs
 paths[path]+=":$JAVA_HOME/bin"                         # for java
 paths[path]+=":$ELAN_HOME/bin"                         # for lean
+paths[path]+=":$GOPATH/bin"                            # for golang
