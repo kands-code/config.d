@@ -25,6 +25,7 @@ function dailyup() {
       cargo install --all-features \
         mdbook \
         hyperfine
+      cargo install --features lsp --locked taplo-cli
     fi
   fi
 }
@@ -55,9 +56,10 @@ export PS2=' ~> '
 # python venv
 if command -v python3 >/dev/null 2>&1; then
   function create-venv() {
-    local vname="$(basename "$PWD")"
     if [[ -n "$1" ]]; then
       vname="$1"
+    else
+      vname="$(basename "$PWD")"
     fi
     python3 -m venv .venv --prompt "$vname"
   }

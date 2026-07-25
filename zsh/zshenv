@@ -8,8 +8,8 @@ export XDG_USER_BIN="$HOME/.local/bin"
 export XDG_CACHE_HOME="${paths[cache]}"
 export XDG_CONFIG_HOME="${paths[config]}"
 export XDG_STATE_HOME="$HOME/.local/state"
-export EDITOR=nvim
-export VISUAL=nvim
+export EDITOR=hx
+export VISUAL=hx
 
 # for zsh self
 export ZDOTDIR="${paths[config]}/zsh"
@@ -62,13 +62,10 @@ export MPLCONFIGDIR="$XDG_STATE_HOME/matplotlib"
 
 #? uv
 export UV_PYTHON_PREFERENCE="only-managed"
-
 #? java
 export JAVA_VERSION="25.0.2+10"
 export JAVA_HOME="${paths[sdk]}/jdk/jdk-$JAVA_VERSION/Contents/Home"
 export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=$XDG_STATE_HOME/java -Djavafx.cachedir=$XDG_STATE_HOME/java/openjfx"
-#? lean
-export ELAN_HOME="${paths[sdk]}/elan"
 
 # compose path
 paths[homebrew]="/opt/homebrew/bin:/opt/homebrew/sbin" # for homebrew
@@ -78,4 +75,3 @@ paths[path]+=":$RUSTUP_BIN"                            # for rustup itself
 paths[path]+=":$CARGO_HOME/bin"                        # for rust cargo
 paths[path]+=":$DENO_INSTALL_ROOT/bin"                 # for deno
 paths[path]+=":$JAVA_HOME/bin"                         # for java
-paths[path]+=":$ELAN_HOME/bin"                         # for lean

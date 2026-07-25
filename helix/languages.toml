@@ -1,0 +1,137 @@
+[[language]]
+name = "c"
+language-servers = ["clangd"]
+formatter = { command = "clang-format" }
+auto-format = true
+
+[[language]]
+name = "cpp"
+language-servers = ["clangd"]
+formatter = { command = "clang-format" }
+auto-format = true
+
+# 需要单独安装 deno
+[language-server.deno-lsp]
+command = "deno"
+args = ["lsp"]
+environment = { NO_COLOR = "true" }
+
+[language-server.deno-lsp.config.deno]
+enable = true
+lint = true
+
+[language-server.deno-lsp.config.deno.suggest.imports]
+autoDiscover = true
+
+[language-server.deno-lsp.config.deno.suggest.imports.hosts]
+"https://deno.com" = true
+"https://jsr.io" = true
+
+[[language]]
+name = "javascript"
+language-servers = ["deno-lsp"]
+formatter = { command = "deno", args = ["fmt", "-", "--ext=js"] }
+auto-format = true
+
+[[language]]
+name = "jsx"
+language-servers = ["deno-lsp"]
+formatter = { command = "deno", args = ["fmt", "-", "--ext=jsx"] }
+auto-format = true
+
+[[language]]
+name = "typescript"
+language-servers = ["deno-lsp"]
+formatter = { command = "deno", args = ["fmt", "-", "--ext=ts"] }
+auto-format = true
+
+[[language]]
+name = "tsx"
+language-servers = ["deno-lsp"]
+formatter = { command = "deno", args = ["fmt", "-", "--ext=tsx"] }
+auto-format = true
+
+# 需要使用 deno install -A -g npm:vscode-langservers-extracted/vscode-html-language-server 安装
+[[language]]
+name = "html"
+language-servers = ["vscode-html-language-server"]
+formatter = { command = "deno", args = ["fmt", "-", "--ext=html"] }
+auto-format = true
+
+# 需要使用 deno install -A -g npm:vscode-langservers-extracted/vscode-css-language-server 安装
+[[language]]
+name = "css"
+language-servers = ["vscode-css-language-server"]
+formatter = { command = "deno", args = ["fmt", "-", "--ext=css"] }
+auto-format = true
+
+[[language]]
+name = "python"
+language-servers = ["ty", "ruff"]
+formatter = { command = "ruff", args = ["format", "-"] }
+auto-format = true
+
+[[language]]
+name = "rust"
+language-servers = ["rust-analyzer"]
+formatter = { command = "rustfmt" }
+auto-format = true
+
+# 需要单独安装 tinymist
+[language-server.tinymist]
+command = "tinymist"
+
+[language-server.tinymist.config]
+fontPaths = ["fonts"]
+formatterMode = "typstyle"
+formatterPrintWidth = 96
+lint = { enabled = true }
+
+[[language]]
+name = "typst"
+language-servers = ["tinymist"]
+rulers = [97, 129]
+auto-format = true
+
+[[language]]
+name = "markdown"
+formatter = { command = "deno", args = ["fmt", "-", "--ext=md"] }
+rulers = [97, 129]
+auto-format = true
+
+# 需要使用 deno install -g -A bash-language-server 来安装
+# 并且需要安装 shfmt
+[[language]]
+name = "bash"
+language-servers = ["bash-language-server"]
+formatter = { command = "shfmt" }
+auto-format = true
+# 注意
+# bash 的 file-types 对于 zshrc 这种不包含文件后缀的文件无法识别
+# 所以需要手动 set-language bash 才可以使用 LSP 与 Formatter
+
+# 需要使用 cargo install --lock --features lsp taplo-cli 来安装
+[[language]]
+name = "toml"
+language-servers = ["taplo"]
+formatter = { command = "taplo", args = ["format", "-"] }
+auto-format = true
+
+# 需要使用 deno install -A -g npm:vscode-langservers-extracted/vscode-json-language-server 安装 
+[[language]]
+name = "json"
+language-servers = ["vscode-json-language-server"]
+formatter = { command = "deno", args = ["fmt", "-", "--ext=json"] }
+auto-format = true
+
+# 需要使用 deno install -A -g npm:vscode-langservers-extracted/vscode-json-language-server 安装 
+[[language]]
+name = "jsonc"
+language-servers = ["vscode-json-language-server"]
+formatter = { command = "deno", args = ["fmt", "-", "--ext=jsonc"] }
+auto-format = true
+
+[[language]]
+name = "yaml"
+formatter = { command = "deno", args = ["fmt", "-", "--ext=yaml"] }
+auto-format = true

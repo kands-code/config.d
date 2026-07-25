@@ -1,0 +1,6 @@
+inherits = "rose_pine"
+
+# 主编辑区背景透明
+"ui.background" = {}
+# 分屏窗口间隔区域也透明
+"ui.window" = {}

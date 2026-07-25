@@ -5,7 +5,6 @@ allPath="$XDG_USER_BIN"            # for user local
 allPath+=":$CARGO_HOME/bin"        # for rust cargo
 allPath+=":$DENO_INSTALL_ROOT/bin" # for deno
 allPath+=":$JAVA_HOME/bin"         # for java
-allPath+=":$ELAN_HOME/bin"         # for lean
 export PATH="$allPath":"$PATH"     # user path before system path
 
 # try use en_US.UTF-8 as tty LANG

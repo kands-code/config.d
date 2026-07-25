@@ -1,0 +1,16 @@
+# 设置使用 ksp 配色
+theme = "ksp"
+
+[editor]
+# 使用相对行号便于跳转定位
+line-number = "relative"
+# 设置使用终端色彩
+# 默认会自动检查是否支持 true color
+# 如果设置为 true 则会强制开启
+# true-color = true
+# 设置默认使用系统剪贴板
+default-yank-register = "+"
+# 设置编辑器上下边界行数
+scrolloff = 8
+# 设置每次上下滚动行数
+scroll-lines = 8
