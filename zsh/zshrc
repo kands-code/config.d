@@ -31,8 +31,7 @@ function dailyup() {
     if rustup update; then
       cargo install --all-features \
         mdbook \
-        hyperfine \
-        sqlx-cli
+        hyperfine
     fi
   fi
 }

@@ -1,13 +1,12 @@
 #!/usr/bin/env bash
 
 # compose path
-allPath="$XDG_USER_BIN"                # for user local
-allPath+=":$CARGO_HOME/bin"            # for rust cargo
-allPath+=":$HOME/.local/share/npm/bin" # for nodejs
-allPath+=":$JAVA_HOME/bin"             # for java
-allPath+=":$ELAN_HOME/bin"             # for lean
-allPath+=":$GOPATH/bin"                # for golang
-export PATH="$allPath":"$PATH"         # user path before system path
+allPath="$XDG_USER_BIN"            # for user local
+allPath+=":$CARGO_HOME/bin"        # for rust cargo
+allPath+=":$DENO_INSTALL_ROOT/bin" # for deno
+allPath+=":$JAVA_HOME/bin"         # for java
+allPath+=":$ELAN_HOME/bin"         # for lean
+export PATH="$allPath":"$PATH"     # user path before system path
 
 # try use en_US.UTF-8 as tty LANG
 if [[ "$XDG_SESSION_TYPE" == "tty" ]]; then

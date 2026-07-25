@@ -40,16 +40,18 @@ export PGPASSFILE="$XDG_CONFIG_HOME/postgres/pgpass"
 export PGSERVICEFILE="$XDG_CONFIG_HOME/postgres/pg_service.conf"
 
 # for rust
-export RUSTUP_BIN="$HOMEBREW_PREFIX/opt/rustup/bin" # homebrew only
+export RUSTUP_BIN="$HOMEBREW_PREFIX/opt/rustup/bin"
 export RUSTUP_HOME="${paths[sdk]}/rustup"
 export CARGO_HOME="${paths[sdk]}/cargo"
 export RUST_BACKTRACE=full
 
-# for nodejs
-export NPM_CONFIG_USERCONFIG="${paths[config]}/npmrc"
-export NODE_REPL_HISTORY="$XDG_STATE_HOME/npm_history"
-export NODE_PATH="/opt/homebrew/lib/node_modules":"${paths[data]}/npm/lib/node_modules/"
-export npm_config_cache="${paths[cache]}/npm"
+# for deno
+export DENO_DIR="$XDG_STATE_HOME/deno"
+export DENO_INSTALL="${paths[sdk]}/deno"
+export DENO_INSTALL_ROOT="${paths[sdk]}/deno"
+export DENO_REPL_HISTORY="$DENO_DIR/history.txt"
+export DENO_NO_UPDATE_CHECK=true
+export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
 
 # for python
 export JUPYTER_DATA_DIR="${paths[config]}/jupyter"
@@ -67,10 +69,6 @@ export JAVA_HOME="${paths[sdk]}/jdk/jdk-$JAVA_VERSION/Contents/Home"
 export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=$XDG_STATE_HOME/java -Djavafx.cachedir=$XDG_STATE_HOME/java/openjfx"
 #? lean
 export ELAN_HOME="${paths[sdk]}/elan"
-#? go
-export GOPATH="$XDG_STATE_HOME/go"
-export GOMODCACHE="$GOPATH/pkg/mod"
-export GOPROXY="https://proxy.golang.org,direct"
 
 # compose path
 paths[homebrew]="/opt/homebrew/bin:/opt/homebrew/sbin" # for homebrew
@@ -78,7 +76,6 @@ paths[path]="$XDG_USER_BIN"                            # for user local
 paths[path]+=":$HOMEBREW_PREFIX/opt/llvm/bin"          # for llvm
 paths[path]+=":$RUSTUP_BIN"                            # for rustup itself
 paths[path]+=":$CARGO_HOME/bin"                        # for rust cargo
-paths[path]+=":$HOME/.local/share/npm/bin"             # for nodejs
+paths[path]+=":$DENO_INSTALL_ROOT/bin"                 # for deno
 paths[path]+=":$JAVA_HOME/bin"                         # for java
 paths[path]+=":$ELAN_HOME/bin"                         # for lean
-paths[path]+=":$GOPATH/bin"                            # for golang
