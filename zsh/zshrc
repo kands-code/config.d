@@ -1,8 +1,9 @@
 # for zsh
 fpath=(
-	/opt/homebrew/share/zsh/site-functions
-	~/.config/zsh/zfunc
-	"${fpath[@]}")
+  /opt/homebrew/share/zsh/site-functions
+  ~/.config/zsh/zfunc
+  "${fpath[@]}"
+)
 autoload -U +X compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
 zstyle ':completion:*' use-cache on
@@ -22,86 +23,88 @@ export PATH="${paths[homebrew]}":"${paths[path]}":"$PATH"
 
 # daily update
 function dailyup() {
-	# brew
-	brew update
-	brew upgrade --greedy
-	brew autoremove
-	brew cleanup --prune=all
-	# rust
-	if command -v rustup >/dev/null 2>&1; then
-		if rustup update; then
-			cargo install --all-features \
-				mdbook \
-				hyperfine
-			cargo install --features lsp --locked taplo-cli
-		fi
-	fi
+  # brew
+  brew update
+  brew upgrade --greedy
+  brew autoremove
+  brew cleanup --prune=all
+  # rust
+  if command -v rustup >/dev/null 2>&1; then
+    if rustup update; then
+      cargo install --all-features \
+        mdbook \
+        hyperfine
+      cargo install --features lsp --locked taplo-cli
+    fi
+  fi
 }
 
 # python venv
 if command -v python3 >/dev/null 2>&1; then
-	function create-venv() {
-		if [[ -n "$1" ]]; then
-			vname="$1"
-		else
-			vname="$(basename "$PWD")"
-		fi
-		python3 -m venv .venv --prompt "$vname"
-	}
-	function activate-venv() {
-		local dname=".venv"
-		if [[ -n "$1" ]]; then
-			dname="$1"
-		fi
-		if [[ -d "$PWD/$dname" ]] && [[ -f "$PWD/$dname/bin/activate" ]]; then
-			source "$PWD/$dname/bin/activate"
-		fi
-	}
+  function create-venv() {
+    if [[ -n "$1" ]]; then
+      vname="$1"
+    else
+      vname="$(basename "$PWD")"
+    fi
+    python3 -m venv .venv --prompt "$vname"
+  }
+  function activate-venv() {
+    local dname=".venv"
+    if [[ -n "$1" ]]; then
+      dname="$1"
+    fi
+    if [[ -d "$PWD/$dname" ]] && [[ -f "$PWD/$dname/bin/activate" ]]; then
+      source "$PWD/$dname/bin/activate"
+    fi
+  }
 fi
 
 # video convert
 if command -v ffmpeg >/dev/null 2>&1; then
-	# convert to mp4
-	function conv2mp4() {
-		local filename="$1"
-		local basename="${filename%.*}"
-		ffmpeg -i "$filename" \
-			-vf "pad=ceil(iw/2)*2:ceil(ih/2)*2" \
-			-y -an -crf 0 \
-			"$basename".mp4
-	}
-	# aria2c wrapper
-	function a2c() {
-		if command -v aria2c >/dev/null 2>&1; then
-			aria2c --max-connection-per-server=4 \
-				--min-split-size=5M \
-				--continue \
-				"$@"
-		fi
-	}
-	# yt-dlp wrapper
-	function yd() {
-		if command -v yt-dlp >/dev/null 2>&1; then
-			local url="$1"
-			shift 1
-			local browser="$1"
-			shift 1
-			if [ -z "$url" ]; then
-				echo "usage: yd [url] (...[yt-dlp arguments])"
-				return 1
-			fi
-			yt-dlp -o "%(uploader_id)s/%(playlist_title)s/p%(playlist_index)03d-%(title)s.%(ext)s" \
-				-f "bv*+ba/b" \
-				--recode-video="mp4" \
-				--write-auto-subs \
-				--sub-format="vtt" \
-				--sub-langs="en.*,zh-Hans" \
-				--embed-subs \
-				--js-runtimes node \
-				--cookies-from-browser="$browser" \
-				"$url" \
-				"$@"
-			return 0
-		fi
-	}
+  # convert to mp4
+  function conv2mp4() {
+    local filename="$1"
+    local basename="${filename%.*}"
+    ffmpeg -i "$filename" \
+      -vf "pad=ceil(iw/2)*2:ceil(ih/2)*2" \
+      -y -an -crf 0 \
+      "$basename".mp4
+  }
+  # aria2c wrapper
+  function a2c() {
+    if command -v aria2c >/dev/null 2>&1; then
+      aria2c --max-connection-per-server=4 \
+        --min-split-size=5M \
+        --continue \
+        "$@"
+    fi
+  }
+  # yt-dlp wrapper
+  function yd() {
+    if command -v yt-dlp >/dev/null 2>&1; then
+      local url="$1"
+      shift 1
+      local browser="$1"
+      shift 1
+      if [ -z "$url" ]; then
+        echo "usage: yd [url] (...[yt-dlp arguments])"
+        return 1
+      fi
+      yt-dlp -o "%(uploader_id)s/%(playlist_title)s/p%(playlist_index)03d-%(title)s.%(ext)s" \
+        -f "bv*[vcodec^=avc1]+ba[acodec^=mp4a]/bv*[vcodec^=avc1]+ba/b" \
+        --recode-video mp4 \
+        --postprocessor-args "RecodeVideo:-c:v hevc_videotoolbox -b:v 8M -q:v 72 -c:a aac -b:a 192k" \
+        --write-auto-subs \
+        --sub-format="vtt" \
+        --sub-langs="en.*,zh-Hans" \
+        --embed-subs \
+        --js-runtimes deno \
+        --remote-components ejs:github \
+        --cookies-from-browser="$browser" \
+        "$url" \
+        "$@"
+      return 0
+    fi
+  }
 fi
