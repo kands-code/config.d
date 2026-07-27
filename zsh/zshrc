@@ -94,10 +94,17 @@ if command -v ffmpeg >/dev/null 2>&1; then
       yt-dlp -o "%(uploader_id)s/%(playlist_title)s/p%(playlist_index)03d-%(title)s.%(ext)s" \
         -f "bv*[vcodec^=avc1]+ba[acodec^=mp4a]/bv*[vcodec^=avc1]+ba/b" \
         --recode-video mp4 \
+        --download-archive archive.txt \
+        --ignore-errors \
+        --retry-sleep http:16 \
+        --sleep-requests 4 \
+        --sleep-interval 8 \
+        --max-sleep-interval 16 \
+        --sleep-subtitles 4 \
         --postprocessor-args "RecodeVideo:-c:v hevc_videotoolbox -b:v 8M -q:v 72 -c:a aac -b:a 192k" \
         --write-auto-subs \
         --sub-format="vtt" \
-        --sub-langs="en.*,zh-Hans" \
+        --sub-langs="en-orig,en,en-US,zh-Hans,zh-CN" \
         --embed-subs \
         --js-runtimes deno \
         --remote-components ejs:github \
