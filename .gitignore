@@ -4,6 +4,8 @@ auto-save-list/
 *~
 # nvim ignore
 nvim-pack-lock.json
+# helix ignore
+helix/runtime
 
 serviceworkers/
 indexeddb/
