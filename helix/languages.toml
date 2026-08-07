@@ -86,15 +86,6 @@ fontPaths = ["fonts"]
 formatterPrintWidth = 96
 lint = { enabled = true }
 
-[language-server.tinymist.config.preview]
-background = { enabled = true }
-browsing = { args = [
-  "--data-plane-host=127.0.0.1:23635",
-  "--invert-colors=never",
-  "--open",
-] }
-refresh = "onSave"
-
 [[language]]
 name = "typst"
 language-servers = ["tinymist"]

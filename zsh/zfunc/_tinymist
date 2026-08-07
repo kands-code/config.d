@@ -1,0 +1,1429 @@
+#compdef tinymist
+
+autoload -U is-at-least
+
+_tinymist() {
+    typeset -A opt_args
+    typeset -a _arguments_options
+    local ret=1
+
+    if is-at-least 5.2; then
+        _arguments_options=(-s -S -C)
+    else
+        _arguments_options=(-s -C)
+    fi
+
+    local context curcontext="$curcontext" state line
+    _arguments "${_arguments_options[@]}" : \
+'--log-filter=[Configure log filter of tinymist]:LOG_FILTER:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+'-V[Print version]' \
+'--version[Print version]' \
+":: :_tinymist_commands" \
+"*::: :->tinymist" \
+&& ret=0
+    case $state in
+    (tinymist)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:tinymist-command-$line[1]:"
+        case $line[1] in
+            (probe)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(lsp)
+_arguments "${_arguments_options[@]}" : \
+'--mirror=[Mirror the stdin to the file]:FILE:_default' \
+'--replay=[Replay input from the file]:FILE:_default' \
+'*--font-path=[Add additional directories that are recursively searched for fonts]:DIR:_files' \
+'--ignore-system-fonts[Ensure system fonts won'\''t be searched, unless explicitly included via \`--font-path\`]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+&& ret=0
+;;
+(dap)
+_arguments "${_arguments_options[@]}" : \
+'--mirror=[Mirror the stdin to the file]:FILE:_default' \
+'--replay=[Replay input from the file]:FILE:_default' \
+'*--font-path=[Add additional directories that are recursively searched for fonts]:DIR:_files' \
+'--ignore-system-fonts[Ensure system fonts won'\''t be searched, unless explicitly included via \`--font-path\`]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+&& ret=0
+;;
+(trace-lsp)
+_arguments "${_arguments_options[@]}" : \
+'--rpc-kind=[]:RPC_KIND:_default' \
+'--mirror=[Mirror the stdin to the file]:FILE:_default' \
+'--replay=[Replay input from the file]:FILE:_default' \
+'--root=[Configure the project root (for absolute paths)]:DIR:_files' \
+'*--font-path=[Add additional directories that are recursively searched for fonts]:DIR:_files' \
+'--package-path=[Specify a custom path to local packages, defaults to system-dependent location]:DIR:_files' \
+'--package-cache-path=[Specify a custom path to package cache, defaults to system-dependent location]:DIR:_files' \
+'*--pdf-standard=[Specify the PDF standards that Typst will enforce conformance with]:STANDARD:((1.4\:"PDF 1.4"
+1.5\:"PDF 1.5"
+1.6\:"PDF 1.6"
+1.7\:"PDF 1.7"
+2.0\:"PDF 2.0"
+a-1b\:"PDF/A-1b"
+a-1a\:"PDF/A-1a"
+a-2b\:"PDF/A-2b"
+a-2u\:"PDF/A-2u"
+a-2a\:"PDF/A-2a"
+a-3b\:"PDF/A-3b"
+a-3u\:"PDF/A-3u"
+a-3a\:"PDF/A-3a"
+a-4\:"PDF/A-4"
+a-4f\:"PDF/A-4f"
+a-4e\:"PDF/A-4e"
+ua-1\:"PDF/UA-1"))' \
+'--ppi=[Specify the PPI (pixels per inch) to use for PNG export]:PPI:_default' \
+'*--features=[Enable in-development features that may be changed or removed at any time]:FEATURES:((html\:"The HTML feature"
+a11y-extras\:"The A11yExtras feature"
+bundle\:"The bundle export feature"))' \
+'*--input=[Add a string key-value pair visible through \`sys.inputs\`]:key=value:_default' \
+'--creation-timestamp=[Configure the document'\''s creation date formatted as a UNIX timestamp (in seconds)]:UNIX_TIMESTAMP:_default' \
+'--cert=[Specify the path to CA certificate file for network access, especially for downloading typst packages]:CERT_PATH:_files' \
+'--persist[]' \
+'--ignore-system-fonts[Ensure system fonts won'\''t be searched, unless explicitly included via \`--font-path\`]' \
+'--no-pdf-tags[By default, even when not producing a \`PDF/UA-1\` document, a tagged PDF document is written to provide a baseline of accessibility. In some circumstances (for example when trying to reduce the size of a document) it can be desirable to disable tagged PDF]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+'::input -- Specify the path to input Typst file. If the path is relative, it will be resolved relative to the current working directory (PWD):_default' \
+&& ret=0
+;;
+(query)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+":: :_tinymist__subcmd__query_commands" \
+"*::: :->query" \
+&& ret=0
+
+    case $state in
+    (query)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:tinymist-query-command-$line[1]:"
+        case $line[1] in
+            (lsif)
+_arguments "${_arguments_options[@]}" : \
+'--root=[Configure the project root (for absolute paths)]:DIR:_files' \
+'*--font-path=[Add additional directories that are recursively searched for fonts]:DIR:_files' \
+'--package-path=[Specify a custom path to local packages, defaults to system-dependent location]:DIR:_files' \
+'--package-cache-path=[Specify a custom path to package cache, defaults to system-dependent location]:DIR:_files' \
+'*--pdf-standard=[Specify the PDF standards that Typst will enforce conformance with]:STANDARD:((1.4\:"PDF 1.4"
+1.5\:"PDF 1.5"
+1.6\:"PDF 1.6"
+1.7\:"PDF 1.7"
+2.0\:"PDF 2.0"
+a-1b\:"PDF/A-1b"
+a-1a\:"PDF/A-1a"
+a-2b\:"PDF/A-2b"
+a-2u\:"PDF/A-2u"
+a-2a\:"PDF/A-2a"
+a-3b\:"PDF/A-3b"
+a-3u\:"PDF/A-3u"
+a-3a\:"PDF/A-3a"
+a-4\:"PDF/A-4"
+a-4f\:"PDF/A-4f"
+a-4e\:"PDF/A-4e"
+ua-1\:"PDF/UA-1"))' \
+'--ppi=[Specify the PPI (pixels per inch) to use for PNG export]:PPI:_default' \
+'*--features=[Enable in-development features that may be changed or removed at any time]:FEATURES:((html\:"The HTML feature"
+a11y-extras\:"The A11yExtras feature"
+bundle\:"The bundle export feature"))' \
+'*--input=[Add a string key-value pair visible through \`sys.inputs\`]:key=value:_default' \
+'--creation-timestamp=[Configure the document'\''s creation date formatted as a UNIX timestamp (in seconds)]:UNIX_TIMESTAMP:_default' \
+'--cert=[Specify the path to CA certificate file for network access, especially for downloading typst packages]:CERT_PATH:_files' \
+'--path=[The path of the package to request lsif for]:PATH:_default' \
+'--id=[The package of the package to request lsif for]:ID:_default' \
+'-o+[The output path for the requested lsif]:OUTPUT:_default' \
+'--output=[The output path for the requested lsif]:OUTPUT:_default' \
+'--ignore-system-fonts[Ensure system fonts won'\''t be searched, unless explicitly included via \`--font-path\`]' \
+'--no-pdf-tags[By default, even when not producing a \`PDF/UA-1\` document, a tagged PDF document is written to provide a baseline of accessibility. In some circumstances (for example when trying to reduce the size of a document) it can be desirable to disable tagged PDF]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+'::input -- Specify the path to input Typst file. If the path is relative, it will be resolved relative to the current working directory (PWD):_default' \
+&& ret=0
+;;
+(scip)
+_arguments "${_arguments_options[@]}" : \
+'--root=[Configure the project root (for absolute paths)]:DIR:_files' \
+'*--font-path=[Add additional directories that are recursively searched for fonts]:DIR:_files' \
+'--package-path=[Specify a custom path to local packages, defaults to system-dependent location]:DIR:_files' \
+'--package-cache-path=[Specify a custom path to package cache, defaults to system-dependent location]:DIR:_files' \
+'*--pdf-standard=[Specify the PDF standards that Typst will enforce conformance with]:STANDARD:((1.4\:"PDF 1.4"
+1.5\:"PDF 1.5"
+1.6\:"PDF 1.6"
+1.7\:"PDF 1.7"
+2.0\:"PDF 2.0"
+a-1b\:"PDF/A-1b"
+a-1a\:"PDF/A-1a"
+a-2b\:"PDF/A-2b"
+a-2u\:"PDF/A-2u"
+a-2a\:"PDF/A-2a"
+a-3b\:"PDF/A-3b"
+a-3u\:"PDF/A-3u"
+a-3a\:"PDF/A-3a"
+a-4\:"PDF/A-4"
+a-4f\:"PDF/A-4f"
+a-4e\:"PDF/A-4e"
+ua-1\:"PDF/UA-1"))' \
+'--ppi=[Specify the PPI (pixels per inch) to use for PNG export]:PPI:_default' \
+'*--features=[Enable in-development features that may be changed or removed at any time]:FEATURES:((html\:"The HTML feature"
+a11y-extras\:"The A11yExtras feature"
+bundle\:"The bundle export feature"))' \
+'*--input=[Add a string key-value pair visible through \`sys.inputs\`]:key=value:_default' \
+'--creation-timestamp=[Configure the document'\''s creation date formatted as a UNIX timestamp (in seconds)]:UNIX_TIMESTAMP:_default' \
+'--cert=[Specify the path to CA certificate file for network access, especially for downloading typst packages]:CERT_PATH:_files' \
+'--path=[The path of the package to request SCIP for]:PATH:_default' \
+'--id=[The package to request SCIP for]:ID:_default' \
+'-o+[The output path for the requested SCIP protobuf]:OUTPUT:_default' \
+'--output=[The output path for the requested SCIP protobuf]:OUTPUT:_default' \
+'--stats-output=[The output path for structured analysis statistics]:STATS_OUTPUT:_default' \
+'--index-summary-output=[The output path for structured SCIP index statistics]:INDEX_SUMMARY_OUTPUT:_default' \
+'--ignore-system-fonts[Ensure system fonts won'\''t be searched, unless explicitly included via \`--font-path\`]' \
+'--no-pdf-tags[By default, even when not producing a \`PDF/UA-1\` document, a tagged PDF document is written to provide a baseline of accessibility. In some circumstances (for example when trying to reduce the size of a document) it can be desirable to disable tagged PDF]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+'::input -- Specify the path to input Typst file. If the path is relative, it will be resolved relative to the current working directory (PWD):_default' \
+&& ret=0
+;;
+(packageDocs)
+_arguments "${_arguments_options[@]}" : \
+'--root=[Configure the project root (for absolute paths)]:DIR:_files' \
+'*--font-path=[Add additional directories that are recursively searched for fonts]:DIR:_files' \
+'--package-path=[Specify a custom path to local packages, defaults to system-dependent location]:DIR:_files' \
+'--package-cache-path=[Specify a custom path to package cache, defaults to system-dependent location]:DIR:_files' \
+'*--pdf-standard=[Specify the PDF standards that Typst will enforce conformance with]:STANDARD:((1.4\:"PDF 1.4"
+1.5\:"PDF 1.5"
+1.6\:"PDF 1.6"
+1.7\:"PDF 1.7"
+2.0\:"PDF 2.0"
+a-1b\:"PDF/A-1b"
+a-1a\:"PDF/A-1a"
+a-2b\:"PDF/A-2b"
+a-2u\:"PDF/A-2u"
+a-2a\:"PDF/A-2a"
+a-3b\:"PDF/A-3b"
+a-3u\:"PDF/A-3u"
+a-3a\:"PDF/A-3a"
+a-4\:"PDF/A-4"
+a-4f\:"PDF/A-4f"
+a-4e\:"PDF/A-4e"
+ua-1\:"PDF/UA-1"))' \
+'--ppi=[Specify the PPI (pixels per inch) to use for PNG export]:PPI:_default' \
+'*--features=[Enable in-development features that may be changed or removed at any time]:FEATURES:((html\:"The HTML feature"
+a11y-extras\:"The A11yExtras feature"
+bundle\:"The bundle export feature"))' \
+'*--input=[Add a string key-value pair visible through \`sys.inputs\`]:key=value:_default' \
+'--creation-timestamp=[Configure the document'\''s creation date formatted as a UNIX timestamp (in seconds)]:UNIX_TIMESTAMP:_default' \
+'--cert=[Specify the path to CA certificate file for network access, especially for downloading typst packages]:CERT_PATH:_files' \
+'--path=[The path of the package to request docs for]:PATH:_default' \
+'--id=[The package of the package to request docs for]:ID:_default' \
+'-o+[The output path for the requested docs]:OUTPUT:_default' \
+'--output=[The output path for the requested docs]:OUTPUT:_default' \
+'--ignore-system-fonts[Ensure system fonts won'\''t be searched, unless explicitly included via \`--font-path\`]' \
+'--no-pdf-tags[By default, even when not producing a \`PDF/UA-1\` document, a tagged PDF document is written to provide a baseline of accessibility. In some circumstances (for example when trying to reduce the size of a document) it can be desirable to disable tagged PDF]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+'::input -- Specify the path to input Typst file. If the path is relative, it will be resolved relative to the current working directory (PWD):_default' \
+&& ret=0
+;;
+(checkPackage)
+_arguments "${_arguments_options[@]}" : \
+'--root=[Configure the project root (for absolute paths)]:DIR:_files' \
+'*--font-path=[Add additional directories that are recursively searched for fonts]:DIR:_files' \
+'--package-path=[Specify a custom path to local packages, defaults to system-dependent location]:DIR:_files' \
+'--package-cache-path=[Specify a custom path to package cache, defaults to system-dependent location]:DIR:_files' \
+'*--pdf-standard=[Specify the PDF standards that Typst will enforce conformance with]:STANDARD:((1.4\:"PDF 1.4"
+1.5\:"PDF 1.5"
+1.6\:"PDF 1.6"
+1.7\:"PDF 1.7"
+2.0\:"PDF 2.0"
+a-1b\:"PDF/A-1b"
+a-1a\:"PDF/A-1a"
+a-2b\:"PDF/A-2b"
+a-2u\:"PDF/A-2u"
+a-2a\:"PDF/A-2a"
+a-3b\:"PDF/A-3b"
+a-3u\:"PDF/A-3u"
+a-3a\:"PDF/A-3a"
+a-4\:"PDF/A-4"
+a-4f\:"PDF/A-4f"
+a-4e\:"PDF/A-4e"
+ua-1\:"PDF/UA-1"))' \
+'--ppi=[Specify the PPI (pixels per inch) to use for PNG export]:PPI:_default' \
+'*--features=[Enable in-development features that may be changed or removed at any time]:FEATURES:((html\:"The HTML feature"
+a11y-extras\:"The A11yExtras feature"
+bundle\:"The bundle export feature"))' \
+'*--input=[Add a string key-value pair visible through \`sys.inputs\`]:key=value:_default' \
+'--creation-timestamp=[Configure the document'\''s creation date formatted as a UNIX timestamp (in seconds)]:UNIX_TIMESTAMP:_default' \
+'--cert=[Specify the path to CA certificate file for network access, especially for downloading typst packages]:CERT_PATH:_files' \
+'--path=[The path of the package to request docs for]:PATH:_default' \
+'--id=[The package of the package to request docs for]:ID:_default' \
+'-o+[The output path for the requested docs]:OUTPUT:_default' \
+'--output=[The output path for the requested docs]:OUTPUT:_default' \
+'--ignore-system-fonts[Ensure system fonts won'\''t be searched, unless explicitly included via \`--font-path\`]' \
+'--no-pdf-tags[By default, even when not producing a \`PDF/UA-1\` document, a tagged PDF document is written to provide a baseline of accessibility. In some circumstances (for example when trying to reduce the size of a document) it can be desirable to disable tagged PDF]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+'::input -- Specify the path to input Typst file. If the path is relative, it will be resolved relative to the current working directory (PWD):_default' \
+&& ret=0
+;;
+(tyckScope)
+_arguments "${_arguments_options[@]}" : \
+'--root=[Configure the project root (for absolute paths)]:DIR:_files' \
+'*--font-path=[Add additional directories that are recursively searched for fonts]:DIR:_files' \
+'--package-path=[Specify a custom path to local packages, defaults to system-dependent location]:DIR:_files' \
+'--package-cache-path=[Specify a custom path to package cache, defaults to system-dependent location]:DIR:_files' \
+'*--pdf-standard=[Specify the PDF standards that Typst will enforce conformance with]:STANDARD:((1.4\:"PDF 1.4"
+1.5\:"PDF 1.5"
+1.6\:"PDF 1.6"
+1.7\:"PDF 1.7"
+2.0\:"PDF 2.0"
+a-1b\:"PDF/A-1b"
+a-1a\:"PDF/A-1a"
+a-2b\:"PDF/A-2b"
+a-2u\:"PDF/A-2u"
+a-2a\:"PDF/A-2a"
+a-3b\:"PDF/A-3b"
+a-3u\:"PDF/A-3u"
+a-3a\:"PDF/A-3a"
+a-4\:"PDF/A-4"
+a-4f\:"PDF/A-4f"
+a-4e\:"PDF/A-4e"
+ua-1\:"PDF/UA-1"))' \
+'--ppi=[Specify the PPI (pixels per inch) to use for PNG export]:PPI:_default' \
+'*--features=[Enable in-development features that may be changed or removed at any time]:FEATURES:((html\:"The HTML feature"
+a11y-extras\:"The A11yExtras feature"
+bundle\:"The bundle export feature"))' \
+'*--input=[Add a string key-value pair visible through \`sys.inputs\`]:key=value:_default' \
+'--creation-timestamp=[Configure the document'\''s creation date formatted as a UNIX timestamp (in seconds)]:UNIX_TIMESTAMP:_default' \
+'--cert=[Specify the path to CA certificate file for network access, especially for downloading typst packages]:CERT_PATH:_files' \
+'--path=[The path of the package to request tyck scopes for]:PATH:_default' \
+'--id=[The package to request tyck scopes for]:ID:_default' \
+'-o+[The output path for the requested tyck scope dump]:OUTPUT:_default' \
+'--output=[The output path for the requested tyck scope dump]:OUTPUT:_default' \
+'--max-type-chars=[Maximum characters kept for each dumped type string. Set to 0 to keep full strings]:MAX_TYPE_CHARS:_default' \
+'--ignore-system-fonts[Ensure system fonts won'\''t be searched, unless explicitly included via \`--font-path\`]' \
+'--no-pdf-tags[By default, even when not producing a \`PDF/UA-1\` document, a tagged PDF document is written to provide a baseline of accessibility. In some circumstances (for example when trying to reduce the size of a document) it can be desirable to disable tagged PDF]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+'::input -- Specify the path to input Typst file. If the path is relative, it will be resolved relative to the current working directory (PWD):_default' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_tinymist__subcmd__query__subcmd__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:tinymist-query-help-command-$line[1]:"
+        case $line[1] in
+            (lsif)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(scip)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(packageDocs)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(checkPackage)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(tyckScope)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+;;
+(preview)
+_arguments "${_arguments_options[@]}" : \
+'--format=[Configure the preview output format]:FORMAT:((paged\:"The current export target is for PDF, PNG, and SVG export"
+html\:"The current export target is for HTML export"
+bundle\:"The current export target is for bundle export"))' \
+'--preview-mode=[Configure the preview mode]:MODE:((document\:"Would like to preview a regular document"
+slide\:"Would like to preview slides"))' \
+'--page-title=[Set the preview page title]:TITLE:_default' \
+'--partial-rendering=[Only render visible part of the document]:ENABLE_PARTIAL_RENDERING:(true false)' \
+'--invert-colors=[Configure the way to invert colors of the preview]:INVERT_COLORS:_default' \
+'--refresh-style=[Used by lsp for controlling the preview refresh style]:REFRESH_STYLE:((on-save\:"Refresh preview on save"
+on-type\:"Refresh preview on type"))' \
+'--root=[Configure the project root (for absolute paths)]:DIR:_files' \
+'*--font-path=[Add additional directories that are recursively searched for fonts]:DIR:_files' \
+'--package-path=[Specify a custom path to local packages, defaults to system-dependent location]:DIR:_files' \
+'--package-cache-path=[Specify a custom path to package cache, defaults to system-dependent location]:DIR:_files' \
+'*--pdf-standard=[Specify the PDF standards that Typst will enforce conformance with]:STANDARD:((1.4\:"PDF 1.4"
+1.5\:"PDF 1.5"
+1.6\:"PDF 1.6"
+1.7\:"PDF 1.7"
+2.0\:"PDF 2.0"
+a-1b\:"PDF/A-1b"
+a-1a\:"PDF/A-1a"
+a-2b\:"PDF/A-2b"
+a-2u\:"PDF/A-2u"
+a-2a\:"PDF/A-2a"
+a-3b\:"PDF/A-3b"
+a-3u\:"PDF/A-3u"
+a-3a\:"PDF/A-3a"
+a-4\:"PDF/A-4"
+a-4f\:"PDF/A-4f"
+a-4e\:"PDF/A-4e"
+ua-1\:"PDF/UA-1"))' \
+'--ppi=[Specify the PPI (pixels per inch) to use for PNG export]:PPI:_default' \
+'*--features=[Enable in-development features that may be changed or removed at any time]:FEATURES:((html\:"The HTML feature"
+a11y-extras\:"The A11yExtras feature"
+bundle\:"The bundle export feature"))' \
+'*--input=[Add a string key-value pair visible through \`sys.inputs\`]:key=value:_default' \
+'--creation-timestamp=[Configure the document'\''s creation date formatted as a UNIX timestamp (in seconds)]:UNIX_TIMESTAMP:_default' \
+'--cert=[Specify the path to CA certificate file for network access, especially for downloading typst packages]:CERT_PATH:_files' \
+'--task-id=[Used by lsp for identifying the task]:TASK_ID:_default' \
+'--data-plane-host=[Configure the data plane server address]:HOST:_default' \
+'--control-plane-host=[Configure the control plane server address]:HOST:_default' \
+'--host=[(Deprecated) Configure (File) Host address for the preview server]:HOST:_default' \
+'--ignore-system-fonts[Ensure system fonts won'\''t be searched, unless explicitly included via \`--font-path\`]' \
+'--no-pdf-tags[By default, even when not producing a \`PDF/UA-1\` document, a tagged PDF document is written to provide a baseline of accessibility. In some circumstances (for example when trying to reduce the size of a document) it can be desirable to disable tagged PDF]' \
+'--not-primary[Let it not be the primary instance]' \
+'--open[Open the preview in the browser after compilation. If \`--no-open\` is set, this flag will be ignored]' \
+'--no-open[Don'\''t open the preview in the browser after compilation. If \`--open\` is set as well, this flag will win]' \
+'--verbose[Emit INFO level logging. The default is WARN]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+'::input -- Specify the path to input Typst file. If the path is relative, it will be resolved relative to the current working directory (PWD):_default' \
+&& ret=0
+;;
+(compile)
+_arguments "${_arguments_options[@]}" : \
+'--name=[Give a task name to the document]:NAME:_default' \
+'--root=[Configure the project root (for absolute paths). If the path is relative, it will be resolved relative to the current working directory (PWD)]:DIR:_default' \
+'*--input=[Add a string key-value pair visible through \`sys.inputs\`]:key=value:_default' \
+'*--font-path=[Add additional directories that are recursively searched for fonts]:DIR:_files' \
+'--package-path=[Specify a custom path to local packages, defaults to system-dependent location]:DIR:_files' \
+'--package-cache-path=[Specify a custom path to package cache, defaults to system-dependent location]:DIR:_files' \
+'--when=[Configure when to run the task]:WHEN:((never\:"Never watch to run task"
+onSave\:"Run task on saving the document, i.e. on \`textDocument/didSave\` events"
+onType\:"Run task on typing, i.e. on \`textDocument/didChange\` events"
+onDocumentHasTitle\:"*DEPRECATED* Run task when a document has a title and on saved, which is useful to filter out template files"
+script\:"Checks by running a typst script"))' \
+'-f+[Specify the format of the output file, inferred from the extension by default]:FORMAT:((pdf\:"Export to PDF"
+png\:"Export to PNG"
+svg\:"Export to SVG"
+html\:"Export to HTML"
+bundle\:"Export to Bundle"))' \
+'--format=[Specify the format of the output file, inferred from the extension by default]:FORMAT:((pdf\:"Export to PDF"
+png\:"Export to PNG"
+svg\:"Export to SVG"
+html\:"Export to HTML"
+bundle\:"Export to Bundle"))' \
+'*--pages=[Specify which pages to export. When unspecified, all pages are exported]:PAGES:_default' \
+'*--pdf-standard=[Specify the PDF standards that Typst will enforce conformance with]:STANDARD:((1.4\:"PDF 1.4"
+1.5\:"PDF 1.5"
+1.6\:"PDF 1.6"
+1.7\:"PDF 1.7"
+2.0\:"PDF 2.0"
+a-1b\:"PDF/A-1b"
+a-1a\:"PDF/A-1a"
+a-2b\:"PDF/A-2b"
+a-2u\:"PDF/A-2u"
+a-2a\:"PDF/A-2a"
+a-3b\:"PDF/A-3b"
+a-3u\:"PDF/A-3u"
+a-3a\:"PDF/A-3a"
+a-4\:"PDF/A-4"
+a-4f\:"PDF/A-4f"
+a-4e\:"PDF/A-4e"
+ua-1\:"PDF/UA-1"))' \
+'--ppi=[Specify the PPI (pixels per inch) to use for PNG export]:PPI:_default' \
+'--lockfile=[Specify the path to the lock file. If the path is set, the lockfile will be saved (--save-lock)]:LOCKFILE:_files' \
+'--ignore-system-fonts[Ensure system fonts won'\''t be searched, unless explicitly included via \`--font-path\`]' \
+'--no-pdf-tags[By default, even when not producing a \`PDF/UA-1\` document, a tagged PDF document is written to provide a baseline of accessibility. In some circumstances (for example when trying to reduce the size of a document) it can be desirable to disable tagged PDF]' \
+'--save-lock[Save the compilation arguments to the lock file. If \`--lockfile\` is not set, the lock file will be saved in the cwd]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+':input -- Specify the path to input Typst file:_files' \
+'::output -- Provide the path to output file (PDF, PNG, SVG, or HTML). Use `-` to write output to stdout:_files' \
+&& ret=0
+;;
+(lint)
+_arguments "${_arguments_options[@]}" : \
+'--root=[Configure the project root (for absolute paths)]:DIR:_files' \
+'*--font-path=[Add additional directories that are recursively searched for fonts]:DIR:_files' \
+'--package-path=[Specify a custom path to local packages, defaults to system-dependent location]:DIR:_files' \
+'--package-cache-path=[Specify a custom path to package cache, defaults to system-dependent location]:DIR:_files' \
+'*--pdf-standard=[Specify the PDF standards that Typst will enforce conformance with]:STANDARD:((1.4\:"PDF 1.4"
+1.5\:"PDF 1.5"
+1.6\:"PDF 1.6"
+1.7\:"PDF 1.7"
+2.0\:"PDF 2.0"
+a-1b\:"PDF/A-1b"
+a-1a\:"PDF/A-1a"
+a-2b\:"PDF/A-2b"
+a-2u\:"PDF/A-2u"
+a-2a\:"PDF/A-2a"
+a-3b\:"PDF/A-3b"
+a-3u\:"PDF/A-3u"
+a-3a\:"PDF/A-3a"
+a-4\:"PDF/A-4"
+a-4f\:"PDF/A-4f"
+a-4e\:"PDF/A-4e"
+ua-1\:"PDF/UA-1"))' \
+'--ppi=[Specify the PPI (pixels per inch) to use for PNG export]:PPI:_default' \
+'*--features=[Enable in-development features that may be changed or removed at any time]:FEATURES:((html\:"The HTML feature"
+a11y-extras\:"The A11yExtras feature"
+bundle\:"The bundle export feature"))' \
+'*--input=[Add a string key-value pair visible through \`sys.inputs\`]:key=value:_default' \
+'--creation-timestamp=[Configure the document'\''s creation date formatted as a UNIX timestamp (in seconds)]:UNIX_TIMESTAMP:_default' \
+'--cert=[Specify the path to CA certificate file for network access, especially for downloading typst packages]:CERT_PATH:_files' \
+'--diagnostic-format=[Configure how diagnostics are printed]:DIAGNOSTIC_FORMAT:((human\:"Human-readable diagnostics"
+short\:"Short Unix-style diagnostics"))' \
+'--ignore-system-fonts[Ensure system fonts won'\''t be searched, unless explicitly included via \`--font-path\`]' \
+'--no-pdf-tags[By default, even when not producing a \`PDF/UA-1\` document, a tagged PDF document is written to provide a baseline of accessibility. In some circumstances (for example when trying to reduce the size of a document) it can be desirable to disable tagged PDF]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+'::input -- Specify the path to input Typst file. If the path is relative, it will be resolved relative to the current working directory (PWD):_default' \
+&& ret=0
+;;
+(package)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+":: :_tinymist__subcmd__package_commands" \
+"*::: :->package" \
+&& ret=0
+
+    case $state in
+    (package)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:tinymist-package-command-$line[1]:"
+        case $line[1] in
+            (docs)
+_arguments "${_arguments_options[@]}" : \
+'--namespace=[Package namespace. Defaults to the namespace inferred from a local package layout, or \`preview\` for a plain package directory]:NAMESPACE:_default' \
+'--root=[Configure the project root (for absolute paths)]:DIR:_files' \
+'*--font-path=[Add additional directories that are recursively searched for fonts]:DIR:_files' \
+'--package-path=[Specify a custom path to local packages, defaults to system-dependent location]:DIR:_files' \
+'--package-cache-path=[Specify a custom path to package cache, defaults to system-dependent location]:DIR:_files' \
+'*--pdf-standard=[Specify the PDF standards that Typst will enforce conformance with]:STANDARD:((1.4\:"PDF 1.4"
+1.5\:"PDF 1.5"
+1.6\:"PDF 1.6"
+1.7\:"PDF 1.7"
+2.0\:"PDF 2.0"
+a-1b\:"PDF/A-1b"
+a-1a\:"PDF/A-1a"
+a-2b\:"PDF/A-2b"
+a-2u\:"PDF/A-2u"
+a-2a\:"PDF/A-2a"
+a-3b\:"PDF/A-3b"
+a-3u\:"PDF/A-3u"
+a-3a\:"PDF/A-3a"
+a-4\:"PDF/A-4"
+a-4f\:"PDF/A-4f"
+a-4e\:"PDF/A-4e"
+ua-1\:"PDF/UA-1"))' \
+'--ppi=[Specify the PPI (pixels per inch) to use for PNG export]:PPI:_default' \
+'*--features=[Enable in-development features that may be changed or removed at any time]:FEATURES:((html\:"The HTML feature"
+a11y-extras\:"The A11yExtras feature"
+bundle\:"The bundle export feature"))' \
+'*--input=[Add a string key-value pair visible through \`sys.inputs\`]:key=value:_default' \
+'--creation-timestamp=[Configure the document'\''s creation date formatted as a UNIX timestamp (in seconds)]:UNIX_TIMESTAMP:_default' \
+'--cert=[Specify the path to CA certificate file for network access, especially for downloading typst packages]:CERT_PATH:_files' \
+'--watch[Regenerate and export docs when package sources change]' \
+'--ignore-system-fonts[Ensure system fonts won'\''t be searched, unless explicitly included via \`--font-path\`]' \
+'--no-pdf-tags[By default, even when not producing a \`PDF/UA-1\` document, a tagged PDF document is written to provide a baseline of accessibility. In some circumstances (for example when trying to reduce the size of a document) it can be desirable to disable tagged PDF]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+'::input -- Specify the path to input Typst file. If the path is relative, it will be resolved relative to the current working directory (PWD):_default' \
+'::output -- Output directory for generated bundle docs:_files -/' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_tinymist__subcmd__package__subcmd__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:tinymist-package-help-command-$line[1]:"
+        case $line[1] in
+            (docs)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+;;
+(completion)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+'::shell -- The shell to generate the completion script for. If not provided, it will be inferred from the environment:(bash elvish fig fish powershell zsh nushell)' \
+&& ret=0
+;;
+(generate-script)
+_arguments "${_arguments_options[@]}" : \
+'-o+[The path to the output script]:OUTPUT:_default' \
+'--output=[The path to the output script]:OUTPUT:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+'::shell -- The shell to generate the completion script for. If not provided, it will be inferred from the environment:(bash elvish fig fish powershell zsh nushell)' \
+&& ret=0
+;;
+(doc)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+":: :_tinymist__subcmd__doc_commands" \
+"*::: :->doc" \
+&& ret=0
+
+    case $state in
+    (doc)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:tinymist-doc-command-$line[1]:"
+        case $line[1] in
+            (new)
+_arguments "${_arguments_options[@]}" : \
+'--name=[Give a task name to the document]:NAME:_default' \
+'--root=[Configure the project root (for absolute paths). If the path is relative, it will be resolved relative to the current working directory (PWD)]:DIR:_default' \
+'*--input=[Add a string key-value pair visible through \`sys.inputs\`]:key=value:_default' \
+'*--font-path=[Add additional directories that are recursively searched for fonts]:DIR:_files' \
+'--package-path=[Specify a custom path to local packages, defaults to system-dependent location]:DIR:_files' \
+'--package-cache-path=[Specify a custom path to package cache, defaults to system-dependent location]:DIR:_files' \
+'--ignore-system-fonts[Ensure system fonts won'\''t be searched, unless explicitly included via \`--font-path\`]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+':input -- Specify the path to input Typst file:_files' \
+&& ret=0
+;;
+(configure)
+_arguments "${_arguments_options[@]}" : \
+'--name=[Give a task name to the document]:NAME:_default' \
+'--priority=[Set the unsigned priority of these task (lower numbers are higher priority)]:PRIORITY:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+':input -- Specify the path to input Typst file:_files' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_tinymist__subcmd__doc__subcmd__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:tinymist-doc-help-command-$line[1]:"
+        case $line[1] in
+            (new)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(configure)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+;;
+(task)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+":: :_tinymist__subcmd__task_commands" \
+"*::: :->task" \
+&& ret=0
+
+    case $state in
+    (task)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:tinymist-task-command-$line[1]:"
+        case $line[1] in
+            (preview)
+_arguments "${_arguments_options[@]}" : \
+'--name=[Give a task name to the document]:NAME:_default' \
+'--root=[Configure the project root (for absolute paths). If the path is relative, it will be resolved relative to the current working directory (PWD)]:DIR:_default' \
+'*--input=[Add a string key-value pair visible through \`sys.inputs\`]:key=value:_default' \
+'*--font-path=[Add additional directories that are recursively searched for fonts]:DIR:_files' \
+'--package-path=[Specify a custom path to local packages, defaults to system-dependent location]:DIR:_files' \
+'--package-cache-path=[Specify a custom path to package cache, defaults to system-dependent location]:DIR:_files' \
+'--task=[Name a task]:TASK_NAME:_default' \
+'--when=[When to run the task]:WHEN:((never\:"Never watch to run task"
+onSave\:"Run task on saving the document, i.e. on \`textDocument/didSave\` events"
+onType\:"Run task on typing, i.e. on \`textDocument/didChange\` events"
+onDocumentHasTitle\:"*DEPRECATED* Run task when a document has a title and on saved, which is useful to filter out template files"
+script\:"Checks by running a typst script"))' \
+'--format=[Configure the preview output format]:FORMAT:((paged\:"The current export target is for PDF, PNG, and SVG export"
+html\:"The current export target is for HTML export"
+bundle\:"The current export target is for bundle export"))' \
+'--preview-mode=[Configure the preview mode]:MODE:((document\:"Would like to preview a regular document"
+slide\:"Would like to preview slides"))' \
+'--page-title=[Set the preview page title]:TITLE:_default' \
+'--partial-rendering=[Only render visible part of the document]:ENABLE_PARTIAL_RENDERING:(true false)' \
+'--invert-colors=[Configure the way to invert colors of the preview]:INVERT_COLORS:_default' \
+'--refresh-style=[Used by lsp for controlling the preview refresh style]:REFRESH_STYLE:((on-save\:"Refresh preview on save"
+on-type\:"Refresh preview on type"))' \
+'--ignore-system-fonts[Ensure system fonts won'\''t be searched, unless explicitly included via \`--font-path\`]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+':input -- Specify the path to input Typst file:_files' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_tinymist__subcmd__task__subcmd__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:tinymist-task-help-command-$line[1]:"
+        case $line[1] in
+            (preview)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+;;
+(cov)
+_arguments "${_arguments_options[@]}" : \
+'--root=[Configure the project root (for absolute paths)]:DIR:_files' \
+'*--font-path=[Add additional directories that are recursively searched for fonts]:DIR:_files' \
+'--package-path=[Specify a custom path to local packages, defaults to system-dependent location]:DIR:_files' \
+'--package-cache-path=[Specify a custom path to package cache, defaults to system-dependent location]:DIR:_files' \
+'*--pdf-standard=[Specify the PDF standards that Typst will enforce conformance with]:STANDARD:((1.4\:"PDF 1.4"
+1.5\:"PDF 1.5"
+1.6\:"PDF 1.6"
+1.7\:"PDF 1.7"
+2.0\:"PDF 2.0"
+a-1b\:"PDF/A-1b"
+a-1a\:"PDF/A-1a"
+a-2b\:"PDF/A-2b"
+a-2u\:"PDF/A-2u"
+a-2a\:"PDF/A-2a"
+a-3b\:"PDF/A-3b"
+a-3u\:"PDF/A-3u"
+a-3a\:"PDF/A-3a"
+a-4\:"PDF/A-4"
+a-4f\:"PDF/A-4f"
+a-4e\:"PDF/A-4e"
+ua-1\:"PDF/UA-1"))' \
+'--ppi=[Specify the PPI (pixels per inch) to use for PNG export]:PPI:_default' \
+'*--features=[Enable in-development features that may be changed or removed at any time]:FEATURES:((html\:"The HTML feature"
+a11y-extras\:"The A11yExtras feature"
+bundle\:"The bundle export feature"))' \
+'*--input=[Add a string key-value pair visible through \`sys.inputs\`]:key=value:_default' \
+'--creation-timestamp=[Configure the document'\''s creation date formatted as a UNIX timestamp (in seconds)]:UNIX_TIMESTAMP:_default' \
+'--cert=[Specify the path to CA certificate file for network access, especially for downloading typst packages]:CERT_PATH:_files' \
+'--ignore-system-fonts[Ensure system fonts won'\''t be searched, unless explicitly included via \`--font-path\`]' \
+'--no-pdf-tags[By default, even when not producing a \`PDF/UA-1\` document, a tagged PDF document is written to provide a baseline of accessibility. In some circumstances (for example when trying to reduce the size of a document) it can be desirable to disable tagged PDF]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+'::input -- Specify the path to input Typst file. If the path is relative, it will be resolved relative to the current working directory (PWD):_default' \
+&& ret=0
+;;
+(test)
+_arguments "${_arguments_options[@]}" : \
+'--root=[Configure the project root (for absolute paths)]:DIR:_files' \
+'*--font-path=[Add additional directories that are recursively searched for fonts]:DIR:_files' \
+'--package-path=[Specify a custom path to local packages, defaults to system-dependent location]:DIR:_files' \
+'--package-cache-path=[Specify a custom path to package cache, defaults to system-dependent location]:DIR:_files' \
+'*--pdf-standard=[Specify the PDF standards that Typst will enforce conformance with]:STANDARD:((1.4\:"PDF 1.4"
+1.5\:"PDF 1.5"
+1.6\:"PDF 1.6"
+1.7\:"PDF 1.7"
+2.0\:"PDF 2.0"
+a-1b\:"PDF/A-1b"
+a-1a\:"PDF/A-1a"
+a-2b\:"PDF/A-2b"
+a-2u\:"PDF/A-2u"
+a-2a\:"PDF/A-2a"
+a-3b\:"PDF/A-3b"
+a-3u\:"PDF/A-3u"
+a-3a\:"PDF/A-3a"
+a-4\:"PDF/A-4"
+a-4f\:"PDF/A-4f"
+a-4e\:"PDF/A-4e"
+ua-1\:"PDF/UA-1"))' \
+'--ppi=[Specify the PPI (pixels per inch) to use for PNG export]:PPI:_default' \
+'*--features=[Enable in-development features that may be changed or removed at any time]:FEATURES:((html\:"The HTML feature"
+a11y-extras\:"The A11yExtras feature"
+bundle\:"The bundle export feature"))' \
+'*--input=[Add a string key-value pair visible through \`sys.inputs\`]:key=value:_default' \
+'--creation-timestamp=[Configure the document'\''s creation date formatted as a UNIX timestamp (in seconds)]:UNIX_TIMESTAMP:_default' \
+'--cert=[Specify the path to CA certificate file for network access, especially for downloading typst packages]:CERT_PATH:_files' \
+'--print-coverage=[Style of printing coverage]:PRINT_COVERAGE:((never\:"Don'\''t print the coverage"
+short\:"Prints the coverage in a short format"
+full\:"Prints the coverage in a full format"))' \
+'--pretty=[Whether to pretty-print HTML snapshots]::PRETTY:(true false)' \
+'--ignore-system-fonts[Ensure system fonts won'\''t be searched, unless explicitly included via \`--font-path\`]' \
+'--no-pdf-tags[By default, even when not producing a \`PDF/UA-1\` document, a tagged PDF document is written to provide a baseline of accessibility. In some circumstances (for example when trying to reduce the size of a document) it can be desirable to disable tagged PDF]' \
+'--update[Whether to update the reference images]' \
+'--coverage[Whether to collect coverage]' \
+'--watch[Whether to run in watch mode]' \
+'--dashboard[Whether to render the dashboard]' \
+'--no-dashboard[Whether not to render the dashboard]' \
+'--verbose[Whether to log verbose information]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+'::input -- Specify the path to input Typst file. If the path is relative, it will be resolved relative to the current working directory (PWD):_default' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_tinymist__subcmd__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:tinymist-help-command-$line[1]:"
+        case $line[1] in
+            (probe)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(lsp)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(dap)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(trace-lsp)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(query)
+_arguments "${_arguments_options[@]}" : \
+":: :_tinymist__subcmd__help__subcmd__query_commands" \
+"*::: :->query" \
+&& ret=0
+
+    case $state in
+    (query)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:tinymist-help-query-command-$line[1]:"
+        case $line[1] in
+            (lsif)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(scip)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(packageDocs)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(checkPackage)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(tyckScope)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(preview)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(compile)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(lint)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(package)
+_arguments "${_arguments_options[@]}" : \
+":: :_tinymist__subcmd__help__subcmd__package_commands" \
+"*::: :->package" \
+&& ret=0
+
+    case $state in
+    (package)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:tinymist-help-package-command-$line[1]:"
+        case $line[1] in
+            (docs)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(completion)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(generate-script)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(doc)
+_arguments "${_arguments_options[@]}" : \
+":: :_tinymist__subcmd__help__subcmd__doc_commands" \
+"*::: :->doc" \
+&& ret=0
+
+    case $state in
+    (doc)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:tinymist-help-doc-command-$line[1]:"
+        case $line[1] in
+            (new)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(configure)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(task)
+_arguments "${_arguments_options[@]}" : \
+":: :_tinymist__subcmd__help__subcmd__task_commands" \
+"*::: :->task" \
+&& ret=0
+
+    case $state in
+    (task)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:tinymist-help-task-command-$line[1]:"
+        case $line[1] in
+            (preview)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(cov)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(test)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+}
+
+(( $+functions[_tinymist_commands] )) ||
+_tinymist_commands() {
+    local commands; commands=(
+'probe:Probe existence (Nop run)' \
+'lsp:Run language server' \
+'dap:Run debug adapter' \
+'trace-lsp:Run language server for tracing some typst program' \
+'query:Run language query' \
+'preview:Run preview server' \
+'compile:Run compile command like \`typst-cli compile\`' \
+'lint:Run Tinymist lint checks' \
+'package:Run package tools' \
+'completion:Generate completion script to stdout' \
+'generate-script:Generate build script for compilation' \
+'doc:Run documents' \
+'task:Run tasks' \
+'cov:Execute a document and collect coverage' \
+'test:Test a document and give summary' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'tinymist commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__compile_commands] )) ||
+_tinymist__subcmd__compile_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist compile commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__completion_commands] )) ||
+_tinymist__subcmd__completion_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist completion commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__cov_commands] )) ||
+_tinymist__subcmd__cov_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist cov commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__dap_commands] )) ||
+_tinymist__subcmd__dap_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist dap commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__doc_commands] )) ||
+_tinymist__subcmd__doc_commands() {
+    local commands; commands=(
+'new:Declare a document (project input)' \
+'configure:Configure document priority in workspace' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'tinymist doc commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__doc__subcmd__configure_commands] )) ||
+_tinymist__subcmd__doc__subcmd__configure_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist doc configure commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__doc__subcmd__help_commands] )) ||
+_tinymist__subcmd__doc__subcmd__help_commands() {
+    local commands; commands=(
+'new:Declare a document (project input)' \
+'configure:Configure document priority in workspace' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'tinymist doc help commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__doc__subcmd__help__subcmd__configure_commands] )) ||
+_tinymist__subcmd__doc__subcmd__help__subcmd__configure_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist doc help configure commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__doc__subcmd__help__subcmd__help_commands] )) ||
+_tinymist__subcmd__doc__subcmd__help__subcmd__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist doc help help commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__doc__subcmd__help__subcmd__new_commands] )) ||
+_tinymist__subcmd__doc__subcmd__help__subcmd__new_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist doc help new commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__doc__subcmd__new_commands] )) ||
+_tinymist__subcmd__doc__subcmd__new_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist doc new commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__generate-script_commands] )) ||
+_tinymist__subcmd__generate-script_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist generate-script commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__help_commands] )) ||
+_tinymist__subcmd__help_commands() {
+    local commands; commands=(
+'probe:Probe existence (Nop run)' \
+'lsp:Run language server' \
+'dap:Run debug adapter' \
+'trace-lsp:Run language server for tracing some typst program' \
+'query:Run language query' \
+'preview:Run preview server' \
+'compile:Run compile command like \`typst-cli compile\`' \
+'lint:Run Tinymist lint checks' \
+'package:Run package tools' \
+'completion:Generate completion script to stdout' \
+'generate-script:Generate build script for compilation' \
+'doc:Run documents' \
+'task:Run tasks' \
+'cov:Execute a document and collect coverage' \
+'test:Test a document and give summary' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'tinymist help commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__help__subcmd__compile_commands] )) ||
+_tinymist__subcmd__help__subcmd__compile_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist help compile commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__help__subcmd__completion_commands] )) ||
+_tinymist__subcmd__help__subcmd__completion_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist help completion commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__help__subcmd__cov_commands] )) ||
+_tinymist__subcmd__help__subcmd__cov_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist help cov commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__help__subcmd__dap_commands] )) ||
+_tinymist__subcmd__help__subcmd__dap_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist help dap commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__help__subcmd__doc_commands] )) ||
+_tinymist__subcmd__help__subcmd__doc_commands() {
+    local commands; commands=(
+'new:Declare a document (project input)' \
+'configure:Configure document priority in workspace' \
+    )
+    _describe -t commands 'tinymist help doc commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__help__subcmd__doc__subcmd__configure_commands] )) ||
+_tinymist__subcmd__help__subcmd__doc__subcmd__configure_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist help doc configure commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__help__subcmd__doc__subcmd__new_commands] )) ||
+_tinymist__subcmd__help__subcmd__doc__subcmd__new_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist help doc new commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__help__subcmd__generate-script_commands] )) ||
+_tinymist__subcmd__help__subcmd__generate-script_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist help generate-script commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__help__subcmd__help_commands] )) ||
+_tinymist__subcmd__help__subcmd__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist help help commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__help__subcmd__lint_commands] )) ||
+_tinymist__subcmd__help__subcmd__lint_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist help lint commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__help__subcmd__lsp_commands] )) ||
+_tinymist__subcmd__help__subcmd__lsp_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist help lsp commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__help__subcmd__package_commands] )) ||
+_tinymist__subcmd__help__subcmd__package_commands() {
+    local commands; commands=(
+'docs:Generate package API docs' \
+    )
+    _describe -t commands 'tinymist help package commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__help__subcmd__package__subcmd__docs_commands] )) ||
+_tinymist__subcmd__help__subcmd__package__subcmd__docs_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist help package docs commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__help__subcmd__preview_commands] )) ||
+_tinymist__subcmd__help__subcmd__preview_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist help preview commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__help__subcmd__probe_commands] )) ||
+_tinymist__subcmd__help__subcmd__probe_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist help probe commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__help__subcmd__query_commands] )) ||
+_tinymist__subcmd__help__subcmd__query_commands() {
+    local commands; commands=(
+'lsif:Get the lsif for a specific package' \
+'scip:Get the SCIP index for a specific package' \
+'packageDocs:Get the documentation for a specific package' \
+'checkPackage:Check a specific package' \
+'tyckScope:Dump package scopes and type-checker results' \
+    )
+    _describe -t commands 'tinymist help query commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__help__subcmd__query__subcmd__checkPackage_commands] )) ||
+_tinymist__subcmd__help__subcmd__query__subcmd__checkPackage_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist help query checkPackage commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__help__subcmd__query__subcmd__lsif_commands] )) ||
+_tinymist__subcmd__help__subcmd__query__subcmd__lsif_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist help query lsif commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__help__subcmd__query__subcmd__packageDocs_commands] )) ||
+_tinymist__subcmd__help__subcmd__query__subcmd__packageDocs_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist help query packageDocs commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__help__subcmd__query__subcmd__scip_commands] )) ||
+_tinymist__subcmd__help__subcmd__query__subcmd__scip_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist help query scip commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__help__subcmd__query__subcmd__tyckScope_commands] )) ||
+_tinymist__subcmd__help__subcmd__query__subcmd__tyckScope_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist help query tyckScope commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__help__subcmd__task_commands] )) ||
+_tinymist__subcmd__help__subcmd__task_commands() {
+    local commands; commands=(
+'preview:Declare a preview task' \
+    )
+    _describe -t commands 'tinymist help task commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__help__subcmd__task__subcmd__preview_commands] )) ||
+_tinymist__subcmd__help__subcmd__task__subcmd__preview_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist help task preview commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__help__subcmd__test_commands] )) ||
+_tinymist__subcmd__help__subcmd__test_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist help test commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__help__subcmd__trace-lsp_commands] )) ||
+_tinymist__subcmd__help__subcmd__trace-lsp_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist help trace-lsp commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__lint_commands] )) ||
+_tinymist__subcmd__lint_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist lint commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__lsp_commands] )) ||
+_tinymist__subcmd__lsp_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist lsp commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__package_commands] )) ||
+_tinymist__subcmd__package_commands() {
+    local commands; commands=(
+'docs:Generate package API docs' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'tinymist package commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__package__subcmd__docs_commands] )) ||
+_tinymist__subcmd__package__subcmd__docs_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist package docs commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__package__subcmd__help_commands] )) ||
+_tinymist__subcmd__package__subcmd__help_commands() {
+    local commands; commands=(
+'docs:Generate package API docs' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'tinymist package help commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__package__subcmd__help__subcmd__docs_commands] )) ||
+_tinymist__subcmd__package__subcmd__help__subcmd__docs_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist package help docs commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__package__subcmd__help__subcmd__help_commands] )) ||
+_tinymist__subcmd__package__subcmd__help__subcmd__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist package help help commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__preview_commands] )) ||
+_tinymist__subcmd__preview_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist preview commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__probe_commands] )) ||
+_tinymist__subcmd__probe_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist probe commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__query_commands] )) ||
+_tinymist__subcmd__query_commands() {
+    local commands; commands=(
+'lsif:Get the lsif for a specific package' \
+'scip:Get the SCIP index for a specific package' \
+'packageDocs:Get the documentation for a specific package' \
+'checkPackage:Check a specific package' \
+'tyckScope:Dump package scopes and type-checker results' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'tinymist query commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__query__subcmd__checkPackage_commands] )) ||
+_tinymist__subcmd__query__subcmd__checkPackage_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist query checkPackage commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__query__subcmd__help_commands] )) ||
+_tinymist__subcmd__query__subcmd__help_commands() {
+    local commands; commands=(
+'lsif:Get the lsif for a specific package' \
+'scip:Get the SCIP index for a specific package' \
+'packageDocs:Get the documentation for a specific package' \
+'checkPackage:Check a specific package' \
+'tyckScope:Dump package scopes and type-checker results' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'tinymist query help commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__query__subcmd__help__subcmd__checkPackage_commands] )) ||
+_tinymist__subcmd__query__subcmd__help__subcmd__checkPackage_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist query help checkPackage commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__query__subcmd__help__subcmd__help_commands] )) ||
+_tinymist__subcmd__query__subcmd__help__subcmd__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist query help help commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__query__subcmd__help__subcmd__lsif_commands] )) ||
+_tinymist__subcmd__query__subcmd__help__subcmd__lsif_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist query help lsif commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__query__subcmd__help__subcmd__packageDocs_commands] )) ||
+_tinymist__subcmd__query__subcmd__help__subcmd__packageDocs_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist query help packageDocs commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__query__subcmd__help__subcmd__scip_commands] )) ||
+_tinymist__subcmd__query__subcmd__help__subcmd__scip_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist query help scip commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__query__subcmd__help__subcmd__tyckScope_commands] )) ||
+_tinymist__subcmd__query__subcmd__help__subcmd__tyckScope_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist query help tyckScope commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__query__subcmd__lsif_commands] )) ||
+_tinymist__subcmd__query__subcmd__lsif_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist query lsif commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__query__subcmd__packageDocs_commands] )) ||
+_tinymist__subcmd__query__subcmd__packageDocs_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist query packageDocs commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__query__subcmd__scip_commands] )) ||
+_tinymist__subcmd__query__subcmd__scip_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist query scip commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__query__subcmd__tyckScope_commands] )) ||
+_tinymist__subcmd__query__subcmd__tyckScope_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist query tyckScope commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__task_commands] )) ||
+_tinymist__subcmd__task_commands() {
+    local commands; commands=(
+'preview:Declare a preview task' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'tinymist task commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__task__subcmd__help_commands] )) ||
+_tinymist__subcmd__task__subcmd__help_commands() {
+    local commands; commands=(
+'preview:Declare a preview task' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'tinymist task help commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__task__subcmd__help__subcmd__help_commands] )) ||
+_tinymist__subcmd__task__subcmd__help__subcmd__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist task help help commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__task__subcmd__help__subcmd__preview_commands] )) ||
+_tinymist__subcmd__task__subcmd__help__subcmd__preview_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist task help preview commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__task__subcmd__preview_commands] )) ||
+_tinymist__subcmd__task__subcmd__preview_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist task preview commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__test_commands] )) ||
+_tinymist__subcmd__test_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist test commands' commands "$@"
+}
+(( $+functions[_tinymist__subcmd__trace-lsp_commands] )) ||
+_tinymist__subcmd__trace-lsp_commands() {
+    local commands; commands=()
+    _describe -t commands 'tinymist trace-lsp commands' commands "$@"
+}
+
+if [ "$funcstack[1]" = "_tinymist" ]; then
+    _tinymist "$@"
+else
+    compdef _tinymist tinymist
+fi

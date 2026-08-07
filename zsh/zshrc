@@ -62,6 +62,25 @@ if command -v python3 >/dev/null 2>&1; then
   }
 fi
 
+# typst preview
+if command -v tinymist >/dev/null 2>&1; then
+  function typre() {
+    case "$2" in
+    s | slide)
+      previewMode="slide"
+      ;;
+    *)
+      previewMode="document"
+      ;;
+    esac
+    tinymist preview "$1" --data-plane-host=localhost:23635 \
+      --invert-colors=auto \
+      --partial-rendering=true \
+      --refresh-style=on-save \
+      --preview-mode="$previewMode"
+  }
+fi
+
 # video convert
 if command -v ffmpeg >/dev/null 2>&1; then
   # convert to mp4
