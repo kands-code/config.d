@@ -73,7 +73,7 @@ if command -v tinymist >/dev/null 2>&1; then
       previewMode="document"
       ;;
     esac
-    tinymist preview "$1" --data-plane-host=localhost:23635 \
+    tinymist preview "$1" --data-plane-host=127.0.0.1:23635 \
       --invert-colors=auto \
       --partial-rendering=true \
       --refresh-style=on-save \
