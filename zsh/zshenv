@@ -62,6 +62,9 @@ export MPLCONFIGDIR="$XDG_STATE_HOME/matplotlib"
 
 #? uv
 export UV_PYTHON_PREFERENCE="only-managed"
+#? irb
+export IRBRC="${paths[config]}/irbrc"
+
 #? java
 export JAVA_VERSION="25.0.2+10"
 export JAVA_HOME="${paths[sdk]}/jdk/jdk-$JAVA_VERSION/Contents/Home"
