@@ -8,8 +8,8 @@ export XDG_USER_BIN="$HOME/.local/bin"
 export XDG_CACHE_HOME="${paths[cache]}"
 export XDG_CONFIG_HOME="${paths[config]}"
 export XDG_STATE_HOME="$HOME/.local/state"
-export EDITOR=hx
-export VISUAL=hx
+export EDITOR=nvim
+export VISUAL=nvim
 
 # for zsh self
 export ZDOTDIR="${paths[config]}/zsh"
