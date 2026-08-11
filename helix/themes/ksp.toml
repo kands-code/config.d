@@ -1,4 +1,4 @@
-inherits = "rose_pine"
+inherits = "catppuccin_mocha"
 
 # 主编辑区背景透明
 "ui.background" = {}

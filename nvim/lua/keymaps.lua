@@ -3,6 +3,8 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 -- 重启 neovim
 vim.keymap.set("n", "<leader>re", "<Cmd>restart<CR>", { desc = "Restart neovim" })
+-- 快速保存文件
+vim.keymap.set("n", "ss", ":w<CR>", { desc = "Save current buffer" })
 
 -- 禁止粘贴替换时更新剪贴板
 -- 其中 "_ 是指 黑洞寄存器
@@ -46,11 +48,3 @@ vim.keymap.set("n", "<leader>u", function()
   vim.cmd.packadd("nvim.undotree")
   require("undotree").open()
 end, { desc = "Toggle Builtin Undotree" })
-
--- 允许代码折叠
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.foldlevel = 96
-vim.opt.foldlevelstart = 80
-vim.opt.foldenable = true
-vim.keymap.set("n", "<leader>z", "za", { desc = "Toggle fold" })

@@ -1,14 +1,20 @@
 -- 使用 rose-pine 透明主题
 vim.pack.add({
   {
-    src = "https://github.com/rose-pine/neovim",
-    name = "rose-pine",
+    src = "https://github.com/catppuccin/nvim",
+    name = "catppuccin",
   },
 })
-require("rose-pine").setup({
-  styles = { transparency = true },
+require("catppuccin").setup({
+  flavour = "mocha",
+  transparent_background = true,
+  float = {
+    transparent = true,
+    solid = true,
+  },
+  term_colors = true,
 })
-vim.cmd.colorscheme("rose-pine")
+vim.cmd.colorscheme("catppuccin")
 
 -- 高亮当前行
 vim.opt.cursorline = true

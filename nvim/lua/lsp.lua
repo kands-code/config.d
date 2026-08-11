@@ -78,6 +78,7 @@ vim.lsp.config("tinymist", {
     fontPaths = { vim.fs.joinpath(vim.fn.getcwd(), "fonts") },
     formatterMode = "typstyle",
     formatterPrintWidth = 96,
+    formatterProseWrap = true,
     lint = { enabled = true },
   },
 })

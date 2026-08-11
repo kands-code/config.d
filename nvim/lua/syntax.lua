@@ -57,9 +57,9 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
--- 为 Markdown 和 Typst 设置标线
+-- 为 Typst 设置标线
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "markdown", "typst" },
+  pattern = { "typst" },
   callback = function() vim.opt_local.colorcolumn = "97,129" end,
 })
 

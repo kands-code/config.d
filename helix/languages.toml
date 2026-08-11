@@ -84,6 +84,7 @@ command = "tinymist"
 [language-server.tinymist.config]
 fontPaths = ["fonts"]
 formatterPrintWidth = 96
+formatterProseWrap = true
 lint = { enabled = true }
 
 [[language]]
@@ -95,7 +96,6 @@ auto-format = true
 [[language]]
 name = "markdown"
 formatter = { command = "deno", args = ["fmt", "-", "--ext=md"] }
-rulers = [97, 129]
 auto-format = true
 
 # 需要使用 deno install -g -A bash-language-server 来安装
