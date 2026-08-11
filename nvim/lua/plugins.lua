@@ -43,6 +43,7 @@ require("mini.notify").setup()
 -- 使用 mini.completion 来作为补全
 vim.pack.add({
   "https://github.com/nvim-mini/mini.completion",
+  "https://github.com/nvim-mini/mini.pairs",
   "https://github.com/nvim-mini/mini.snippets",
   "https://github.com/rafamadriz/friendly-snippets",
 })
@@ -56,6 +57,8 @@ MiniSnippets.setup({
   },
 })
 MiniSnippets.start_lsp_server()
+-- 启用 mini.pairs
+require("mini.pairs").setup()
 
 -- 配置 mini.completion
 local MiniCompletion = require("mini.completion")
