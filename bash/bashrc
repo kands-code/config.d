@@ -24,7 +24,8 @@ function dailyup() {
     if rustup update; then
       cargo install --all-features \
         mdbook \
-        hyperfine
+        hyperfine \
+        fd-find ripgrep
       cargo install --features lsp --locked taplo-cli
       cargo install --git https://github.com/Myriad-Dreamin/tinymist --locked tinymist-cli
     fi

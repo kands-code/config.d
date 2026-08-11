@@ -47,22 +47,10 @@ vim.keymap.set("n", "<leader>u", function()
   require("undotree").open()
 end, { desc = "Toggle Builtin Undotree" })
 
--- 查看所有 buffer
-vim.keymap.set("n", "<leader>bb", function()
-  local bufs = vim.tbl_filter(function(b)
-    return b.listed == 1
-  end, vim.fn.getbufinfo())
-  vim.ui.select(bufs, {
-    prompt = "Buffers",
-    format_item = function(b)
-      return string.format(
-        "%3d  %s%s",
-        b.bufnr,
-        vim.fn.fnamemodify(b.name, ":~:."),
-        b.changed == 1 and " [+]" or ""
-      )
-    end,
-  }, function(choice)
-    if choice then vim.cmd.buffer(choice.bufnr) end
-  end)
-end, { desc = "Pick buffer" })
+-- 允许代码折叠
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldlevel = 96
+vim.opt.foldlevelstart = 80
+vim.opt.foldenable = true
+vim.keymap.set("n", "<leader>z", "za", { desc = "Toggle fold" })

@@ -1,54 +1,26 @@
--- 使用 fff.nvim 作为 picker
-vim.pack.add({ "https://github.com/dmtrKovalenko/fff.nvim" })
--- 需要下载或编译依赖
-vim.api.nvim_create_autocmd("PackChanged", {
-  callback = function(ev)
-    local name, kind = ev.data.spec.name, ev.data.kind
-    if name == "fff.nvim" and (kind == "install" or kind == "update") then
-      if not ev.data.active then
-        vim.cmd.packadd("fff.nvim")
-      end
-      require("fff.download").download_or_build_binary()
-    end
-  end,
+-- 使用 mini.pick 作为文件筛选
+-- PRE: fd | ripgrep
+vim.pack.add({
+  "https://github.com/nvim-mini/mini.extra",
+  "https://github.com/nvim-mini/mini.pick",
+  "https://github.com/nvim-mini/mini.completion",
+  "https://github.com/nvim-mini/mini.snippets",
+  "https://github.com/rafamadriz/friendly-snippets",
 })
--- 启用并配置 fff.nvim
-vim.schedule(function()
-  local ok, FFF = pcall(require, "fff")
-  if not ok then
-    vim.notify("Load fff.nvim failed", vim.log.levels.WARN)
-    return
-  end
-  FFF.setup({ prompt = "% ", prompt_vim_mode = true })
-  vim.keymap.set("n", "<leader>ff", FFF.find_files, { desc = "Find files" })
-  vim.keymap.set("n", "<leader>fg", FFF.live_grep, { desc = "Live grep" })
-end)
-vim.schedule(function()
-  local ok, FFF = pcall(require, "fff")
-  if ok then FFF.setup({ prompt = "% ", prompt_vim_mode = true }) end
+require("mini.pick").setup()
+require("mini.extra").setup()
 
-  -- 设置相应快捷键
-  vim.keymap.set("n", "<leader>ff", function()
-    FFF.find_files()
-  end, { desc = "Find files" })
-  vim.keymap.set("n", "<leader>fg", function()
-    FFF.live_grep()
-  end, { desc = "Live grep" })
-end)
+-- 配置 mini.pick 快捷键
+local MiniPick = require("mini.pick")
+vim.keymap.set("n", "<leader>ff", MiniPick.builtin.files, { desc = "Find files" })
+vim.keymap.set("n", "<leader>fg", MiniPick.builtin.grep_live, { desc = "Live grep" })
+vim.keymap.set("n", "<leader>fb", MiniPick.builtin.buffers, { desc = "Pick buffer" })
 
 -- 使用 mini.notify 作为弹窗提示
 vim.pack.add({ "https://github.com/nvim-mini/mini.notify" })
 require("mini.notify").setup()
 
 -- 使用 mini.completion 来作为补全
-vim.pack.add({
-  "https://github.com/nvim-mini/mini.completion",
-  "https://github.com/nvim-mini/mini.pairs",
-  "https://github.com/nvim-mini/mini.snippets",
-  "https://github.com/rafamadriz/friendly-snippets",
-})
-
--- 配置 mini.snippets
 local MiniSnippets = require("mini.snippets")
 local GenLoader = MiniSnippets.gen_loader
 MiniSnippets.setup({
@@ -57,8 +29,6 @@ MiniSnippets.setup({
   },
 })
 MiniSnippets.start_lsp_server()
--- 启用 mini.pairs
-require("mini.pairs").setup()
 
 -- 配置 mini.completion
 local MiniCompletion = require("mini.completion")

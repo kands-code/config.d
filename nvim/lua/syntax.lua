@@ -50,12 +50,17 @@ local TreeSitter = require("nvim-treesitter")
 TreeSitter.setup({
   install_dir = vim.fn.stdpath("data"),
 })
-
 -- 启用 treesitter
 vim.api.nvim_create_autocmd("FileType", {
   callback = function(ev)
     pcall(vim.treesitter.start, ev.buf)
   end,
+})
+
+-- 为 Markdown 和 Typst 设置标线
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "markdown", "typst" },
+  callback = function() vim.opt_local.colorcolumn = "97,129" end,
 })
 
 -- 安装特定语言的 tree-sitter
@@ -72,6 +77,7 @@ TreeSitter.install({
   "html",
   "typst",
   "javascript",
+  "jsx",
   "typescript",
   "tsx",
   -- shell
@@ -83,10 +89,4 @@ TreeSitter.install({
   "yaml",
   "xml",
   "csv",
-})
-
--- 为 Markdown 和 Typst 设置标线
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "markdown", "typst" },
-  callback = function() vim.opt_local.colorcolumn = "97,129" end,
 })

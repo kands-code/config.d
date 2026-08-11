@@ -56,15 +56,5 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
--- 使用默认色彩主题
-vim.cmd.colorscheme("default")
--- 普通 Normal 文本背景完全透明
-vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
--- 浮动窗口背景透明
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
--- 行号部分背景透明
-vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
-vim.api.nvim_set_hl(0, "CursorLineNr", { bg = "none" })
-
 -- 使用压缩的简短信息
 vim.opt.shortmess:append("c")
