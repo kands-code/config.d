@@ -2,7 +2,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 -- 重启 neovim
-vim.keymap.set("n", "<leader>re", "<Cmd>restart<CR>", { desc = "Restart neovim" })
+vim.keymap.set("n", "<Leader>re", "<Cmd>restart<CR>", { desc = "Restart neovim" })
 -- 快速保存文件
 vim.keymap.set("n", "ss", ":w<CR>", { desc = "Save current buffer" })
 
@@ -10,8 +10,8 @@ vim.keymap.set("n", "ss", ":w<CR>", { desc = "Save current buffer" })
 -- 其中 "_ 是指 黑洞寄存器
 vim.keymap.set("x", "p", [["_dP]], { desc = "Paste over selection without losing yanked text" })
 -- 删除而不 Yank
-vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = "Delete without yanking" })
--- 使用 ESC 清除高亮
+vim.keymap.set({ "n", "v" }, "<Leader>d", [["_d]], { desc = "Delete without yanking" })
+-- 使用 Esc 清除高亮
 vim.keymap.set("n", "<Esc>", "<Cmd>nohlsearch<CR>", { desc = "Clear search highlighting", silent = true })
 
 -- VISUAL 模式上下移动选中内容
@@ -28,13 +28,13 @@ vim.keymap.set("v", "<", "<gv", { desc = "Unindent and keep selection" })
 -- 连接行而不移动光标
 vim.keymap.set("n", "J", "mzJ`z", { desc = "Join lines without moving cursor" })
 -- 全局替换当前光标下的单词
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {
+vim.keymap.set("n", "<Leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {
   desc = "Replace word cursor is on globally",
 })
 
 -- 切换 buffer
-vim.keymap.set("n", "<leader>bn", "<Cmd>bn<CR>", { desc = "Switch to next buffer" })
-vim.keymap.set("n", "<leader>bp", "<Cmd>bp<CR>", { desc = "Switch to previous buffer" })
+vim.keymap.set("n", "<Leader>bn", "<Cmd>bn<CR>", { desc = "Switch to next buffer" })
+vim.keymap.set("n", "<Leader>bp", "<Cmd>bp<CR>", { desc = "Switch to previous buffer" })
 
 -- 移动页面并且居中显示
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Move down in buffer with cursor centered" })
@@ -44,7 +44,7 @@ vim.keymap.set("n", "n", "nzz", { desc = "Next search result cursor centered" })
 vim.keymap.set("n", "N", "Nzz", { desc = "Previous search result cursor centered" })
 
 -- 打开 undotree
-vim.keymap.set("n", "<leader>u", function()
+vim.keymap.set("n", "<Leader>u", function()
   vim.cmd.packadd("nvim.undotree")
   require("undotree").open()
 end, { desc = "Toggle Builtin Undotree" })

@@ -7,14 +7,21 @@ vim.pack.add({
   "https://github.com/nvim-mini/mini.snippets",
   "https://github.com/rafamadriz/friendly-snippets",
 })
-require("mini.pick").setup()
-require("mini.extra").setup()
+local MiniPick = require("mini.pick")
+MiniPick.setup()
 
 -- 配置 mini.pick 快捷键
-local MiniPick = require("mini.pick")
-vim.keymap.set("n", "<leader>ff", MiniPick.builtin.files, { desc = "Find files" })
-vim.keymap.set("n", "<leader>fg", MiniPick.builtin.grep_live, { desc = "Live grep" })
-vim.keymap.set("n", "<leader>fb", MiniPick.builtin.buffers, { desc = "Pick buffer" })
+vim.keymap.set("n", "<Leader>ff", MiniPick.builtin.files, { desc = "Find files" })
+vim.keymap.set("n", "<Leader>fg", MiniPick.builtin.grep_live, { desc = "Live grep" })
+vim.keymap.set("n", "<Leader>fb", MiniPick.builtin.buffers, { desc = "Pick buffer" })
+
+-- 设置 mini.extra
+local MiniExtra = require("mini.extra")
+MiniExtra.setup()
+
+-- 配置 mini.extra 快捷键
+vim.keymap.set("n", "<Leader>fd", MiniExtra.pickers.diagnostic, { desc = "Pick diagnostic" })
+vim.keymap.set("n", "<Leader>fe", MiniExtra.pickers.explorer, { desc = "File explorer" })
 
 -- 使用 mini.notify 作为弹窗提示
 vim.pack.add({ "https://github.com/nvim-mini/mini.notify" })
@@ -51,7 +58,7 @@ vim.pack.add({ 'https://github.com/nvim-mini/mini.clue' })
 local miniclue = require('mini.clue')
 miniclue.setup({
   triggers = {
-    { mode = { 'n', 'x' }, keys = '<leader>' },
+    { mode = { 'n', 'x' }, keys = '<Leader>' },
     { mode = 'n',          keys = '[' },
     { mode = 'n',          keys = ']' },
     { mode = 'i',          keys = '<C-x>' },

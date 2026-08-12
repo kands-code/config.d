@@ -83,8 +83,6 @@ command = "tinymist"
 
 [language-server.tinymist.config]
 fontPaths = ["fonts"]
-formatterPrintWidth = 96
-formatterProseWrap = true
 lint = { enabled = true }
 
 [[language]]

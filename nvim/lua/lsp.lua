@@ -1,12 +1,17 @@
 -- 设置诊断信息展示
 vim.diagnostic.config({
-  virtual_text = { current_line = false },
-  virtual_lines = { current_line = true },
+  virtual_text = true,
   signs = true,
   underline = true,
   severity_sort = true,
   float = { border = "single", source = true },
 })
+
+-- 通过快捷键打开诊断悬浮窗
+vim.keymap.set("n", "D", function()
+  vim.diagnostic.open_float()
+  vim.diagnostic.open_float()
+end, { desc = "Open diagnostic window" })
 
 -- 使用 nvim-lspconfig 中的预先配置
 vim.pack.add({ "https://github.com/neovim/nvim-lspconfig" })
@@ -77,8 +82,6 @@ vim.lsp.config("tinymist", {
     -- 添加工作目录下的 fonts 目录作为本地字体目录
     fontPaths = { vim.fs.joinpath(vim.fn.getcwd(), "fonts") },
     formatterMode = "typstyle",
-    formatterPrintWidth = 96,
-    formatterProseWrap = true,
     lint = { enabled = true },
   },
 })
