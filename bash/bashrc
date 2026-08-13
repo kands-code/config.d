@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
@@ -24,8 +24,7 @@ function dailyup() {
     if rustup update; then
       cargo install --all-features \
         mdbook \
-        hyperfine \
-        fd-find ripgrep
+        hyperfine
       cargo install --features lsp --locked taplo-cli
       cargo install --git https://github.com/Myriad-Dreamin/tinymist --locked tinymist-cli
     fi

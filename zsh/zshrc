@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 # for zsh
 fpath=(
   /opt/homebrew/share/zsh/site-functions
@@ -33,8 +35,7 @@ function dailyup() {
     if rustup update; then
       cargo install --all-features \
         mdbook \
-        hyperfine \
-        fd-find ripgrep
+        hyperfine
       cargo install --features lsp --locked taplo-cli
       cargo install --git https://github.com/Myriad-Dreamin/tinymist --locked tinymist-cli
     fi

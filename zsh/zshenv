@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 # most use variables
 declare -lA paths
 paths[sdk]="$HOME/.local/sdk"
