@@ -71,6 +71,8 @@ export IRBRC="${paths[config]}/irbrc"
 export NPM_CONFIG_USERCONFIG="${paths[config]}/npmrc"
 export NODE_REPL_HISTORY="$XDG_STATE_HOME/npm_history"
 export npm_config_cache="${paths[cache]}/npm"
+#? deepseek harness
+export DSH_HOME="${paths[sdk]}/dsh"
 
 #? java
 export JAVA_VERSION="25.0.2+10"
