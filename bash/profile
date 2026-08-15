@@ -4,6 +4,7 @@
 allPath="$XDG_USER_BIN"            # for user local
 allPath+=":$CARGO_HOME/bin"        # for rust cargo
 allPath+=":$DENO_INSTALL_ROOT/bin" # for deno
+allPath+=":$XDG_DATA_HOME/npm/bin" # for nodejs
 allPath+=":$JAVA_HOME/bin"         # for java
 export PATH="$allPath":"$PATH"     # user path before system path
 

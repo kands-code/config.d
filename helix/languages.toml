@@ -51,14 +51,14 @@ language-servers = ["deno-lsp"]
 formatter = { command = "deno", args = ["fmt", "-", "--ext=tsx"] }
 auto-format = true
 
-# 需要使用 deno install -A -g npm:vscode-langservers-extracted/vscode-html-language-server 安装
+# 需要使用 npm install -g vscode-langservers-extracted 安装
 [[language]]
 name = "html"
 language-servers = ["vscode-html-language-server"]
 formatter = { command = "deno", args = ["fmt", "-", "--ext=html"] }
 auto-format = true
 
-# 需要使用 deno install -A -g npm:vscode-langservers-extracted/vscode-css-language-server 安装
+# 需要使用 npm install -g vscode-langservers-extracted 安装
 [[language]]
 name = "css"
 language-servers = ["vscode-css-language-server"]
@@ -91,21 +91,25 @@ language-servers = ["tinymist"]
 rulers = [97, 129]
 auto-format = true
 
+# 需要使用 npm install -g vscode-langservers-extracted 安装
+[language-server.vscode-markdown-language-server]
+command = "vscode-markdown-language-server"
+args = ["--stdio"]
+config = { provideFormatter = true }
+
 [[language]]
 name = "markdown"
+language-servers = ["vscode-markdown-language-server"]
 formatter = { command = "deno", args = ["fmt", "-", "--ext=md"] }
 auto-format = true
 
-# 需要使用 deno install -g -A bash-language-server 来安装
-# 并且需要安装 shfmt
+# 需要使用 npm install -g bash-language-server 安装
+# 并且需要安装 shfmt 与 shellcheck
 [[language]]
 name = "bash"
 language-servers = ["bash-language-server"]
 formatter = { command = "shfmt", args = ["--indent=2"] }
 auto-format = true
-# 注意
-# bash 的 file-types 对于 zshrc 这种不包含文件后缀的文件无法识别
-# 所以需要手动 set-language bash 才可以使用 LSP 与 Formatter
 
 # 需要使用 cargo install --lock --features lsp taplo-cli 来安装
 [[language]]
@@ -114,14 +118,14 @@ language-servers = ["taplo"]
 formatter = { command = "taplo", args = ["format", "-"] }
 auto-format = true
 
-# 需要使用 deno install -A -g npm:vscode-langservers-extracted/vscode-json-language-server 安装 
+# 需要使用 npm install -g vscode-langservers-extracted 安装
 [[language]]
 name = "json"
 language-servers = ["vscode-json-language-server"]
 formatter = { command = "deno", args = ["fmt", "-", "--ext=json"] }
 auto-format = true
 
-# 需要使用 deno install -A -g npm:vscode-langservers-extracted/vscode-json-language-server 安装 
+# 需要使用 npm install -g vscode-langservers-extracted 安装
 [[language]]
 name = "jsonc"
 language-servers = ["vscode-json-language-server"]

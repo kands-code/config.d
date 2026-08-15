@@ -23,6 +23,9 @@ export GPG_TTY=$(tty)
 export GNUPGHOME="$HOME/.local/share/gnupg"
 export PATH="${paths[homebrew]}":"${paths[path]}":"$PATH"
 
+# node path config
+export NODE_PATH="$(npm root -g):$NODE_PATH"
+
 # daily update
 function dailyup() {
   # brew
@@ -95,6 +98,7 @@ if command -v ffmpeg >/dev/null 2>&1; then
       -vf "pad=ceil(iw/2)*2:ceil(ih/2)*2" \
       -y "$basename".mp4
   }
+
   # aria2c wrapper
   function a2c() {
     if command -v aria2c >/dev/null 2>&1; then
@@ -114,6 +118,7 @@ if command -v ffmpeg >/dev/null 2>&1; then
         return 1
       fi
       shift 2
+
       yt-dlp -o "%(uploader_id)s/%(playlist_title)s/p%(playlist_index)03d-%(title)s.%(ext)s" \
         -f "bv*[vcodec^=avc1]+ba[acodec^=mp4a]/bv*[vcodec^=avc1]+ba/b" \
         --recode-video mp4 \
