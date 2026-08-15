@@ -24,7 +24,6 @@ lint = true
 autoDiscover = true
 
 [language-server.deno-lsp.config.deno.suggest.imports.hosts]
-"https://deno.com" = true
 "https://jsr.io" = true
 
 [[language]]
@@ -51,14 +50,18 @@ language-servers = ["deno-lsp"]
 formatter = { command = "deno", args = ["fmt", "-", "--ext=tsx"] }
 auto-format = true
 
-# 需要使用 npm install -g vscode-langservers-extracted 安装
+# 安装命令
+# deno install -fAg --minimum-dependency-age=0 -n vscode-html-language-server \
+#   "jsr:@qarks/vscode-language-servers/html"
 [[language]]
 name = "html"
 language-servers = ["vscode-html-language-server"]
 formatter = { command = "deno", args = ["fmt", "-", "--ext=html"] }
 auto-format = true
 
-# 需要使用 npm install -g vscode-langservers-extracted 安装
+# 安装命令
+# deno install -fgA --minimum-dependency-age=0 -n vscode-css-language-server \
+#   "jsr:@qarks/vscode-language-servers/css"
 [[language]]
 name = "css"
 language-servers = ["vscode-css-language-server"]
@@ -91,16 +94,15 @@ language-servers = ["tinymist"]
 rulers = [97, 129]
 auto-format = true
 
-# 需要使用 npm install -g vscode-langservers-extracted 安装
-[language-server.vscode-markdown-language-server]
-command = "vscode-markdown-language-server"
-args = ["--stdio"]
-config = { provideFormatter = true }
-
 [[language]]
 name = "markdown"
-language-servers = ["vscode-markdown-language-server"]
-formatter = { command = "deno", args = ["fmt", "-", "--ext=md"] }
+formatter = { command = "deno", args = [
+  "fmt",
+  "-",
+  "--ext=md",
+  "--prose-wrap=preserve",
+] }
+rulers = [97, 129]
 auto-format = true
 
 # 需要使用 npm install -g bash-language-server 安装
@@ -118,14 +120,18 @@ language-servers = ["taplo"]
 formatter = { command = "taplo", args = ["format", "-"] }
 auto-format = true
 
-# 需要使用 npm install -g vscode-langservers-extracted 安装
+# 安装命令
+# deno install -fAg --minimum-dependency-age=0 -n vscode-json-language-server \
+#   "jsr:@qarks/vscode-language-servers/json"
 [[language]]
 name = "json"
 language-servers = ["vscode-json-language-server"]
 formatter = { command = "deno", args = ["fmt", "-", "--ext=json"] }
 auto-format = true
 
-# 需要使用 npm install -g vscode-langservers-extracted 安装
+# 安装命令
+# deno install -fAg --minimum-dependency-age=0 -n vscode-json-language-server \
+#   "jsr:@qarks/vscode-language-servers/json"
 [[language]]
 name = "jsonc"
 language-servers = ["vscode-json-language-server"]
