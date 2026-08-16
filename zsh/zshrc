@@ -17,14 +17,11 @@ autoload -Uz promptinit
 promptinit
 prompt walters
 bindkey -e
-
+alias ww="fastfetch"
 # utils config
 export GPG_TTY=$(tty)
 export GNUPGHOME="$HOME/.local/share/gnupg"
 export PATH="${paths[homebrew]}":"${paths[path]}":"$PATH"
-
-# node path config
-export NODE_PATH="$(npm root -g):$NODE_PATH"
 
 # daily update
 function dailyup() {

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>KeepAlive</key>
+	<dict>
+		<key>NetworkState</key>
+		<true/>
+	</dict>
+	<key>Label</key>
+	<string>one.metacubex.mihomo</string>
+	<key>LimitLoadToSessionType</key>
+	<array>
+		<string>System</string>
+	</array>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/opt/homebrew/bin/mihomo</string>
+		<string>-d</string>
+		<string>/opt/homebrew/etc/mihomo</string>
+		<string>-f</string>
+		<string>/opt/homebrew/etc/mihomo/config.yaml</string>
+	</array>
+	<key>RunAtLoad</key>
+	<true/>
+	<key>StandardErrorPath</key>
+	<string>/opt/homebrew/etc/mihomo/logs/mihomo.log</string>
+	<key>StandardOutPath</key>
+	<string>/opt/homebrew/etc/mihomo/logs/mihomo.log</string>
+	<key>WorkingDirectory</key>
+	<string>/opt/homebrew/etc/mihomo</string>
+</dict>
+</plist>

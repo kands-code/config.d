@@ -2,7 +2,6 @@
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
   "logo": {
     "type": "small",
-    // center the logo
     "padding": {
       "top": 2,
       "left": 2,
@@ -15,73 +14,61 @@
       "unit": "K"
     }
   },
-  // all avaliable modules:
-  //   ["battery", "bios", "bluetooth", "board", "bootmgr", "break", "brightness",
-  //    "camera", "chassis", "cpu", "cpucache", "cpuusage", "command", "colors",
-  //    "cursor", "datetime", "display", "disk", "diskio", "de", "dns", "editor",
-  //    "font", "gamepad", "gpu", "host", "icons", "initsystem", "kernel", "lm",
-  //    "loadavg", "locale", "localip", "media", "memory", "monitor", "netio",
-  //    "opencl", "opengl", "os", "packages", "physicaldisk", "physicalmemory",
-  //    "player", "poweradapter", "processes", "publicip", "separator", "shell",
-  //    "sound", "swap", "terminal", "terminalfont", "terminalsize", "terminaltheme",
-  //    "title", "theme", "uptime", "users", "version", "vulkan", "wallpaper", "weather",
-  //    "wm", "wifi", "wmtheme"]
   "modules": [
     {
       "type": "title",
-      "format": "-- {3} --"
+      "format": "-- {home-dir} --"
     },
     {
       "type": "host",
       "key": "pc",
-      "format": "{3}"
+      "format": "{name}"
     },
     {
       "type": "kernel",
       "key": "with",
-      "format": "{2}"
+      "format": "{sysname} {release}"
     },
     {
       "type": "packages",
-      "key": "pkgs",
-      "format": "{1}"
+      "key": "pkgs"
     },
     {
       "type": "shell",
       "key": "sh",
-      "format": "{6}"
+      "format": "{pretty-name}"
     },
     {
       "type": "wm",
       "key": "wm",
-      "format": "{2} [{3}]"
+      "format": "{pretty-name} {version}"
     },
     {
       "type": "terminal",
       "key": "term",
-      "format": "{5}"
+      "format": "{pretty-name}"
     },
     {
       "type": "cpu",
       "key": "cpu",
       "temp": true,
-      "format": "{1} ({5}) @ {7} GHz [{8}]"
+      "format": "{name} ({cores-online}) @ {freq-max} [{temperature}]"
     },
     {
       "type": "gpu",
       "key": "gpu",
       "temp": true,
-      "format": "{6} ({3}) @ [{4}]"
+      "format": "{type} ({driver}) @ [{temperature}]"
     },
     {
       "type": "memory",
       "key": "mem",
-      "format": "{1} ({3})"
+      "format": "{used} ({percentage})"
     },
     {
       "type": "disk",
       "key": "disk",
-      "format": "{1} [{9}] ({3})"
+      "format": "{size-used} [{filesystem}] ({size-percentage})"
     }
   ]
 }
