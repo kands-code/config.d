@@ -27,13 +27,20 @@ allow-lan: true
 # 绑定地址，* 表示所有网卡
 bind-address: "*"
 # 是否开启 IPv6 总开关，关闭会阻断 IPv6 并屏蔽 AAAA 记录
-ipv6: true
+ipv6: false
 # 统一延迟测试口径，避免不同测试 URL 导致延迟不可比
 unified-delay: true
 # 对同一目标并发连接使用同一节点
 tcp-concurrent: true
 # 进程匹配模式：always / strict / off
 find-process-mode: strict
+# 嗅探模式
+sniffer:
+  enable: true
+  sniff:
+    TLS:
+    HTTP:
+      ports: [80, 8080-8880]
 
 # -------------------- 地理数据自动更新 --------------------
 # 自定义 geodata 下载地址；本地无文件时启动自动下载，
@@ -61,6 +68,7 @@ external-ui: /opt/homebrew/etc/mihomo/ui
 external-ui-url: "https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip"
 # 持久化 select 策略组的选中节点，重启后仍保留
 profile:
+  store-fake-ip: true
   store-selected: true
 
 # -------------------- TUN 虚拟网卡 --------------------
@@ -80,7 +88,7 @@ dns:
   enable: true
   prefer-h3: false
   listen: ":53"
-  ipv6: true
+  ipv6: false
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
   fake-ip-range6: fdfe:dcba:9876::1/64
@@ -103,25 +111,29 @@ dns:
     - "+.connectivitycheck.gstatic.com"
     - "+.connectivitycheck.android.com"
     - "+.captive.apple.com"
-    - ping.archlinux.org
+    - "ping.archlinux.org"
     - "+.connectivity-check.ubuntu.com"
     - "+.nmcheck.gnome.org"
     - "+.network-check.kde.org"
-    - detectportal.firefox.com
-    - cp.cloudflare.com
+    - "detectportal.firefox.com"
+    - "cp.cloudflare.com"
+    - "ssh.github.com"
   default-nameserver:
     - 223.5.5.5
-    - 1.1.1.2
+    - 119.29.29.29
   nameserver:
-    - https://security.cloudflare-dns.com/dns-query
     - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
   proxy-server-nameserver:
     - https://dns.alidns.com/dns-query
-    - https://security.cloudflare-dns.com/dns-query
-  direct-nameserver: []
-  direct-nameserver-follow-policy: false
+    - https://doh.pub/dns-query
+  direct-nameserver:
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
+  direct-nameserver-follow-policy: true
   fallback:
-    - tls://1.1.1.2:853
+    - "https://cloudflare-dns.com/dns-query#RULES"
+    - "https://dns.google/dns-query#RULES"
   fallback-filter:
     geoip: true
     geoip-code: CN
@@ -129,9 +141,9 @@ dns:
       - 240.0.0.0/4
       - 0.0.0.0/32
     domain:
-      - +.google.com
-      - +.facebook.com
-      - +.youtube.com
+      - "+.google.com"
+      - "+.facebook.com"
+      - "+.youtube.com"
   nameserver-policy:
     "+.lan":
       - system
@@ -144,9 +156,11 @@ dns:
     "geosite:cn,private,microsoft@cn,apple-cn,steam@cn,google-cn":
       - https://dns.alidns.com/dns-query
       - https://doh.pub/dns-query
+    "geosite:geolocation-!cn,gfw,category-dev":
+      - "https://cloudflare-dns.com/dns-query#RULES"
   respect-rules: true
-  use-hosts: false
-  use-system-hosts: false
+  use-hosts: true
+  use-system-hosts: true
 
 # -------------------- 代理节点来源 --------------------
 # proxy-providers 只负责下载和更新节点，不提供规则或策略组。
@@ -167,23 +181,23 @@ proxy-providers:
       url: https://cp.cloudflare.com/generate_204
 
 # -------------------- 代理策略组 --------------------
-# 节点来自 airport provider；自动选择/故障转移只使用节点，
+# 节点来自 airport provider；AUTO/FALLBACK只使用节点，
 # 不会把信息展示型节点排除。
 proxy-groups:
-  - name: YOUR_SUB_NAME
+  - name: PROXY
     type: select
     use:
       - airport
     proxies:
-      - 自动选择
-      - 故障转移
-  - name: 自动选择
+      - AUTO
+      - FALLBACK
+  - name: AUTO
     type: url-test
     use:
       - airport
     url: https://www.gstatic.com/generate_204
     interval: 7200
-  - name: 故障转移
+  - name: FALLBACK
     type: fallback
     use:
       - airport
@@ -215,6 +229,13 @@ rule-providers:
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/cn.mrs"
     path: ./rule-providers/cn.mrs
     interval: 86400
+  category-dev:
+    type: http
+    behavior: domain
+    format: mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/category-dev.mrs"
+    path: ./rule-providers/category-dev.mrs
+    interval: 86400
   cn_ip:
     type: http
     behavior: ipcidr
@@ -224,23 +245,13 @@ rule-providers:
     interval: 86400
 
 # -------------------- 流量规则 --------------------
-# 顺序即优先级；先自定义例外，再广告/私网/国内，最后代理兜底。
+# 顺序即优先级；先 Apple 中国域直连，再广告/私网/国内，再开发者域名走代理，最后代理兜底。
 rules:
-  - "DOMAIN-SUFFIX,apple.com.cn,DIRECT"
-  - "DOMAIN-SUFFIX,apple-dns.cn,DIRECT"
-  - "DOMAIN,weather-kit.apple.com,DIRECT"
-  - "DOMAIN,weather-map2.apple.com,DIRECT"
-  - "DOMAIN,weather-analytics-events.apple.com,DIRECT"
-  - "DOMAIN-SUFFIX,ls.apple.com,DIRECT"
-  - "DOMAIN-KEYWORD,apple,YOUR_SUB_NAME"
-  - "DOMAIN-SUFFIX,icloud.com,YOUR_SUB_NAME"
-  - "DOMAIN-SUFFIX,modrinth.com,YOUR_SUB_NAME"
-  - "DOMAIN-SUFFIX,skyvpnx.com,YOUR_SUB_NAME"
-  - "DOMAIN-SUFFIX,fawnnode.xyz,YOUR_SUB_NAME"
-  - "DOMAIN-SUFFIX,immersivetranslate.com,YOUR_SUB_NAME"
+  - GEOSITE,apple@cn,DIRECT
   - RULE-SET,category-ads-all,REJECT
   - RULE-SET,private,DIRECT
   - RULE-SET,cn,DIRECT
+  - RULE-SET,category-dev,PROXY
   - IP-CIDR,127.0.0.0/8,DIRECT,no-resolve
   - IP-CIDR,10.0.0.0/8,DIRECT,no-resolve
   - IP-CIDR,172.16.0.0/12,DIRECT,no-resolve
@@ -249,4 +260,4 @@ rules:
   - IP-CIDR,224.0.0.0/4,DIRECT,no-resolve
   - IP-CIDR6,fe80::/10,DIRECT,no-resolve
   - RULE-SET,cn_ip,DIRECT
-  - MATCH,YOUR_SUB_NAME
+  - MATCH,PROXY
