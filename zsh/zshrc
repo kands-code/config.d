@@ -42,28 +42,6 @@ function dailyup() {
   fi
 }
 
-# python venv
-if command -v python3 >/dev/null 2>&1; then
-  function create-venv() {
-    if [[ -n "$1" ]]; then
-      vname="$1"
-    else
-      vname="$(basename "$PWD")"
-    fi
-    python3 -m venv .venv --prompt "$vname"
-  }
-
-  function activate-venv() {
-    local dname=".venv"
-    if [[ -n "$1" ]]; then
-      dname="$1"
-    fi
-    if [[ -d "$PWD/$dname" ]] && [[ -f "$PWD/$dname/bin/activate" ]]; then
-      source "$PWD/$dname/bin/activate"
-    fi
-  }
-fi
-
 # typst preview
 if command -v tinymist >/dev/null 2>&1; then
   function typre() {

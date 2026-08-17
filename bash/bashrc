@@ -9,11 +9,8 @@ alias ww="fastfetch"
 # GPG config
 export GPG_TTY=$(tty)
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
-
 # java config
 export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=$XDG_STATE_HOME/java -Djavafx.cachedir=$XDG_STATE_HOME/openjfx"
-
-# node path config
 
 # daily update
 function dailyup() {
@@ -55,28 +52,6 @@ function usersymbol() {
 export PS0='\[\033[0;36m\]Out[\#]:= \[\033[0m\]\n'
 export PS1='[\u@\h \w \A]-\[$(exitstatus)\]-\[$(usersymbol)\]\n\[\033[0;33m\]In[\#]:= \[\033[0m\]'
 export PS2=' ~> '
-
-# python venv
-if command -v python3 >/dev/null 2>&1; then
-  function create-venv() {
-    if [[ -n "$1" ]]; then
-      vname="$1"
-    else
-      vname="$(basename "$PWD")"
-    fi
-    python3 -m venv .venv --prompt "$vname"
-  }
-
-  function activate-venv() {
-    local dname=".venv"
-    if [[ -n "$1" ]]; then
-      dname="$1"
-    fi
-    if [[ -d "$PWD/$dname" ]] && [[ -f "$PWD/$dname/bin/activate" ]]; then
-      source "$PWD/$dname/bin/activate"
-    fi
-  }
-fi
 
 # typst preview
 if command -v tinymist >/dev/null 2>&1; then

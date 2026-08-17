@@ -25,19 +25,21 @@ vim.lsp.enable("bashls")
 vim.lsp.enable("clangd")
 
 -- 设置 vscode-html-language-server 作为 HTML 的 LSP
--- PRE: vscode-langservers-extracted/vscode-html-language-server | prettier
+-- PRE: vscode-html-language-server | prettier
+-- deno install -fAg --minimum-dependency-age=0 -n vscode-html-language-server \
+--   "jsr:@qarks/vscode-language-servers/html"
 vim.lsp.enable("html")
 
 -- 设置 vscode-css-language-server 作为 CSS 的 LSP
--- PRE: vscode-langservers-extracted/vscode-css-language-server | prettier
+-- PRE: vscode-css-language-server | prettier
+-- deno install -fAg --minimum-dependency-age=0 -n vscode-css-language-server \
+--   "jsr:@qarks/vscode-language-servers/css"
 vim.lsp.enable("cssls")
 
--- 设置 vscode-eslint-language-server 作为 ESLint LSP
--- PRE: vscode-langservers-extracted/vscode-eslint-language-server
-vim.lsp.enable("eslint")
-
--- 设置 vscode-json-language-server 作为 JSON 的 LSP
--- PRE: vscode-langservers-extracted/vscode-json-language-server | prettier
+-- 设置 vscode-json-language-server 作为 JSON/JSONC 的 LSP
+-- PRE: vscode-json-language-server | prettier
+-- deno install -fAg --minimum-dependency-age=0 -n vscode-json-language-server \
+--   "jsr:@qarks/vscode-language-servers/json"
 vim.lsp.enable("jsonls")
 
 -- 设置 deno 作为 JS/TS 的 LSP

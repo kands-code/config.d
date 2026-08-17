@@ -10,8 +10,8 @@ export XDG_USER_BIN="$HOME/.local/bin"
 export XDG_CACHE_HOME="${paths[cache]}"
 export XDG_CONFIG_HOME="${paths[config]}"
 export XDG_STATE_HOME="$HOME/.local/state"
-export EDITOR=nvim
-export VISUAL=nvim
+export EDITOR=hx
+export VISUAL=hx
 
 # for zsh self
 export ZDOTDIR="${paths[config]}/zsh"
@@ -53,7 +53,7 @@ export DENO_INSTALL="${paths[sdk]}/deno"
 export DENO_INSTALL_ROOT="${paths[sdk]}/deno"
 export DENO_REPL_HISTORY="$DENO_DIR/history.txt"
 export DENO_NO_UPDATE_CHECK=true
-export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
+export npm_config_cache="${paths[cache]}/npm"
 
 # for python
 export JUPYTER_DATA_DIR="${paths[config]}/jupyter"
@@ -67,13 +67,6 @@ export UV_PYTHON_PREFERENCE="only-managed"
 #? irb
 export IRBRC="${paths[config]}/irbrc"
 
-#? nodejs
-export NPM_CONFIG_USERCONFIG="${paths[config]}/npmrc"
-export NODE_REPL_HISTORY="$XDG_STATE_HOME/npm_history"
-export npm_config_cache="${paths[cache]}/npm"
-#? deepseek harness
-export DSH_HOME="${paths[sdk]}/dsh"
-
 #? java
 export JAVA_VERSION="25.0.2+10"
 export JAVA_HOME="${paths[sdk]}/jdk/jdk-$JAVA_VERSION/Contents/Home"
@@ -86,5 +79,4 @@ paths[path]+=":$HOMEBREW_PREFIX/opt/llvm/bin"          # for llvm
 paths[path]+=":$RUSTUP_BIN"                            # for rustup itself
 paths[path]+=":$CARGO_HOME/bin"                        # for rust cargo
 paths[path]+=":$DENO_INSTALL_ROOT/bin"                 # for deno
-paths[path]+=":$paths[data]/npm/bin"                   # for nodejs
 paths[path]+=":$JAVA_HOME/bin"                         # for java
