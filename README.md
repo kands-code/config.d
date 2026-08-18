@@ -26,15 +26,6 @@ ln -sf "$PWD/zsh/zshrc" "$HOME/.config/zsh/.zshrc"
 ln -sf "$PWD/zsh/zfunc" "$HOME/.config/zsh/zfunc"
 ```
 
-## environment.d
-
-XDG and language environment variables for systemd user environments
-(GNOME, KDE, and other systemd-based Linux setups).
-
-```bash
-ln -sf "$PWD/environment.d" "$HOME/.config/environment.d"
-```
-
 ## nvim
 
 Neovim configuration using `vim.pack` for plugins.

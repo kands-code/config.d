@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-# for zsh
+# zsh profile
 fpath=(
   /opt/homebrew/share/zsh/site-functions
   ~/.config/zsh/zfunc
@@ -18,9 +18,10 @@ promptinit
 prompt walters
 bindkey -e
 alias ww="fastfetch"
-# utils config
+
+# gpg tty
 export GPG_TTY=$(tty)
-export GNUPGHOME="$HOME/.local/share/gnupg"
+# export PATH here because of macOS
 export PATH="${paths[homebrew]}":"${paths[path]}":"$PATH"
 
 # daily update
@@ -83,6 +84,7 @@ if command -v ffmpeg >/dev/null 2>&1; then
         "$@"
     fi
   }
+
   # yt-dlp wrapper
   function yd() {
     if command -v yt-dlp >/dev/null 2>&1; then

@@ -1,16 +1,15 @@
 #!/usr/bin/env bash
 
-# If not running interactively, don't do anything
+# escape for non-interactive
 [[ $- != *i* ]] && return
 
+# alias
 alias ls="ls --color=auto"
 alias ww="fastfetch"
+alias hx="helix"
 
-# GPG config
+# gpg tty
 export GPG_TTY=$(tty)
-export GNUPGHOME="$XDG_DATA_HOME/gnupg"
-# java config
-export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=$XDG_STATE_HOME/java -Djavafx.cachedir=$XDG_STATE_HOME/openjfx"
 
 # daily update
 function dailyup() {
@@ -30,9 +29,7 @@ function dailyup() {
   fi
 }
 
-# PS1='[\u@\h \W]\$ '
-
-# self prompt
+# shell prompt
 function exitstatus() {
   if [[ "$?" == '0' ]]; then
     printf '\033[1;32m[v]\033[0m'
@@ -92,6 +89,7 @@ if command -v ffmpeg >/dev/null 2>&1; then
         "$@"
     fi
   }
+
   # yt-dlp wrapper
   function yd() {
     if command -v yt-dlp >/dev/null 2>&1; then

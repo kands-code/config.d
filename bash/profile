@@ -1,25 +1,80 @@
 #!/usr/bin/env bash
 
-# compose path
-allPath="$XDG_USER_BIN"            # for user local
-allPath+=":$CARGO_HOME/bin"        # for rust cargo
-allPath+=":$DENO_INSTALL_ROOT/bin" # for deno
-allPath+=":$JAVA_HOME/bin"         # for java
-export PATH="$allPath":"$PATH"     # user path before system path
+# xdg
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+export XDG_SDK_HOME="$HOME/.local/sdk"
+export XDG_USER_BIN="$HOME/.local/bin"
+export XDG_DATA_DIRS="/usr/local/share:/usr/share"
+export XDG_CONFIG_DIRS="/etc/xdg"
 
-# try use en_US.UTF-8 as tty LANG
-if [[ "$XDG_SESSION_TYPE" == "tty" ]]; then
-  # systemd environment variables
-  if [[ -f "/usr/lib/systemd/user-environment-generators/30-systemd-environment-d-generator" ]]; then
-    export "$(/usr/lib/systemd/user-environment-generators/30-systemd-environment-d-generator)"
-  fi
-  export LANG='en_US.UTF-8'
-  export LC_NUMERIC='en_US.UTF-8'
-  export LC_TIME='en_US.UTF-8'
-fi
+# locale
+export LANG=zh_CN.UTF-8
+export LC_COLLATE=zh_CN.UTF-8
+export LC_NUMERIC=zh_CN.UTF-8
+export LC_TIME=ja_JP.UTF-8
+export LC_MONETARY=zh_CN.UTF-8
+export LC_PAPER=zh_CN.UTF-8
+export LC_MEASUREMENT=zh_CN.UTF-8
 
-# import path
-systemctl --user import-environment PATH
+# bash profile
+export EDITOR=helix
+export VISUAL=helix
+export BASH_COMPLETION_USER_DIR="$XDG_DATA_HOME/bash"
+export HISTFILE="$XDG_STATE_HOME/bash_history"
 
-# read bashrc if it exists
+# utils
+export LESSKEY="$XDG_CONFIG_HOME/less/lesskey"
+export LESSHISTFILE="$XDG_STATE_HOME/less_history"
+export WGETRC="$XDG_CONFIG_HOME/wgetrc"
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+export RLWRAP_HOME="$XDG_STATE_HOME/rlwrap"
+export SQLITE_HISTORY="$XDG_STATE_HOME/sqlite_history"
+export PSQL_HISTORY="$XDG_STATE_HOME/psql_history"
+
+# fcitx5
+# QT_IM_MODULES="wayland;fcitx"
+# QT_IM_MODULE=fcitx
+# XMODIFIERS=@im=fcitx
+# SDL_IM_MODULE=fcitx
+# GLFW_IM_MODULE=ibus
+
+# rust
+export CARGO_HOME="$XDG_SDK_HOME/cargo"
+export RUSTUP_HOME="$XDG_SDK_HOME/rustup"
+export RUST_BACKTRACE=full
+# deno
+export DENO_DIR="$XDG_STATE_HOME/deno"
+export DENO_INSTALL="$XDG_SDK_HOME/deno"
+export DENO_INSTALL_ROOT="$XDG_SDK_HOME/deno"
+export DENO_REPL_HISTORY="$DENO_DIR/history.txt"
+export DENO_NO_UPDATE_CHECK=true
+export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
+export npm_config_cache="$XDG_CACHE_HOME/npm"
+# python
+export UV_PYTHON_PREFERENCE="only-managed"
+export JUPYTER_DATA_DIR="$XDG_CONFIG_HOME/jupyter"
+export IPYTHONDIR="$JUPYTER_DATA_DIR"
+export JUPYTER_CONFIG_DIR="$JUPYTER_DATA_DIR"
+export PYTHONSTARTUP="$XDG_CONFIG_HOME/pip/startup.py"
+export MPLCONFIGDIR="$XDG_STATE_HOME/matplotlib"
+#? java
+export JAVA_VERSION="25.0.2+10"
+export JAVA_HOME="$XDG_SDK_HOME/jdk/jdk-$JAVA_VERSION"
+
+# path
+_path="$XDG_USER_BIN"            # user
+_path+=":$CARGO_HOME/bin"        # cargo
+_path+=":$DENO_INSTALL_ROOT/bin" # deno
+_path+=":$JAVA_HOME/bin"         # java
+export PATH="$_path":"$PATH"     # total path
+
+# bashrc
 [[ -f "$HOME/.bashrc" ]] && source "$HOME/.bashrc"
+
+# export path to systemd
+if command -v systemctl >/dev/null 2>&1; then
+  systemctl --user import-environment PATH
+fi

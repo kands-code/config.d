@@ -1,4 +1,0 @@
-QT_IM_MODULE=ibus
-XMODIFIERS=@im=ibus
-SDL_IM_MODULE=ibus
-GLFW_IM_MODULE=ibus
