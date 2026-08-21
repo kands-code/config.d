@@ -59,6 +59,10 @@ export IRBRC="${paths[config]}/irbrc"
 #? java
 export JAVA_VERSION="25.0.2+10"
 export JAVA_HOME="${paths[sdk]}/jdk/jdk-$JAVA_VERSION/Contents/Home"
+#? node
+export NPM_CONFIG_USERCONFIG="${paths[config]}/npmrc"
+export NODE_REPL_HISTORY="$XDG_STATE_HOME/npm_history"
+export DSH_HOME="${paths[sdk]}/dsh/runtime"
 
 # path
 paths[homebrew]="/opt/homebrew/bin:/opt/homebrew/sbin" # homebrew

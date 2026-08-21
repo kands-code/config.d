@@ -23,6 +23,7 @@ alias ww="fastfetch"
 export GPG_TTY=$(tty)
 # export PATH here because of macOS
 export PATH="${paths[homebrew]}":"${paths[path]}":"$PATH"
+eval "$(fnm env --use-on-cd --shell zsh)"
 
 # daily update
 function dailyup() {
@@ -36,7 +37,8 @@ function dailyup() {
     if rustup update; then
       cargo install --all-features \
         mdbook \
-        hyperfine
+        hyperfine \
+        fnm
       cargo install --features lsp --locked taplo-cli
       cargo install --git https://github.com/Myriad-Dreamin/tinymist --locked tinymist-cli
     fi

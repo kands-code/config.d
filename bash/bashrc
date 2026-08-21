@@ -10,6 +10,7 @@ alias hx="helix"
 
 # gpg tty
 export GPG_TTY=$(tty)
+eval "$(fnm env --use-on-cd --shell bash)"
 
 # daily update
 function dailyup() {
@@ -22,7 +23,8 @@ function dailyup() {
     if rustup update; then
       cargo install --all-features \
         mdbook \
-        hyperfine
+        hyperfine \
+        fnm
       cargo install --features lsp --locked taplo-cli
       cargo install --git https://github.com/Myriad-Dreamin/tinymist --locked tinymist-cli
     fi
