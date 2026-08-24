@@ -63,6 +63,9 @@ export JAVA_HOME="${paths[sdk]}/jdk/jdk-$JAVA_VERSION/Contents/Home"
 export NPM_CONFIG_USERCONFIG="${paths[config]}/npmrc"
 export NODE_REPL_HISTORY="$XDG_STATE_HOME/npm_history"
 export DSH_HOME="${paths[sdk]}/dsh/runtime"
+#? koka
+export koka_build_dir="${paths[cache]}/koka"
+export koka_editor="hx %f:%l:%c"
 
 # path
 paths[homebrew]="/opt/homebrew/bin:/opt/homebrew/sbin" # homebrew
@@ -72,3 +75,4 @@ paths[path]+=":$RUSTUP_BIN"                            # rustup
 paths[path]+=":$CARGO_HOME/bin"                        # cargo
 paths[path]+=":$DENO_INSTALL_ROOT/bin"                 # deno
 paths[path]+=":$JAVA_HOME/bin"                         # java
+paths[path]+=":${paths[sdk]}/koka/bin"                 # koka
