@@ -17,7 +17,7 @@ function dailyup() {
   # paru
   paru -Syu
   paru -Fy
-  paru -Sc
+  paru -c
   # rust
   if command -v rustup >/dev/null 2>&1; then
     if rustup update; then

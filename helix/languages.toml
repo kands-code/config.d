@@ -60,7 +60,7 @@ formatter = { command = "deno", args = ["fmt", "-", "--ext=html"] }
 auto-format = true
 
 # 安装命令
-# deno install -fgA --minimum-dependency-age=0 -n vscode-css-language-server \
+# deno install -fAg --minimum-dependency-age=0 -n vscode-css-language-server \
 #   "jsr:@qarks/vscode-language-servers/css"
 [[language]]
 name = "css"
@@ -105,7 +105,7 @@ formatter = { command = "deno", args = [
 rulers = [97, 129]
 auto-format = true
 
-# 需要使用 deno install -Ag bash-language-server 安装
+# 需要使用 deno install -fAg bash-language-server 安装
 # 并且需要安装 shfmt 与 shellcheck
 [[language]]
 name = "bash"

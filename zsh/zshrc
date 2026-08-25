@@ -31,7 +31,6 @@ function dailyup() {
   brew update
   brew upgrade --greedy
   brew autoremove
-  brew cleanup --prune=all
   # rust
   if command -v rustup >/dev/null 2>&1; then
     if rustup update; then
