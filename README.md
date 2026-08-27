@@ -108,8 +108,8 @@ Fontconfig replacement list. Install globally with `sudo`.
 
 ```bash
 mkdir -p "$HOME/.config/fontconfig"
-ln -sf "$PWD/others/local.conf" "$HOME/.config/fontconfig/fonts.conf"
-sudo ln -sf "$PWD/others/local.conf" "/etc/fonts/local.conf"
+cp "$PWD/others/local.conf" "$HOME/.config/fontconfig/fonts.conf"
+sudo cp "$PWD/others/local.conf" "/etc/fonts/local.conf"
 ```
 
 ### NetworkManager / systemd-resolved
