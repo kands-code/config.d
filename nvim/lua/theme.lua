@@ -1,20 +1,24 @@
 -- 使用 rose-pine 透明主题
 vim.pack.add({
   {
-    src = "https://github.com/catppuccin/nvim",
-    name = "catppuccin",
+    -- src = "https://github.com/catppuccin/nvim",
+    -- name = "catppuccin",
+    src = "https://github.com/Mofiqul/adwaita.nvim",
+    name = "adwaita",
   },
 })
-require("catppuccin").setup({
-  flavour = "mocha",
-  transparent_background = true,
-  float = {
-    transparent = true,
-    solid = true,
-  },
-  term_colors = true,
-})
-vim.cmd.colorscheme("catppuccin")
+-- require("catppuccin").setup({
+--   flavour = "mocha",
+--   transparent_background = true,
+--   float = {
+--     transparent = true,
+--     solid = true,
+--   },
+--   term_colors = true,
+-- })
+vim.g.adwaita_dark = true
+vim.g.adwaita_transparent = true
+vim.cmd.colorscheme("adwaita")
 
 -- 高亮当前行
 vim.opt.cursorline = true

@@ -1,6 +1,14 @@
-inherits = "catppuccin_mocha"
+inherits = "adwaita-dark"
 
 # 主编辑区背景透明
 "ui.background" = {}
-# 分屏窗口间隔区域也透明
+# 选择器的分割线透明
+"ui.background.separator" = {}
+# 选中的内容高亮
+"ui.text.focus" = { bg = "blue_5" }
+# 分屏窗口间隔区域透明
 "ui.window" = {}
+# 设置主光标所在行背景颜色
+"ui.cursorline.primary" = { bg = "libadwaita_dark_alt" }
+# 设置副光标所在行背景颜色
+"ui.cursorline.secondary" = { bg = "dark_4" }
