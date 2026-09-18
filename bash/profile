@@ -62,13 +62,13 @@ export IPYTHONDIR="$JUPYTER_DATA_DIR"
 export JUPYTER_CONFIG_DIR="$JUPYTER_DATA_DIR"
 export PYTHONSTARTUP="$XDG_CONFIG_HOME/pip/startup.py"
 export MPLCONFIGDIR="$XDG_STATE_HOME/matplotlib"
+
 #? java
 export JAVA_VERSION="25.0.2+10"
 export JAVA_HOME="$XDG_SDK_HOME/jdk/jdk-$JAVA_VERSION"
 #? node
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_DIRS/npmrc"
 export NODE_REPL_HISTORY="$XDG_STATE_HOME/npm_history"
-export DSH_HOME="$XDG_SDK_HOME/dsh/runtime"
 
 # path
 _path="$XDG_USER_BIN"            # user
