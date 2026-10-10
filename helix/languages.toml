@@ -10,28 +10,68 @@ language-servers = ["clangd"]
 formatter = { command = "clang-format" }
 auto-format = true
 
-# 需要安装 typescript-language-server
+# 需要安装 typescript
+[language-server.tsc]
+command = "tsc"
+args = ["--lsp", "--stdio"]
+
+[language-server.tsc.config.typescript]
+format.enabled = false
+inlayHints.enumMemberValues.enabled = true
+inlayHints.functionLikeReturnTypes.enabled = true
+inlayHints.parameterTypes.enabled = true
+inlayHints.parameterNames.enabled = "all"
+inlayHints.propertyDeclarationTypes.enabled = true
+inlayHints.variableTypes.enabled = true
+
+[language-server.tsc.config.javascript]
+format.enabled = false
+inlayHints.enumMemberValues.enabled = true
+inlayHints.functionLikeReturnTypes.enabled = true
+inlayHints.parameterTypes.enabled = true
+inlayHints.parameterNames.enabled = "all"
+inlayHints.propertyDeclarationTypes.enabled = true
+inlayHints.variableTypes.enabled = true
+
+[language-server.tsc.config.tsx]
+format.enabled = false
+inlayHints.enumMemberValues.enabled = true
+inlayHints.functionLikeReturnTypes.enabled = true
+inlayHints.parameterTypes.enabled = true
+inlayHints.parameterNames.enabled = "all"
+inlayHints.propertyDeclarationTypes.enabled = true
+inlayHints.variableTypes.enabled = true
+
+[language-server.tsc.config.jsx]
+format.enabled = false
+inlayHints.enumMemberValues.enabled = true
+inlayHints.functionLikeReturnTypes.enabled = true
+inlayHints.parameterTypes.enabled = true
+inlayHints.parameterNames.enabled = "all"
+inlayHints.propertyDeclarationTypes.enabled = true
+inlayHints.variableTypes.enabled = true
+
 [[language]]
 name = "javascript"
-language-servers = ["typescript-language-server"]
+language-servers = ["tsc"]
 formatter = { command = "prettier", args = ["--parser", "babel"] }
 auto-format = true
 
 [[language]]
 name = "jsx"
-language-servers = ["typescript-language-server"]
+language-servers = ["tsc"]
 formatter = { command = "prettier", args = ["--parser", "babel"] }
 auto-format = true
 
 [[language]]
 name = "typescript"
-language-servers = ["typescript-language-server"]
+language-servers = ["tsc"]
 formatter = { command = "prettier", args = ["--parser", "typescript"] }
 auto-format = true
 
 [[language]]
 name = "tsx"
-language-servers = ["typescript-language-server"]
+language-servers = ["tsc"]
 formatter = { command = "prettier", args = ["--parser", "typescript"] }
 auto-format = true
 
