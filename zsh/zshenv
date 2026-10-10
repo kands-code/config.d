@@ -40,13 +40,6 @@ export RUSTUP_BIN="$HOMEBREW_PREFIX/opt/rustup/bin"
 export RUSTUP_HOME="${paths[sdk]}/rustup"
 export CARGO_HOME="${paths[sdk]}/cargo"
 export RUST_BACKTRACE=full
-# deno
-export DENO_DIR="$XDG_STATE_HOME/deno"
-export DENO_INSTALL="${paths[sdk]}/deno"
-export DENO_INSTALL_ROOT="${paths[sdk]}/deno"
-export DENO_REPL_HISTORY="$DENO_DIR/history.txt"
-export DENO_NO_UPDATE_CHECK=true
-export npm_config_cache="${paths[cache]}/npm"
 # python
 export UV_PYTHON_PREFERENCE="only-managed"
 export JUPYTER_DATA_DIR="${paths[config]}/jupyter"
@@ -61,6 +54,7 @@ export IRBRC="${paths[config]}/irbrc"
 export JAVA_VERSION="25.0.2+10"
 export JAVA_HOME="${paths[sdk]}/jdk/jdk-$JAVA_VERSION/Contents/Home"
 #? node
+export npm_config_cache="${paths[cache]}/npm"
 export NPM_CONFIG_USERCONFIG="${paths[config]}/npmrc"
 export NODE_REPL_HISTORY="$XDG_STATE_HOME/npm_history"
 
@@ -70,5 +64,5 @@ paths[path]="$XDG_USER_BIN"                            # user
 paths[path]+=":$HOMEBREW_PREFIX/opt/llvm/bin"          # llvm
 paths[path]+=":$RUSTUP_BIN"                            # rustup
 paths[path]+=":$CARGO_HOME/bin"                        # cargo
-paths[path]+=":$DENO_INSTALL_ROOT/bin"                 # deno
+paths[path]+=":${paths[data]}/npm/bin"                 # node
 paths[path]+=":$JAVA_HOME/bin"                         # java

@@ -10,62 +10,55 @@ language-servers = ["clangd"]
 formatter = { command = "clang-format" }
 auto-format = true
 
-# 需要单独安装 deno
-[language-server.deno-lsp]
-command = "deno"
-args = ["lsp"]
-environment = { NO_COLOR = "true" }
-
-[language-server.deno-lsp.config.deno]
-enable = true
-lint = true
-
-[language-server.deno-lsp.config.deno.suggest.imports]
-autoDiscover = true
-
-[language-server.deno-lsp.config.deno.suggest.imports.hosts]
-"https://jsr.io" = true
-
+# 需要安装 typescript-language-server
 [[language]]
 name = "javascript"
-language-servers = ["deno-lsp"]
-formatter = { command = "deno", args = ["fmt", "-", "--ext=js"] }
+language-servers = ["typescript-language-server"]
+formatter = { command = "prettier", args = ["--parser", "babel"] }
 auto-format = true
 
 [[language]]
 name = "jsx"
-language-servers = ["deno-lsp"]
-formatter = { command = "deno", args = ["fmt", "-", "--ext=jsx"] }
+language-servers = ["typescript-language-server"]
+formatter = { command = "prettier", args = ["--parser", "babel"] }
 auto-format = true
 
 [[language]]
 name = "typescript"
-language-servers = ["deno-lsp"]
-formatter = { command = "deno", args = ["fmt", "-", "--ext=ts"] }
+language-servers = ["typescript-language-server"]
+formatter = { command = "prettier", args = ["--parser", "typescript"] }
 auto-format = true
 
 [[language]]
 name = "tsx"
-language-servers = ["deno-lsp"]
-formatter = { command = "deno", args = ["fmt", "-", "--ext=tsx"] }
+language-servers = ["typescript-language-server"]
+formatter = { command = "prettier", args = ["--parser", "typescript"] }
 auto-format = true
 
 # 安装命令
-# deno install -fAg --minimum-dependency-age=0 -n vscode-html-language-server \
-#   "jsr:@qarks/vscode-language-servers/html"
+# npm install --global https://github.com/kands-code/vscode-language-servers/archive/refs/tags/1.141.0.tar.gz
 [[language]]
 name = "html"
 language-servers = ["vscode-html-language-server"]
-formatter = { command = "deno", args = ["fmt", "-", "--ext=html"] }
+formatter = { command = "prettier", args = ["--parser", "html"] }
 auto-format = true
 
-# 安装命令
-# deno install -fAg --minimum-dependency-age=0 -n vscode-css-language-server \
-#   "jsr:@qarks/vscode-language-servers/css"
 [[language]]
 name = "css"
 language-servers = ["vscode-css-language-server"]
-formatter = { command = "deno", args = ["fmt", "-", "--ext=css"] }
+formatter = { command = "prettier", args = ["--parser", "css"] }
+auto-format = true
+
+[[language]]
+name = "json"
+language-servers = ["vscode-json-language-server"]
+formatter = { command = "prettier", args = ["--parser", "json"] }
+auto-format = true
+
+[[language]]
+name = "jsonc"
+language-servers = ["vscode-json-language-server"]
+formatter = { command = "prettier", args = ["--parser", "jsonc"] }
 auto-format = true
 
 [[language]]
@@ -96,17 +89,18 @@ auto-format = true
 
 [[language]]
 name = "markdown"
-formatter = { command = "deno", args = [
-  "fmt",
-  "-",
-  "--ext=md",
+formatter = { command = "prettier", args = [
+  "--parser=markdown",
   "--prose-wrap=preserve",
 ] }
 rulers = [97, 129]
 auto-format = true
 
-# 需要使用 deno install -fAg bash-language-server 安装
+# 需要 bash-language-server
 # 并且需要安装 shfmt 与 shellcheck
+[language-server.bash-language-server.config]
+bashIde = { shellcheckArguments = ["--shell=bash"] }
+
 [[language]]
 name = "bash"
 language-servers = ["bash-language-server"]
@@ -120,25 +114,7 @@ language-servers = ["taplo"]
 formatter = { command = "taplo", args = ["format", "-"] }
 auto-format = true
 
-# 安装命令
-# deno install -fAg --minimum-dependency-age=0 -n vscode-json-language-server \
-#   "jsr:@qarks/vscode-language-servers/json"
-[[language]]
-name = "json"
-language-servers = ["vscode-json-language-server"]
-formatter = { command = "deno", args = ["fmt", "-", "--ext=json"] }
-auto-format = true
-
-# 安装命令
-# deno install -fAg --minimum-dependency-age=0 -n vscode-json-language-server \
-#   "jsr:@qarks/vscode-language-servers/json"
-[[language]]
-name = "jsonc"
-language-servers = ["vscode-json-language-server"]
-formatter = { command = "deno", args = ["fmt", "-", "--ext=jsonc"] }
-auto-format = true
-
 [[language]]
 name = "yaml"
-formatter = { command = "deno", args = ["fmt", "-", "--ext=yaml"] }
+formatter = { command = "prettier", args = ["--parser", "yaml"] }
 auto-format = true

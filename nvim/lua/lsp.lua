@@ -26,31 +26,17 @@ vim.lsp.enable("clangd")
 
 -- 设置 vscode-html-language-server 作为 HTML 的 LSP
 -- PRE: vscode-html-language-server | prettier
--- deno install -fAg --minimum-dependency-age=0 -n vscode-html-language-server \
---   "jsr:@qarks/vscode-language-servers/html"
+-- npm install --global https://github.com/kands-code/vscode-language-servers/archive/refs/tags/1.141.0.tar.gz
 vim.lsp.enable("html")
 
 -- 设置 vscode-css-language-server 作为 CSS 的 LSP
--- PRE: vscode-css-language-server | prettier
--- deno install -fAg --minimum-dependency-age=0 -n vscode-css-language-server \
---   "jsr:@qarks/vscode-language-servers/css"
 vim.lsp.enable("cssls")
 
 -- 设置 vscode-json-language-server 作为 JSON/JSONC 的 LSP
--- PRE: vscode-json-language-server | prettier
--- deno install -fAg --minimum-dependency-age=0 -n vscode-json-language-server \
---   "jsr:@qarks/vscode-language-servers/json"
 vim.lsp.enable("jsonls")
 
--- 设置 deno 作为 JS/TS 的 LSP
--- PRE: deno
-vim.lsp.config("denols", {
-  -- 取消 root_dir 限制
-  root_dir = function(bufnr, on_dir)
-    on_dir(vim.fs.root(bufnr, { "deno.json", "deno.jsonc", ".git" }) or vim.fn.getcwd())
-  end,
-})
-vim.lsp.enable("denols")
+-- 设置 typescript-language-server 作为 js/ts 的 LSP
+vim.lsp.enable("ts_ls")
 
 -- 设置 ty 作为 Python LSP
 -- PRE: ty | ruff
