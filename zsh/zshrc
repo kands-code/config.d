@@ -37,7 +37,8 @@ function dailyup() {
       cargo install --all-features \
         mdbook \
         hyperfine \
-        fnm
+        fnm \
+        tree-sitter-cli
       cargo install --features lsp --locked taplo-cli
       cargo install --git https://github.com/Myriad-Dreamin/tinymist --locked tinymist-cli
     fi
